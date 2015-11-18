@@ -1,0 +1,8 @@
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+.DS_Store
+
+node_modules/
