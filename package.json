@@ -1,0 +1,42 @@
+{
+  "name": "fly-me-to-the-moon",
+  "version": "0.1.0",
+  "description": "A look at mankind's journey to the stars, from 1955 to today and beyond",
+  "main": "server.js",
+  "scripts": {
+    "build-dev": "browserify app/main.js -o public/bundle.dev.js -t [ babelify --presets [ es2015 react stage-1 ] ]",
+    "build-min": "browserify app/main.js -g uglifyify -o public/bundle.min.js -t [ babelify --presets [ es2015 react stage-1 ] ]",
+    "build-server": "babel server.js -d serer.min.js --presets babel-preset-es2015 babel-preset-react",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Builtvisible/fly-me-to-the-moon.git"
+  },
+  "author": "petewailes",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Builtvisible/fly-me-to-the-moon/issues"
+  },
+  "homepage": "https://github.com/Builtvisible/fly-me-to-the-moon",
+  "devDependencies": {
+    "browserify": "^12.x.x",
+    "uglifyify": "3.0.x"
+  },
+  "dependencies": {
+    "axios": "^0.5.4",
+    "babel": "^6.x.x",
+    "babel-core": "^6.x.x",
+    "babel-preset-es2015": "^6.x.x",
+    "babel-preset-react": "^6.x.x",
+    "babel-preset-stage-1": "^6.x.x",
+    "babelify": "^7.2.0",
+    "body-parser": "^1.13.3",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "marked": "^0.3.5",
+    "react": "^0.14.2",
+    "react-addons-css-transition-group": "^0.14.2",
+    "react-dom": "^0.14.2"
+  }
+}

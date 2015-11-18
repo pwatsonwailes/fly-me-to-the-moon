@@ -1,0 +1,49 @@
+{
+	"home": {
+		"title": "Home",
+		"description": "A look at mankind's journey to the stars, from 1955 to today and beyond",
+		"content":
+		[
+			{
+				"type": "markdown",
+				"key": "intro",
+				"content": "A test"
+			},
+			{
+				"type": "markdown",
+				"key": "secondItem",
+				"content": "Another test"
+			}
+		]
+	},
+	"race-to-space": {
+		"title": "The Race to Space",
+		"description": "asdf",
+		"content": []
+	},
+	"to-the-moon": {
+		"title": "Shooting for the Moon",
+		"description": "asdf",
+		"content": []
+	},
+	"apollo-11": {
+		"title": "Apollo 11: The Moon Landing",
+		"description": "asdf",
+		"content": []
+	},
+	"end-of-the-race": {
+		"title": "The End of the Race",
+		"description": "asdf",
+		"content": []
+	},
+	"space-stations": {
+		"title": "Space Stations and Robots",
+		"description": "asdf",
+		"content": []
+	},
+	"beyond-earth": {
+		"title": "Beyond the Earth",
+		"description": "asdf",
+		"content": []
+	}
+}

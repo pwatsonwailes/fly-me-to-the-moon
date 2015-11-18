@@ -1,0 +1,71 @@
+Part 1: The Race to Space. 1955 to 1961. Putting a man in space, and setting sights on the moon.
+
+Sub-sections
+
+1955 to 1959 - the dream of putting a human in space
+1957 - Sputnik and the Sputnik Crisis
+1961 - Gagarin and the Vostok 1, and Alan Shepard in Freedom 7, ending in the JFK speech to Congress in May
+
+
+Part 2: The Race to the Moon. 1961 to of the space race to the start of the Apollo 11 mission
+
+Sub-sections
+
+Voskhod, Soyuz, Gemini & Apollo programs
+
+1963 - Valentina Tereshkova, first woman and civilian into space on Vostok 6
+1965 - First EVA by Alexey Leonov from Voskhod 2, and first space rendezvous between Gemini's 6 & 7
+1967 - Vladimir Komarov Soyuz 1 disaster
+1968 - First lunar orbit with Apollo 8
+1969 - Apollo 10 dress rehearsal for 11
+
+
+Part 3: The Apollo 11 Moon Landing
+
+- Obvious
+
+Part 4: The end of the race, & the public loses interest
+
+Subsections
+
+The politics of going to the moon post-1969
+Safety issues
+1. Apollo 12 lightning strikes
+2. Apollo 13 accident
+
+
+Part 5: Space Stations and robots
+
+Subsections
+
+The space stations. Salyut, Almaz and Skylab projects, Mir, ISS, Tiangong
+The landing robots. Lunokhod 1, the Lunar rovers, Sojourner and Spirit, Opportunity & Curiosity
+The flying robots. Mariners, Pioneers, Voyagers, Galileo and New Horizons
+
+
+Part 6: Beyond the Earth
+
+Subsections
+
+Planned Mars missions
+The technology to take us there
+
+
+Technologies
+
+Part 1
+
+Autoplay embedded video of the "We Choose to go to the Moon" speech
+
+Part 3
+
+Mixed SVG/Javascript controlled panel showing the lunar decent, time-synced to the NASA audio, showing the path of the lander, the altitude and stablisation and so on (similar to http://www.firstmenonthemoon.com/)
+
+Part 4
+
+SVG deconstruction of the Apollo craft failure, along with an annotated, expandable deconstuction of the 13 craft
+
+Part 5
+
+Gallery of robots and stations
+WebGL animation to show the scale of the solar system and current position of the various robots
