@@ -1,0 +1,50 @@
+table {
+	font-size: 14px;
+
+	th, td {
+		border: none;
+		word-break: break-word;
+
+		&.vmiddle { vertical-align: middle; }
+
+		a { cursor: pointer; }
+	}
+
+	th { padding: 0 18px 22px; }
+	td { padding: 22px 18px; }
+
+	tbody tr {
+		&:nth-child(odd) { background-color: #eee }
+
+		td {
+			margin: 0;
+			vertical-align: top;
+		}
+	}
+
+	thead th {
+		border: none;
+		text-align: left;
+	}
+
+	&.plain tbody tr { background-color: #fff; }
+}
+
+.form,
+form {
+	.input-row { padding: 0; }
+
+	textarea,
+	input[type=text],
+	input[type=password],
+	input[type=email],
+	input[type=number] {
+		.box-shadow(none);
+		border: 1px solid #ddd;
+		padding: 3px 7px;
+
+		&:focus { .box-shadow(none); }
+	}
+
+	input[type=submit] { text-transform: capitalize; }
+}
