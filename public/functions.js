@@ -79,6 +79,7 @@ function escapeRegExp (string) {
 
 
 function onWindowResize () {
+	console.log('here');
 	var dims = getViewportSize();
 
 	var cWidth = dims.width;
@@ -89,6 +90,11 @@ function onWindowResize () {
 
 	if (cHeight < dims.height)
 		cHeight = dims.height;
-	else if (cHeight > 1200)
-		cHeight = 1200;
+	else if (cHeight > 1179)
+		cHeight = 1179;
+
+	$('heading').style.height = cHeight + 'px';
 }
+
+onWindowResize();
+window.addEventListener('resize', onWindowResize, false);

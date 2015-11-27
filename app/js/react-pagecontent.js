@@ -11,7 +11,7 @@ export default class PageContent extends React.Component {
 
 	renderElement(item) {
 		return (item.type === 'markdown')
-			? React.createElement("div", { key: item.key, dangerouslySetInnerHTML: { __html: marked(item.content) } })
+			? React.createElement("div", { key: item.key, className: item.className, dangerouslySetInnerHTML: { __html: marked(item.content) } })
 			: React.createElement(item.type, item);
 	}
 
