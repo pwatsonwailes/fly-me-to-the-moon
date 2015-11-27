@@ -1,0 +1,297 @@
+#heading {
+	.od-col();
+	.col-xs-12();
+	.panel-depth-3();
+	background: url('/fly-me-to-the-moon/imgs/sts61-a.jpg') 50% 0 no-repeat;
+	margin-bottom: 2rem;
+
+	#main_header { padding-top: 1rem; }
+
+	#logo_container,
+	#powered_by {
+		.od-col();
+		.col-xs-6();
+	}
+
+	#logo_container p {
+		text-align: left;
+
+		a { border-bottom: none; }
+	}
+
+	#powered_by ul {
+		text-align: right;
+
+		#reactjs {
+			margin-right: 1rem;
+
+			a {
+				color: #00d8ff;
+				font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+				
+				img {
+					height: 25px;
+					position: relative;
+					top: 7px;
+					width: 25px;
+				}
+			}
+		}
+
+		#wikipedia a {
+			color: #fff;
+			font-family: 'Crimson+Text';
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+
+			small {
+				font-size: 0.8em
+			}
+		}
+	}
+
+	> h1 {
+		color: #fff;
+		margin: 19rem 0 0 3rem;
+
+		#top_title {
+			font-size: 32px;
+			font-family: 'Open Sans';
+			font-weight: 300;
+			letter-spacing: .25em;
+			text-transform: uppercase;
+		}
+
+		#lower_title {
+			font-size: 28px;
+			font-family: 'Amiri';
+			font-style: italic;
+			position: relative;
+			top: -1em;
+		}
+	}
+
+	> p {
+		color: #fff;
+		font-family: 'Open Sans';
+		margin: 0 0 0 3rem;
+
+		&:last-child { margin-bottom: 0 }
+
+		a {
+			border-bottom: 1px dotted #fff;
+			color: #fff;
+		}
+	}
+}
+
+#socialButtons {
+	.transition(all 0.5s);
+	color: #00b5ff;
+	position: absolute;
+	right: 0.5em;
+
+	&:hover,
+	&.active { color: #535f5f; }
+
+	.socialBox {
+		height: 36px;
+		position: relative;
+		width: 41px;
+	}
+
+	#socialIcons {
+		.od-row();
+		bottom: 37px;
+		position: absolute;
+		right: 5px;
+	}
+
+	#circleBg {
+		.border-radius(5px);
+		background-color: #fff;
+		display: block;
+		position: relative;
+		right: 0.9em;
+		
+		.fa-share-alt-square {
+			left: -1px;
+			top: -4px;
+		}
+	}
+
+	.fa {
+		cursor: pointer;
+		position: relative;
+	}
+
+	.fa-share-alt-square { font-size: 2em; }
+
+	.count,
+	.share {
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.count {
+		color: #fff;
+		font-size: 14px;
+		left: -50px;
+		position: absolute;
+		text-align: right;
+		top: 6px;
+		width: 42px;
+	}
+
+	.share {
+		.border-radius(50%);
+		color: #fff;
+		display: inline-block;
+		height: 30px;
+		line-height: 28px;
+		position: absolute;
+		width: 31px;
+
+		&:hover {
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+
+	.fa img {
+		position: relative;
+		top: 2px;
+		width: 16px;
+	}
+
+	.facebook,
+	.twitter,
+	.pinterest,
+	.stumbleupon,
+	.bufferapp {
+		height:100%;
+		text-align:center;
+		width:100%;
+		.border-radius(4px);
+	}
+
+	#twitter .share {
+		text-shadow: 1px 0 0 #0077be;
+		.background-image(linear-gradient(top, #26c3eb 0%, #0080d6 100%));
+	}
+
+	#facebook .share {
+		background:#3b5998;
+		text-shadow:1px 0 0 #26427e;
+		.background-image(linear-gradient(top, #3B5998 0%, #133783 100%));
+	}
+
+	#googleplus .share {
+		background:#6d6d6d;
+		text-shadow:1px 0 0 #222;
+		.background-image(linear-gradient(top, #6d6d6d 0%, #434343 100%));
+	}
+
+	#linkedin .share {
+		background:#6d6d6d;
+		text-shadow:1px 0 0 #26427e;
+		.background-image(linear-gradient(top, #74bbdb 0%, #007fb2 100%));
+	}
+
+	#stumbleupon .share {
+		background: #eb4924;
+		text-shadow: 1px 0 0 #26427e;
+		.background-image(linear-gradient(top, #eb4924 0%, #b12403 100%));
+	}
+}
+
+.socialTransition-appear {
+  .transition(all 2s);
+  max-height: 1px;
+  opacity: 0.01;
+
+  &.socialTransition-appear-active {
+  	max-height: 500px;
+  	opacity: 1;
+  }
+}
+
+.fa_button {
+	.box-sizing(content-box);
+	.border-radius(50%);
+	.box-shadow(1px 1px 1px #CCC);
+	.transition(background-color 0.5s);
+	background-color: #00b5ff;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	height: 30px;
+	outline: none;
+	text-align: center;
+	text-decoration: none;
+	width: 30px;
+	zoom: 1;
+
+	&#backButton,
+	&#forwardButton,
+	&#galleryBack,
+	&#galleryForward {
+		cursor: pointer;
+		font-size: 18px;
+		position: absolute;
+
+		.fa {
+			position: relative;
+			top: 1px;
+		}
+	}
+
+	&#backButton,
+	&#forwardButton {
+		bottom: 35px;
+	}
+
+	&#backButton { left: -50px; }
+	&#forwardButton { right: -50px; }
+
+	&#backButton .fa,
+	&#galleryBack .fa {
+		left: -1px;
+	}
+
+	&#forwardButton .fa,
+	&#galleryForward .fa {
+		left: 1px;
+	}
+
+	&:hover {
+		background-color: #535f5f;
+		color: #fff;
+	}
+}
+
+.content {
+	color: #666;
+	margin: 0 auto 2rem;
+	padding: 1rem;
+	width: 960px;
+}
+
+#footer {
+	background: #222;
+	color: #ccc;
+
+	p {
+		border-top: 1px solid #fff;
+		color: #fff;
+		margin-bottom: 0;
+		padding: 2em;
+		text-align: center;
+	}
+
+	a {
+		border-bottom: 1px dotted #ccc;
+		color: #ccc;
+	}
+}
