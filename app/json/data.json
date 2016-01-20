@@ -1,51 +1,114 @@
 {
 	"home": {
 		"title": "Home",
-		"description": "A look at mankind's journey to the stars, from 1955 to today and beyond",
+		"description": "A look at mankind's journey to the stars, from 1944 to today and beyond",
 		"content":
 		[
 			{
 				"type": "markdown",
 				"className": "",
 				"key": "header",
-				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1955 to today and beyond</p></div>"
+				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
 			},
 			{
 				"type": "markdown",
 				"className": "content",
 				"key": "intro",
-				"content": "In 1955, in the space of a week, both the United States and USSR announced their intentions to put man-made satellites into orbit. Thus began the Space Race, which would, within 15 years, see man standing on the surface of the moon, and lead to the the greatest era of exploration ever entered in to by mankind.\n\nThis is that story."
+				"content": "**In 1944**, on the brink of defeat, Nazi Germany launched the V-2 rocket. The men who designed it would be the minds behind the space race, which within 25 years, would see man standing on the surface of the moon, and lead to the the greatest era of exploration ever entered in to by mankind.\n\nThis is that story.\n\n[Part 1: The Race to Space](/fly-me-to-the-moon/race-to-space)\n\n[Part 2: Shooting for the Moon](/fly-me-to-the-moon/shooting-for-the-moon)\n\n[Part 3: Apollo 11: The Moon Landing](/fly-me-to-the-moon/apollo-11)\n\n[Part 4: The end of the race](/fly-me-to-the-moon/end-of-the-race)\n\n[Part 5: Space Stations and Robots](/fly-me-to-the-moon/space-stations)\n\n[Part 6: Beyond the Earth](/fly-me-to-the-moon/beyond-earth)"
 			}
 		]
 	},
 	"race-to-space": {
 		"title": "The Race to Space",
 		"description": "asdf",
-		"content": []
+		"content": [
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "title",
+				"content": "# The Race to Space\n\n## 1944 - 1958: Putting satellites in space & looking to the moon"
+			},
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "intro",
+				"content": "asdf"
+			},
+			{
+				"type": "YouTube",
+				"className": "content",
+				"key": "we-choose-to-go-to-the-moon",
+				"sourceId": "c4SA9uZsYsM"
+			}
+		]
 	},
-	"to-the-moon": {
+	"shooting-for-the-moon": {
 		"title": "Shooting for the Moon",
 		"description": "asdf",
-		"content": []
+		"content": [],
+		"comments": [
+			{
+				"n": "1963 - Valentina Tereshkova, first woman and civilian into space on Vostok 6",
+				"n": "1965 - First EVA by Alexey Leonov from Voskhod 2, and first space rendezvous between Gemini's 6 & 7",
+				"n": "1967 - Vladimir Komarov Soyuz 1 disaster",
+				"n": "1968 - First lunar orbit with Apollo 8",
+				"n": "1969 - Apollo 10 dress rehearsal for 11"
+			}
+		]
 	},
 	"apollo-11": {
 		"title": "Apollo 11: The Moon Landing",
 		"description": "asdf",
-		"content": []
+		"content": [],
+		"comments": [
+			{
+				"n": "Preparation for launch",
+				"n": "Going to the moon",
+				"n": "The landing",
+				"n": "On the moon",
+				"n": "The journey home",
+				"n": "Mixed SVG/Javascript controlled panel showing the lunar decent, time-synced to the NASA audio, showing the path of the lander, the altitude and stablisation and so on (similar to http://www.firstmenonthemoon.com/)",
+				"n": "Gallery of images"
+			}
+		]
 	},
 	"end-of-the-race": {
 		"title": "The End of the Race",
 		"description": "asdf",
-		"content": []
+		"content": [],
+		"comments": [
+			{
+				"n": "The politics of going to the moon post-1969",
+				"n": "Safety issues",
+				"n": "1. Apollo 12 lightning strikes",
+				"n": "2. Apollo 13 accident",
+				"n": "Annotated, expandable deconstuction of the 13 craft"
+			}
+		]
 	},
 	"space-stations": {
 		"title": "Space Stations and Robots",
 		"description": "asdf",
-		"content": []
+		"content": [],
+		"comments": [
+			{
+				"n": "Space stations. Salyut, Almaz and Skylab projects, Mir, ISS, Tiangong",
+				"n": "Planetary explorers. Lunokhod 1, the Lunar rovers, Sojourner and Spirit, Opportunity & Curiosity",
+				"n": "Those Magnificent People and their Spacefaring Machines . Mariners, Pioneers, Voyagers, Galileo and New Horizons",
+				"n": "Gallery of robots and stations",
+				"n": "WebGL animation to show the scale of the solar system and current position of the various robots"
+			}
+		]
 	},
 	"beyond-earth": {
 		"title": "Beyond the Earth",
 		"description": "asdf",
-		"content": []
+		"content": [],
+		"comments": [
+			{
+				"n": "Planned Mars missions",
+				"n": "The technology to take us there"
+			}
+		]
 	}
 }
