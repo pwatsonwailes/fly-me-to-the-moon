@@ -20,7 +20,7 @@ window.app = (function() {
 
 	if (String(window.location.pathname).match(/\/fly-me-to-the-moon\/.+/i) !== null) {
 		var section = window.location.pathname.replace('/fly-me-to-the-moon/', '').split('/')[0];
-		return ReactDOM.render(React.createElement(FMttM, JsonData[sections]), fmttmElement);
+		return ReactDOM.render(React.createElement(FMttM, JsonData[section]), fmttmElement);
 	}
 	else {
 		return ReactDOM.render(React.createElement(FMttM, JsonData['home']), fmttmElement);
