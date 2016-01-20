@@ -1,5 +1,6 @@
 import React from 'react';
 import marked from 'marked';
+import YouTube from './react-youtube.js';
 
 export default class PageContent extends React.Component {
 	constructor() {
@@ -10,9 +11,13 @@ export default class PageContent extends React.Component {
 	}
 
 	renderElement(item) {
+		var components = {
+			'YouTube': YouTube
+		};
+
 		return (item.type === 'markdown')
 			? React.createElement("div", { key: item.key, className: item.className, dangerouslySetInnerHTML: { __html: marked(item.content) } })
-			: React.createElement(item.type, item);
+			: React.createElement(components[item.type], item);
 	}
 
 	recurseElements(item) {
