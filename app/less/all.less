@@ -3,7 +3,7 @@
 	.col-xs-12();
 	.panel-depth-3();
 	background: url('/fly-me-to-the-moon/imgs/sts61-a.jpg') 50% 0 no-repeat;
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 
 	#main_header { padding-top: 1rem; }
 
@@ -16,7 +16,10 @@
 	#logo_container p {
 		text-align: left;
 
-		a { border-bottom: none; }
+		a {
+			border-bottom: none;
+			background-image: none;
+		}
 	}
 
 	#powered_by ul {
@@ -26,9 +29,10 @@
 			margin-right: 1rem;
 
 			a {
+				background-image: none;
 				color: #00d8ff;
 				font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-				
+
 				img {
 					height: 25px;
 					position: relative;
@@ -39,6 +43,7 @@
 		}
 
 		#wikipedia a {
+			background-image: none;
 			color: #fff;
 			font-family: 'Crimson+Text';
 			letter-spacing: 0.1em;
@@ -271,11 +276,45 @@
 	}
 }
 
+.media_widget,
 .content {
 	color: #666;
 	margin: 0 auto 2rem;
 	padding: 1rem;
 	width: 960px;
+}
+
+.media_widget .video_container {
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	position: relative;
+
+	iframe, object, embed {
+	  height: 100%;
+	  left: 0;
+	  position: absolute;
+	  top: 0;
+	  width: 100%;
+	}
+}
+
+.content h1 {
+	font-family: 'Open Sans';
+	font-size: 64px;
+	font-weight: 300;
+	letter-spacing: .25em;
+	line-height: 1.04;
+	margin: 2em 0 .6em;
+	text-transform: uppercase;
+}
+
+.content h2 {
+	font-family: 'Amiri';
+	font-size: 23px;
+	font-style: italic;
+	line-height: 1.22;
 }
 
 #footer {
