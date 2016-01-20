@@ -77,9 +77,7 @@ function escapeRegExp (string) {
 	return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
 
-
 function onWindowResize () {
-	console.log('here');
 	var dims = getViewportSize();
 
 	var cWidth = dims.width;
@@ -96,5 +94,7 @@ function onWindowResize () {
 	$('heading').style.height = cHeight + 'px';
 }
 
-onWindowResize();
-window.addEventListener('resize', onWindowResize, false);
+if (String(window.location.pathname).match(/\/fly-me-to-the-moon\/.+/i) === null) {
+	onWindowResize();
+	window.addEventListener('resize', onWindowResize, false);
+}
