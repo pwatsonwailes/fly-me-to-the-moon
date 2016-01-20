@@ -31,8 +31,8 @@ export default class FMttM extends React.Component {
 	}
 
 	historyUpdate() {
-		var section = (String(window.location.pathname).match(/\/history-of-humanity\/.+/i) !== null)
-			? window.location.pathname.replace('/history-of-humanity/', '').split('/')[0]
+		var section = (String(window.location.pathname).match(/\/fly-me-to-the-moon\/.+/i) !== null)
+			? window.location.pathname.replace('/fly-me-to-the-moon/', '').split('/')[0]
 			: 'home';
 
 		this.setSection({"target": {"dataset": { "section": section }}}, false);
@@ -44,12 +44,11 @@ export default class FMttM extends React.Component {
 
 		// do stuff
 		var section = e.target.dataset.section;
-		console.log(e);
 
 		this.setState(JsonData[section]);
 
 		if (typeof updateHistory === 'undefined' || updateHistory !== false)
-			History.pushState(null, JsonData[section].title + ' | History of Modern Humanity | Builtvisible', '/history-of-humanity/' + section);
+			History.pushState(null, JsonData[section].title + ' | History of Modern Humanity | Builtvisible', '/fly-me-to-the-moon/' + section);
 	}
 
 	render() {
