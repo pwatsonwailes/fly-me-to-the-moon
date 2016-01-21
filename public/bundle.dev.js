@@ -477,7 +477,7 @@ module.exports={
 				"type": "markdown",
 				"className": "content",
 				"key": "intro",
-				"content": "**In 1944**, on the brink of defeat, Nazi Germany launched the V-2 rocket. The men who designed it would be the minds behind the space race, which within 25 years, would see man standing on the surface of the moon, and lead to the the greatest era of exploration ever entered in to by mankind.\n\nThis is that story.\n\n[Part 1: The Race to Space](/fly-me-to-the-moon/race-to-space)\n\n[Part 2: Shooting for the Moon](/fly-me-to-the-moon/shooting-for-the-moon)\n\n[Part 3: Apollo 11: The Moon Landing](/fly-me-to-the-moon/apollo-11)\n\n[Part 4: The end of the race](/fly-me-to-the-moon/end-of-the-race)\n\n[Part 5: Space Stations and Robots](/fly-me-to-the-moon/space-stations)\n\n[Part 6: Beyond the Earth](/fly-me-to-the-moon/beyond-earth)"
+				"content": "**In 1944**, on the brink of defeat, Nazi Germany launched the V-2 rocket. The men who designed it would be the minds behind the space race, which within 25 years, would see man standing on the surface of the moon, and lead to the the greatest era of exploration ever entered in to by mankind.\n\nThis is that story.\n\n[Part 1: The Race to Space](/fly-me-to-the-moon/race-to-space)\n\n[Part 2: Man in the Heavens](/fly-me-to-the-moon/man-in-heavens)\n\n[Part 3: Apollo 11](/fly-me-to-the-moon/apollo-11)\n\n[Part 4: The End of the Race](/fly-me-to-the-moon/end-of-the-race)\n\n[Part 5: Space Stations and Robots](/fly-me-to-the-moon/space-stations)\n\n[Part 6: Beyond the Earth](/fly-me-to-the-moon/beyond-earth)"
 			}
 		]
 	},
@@ -489,7 +489,7 @@ module.exports={
 				"type": "markdown",
 				"className": "content",
 				"key": "title",
-				"content": "# The Race to Space\n\n## 1944 - 1958: Putting satellites in space & looking to the moon"
+				"content": "# The Race to Space\n\n## 1944 - 1958: From a legacy of death, to the dream of space"
 			},
 			{
 				"type": "markdown",
@@ -523,15 +523,15 @@ module.exports={
 			}
 		]
 	},
-	"shooting-for-the-moon": {
-		"title": "Shooting for the Moon",
+	"man-in-heavens": {
+		"title": "Man in the Heavens",
 		"description": "asdf",
 		"content": [
 			{
 				"type": "markdown",
 				"className": "content",
 				"key": "title",
-				"content": "# Shooting for the Moon\n\n## "
+				"content": "# Man in the Heavens\n\n## 1959 - 1969: Putting a man amongst the stars"
 			},
 			{
 				"type": "YouTube",
@@ -551,9 +551,16 @@ module.exports={
 		]
 	},
 	"apollo-11": {
-		"title": "Apollo 11: The Moon Landing",
+		"title": "Apollo 11: Apollo 11 & the Moon Landing",
 		"description": "asdf",
-		"content": [],
+		"content": [
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "title",
+				"content": "# Apollo 11\n\n## One small step for man, one giant leap for mankind..."
+			}
+		],
 		"comments": [
 			{
 				"n": "Preparation for launch",
