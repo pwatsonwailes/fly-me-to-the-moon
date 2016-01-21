@@ -2016,10 +2016,6 @@ blockquote {
 /*
  * Size-agnostic layout rules
 */
-#content {
-  margin: 0 auto;
-  width: 960px;
-}
 #heading {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2378,6 +2374,7 @@ blockquote {
   padding: 1rem;
 }
 .media_widget.youtube {
+  margin: 0 auto;
   max-width: 960px;
 }
 .media_widget .video_container {
@@ -2395,6 +2392,10 @@ blockquote {
   position: absolute;
   top: 0;
   width: 100%;
+}
+.content {
+  margin: 0 auto;
+  width: 960px;
 }
 .content h1 {
   font-family: 'Open Sans';
