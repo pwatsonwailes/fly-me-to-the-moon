@@ -2016,6 +2016,10 @@ blockquote {
 /*
  * Size-agnostic layout rules
 */
+#content {
+  margin: 0 auto;
+  width: 960px;
+}
 #heading {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2371,9 +2375,10 @@ blockquote {
 .media_widget,
 .content {
   color: #666;
-  margin: 0 auto 2rem;
   padding: 1rem;
-  width: 960px;
+}
+.media_widget.youtube {
+  max-width: 960px;
 }
 .media_widget .video_container {
   height: 0;
