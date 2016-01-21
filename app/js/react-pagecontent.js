@@ -1,6 +1,7 @@
 import React from 'react';
 import marked from 'marked';
 import YouTube from './react-youtube.js';
+import Image from './react-image.js';
 
 export default class PageContent extends React.Component {
 	constructor() {
@@ -12,6 +13,7 @@ export default class PageContent extends React.Component {
 
 	renderElement(item) {
 		var components = {
+			'Image': Image,
 			'YouTube': YouTube
 		};
 
