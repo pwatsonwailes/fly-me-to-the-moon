@@ -708,6 +708,14 @@ Grid rules & column-widths in variables, in ems
     order: 1;
   }
 }
+.col-right {
+  float: right;
+  padding: 0 0 0 1rem;
+}
+.col-left {
+  float: left;
+  padding: 0 1rem 0 0;
+}
 .gutter {
   margin: 0.5rem;
 }
@@ -2001,6 +2009,9 @@ a {
   background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.3) 20%);
   background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.3) 20%);
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.3) 20%);
+}
+blockquote {
+  color: #1c5f9a;
 }
 /*
  * Size-agnostic layout rules
