@@ -13,7 +13,7 @@ From a nation of 157 million souls, the selection process had done its work, fin
 
 NASA finally introduced their future astronauts in Washington on April 9, 1959. Although internally Project Mercury was planned simply to test the if humans could be sent to space and returned safely, the concept of American men in space electrified the nation. They were instantly seen as dare-devil explorer heroes, with TIME magazine going so far as to compare them to \"Columbus, Magellan, Daniel Boone, and the Wright brothers.\" Two hundred reporters overflowed the room used for the announcement, and upon the meeting's conclusion, gave rapturous applause.
 
-In Russia meanwhile, secrecy is everything. Those being interviewed aren't told who they'd be working for, or what they'd be doing. Known as the Vostok programme, the selection criteria is at one focused and abstract. Potential cosmonauts had to be qualified Air Force pilots, as they would be more used to exposure to the extreme g-forces likely to be experienced. Beyond that, the candidates had to be intelligent, physically fit, mentally resiliant, male, between 25 and 30 years of age, no taller than 5' 7.5\" (175cm), and no heavier than 11st 5lbs (72kg). Their tests were similarly arduous, exposing candidates to extreme low presure, high G in a centrifuge and more. Unlike NASA's astronaut however, the Soviet group were less experienced aviators, with the Soviet R-7 being more automated than the American systems at the time.
+In Russia meanwhile, secrecy is everything. Those being interviewed aren't told who they'd be working for, or what they'd be doing. Known as the Vostok programme, the selection criteria is at one focused and abstract. Potential cosmonauts had to be qualified Air Force pilots, as they would be more used to exposure to the extreme g-forces likely to be experienced. Beyond that, the candidates had to be intelligent, physically fit, mentally resilient, male, between 25 and 30 years of age, no taller than 5' 7.5\" (175cm), and no heavier than 11st 5lbs (72kg). Their tests were similarly arduous, exposing candidates to extreme low pressure, high G in a centrifuge and more. Unlike NASA's astronaut however, the Soviet group were less experienced aviators, with the Soviet R-7 being more automated than the American systems at the time.
 
 Finally, the group was whittled down to just six men, who'd become known as the Vanguard Six: Yuri Gagarin, Valerij Bykovskiy, Grigoriy Nelyubov, Andriyan Nikolayev, Pavel Popovich and German Titov. Initially, Anatoli Kartashov and Valentin Varlamov had been on the team, instead of Bykovskiy and Nelyubov, but during training, two Kartashov suffered an injury whilst in a centrifuge, and Varlamov injured his spine in a diving accident. Both were replaced, and training continued.
 
@@ -133,15 +133,12 @@ One can only imagine what went through the minds of the farmer and her daughter,
 * **07:55 UT** Vostok 1's hat is released and Gagarin is ejected
 * **08:05 UT** Gagarin lands
 
-<figure class=\"media_widget col-xs-12\">
-![The Vostok 1 orbital flight path](/fly-me-to-the-moon/piece_images/Vostok_1_orbit.png)
-<figcaption>The Vostok 1 orbital flight path</figcaption>
-</figure>
+Image	The Vostok 1 orbital flight path	map.svg
 
 ### One Place Left to Go
 
 The Americans, used to being second by this point, send Alan Shepard less than a month later. In contrast to the Gagarin's flight, Shepard's lasts 16 minutes, and travels just 300 miles. He was weightless for 6 minutes, and never reached orbit. It was enough to allow America to say they'd also put a man in space, but America needed a much greater victory. There was only one thing which would top the Soviets, and it was the one prize left worth claiming.
 
-The world watched and waited, as John F. Kennedy, spoke at Rice University, on September 12th 1962, and announced America's response more than a year later. Having decided it was possible, the US laid down the gauntlet: they were sending men to the moon. And they were going to do it in less than 7 years.
+The world watched in wonder a little over a year later, as John F. Kennedy spoke at Rice University on September 12th 1962, announcing America's response. Having deemed it possible, the US laid down the gauntlet: they were sending men to the moon. The Soviets were welcome to beat them to it, if they could.
 
 YouTube ouRbkBAOGEw
