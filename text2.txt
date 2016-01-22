@@ -1,4 +1,4 @@
-With the arrival of the age of the satellite, both the USSR and United States have set their sights on the next goal: putting a man in space, and bringing him safely back home. No mean feat, given the challenges involved. Putting an object in orbit is one thing - making a vessel able to carry a man, keep him alive with the vacuum of space less than a metre away, ensuring he survives not just the ascent but re-entry, and returning him to Earth without the end of the journey killing him too. It's a massive step beyond anything that's been tried before, and both countries know it.
+**With the arrival** of the age of the satellite, both the USSR and United States have set their sights on the next goal: putting a man in space, and bringing him safely back home. No mean feat, given the challenges involved. Putting an object in orbit is one thing - making a vessel able to carry a man, keep him alive with the vacuum of space less than a metre away, ensuring he survives not just the ascent but re-entry, and returning him to Earth without the end of the journey killing him too. It's a massive step beyond anything that's been tried before, and both countries know it.
 
 More than that, the man who's going to accept such a mission must be highly trained, completely loyal, and understand he may well not return. He needs to have what will become known as \"The Right Stuff\".
 
@@ -16,6 +16,10 @@ NASA finally introduced their future astronauts in Washington on April 9, 1959. 
 In Russia meanwhile, secrecy is everything. Those being interviewed aren't told who they'd be working for, or what they'd be doing. Known as the Vostok programme, the selection criteria is at one focused and abstract. Potential cosmonauts had to be qualified Air Force pilots, as they would be more used to exposure to the extreme g-forces likely to be experienced. Beyond that, the candidates had to be intelligent, physically fit, mentally resilient, male, between 25 and 30 years of age, no taller than 5' 7.5\" (175cm), and no heavier than 11st 5lbs (72kg). Their tests were similarly arduous, exposing candidates to extreme low pressure, high G in a centrifuge and more. Unlike NASA's astronaut however, the Soviet group were less experienced aviators, with the Soviet R-7 being more automated than the American systems at the time.
 
 Finally, the group was whittled down to just six men, who'd become known as the Vanguard Six: Yuri Gagarin, Valerij Bykovskiy, Grigoriy Nelyubov, Andriyan Nikolayev, Pavel Popovich and German Titov. Initially, Anatoli Kartashov and Valentin Varlamov had been on the team, instead of Bykovskiy and Nelyubov, but during training, two Kartashov suffered an injury whilst in a centrifuge, and Varlamov injured his spine in a diving accident. Both were replaced, and training continued.
+
+Whilst the focus on both sides was on selecting men for space, progress was being rapidly made in the realm of satellites. Vanguard 1, which remains orbitting in space some 56 years later had been launched in March of 1958, along with Sputnik 3 in May. From there on though, only the US would continue the push to put satellites in orbit, with a further 14 attempts before 1960, but with a painful 9 failing to be put into orbit, several resulting in the complete destruction of the rockets and payloads involved.
+
+The dream of consistent, safe spaceflight still seemed a long way off. The thought of launching human payloads shortly must have seemed daunting, to say the least.
 
 ### A Scientific Outlet
 
@@ -89,49 +93,6 @@ Nevertheless, on April 12, 1961, 09:07 local time, Yuri Gagarin and the Vostock 
 One can only imagine what went through the minds of the farmer and her daughter, watching Gagarin in his bright orange cosmonaut suit and large white helmet, landing near them by parachute. He later recalled:
 
 > \"When they saw me in my space suit and the parachute dragging alongside as I walked, they started to back away in fear. I told them, don't be afraid, I am a Soviet citizen like you, who has descended from space and I must find a telephone to call Moscow!\"
-
-### Timeline of the Vostok 1 Flight
-
-#### Launch
-
-* **06:07 UT** Launch occurrs from the Baikonur Cosmodrome Site No.1
-* **06:09 UT** The four strap-on boosters of the Vostok rocket used up the last of their propellant and dropped away from the core vehicle.
-* **06:10 UT** The payload shroud covering Vostok 1 was released, uncovering a window at Gagarin's feet, with an optical orientation device \"Vzor\" (lit. \"look\" or \"glance\").
-* **06:12 UT** The rocket core stage used up its propellant and fell away from the capsule and final rocket stage. The final rocket stage ignited.
-* **06:13 UT** Gagarin reported, \"...the flight is continuing well. I can see the Earth. The visibility is good.... I almost see everything. There's a certain amount of space under cumulus cloud cover. I continue the flight, everything is good.\"
-* **06:14 UT** Vostok 1 passed over central Russia. Gagarin reported, \"Everything is working very well. All systems are working. Let's keep going!\"
-* **06:15 UT** Three minutes into the burn of the final rocket stage, Gagarin radioed, \"Zarya-1, Zarya-1, I can't hear you very well. I feel fine. I'm in good spirits. I'm continuing the flight...\" Vostok 1 started to move out of radio range of the Baikonur ground station.
-* **06:17 UT** The rocket final stage shut down and Vostok 1 reached orbit. Ten seconds later the rocket separated from the capsule.
-
-### Time in orbit
-
-* **06:18 UT** Gagarin reported, \"The craft is operating normally. I can see Earth in the view port of the Vzor. Everything is proceeding as planned\". Vostok 1 passed over the Soviet Union and moved on over Siberia.
-* **06:21 UT** Vostok 1 passed over the Kamchatka peninsula and out over the North Pacific Ocean. Gagarin radioed, \"...the lights are on on the descent mode monitor. I'm feeling fine, and I'm in good spirits. Cockpit parameters: pressure 1; humidity 65; temperature 20; pressure in the compartment 1; first automatic 155; second automatic 155; pressure in the retro-rocket system 320 atmospheres....\"
-* **06:25 UT** As Vostok 1 began its diagonal crossing of the Pacific Ocean from Kamchatka peninsula to the southern tip of South America, Gagarin requested information about his orbital parameters: \"What can you tell me about the flight? What can you tell me?\". The ground station at Khabarovsk didn't have his orbital parameters yet, and reported back, \"There are no instructions from No. 20 [code name for Korolyov], and the flight is proceeding normally.\" (Ground control did not know until 25 minutes after launch that a stable orbit had been achieved.)
-* **06:31 UT** Gagarin transmitted to the Khabarovsk ground station, \"I feel splendid, very well, very well, very well. Give me some results on the flight!\". At this time, Vostok 1 was nearing the VHF radio horizon for Khabarovsk, and they responded, \"Repeat. I can't hear you very well\". Gagarin transmitted again, \"I feel very good. Give me your data on the flight!\" Vostok 1 then passed out of VHF range of the Khabarovsk ground station.
-* **06:37 UT** Vostok 1 continued on its journey as the Sun set over the North Pacific. Gagarin crossed into night, northwest of the Hawaiian Islands. Out of VHF range with ground stations, communications continued via HF radio.
-* **06:46 UT** Khabarovsk ground station sent the message \"KK\" via telegraph (on HF radio to Vostok 1). This was a code meaning, \"Report the monitoring of commands,\" a request for Gagarin to report when the spacecraft automated descent system had received its instructions from ground control.
-* **06:48 UT** Vostok 1 crossed the equator at about 170° West in a southeast direction, and began crossing the South Pacific. Gagarin transmitted over HF radio, \"I am transmitting the regular report message: 9 hours 48 minutes (Moscow Time), the flight is proceeding successfully. Spusk-1 is operating normally. The mobile index of the descent mode monitor is moving. Pressure in the cockpit is 1; humidity 65; temperature 20; pressure in the compartment 1.2 ... Manual 150; First automatic 155; second automatic 155; retro rocket system tanks 320 atmospheres. I feel fine....\"
-* **06:49 UT** Gagarin reported he was on the night side of the Earth.
-* **06:51 UT** Gagarin reported the sun-seeking attitude control system was switched on; this oriented Vostok 1 for retrofire. The automatic/solar system was backed up by a manual/visual system; either one could operate the two redundant cold nitrogen gas thruster systems, each with 10 kg (22 lb) of gas.
-* **06:53 UT** The Khabarovsk ground station sent Gagarin via HF radio, \"By order of No.33 (General Nikolai Kamanin), the transmitters have been switched on, and we are transmitting this: the flight is proceeding as planned and the orbit is as calculated.\" Vostok 1 was now known to be in a stable orbit; Gagarin acknowledged.
-* **06:57 UT** Vostok 1 was over the South Pacific between New Zealand and Chile as Gagarin radioed, \"...I'm continuing the flight, and I'm over America. I transmitted the telegraph signal \"ON\".
-* **07:00 UT** Vostok 1 crossed the Strait of Magellan at the tip of South America. News of the Vostok 1 mission was broadcast on Radio Moscow.[29]
-* **07:04 UT** Gagarin sent another spacecraft status message, similar to the one at 06:48. This was not received by ground stations.
-* **07:09 UT** Gagarin sent another spacecraft status message, also not received by ground stations.
-* **07:10 UT** Vostok 1 passed over the South Atlantic, into daylight again. At this point, retrofire is 15 minutes away.
-* **07:13 UT** Gagarin sent a fourth spacecraft status message; Moscow received this partial message: \"I read you well. The flight is going....\"
-* **07:18 UT** Gagarin sent another spacecraft status message, not received by ground stations.
-* **07:23 UT** Gagarin sent another spacecraft status message, not received by ground stations.
-
-#### Reentry and landing
-
-* **07:25 UT** Vostok 1's systems bring it to the required attitude for firing retrorockets
-* **07:26 UT** The rockets fire, for 43 seconds, and the command for separating the service and reentry modules is sent
-* **07:35 UT** The two parts, having not completely separated, begin reentry
-* **07:36 UT** The wires tethering the two parts break
-* **07:55 UT** Vostok 1's hat is released and Gagarin is ejected
-* **08:05 UT** Gagarin lands
 
 Image	The Vostok 1 orbital flight path	map.svg
 
