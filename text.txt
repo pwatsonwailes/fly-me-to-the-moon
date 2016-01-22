@@ -106,8 +106,10 @@ The result of Khrushchev's pronouncement was Sputnik 2, which put the first livi
 
 Sadly, after only a few hours in space, Laika died of overheating, a fact that wasn't revealed until as recently as 2002.
 
-Finally, after years of being held back, and being told that the US Navy must be given a shot before he can have his turn, von Braun is given the go-ahead to attempt to put an American satellite into orbit. He named it Explorer. The Navy prepared it's own Vanguard rocket, which was as then untested. The world's media turned up, watched the rocket lift three feet from the pad, and then explode in a huge fireball. The only surviving piece was the satellite, which fell to the ground and began to transmit.
+Finally, after years of being held back, and being told that the US Navy must be given a shot before he can have his turn, von Braun is given the go-ahead to attempt to put an American satellite into orbit. He named it Explorer. The Navy prepared it's own Vanguard rocket, which was as then untested. The world's media turned up, watched the rocket lift three feet from the pad, and then explode in a huge fireball. The only surviving piece was the satellite, which fell to the ground and began to transmit. The press response was scathing, labelling it "Kaputnik" and other less than flattering names. As Time Magazine noted:
 
-Von Braun and his team were given their shot.
+> But in the midst of the cold war, Vanguard's cool scientific goal proved to be disastrously modest: the Russians got there first. The post-Sputnik White House explanation that the U.S. was not in a satellite "race" with Russia was not just an after-the-fact alibi. Said Dr. Hagen ten months ago: \"We are not attempting in any way to race with the Russians.\" But in the eyes of the world, the U.S. was in a satellite race whether it wanted to be or not, and because of the Administration's costly failure of imagination, Project Vanguard shuffled along when it should have been running. It was still shuffling when Sputnik's beeps told the world that Russia's satellite program, not the U.S.'s, was the vanguard.
 
-On the 31st January 1958, at 22:48, von Braun's Juno I, a Jupiter-C derived rocket, launched with Explorer on-board. Less than two hours later, America had its own satellite. The race to put a man in space, and on to the moon, was on.
+Whether the US wanted to be in a race was irrelevant - the media had deemed it so, and now it was up to them to respond. With no other option, the administration gave von Braun and his team their shot.
+
+On the 31st January 1958, at 22:48, von Braun's Juno I, a Jupiter-C derived rocket, launched with Explorer on-board. Less than two hours later, America had its own satellite. The race to put a man in space was on.
