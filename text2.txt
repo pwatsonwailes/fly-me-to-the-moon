@@ -58,9 +58,11 @@ In 1960, amid mounting tensions, things suddenly took a turn for the worse. On 1
 
 Against this backdrop of increasing belligerence on both sides, development continued apace. Despite the setbacks the Americans were having though, true disaster wasn't far away for the Soviets.
 
-In October 1960, the Soviets suffered a series of catastrophic setbacks to their aerospace and nuclear experiments. The worst of these undoubtedly came on the 24th, at the Tyuratam base, near the Baikonur Cosmodrome.
+In October 1960, the Soviets suffered a series of catastrophic setbacks to their aerospace and nuclear experiments. The worst of these undoubtedly came on the 24th, at the Tyuratam base, near the Baikonur Cosmodrome. 
 
-The Soviets were preparing for the first trial of the R-16, a completely new rocket designed to carry nuclear payloads. At the command of Marshal Nedelin, the Commander of the Force for Strategic Missiles, all the members of the State Commission were present for the test. The launch had been suffering a series of setbacks though, the test was repeatedly delayed. The first stage ignition had not fired successfully. Nedelin therefore demanded an immediate fix.
+The Soviets were preparing for the first trial of the R-16, a completely new rocket designed to carry nuclear payloads. It was eventually to prove vastly superior to the existing R-7 design. Marshal Mitrofan Nedelin, the Commander of the Strategic Rocket Forces was the head of the program, and had commanded that all the members of the State Commission were present for the test. Others present included Mikhail Yangel, one of the leading Soviet missle designers, who'd had ambitions to challenge Korolev as leader of the Manned Space program.
+
+The launch had been suffering a series of setbacks though, the test was repeatedly delayed. The first stage ignition had not fired successfully. Nedelin therefore demanded an immediate fix.
 
 <figure class=\"media_widget col-inverse col-right col-xs-5\">
 ![The explosion at Tyuratam](/fly-me-to-the-moon/piece_images/nedelin.jpg)
@@ -71,7 +73,7 @@ Frustrated at the continued delays, and feeling annoyed with the continual failu
 
 A short circuit in the replaced main sequencer however, caused the second stage engines, still mounted over the first stage which was now nearly fully fuelled, to fire.
 
-Nedelin was killed, along with 91 senior officers and engineers.
+Nedelin was killed, along with 91 senior officers and engineers. Yangel and a test range commanding officer only survived as they had gone to smoke a cigarette behind a bunker a few hundred yards away, just moment before.
 
 ### Man Steps Beyond Earth
 
@@ -88,7 +90,7 @@ Korolev however had other issues. Whilst he had the man to fly, he wasn't yet re
 
 In the end, the Vostok 1 was prepared first. Because of weight constraints, there was no backup retrorocket engine to help the vessel descend. Instead, the spacecraft was loaded with 10 days of provisions to allow Gagarin to survive while the ship's orbit decayed in case the retrorockets failed. But there were a hundred other issues. For example, during the pre-launch preparations, it was decided to paint \"СССР\" on Gagarin's helmet in large red letters. It was still less than a year since Powers had been captured, and there was a fear that when he landed, local police could mistake Gagarin for a foreign agent, parachuting from an aircraft. The concern was so great about the vessel that some have rated the chances of success at just 50%.
 
-Nevertheless, on April 12, 1961, 09:07 local time, Yuri Gagarin and the Vostock 1 took flight. Just three minutes later, the rocket reached 17,500 mph, the speed required to leave Earth's gravity. Then, a mere seven minutes later, Gagarin was able to look out the window, and having become the first human to experience weightlessness, and float in a man-made vessel, in space. Two hours later, he'd have returned, having flown entirely around the world, across sleeping America, and landed back on Earth, around 170 miles (280km) from Baikonur.
+Nevertheless, on April 12, 1961, 09:07 local time, Yuri Gagarin and the Vostock 1 took flight. Just three minutes later, the rocket reached 17,500 mph, the speed required to leave Earth's gravity. Then, a mere seven minutes later, Gagarin was able to look out the window, and having become the first human to experience weightlessness, and float in a man-made vessel, in space. Two hours later, he'd have returned, having flown entirely around the world, across the edge of the sleeping South America, and landed back on Earth, around 170 miles (280km) from Baikonur.
 
 One can only imagine what went through the minds of the farmer and her daughter, watching Gagarin in his bright orange cosmonaut suit and large white helmet, landing near them by parachute. He later recalled:
 
@@ -98,7 +100,7 @@ Image	The Vostok 1 orbital flight path	map.svg
 
 ### One Place Left to Go
 
-The Americans, used to being second by this point, send Alan Shepard less than a month later. In contrast to the Gagarin's flight, Shepard's lasts 16 minutes, and travels just 300 miles. He was weightless for 6 minutes, and never reached orbit. It was enough to allow America to say they'd also put a man in space, but America needed a much bigger win.
+The Americans, used to being second by this point, send Alan Shepard less than a month later. In contrast to the Gagarin's flight, Shepard's lasts 16 minutes, and travels just 300 miles. He was weightless for 6 minutes, and with the much less powerful Redstone rocket, was incapable of reaching orbit. It was enough to allow America to say they'd also put a man in space, but America needed a much bigger win.
 
 Prior to Gagarin reaching space, now US President John F. Kennedy hadn't been a particularly large supporter of the American manned space program. Having only been in the job for just over three months, it was a shock to be woken up, and told that the Soviets had managed what NASA had not. Just the previous month, NASA administrator James Webb had submitted a budget request to fund a Moon landing , aiming to be there before the end of the decade. Kennedy however rejected it, believing that the costs involved were just too high. He also had one eye on Vietnam and Laos, as well as the situations in Europe and Latin America. Indeed, in his inaugural address, he'd pledged to:
 
