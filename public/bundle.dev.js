@@ -471,13 +471,13 @@ module.exports={
 				"type": "markdown",
 				"className": "",
 				"key": "header",
-				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
+				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
 			},
 			{
 				"type": "markdown",
 				"className": "content",
 				"key": "intro",
-				"content": "**In 1944**, on the brink of defeat, Nazi Germany launched the V-2 rocket. The men who designed it would become the minds that powered the space race, which within 25 years, would see man standing on the surface of the moon, and lead to the the greatest era of exploration ever entered in to by mankind.\n\nThis is that story.\n\n[Part 1: The Race to Space](/fly-me-to-the-moon/race-to-space)\n\n[Part 2: Man in the Heavens](/fly-me-to-the-moon/man-in-heavens)\n\n[Part 3: Man on the Moon](/fly-me-to-the-moon/man-on-the-moon)\n\n[Part 4: The End of the Race](/fly-me-to-the-moon/end-of-the-race)\n\n[Part 5: Space Stations and Robots](/fly-me-to-the-moon/space-stations)\n\n[Part 6: Beyond the Earth](/fly-me-to-the-moon/beyond-earth)"
+				"content": "**In 1944**, on the brink of defeat, Nazi Germany launched the V-2 rocket. The men who designed it would become the minds that powered the space race, which within 25 years, would see man standing on the surface of the moon, and lead to the the greatest era of exploration ever entered in to by mankind.\n\nThis is that story.\n\n[Part 1: The Race to Space](/fly-me-to-the-moon/race-to-space)\n\n[Part 2: Man in the Heavens](/fly-me-to-the-moon/man-in-heavens)\n\n[Part 3: The Challenge Set](/fly-me-to-the-moon/challenge-set)\n\n[Part 4: Man on the Moon](/fly-me-to-the-moon/man-on-the-moon)\n\n[Part 5: The End of the Race](/fly-me-to-the-moon/end-of-the-race)\n\n[Part 6: Space Stations and Robots](/fly-me-to-the-moon/space-stations)\n\n[Part 7: Beyond the Earth](/fly-me-to-the-moon/beyond-earth)"
 			}
 		]
 	},
@@ -485,6 +485,12 @@ module.exports={
 		"title": "The Race to Space",
 		"description": "asdf",
 		"content": [
+			{
+				"type": "markdown",
+				"className": "",
+				"key": "header",
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+			},
 			{
 				"type": "markdown",
 				"className": "content",
@@ -527,6 +533,12 @@ module.exports={
 		"title": "Man in the Heavens",
 		"description": "asdf",
 		"content": [
+			{
+				"type": "markdown",
+				"className": "",
+				"key": "header",
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+			},
 			{
 				"type": "markdown",
 				"className": "content",
@@ -573,15 +585,81 @@ module.exports={
 			}
 		]
 	},
+	"challenge-set": {
+		"title": "The Challenge Set",
+		"description": "asdf",
+		"content": [
+			{
+				"type": "markdown",
+				"className": "",
+				"key": "header",
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+			},
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "title",
+				"content": "# Man on the Moon\n\n## 1962 - 1969: A series of small steps, bringing one giant leap for mankind..."
+			},
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "p1",
+				"content": "**As 1962 rolled around**, the Soviet and American teams were joined by a third in putting satellites into orbit, when in March the Soviet scientists put Kosmos 1 in orbit with the new R-12 rocket, followed by the UK's Ariel 1, sent by on-board American Thor-Delta rocket. The Americans though had their sights set on loftier goals, and on August 27, after the unsuccessful launch of Mariner 1, successfully launched Mariner 2 aboard an Atlas series rocket. Four months later, on December 14th, it became the first man-made probe to reach another planetary body, coming within 21,607 miles (34,773 km) of Venus. Its instruments sent back the first detailed information on another world, sensing temperatures, radiation, magnetic field data, as well as data on the solar winds. Similar plans were in place for a visit to Mars, planned by the Soviets. However, Mars 1 failed en route after five months, and the next two attempts failed to leave orbit.\n\nWhilst things may have been going well on both sides with regards to space, the Cuban Missile Crisis in October only went to prove how fragile the political situation was. \n\nSlowly but surely, the US was starting to retake the lead. As time marched on and the US-made Atlas and Saturn I series of rockets performed the role of putting objects and people into space for the Americans though, Wernher von Braun was looking towards a new generation of rocket; one with enough power to send man to the moon and back. And he wasn't the only one, as 7,000 miles away, Sergei Korolev was looking towards the same prize.\n\nKorolev however, was starting to fall ill. He'd suffered his first heart attack in 1960, and during his time being treated, had also been identified as suffering from a kidney disorder; a legacy of his time as a prisoner in the Gulag. He was warned by his doctors that if he continued to push himself as hard as he had been, that his body would not last much longer. Korolev however had become convinced that Khrushchev saw the space program purely as a propaganda tool, and, fearing its cancellation if it didn't continue to perform that function, he had continued to work with incredible fervour. Now, his health problems started to mount up. A bout of intestinal bleeding saw him rushed to hospital again.\n\nHis problems weren't just physical either. Vladimir Chelomey, working at another internal bureau had been busy designing a massively over-powered ICBM. The Proton rocket was being design at the same time as both von Braun and Korolev's answers to the brief, would prove to use a simpler design. Moreover, Chelomey had been able to gain support from the political leadership by employing members of Khrushchev's family.\n\nBy 1964, designs were well underway on both sides for systems to take a man to the moon. The concepts created to respond to the challenge though couldn't have been more different.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Saturn V and N1-L3 rockets](/fly-me-to-the-moon/piece_images/saturn_v_n1.jpg)\n<figcaption>The assembled Saturn V and N1-L3 rockets, to scale</figcaption>\n</figure>\n\nThe challenge was, in principle, simple. Generate enough thrust to send a craft big enough out of the Earth's orbit. That meant doing one of two things - creating a few huge engines, or many smaller ones. Smaller engines were easier to build and test, but the greater number increased the likelihood of failure. Large engines means less engines to go wrong as long as they work, but getting them to work at all will be a herculean task. Compared to the construction of these rockets, the the vessels used for putting Sputnik and Gagarin in to space look simple. And it's not as though the teams are only working on the moon rockets - at the same time, with the launch of Mariner 4, the Americans managed what the Soviet Mars program failed to: conduct a successful fly-by of Mars. Later the same year, the US-made Ranger 7 returns high-resolution photos of the lunar surface.\n\nTo solve the problem of going to the moon though, NASA have decided to go with what they knew, albeit on a vast scale - fewer engines, but bigger.\n\nMuch bigger.\n\nMind-bogglingly bigger.\n\nFive massive engines, each one capable of creating the thrust of an entire Atlas rocket. Each one would weight around 18,500 lb (8,400 kg), stand 19 ft (5.8 m) tall and 12.3 ft (3.7 m) wide, and be capable of burning 5,683 pounds (2,578 kg) of oxidizer and fuel every *second* to produce an unimaginable 1,500,000 lbf (6.7 MN) of thrust, creating exhaust gases reaching 5,800 °F (3,200 °C).\n\nThe only upside to the challenge was that these engines would only be needed for the first stage of the rocket. The second and third stages could be powered by a much smaller engine, which could also be used on other rockets. For that, Rocketdyne (who would also build the Saturn V main engines) created the J-2 engine, which would also see service as the main engines for the Saturn IB rockets.\n\nAs for the Saturn V engine though, every single challenge faced in making such an engine was hard. The US Air Force had started work on an engine of the required size as far back as 1957, but eventually development after they realised there was nothing they could want that would require so much thrust. NASA, on the other hand, knew exactly what it would be useful for, and so contracted Rocketdyne to complete the development of what they'd named the F-1. The first static firing of the full engine had been performed in March 1959, but all had not gone well. The engine suffered from serious combustion instability problems, by which pressure waves would form in the combustion chamber. These could build and catastrophic failure, and destroy the entire engine. A problem, when von Brun needed five working flawlessly.\n\nEventually, the engineers at Rocketdyne had come up with an interesting way of working on the problem. They attached small C4 charges to the outside of the combustion chamber and set them off while the engine was firing. This allowed them to simulate the conditions of the vibrations produced, gathering data more safely and learning how to control the resonance. Eventually, they produced injector designs which were so stable, they could stop the charge-induced instabilities within 0.1 of a second."
+			},
+			{
+				"type": "YouTube",
+				"className": "",
+				"key": "engine-test",
+				"sourceId": "6YTaG91KD5s"
+			},
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "p2",
+				"content": "The first engine was delivered to NASA for suitability and performance testing in October 1963, and more than a year later, in December 1964, it was certified for use. In the Rocketdyne F-1, von Braun had found his engine. Now he just needed a rocket which could handle it.\n\nBack in Soviet Russia, Korolev had been diagnosed with cardiac arrhythmia, and soon after, inflammation of his gallbladder. Meanwhile, Khrushchev was deposed from power. Politics in the USSR was proving turbulent, with the outcome that Chelomey's rocketry program was merged with Korolev's N1-L3, to continue together. However, whilst he has a potential design, he can't get the funding for his N1-L3, and the engines proposed aren't great either. In the meantime, he works on smaller projects, and on the 18th March, 1965, Alexey Leonov becomes the first man to walk in space, whilst on the Voskhod 2 flight. Leonov exited the craft, and stayed outside for 12 minutes and nine seconds, whilst connected by just a 5.35-meter tether."
+			},
+			{
+				"type": "YouTube",
+				"className": "",
+				"key": "spacewalk",
+				"sourceId": "uAPBRvd8OTY"
+			},
+			{
+				"type": "markdown",
+				"className": "content",
+				"key": "p3",
+				"content": "At the end of the spacewalk though, whilst trying to re-enter the Voskhod 2, Leonov ran in to problems. His spacesuit, no longer contained by the air pressure of an atmosphere or the air of the ship, had inflated like a balloon, forcing him to return through the hatch head-first. Having done so though, he was faced with a second problem - the suit's continued size meant he was unable to turn around to close the outer hatch, nor to push himself back out to re-enter correctly. Using a release valve to manually vent air, he managed to reduce the pressure. After a tense moment, he managed to deflate the suit enough turn around and bend to close the hatch again. The incident was covered up at the time, and only later be revealed how close Leonov came to being stranded in space.\n\nThe problems didn't end there though. With only five minutes before they were scheduled to begin re-entry to return home, Leonov and his crew mate, Pavel Belyayev, discovered that the automatic guidance system wasn't functioning. As a result, they would have to fly the spacecraft manually. To make matters worse, they were now dangerously low on fuel. As they began their re-entry, things got still worse. In a replay of the Gagarin mission, the orbital and landing modules had stayed connected by a communications cable. The craft spun together until the cable burned through in the intense heat, allowing the craft to stabilise, finally coming to land in deep snow in Solikamsk, just outside Siberia, wedged against a birch tree which prevented the two men from getting out. Unable to be rescued that night, a helicopter pilot threw them supplies to wait out the night in temperatures that fell down to -22 °F (-30 °C). They were collected the next day, and reported their mission. Leonov said simply:\n\n> Provided with a special suit, man can survive and work in open space. Thank you for your attention.\n\nIt's not hard to guess what his feelings on the last few days had been. \n\n### An Ambitious Plan\n\nIn order to have any chance at building his rocket, Korolev needed an engine supplier. He turned to Nikolai Kuznetsov, who developed the NK-15 and NK-15V engines for the project. Fine in theory, but the NK-15 was not a reliable engine. It was an incredibly ambitious design. Whereas the Saturn V was to have five F-1 engines in its first stage, a further 5 smaller J-2 engines in the second and a final J-2 powering stage three, the N1-L3 was to have a more.\n\nA lot more.\n\nThe first stage alone had 30 NK-15 engines, 24 in a ring around the edge, and another six closer in. These together produced even more thrust than the already colossal figures of the Saturn V; a full 36% more. The second stage consisted of another eight NK-15s arranged in another ring, whilst the third carried four NK-21 engines. In total, Saturn V would carry 11 rocket motors. N1-L3 would have 42, all of which would have to work perfectly. For an unreliable engine, it was a huge ask.\n\nAs if that wasn't enough, NASA were now surging ahead, launching a manned mission almost every two months. The time spent in space, including setting a two week endurance record for time in space, and practising docking manoeuvres are giving them the experience they need to launch a lunar mission. The Soviet team are falling behind with every month that passes.\n\n<table>\n<thead>\n<tr>\n<th></th>\n<th>Saturn V</th>\n<th>N1-L3</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Diameter, maximum</td>\n<td>33 ft (10 m)</td>\n<td>56 ft (17 m)</td>\n</tr>\n<tr>\n<td>Height w/ payload</td>\n<td>363 ft (111 m)</td>\n<td>344 ft (105 m)</td>\n</tr>\n<tr>\n<td>Gross weight</td>\n<td>6,478,000 lb (2,938,000 kg)</td>\n<td>6,030,000 lb (2,735,000 kg)</td>\n</tr>\n<tr>\n<td><strong>First stage</strong></td>\n<td style=\"text-align:center;\"><strong>S-IC</strong></td>\n<td style=\"text-align:center;\"><strong>Block A</strong></td>\n</tr>\n<tr>\n<td>Thrust, SL</td>\n<td>7,500,000 lbf (33,000 kN)</td>\n<td>10,200,000 lbf (45,400 kN)</td>\n</tr>\n<tr>\n<td>Burn time</td>\n<td>2 m 48 s</td>\n<td>2 m 5 s</td>\n</tr>\n<tr>\n<td><strong>Second stage</strong></td>\n<td style=\"text-align:center;\"><strong>S-II</strong></td>\n<td style=\"text-align:center;\"><strong>Block B</strong></td>\n</tr>\n<tr>\n<td>Thrust, vac</td>\n<td>1,155,800 lbf (5,141 kN)</td>\n<td>3,160,000 lbf (14,040 kN)</td>\n</tr>\n<tr>\n<td>Burn time, s</td>\n<td>6 m 24 s</td>\n<td>2 m</td>\n</tr>\n<tr>\n<td><strong>Orbital insertion stage</strong></td>\n<td style=\"text-align:center;\"><strong>S-IVB (burn 1)</strong></td>\n<td style=\"text-align:center;\"><strong>Block V</strong></td>\n</tr>\n<tr>\n<td>Thrust, vac</td>\n<td>202,600 lbf (901 kN)</td>\n<td>360,000 lbf (1,610 kN)</td>\n</tr>\n<tr>\n<td>Burn time, s</td>\n<td>2 m 27 s</td>\n<td>6 m 10 s</td>\n</tr>\n<tr>\n<td>Orbital payload</td>\n<td>264,900 lb (120,200 kg)</td>\n<td>209,000 lb (95,000 kg)</td>\n</tr>\n<tr>\n<td>Injection velocity</td>\n<td>25,568 ft/s (7,793 m/s)</td>\n<td>25,570 ft/s (7,793 m/s)</td>\n</tr>\n<tr>\n<td><strong>Earth departure stage</strong></td>\n<td style=\"text-align:center;\"><strong>S-IVB (burn 2)</strong></td>\n<td style=\"text-align:center;\"><strong>Block G</strong></td>\n</tr>\n<tr>\n<td>Thrust, vac</td>\n<td>201,100 lbf (895 kN)</td>\n<td>100,000 lbf (446 kN)</td>\n</tr>\n<tr>\n<td>Burn time, s</td>\n<td>5 m 47 s</td>\n<td>7 m 23 s</td>\n</tr>\n<tr>\n<td>Translunar payload</td>\n<td>100,740 lb (45,690 kg)</td>\n<td>23,500 kilograms (51,800 lb)</td>\n</tr>\n<tr>\n<td>Injection velocity</td>\n<td>35,545 ft/s (10,834 m/s)</td>\n<td>35,540 ft/s (10,834 m/s)</td>\n</tr>\n</tbody>\n</table>\n\n### The Fall of a Giant\n\nKorolev had even larger issues though. The Soviet leadership weren't willing to release the funds requested, instead granting his team only half of what they'd asked for. This didn't leave time or money enough to build test facilities. Instead, the decision was taken to test the N1-L3 in the only way they could - by launching it. While it was being constructed, the team also worked on the Soyuz 7K-LOK, a spacecraft designed to be able to carry a crew to the moon, as well as acting as a mothership for an LK lander. If they could get the N1-L3 to work, they might have a shot at beating the Americans. They weren't his only issue though.\n\nThe program was running in to problems though. A lack of budget, an overly ambitious design, and a temperamental engine were one thing, but crisis was closer to hand. On the 5th January 1966, he was taken in to hospital for surgery. What happened in the hospital is still disputed, with various accounts stating different things. Whatever the truth though, it didn't go well. His health continued to deteriorate, during his time there.\n\nHe died nine days later, aged just 59.\n\nUnder a policy instigated by Stalin, which his successors continued, Korolev's identity had been kept a state secret. It was thus only that in death was he finally recognised both by his own people and the world at large for his incredibly accomplishments. His obituary was published in the Pravda newspaper, on the 16th of January 1966, accompanied by a photo of Korolev with all his medals. He man once renounced by his people and sentenced to hard labour was now honoured with a full state funeral in the Red Square, and his ashes interred in the Kremlin Wall.\n\n### Progress Marches On\n\ns Vasily Mishin, a quite competent engineer who had served as his deputy and right-hand man. After Korolev died, Mishin became the Chief Designer, and he inherited what turned out to be a flawed N1-L3 rocket program. In 1972, Mishin was fired and then replaced by a rival, Valentin Glushko, after all four N-1 test launches failed. By that time, the rival Americans had already made it to the Moon, and so the program was canceled by CPSU General Secretary Leonid Brezhnev."
+			}
+		],
+		"comments": [
+			{
+				"n": "1963 - Valentina Tereshkova, first woman and civilian into space on Vostok 6",
+				"n": "1965 - First EVA by Alexey Leonov from Voskhod 2, and first space rendezvous between Gemini's 6 & 7",
+				"n": "1967 - Vladimir Komarov Soyuz 1 disaster",
+				"n": "1968 - First lunar orbit with Apollo 8",
+				"n": "1969 - Apollo 10 dress rehearsal for 11",
+				"n": "1969 - Apollo 11",
+				"n": "Mixed SVG/Javascript controlled panel showing the lunar decent, time-synced to the NASA audio, showing the path of the lander, the altitude and stablisation and so on (similar to http://www.firstmenonthemoon.com/)",
+				"n": "Gallery of images"
+			}
+		]
+	},
 	"man-on-the-moon": {
 		"title": "Man on the Moon",
 		"description": "asdf",
 		"content": [
 			{
 				"type": "markdown",
+				"className": "",
+				"key": "header",
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+			},
+			{
+				"type": "markdown",
 				"className": "content",
 				"key": "title",
-				"content": "# Man on the Moon\n\n## 1962 - 1969: A series of small steps, bringing one giant leap for mankind..."
+				"content": "# Man on the Moon\n\n## Apollo 11: One small step for man, one giant leap for mankind..."
 			}
 		],
 		"comments": [
