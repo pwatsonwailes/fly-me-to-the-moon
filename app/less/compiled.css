@@ -2017,22 +2017,6 @@ blockquote {
  * Size-agnostic layout rules
 */
 #heading {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  -webkit-flex-basis: 0;
-  flex-basis: 0;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
   flex-basis: 100%;
   max-width: 100%;
   -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
@@ -2040,65 +2024,6 @@ blockquote {
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
   background: url('/fly-me-to-the-moon/imgs/sts61-a.jpg') 50% 0 no-repeat;
   margin-bottom: 4rem;
-}
-#heading #main_header {
-  padding-top: 1rem;
-}
-#heading #logo_container,
-#heading #powered_by {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  -webkit-flex-basis: 0;
-  flex-basis: 0;
-  max-width: 100%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-  flex-basis: 50%;
-  max-width: 50%;
-}
-#heading #logo_container p {
-  text-align: left;
-}
-#heading #logo_container p a {
-  border-bottom: none;
-  background-image: none;
-}
-#heading #powered_by ul {
-  text-align: right;
-}
-#heading #powered_by ul #reactjs {
-  margin-right: 1rem;
-}
-#heading #powered_by ul #reactjs a {
-  background-image: none;
-  color: #00d8ff;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-}
-#heading #powered_by ul #reactjs a img {
-  height: 25px;
-  position: relative;
-  top: 7px;
-  width: 25px;
-}
-#heading #powered_by ul #wikipedia a {
-  background-image: none;
-  color: #fff;
-  font-family: 'Crimson+Text';
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-#heading #powered_by ul #wikipedia a small {
-  font-size: 0.8em;
 }
 #heading > h1 {
   color: #fff;
@@ -2129,6 +2054,82 @@ blockquote {
 #heading > p a {
   border-bottom: 1px dotted #fff;
   color: #fff;
+}
+#main_header {
+  margin: 0 0.5rem;
+  padding: 1rem;
+  position: relative;
+  top: 0.5rem;
+}
+#main_header.dark {
+  -webkit-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
+}
+#main_header #logo_container,
+#main_header #powered_by {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-basis: 0;
+  flex-basis: 0;
+  max-width: 100%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  flex-basis: 50%;
+  max-width: 50%;
+  margin-bottom: 0;
+}
+#main_header #logo_container p {
+  margin-bottom: 0;
+  position: relative;
+  top: 4px;
+  text-align: left;
+}
+#main_header #logo_container p a {
+  border-bottom: none;
+  background-image: none;
+}
+#main_header #powered_by ul {
+  margin-bottom: 0;
+  text-align: right;
+}
+#main_header #powered_by ul li {
+  margin-bottom: 0;
+}
+#main_header #powered_by ul #reactjs {
+  margin-right: 1rem;
+}
+#main_header #powered_by ul #reactjs a {
+  background-image: none;
+  color: #00d8ff;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+#main_header #powered_by ul #reactjs a img {
+  height: 25px;
+  position: relative;
+  top: 7px;
+  width: 25px;
+}
+#main_header #powered_by ul #wikipedia a {
+  background-image: none;
+  color: #fff;
+  font-family: 'Crimson+Text';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+#main_header #powered_by ul #wikipedia a small {
+  font-size: 0.8em;
 }
 #socialButtons {
   -webkit-transition: all 0.5s;
@@ -2413,17 +2414,18 @@ blockquote {
   line-height: 1.22;
 }
 #footer {
-  background: #222;
-  color: #ccc;
+  -webkit-box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);
+  background: #b8ccd0;
 }
 #footer p {
   border-top: 1px solid #fff;
-  color: #fff;
+  color: #635f5c;
   margin-bottom: 0;
   padding: 2em;
   text-align: center;
 }
 #footer a {
   border-bottom: 1px dotted #ccc;
-  color: #ccc;
 }
