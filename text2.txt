@@ -40,7 +40,7 @@ After months of preparation and testing, on July 28th 1960, a Vostok-L rocket wi
 
 More though, it was conclusive, incontrovertible proof that the USSR could send a man into space. With a ship that didn't need a pilot, just someone along for the ride, it was now just a matter of time.
 
-America hadn't even yet managed to get a crewed vessel off the ground. Attempting a launch test of the Mercury-Redstone 1 on November 7th, last minute problems caused an abort to be called. The flight was rescheduled for the 21st, and at 09:00 local time, the rocket fired, rose four inches, and then immediately landed again.
+America hadn't even yet managed to get a crewed vessel off the ground. Attempting a launch test of the Mercury-Redstone 1 on November 7th, last minute problems caused an abort to be called. The flight was rescheduled for the 21st, and at 09:00 local time, the rocket fired, rose a few inches, and then immediately landed again. This lead to then procedures officer Gene Kranz, who would later become the NASA lead flight director dubbing it the "four inch flight".
 
 After which the capsule's escape rocket jettisoned itself, leaving the capsule behind. Then, three seconds later, the capsule itself deployed its drogue parachute, along with the the main and reserve parachutes moments later, ejecting the radio antenna in the process. The only thing that had been successfully launched was the escape rocket, which wasn't supposed to have done anything. Now though, there was a bigger problem: the active Redstone, with its full compliment of fuel, was now sitting on the launch pad with nothing whatsoever securing it.
 
@@ -78,6 +78,8 @@ Nedelin was killed, along with 91 senior officers and engineers. Yangel and a te
 ### Man Steps Beyond Earth
 
 Back in America, von Braun had his own problems. On January 31st, 1961, the American team had launched Mercury-Redstone 2, with Ham the chimp on-board. Issues with the flight however, caused von Braun to have to make a difficult decision: test the vessel again, having fixed the problems found, or launch the next rocket with a man on board. NASA had already decided who to send; Alan Shepard was to be the first American to pilot the rocket and become an astronaut. His team however weren't willing to send a human yet. Another test would be conducted first, before Shepard was to get his shot.
+
+At the same time, the structure at NASA for what would become the Apollo missions was starting to take shape. On February 14, 1961, James Webb accepted the role of Administrator of NASA. 
 
 Meanwhile, the Soviet team had chosen who they were to send. Yuri Gagarin was well liked by his fellow cosmonauts, and by his superiors. With Gherman Titov and Grigori Nelyubov as backups, he would be the first choice to send.
 
