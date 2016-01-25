@@ -215,7 +215,7 @@ Under a policy instigated by Stalin, which his successors continued, Korolev's i
 
 Back in America, the desperate race to fulfil the government's command was causing development to run at breakneck speed. In December of 1964, Gemini's 6 & 7 made the first rendezvous in space, eventually coming within 1 ft of each other. Gemini 6 would then go on to land within 10 miles (18 km) of the intended target site, making it the first accurate atmospheric reentry.
 
-<figure class="media_widget col col-xs-6 col-left">
+<figure class="media_widget col-inverse col-xs-6 col-right">
 <img src="/fly-me-to-the-moon/piece_images/pacific_gemini_7.jpg" alt="The Pacific, from Gemini 7">
 <figcaption>The view of the Pacific ocean, from Gemini 7</figcaption>
 </figure>
