@@ -4,7 +4,7 @@ More than that, the man who's going to accept such a mission must be highly trai
 
 In the US, the Americans were busy finding their people. President Eisenhower insisted that all candidates be test pilots. In addition, anyone chosen could be no taller than 5' 11\" (180cm), weigh no more than 12st 12lbs (82 kg), be under 40 years old, hold a Bachelor's degree or similar, and have logged 1,500 hours or more of flight time. The newly created NASA searched for people who met all the requirements given, and identified in total 110 pilots who fit the bill. 69 were brought to Washington DC in two groups but due to the level of interest and commitment from the first two groups, the final 41 were never asked to submit themselves for testing. And testing it was; candidates had to spend hours on treadmills and tilt tables, to test cardiovascular function and resistance to motion sickness, they had their feet placed in buckets of ice water, and had to receive a series of enemas. 39 failed or dropped out before or during the first phase of exams, and more refused to take part in the second round of tests. In total, just 18 made it through.
 
-<figure class=\"media_widget col col-xs-12\">
+<figure class=\"media_widget\">
 ![The Mercury Seven astronauts](/fly-me-to-the-moon/piece_images/mercury_seven.jpg)
 <figcaption>The Mercury Seven astronauts in front of a U.S.A.F. F-106B. From left to right: Carpenter, Cooper, Glenn, Grissom, Schirra, Shepard & Slayton</figcaption>
 </figure>

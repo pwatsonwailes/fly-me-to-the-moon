@@ -46,7 +46,7 @@ Staver was then tasked with Operation Overcast, the American plan to interrogate
 
 Von Braun was taken to America shortly after, and along with over 100 of his men he was escorted to Fort Bliss, whilst the Soviets were left with the now derelict V-2 plant. However, the Soviets didn't realise just how outmatched they currently were, until the 6th August, 1945. With the bombing of Hiroshima, and then Nagasaki shortly after, they realised that the Americans now had both the intelligence with which to make long range rockets, and a payload that could flatten cities. This was a terrifying, and immediate threat.
 
-<figure class=\"media_widget col col-xs-12\">
+<figure class=\"media_widget\">
 ![A rusty V-2 rocket engine](/fly-me-to-the-moon/piece_images/V-2_Mittelbau_engine.jpg)
 <figcaption>A rusty V-2 rocket engine in the underground production facilities at Dora-Mittelbau, Nordhausen</figcaption>
 </figure>
@@ -76,7 +76,7 @@ Back in Russia, Korolev was busy working on his ideas for putting a satellite in
 
 The first would be overcome by research, the second didn't matter to his military backers, they just wouldn't fund satellite research, and the third? Well, the third would result in the creation of the Baikonur Cosmodrome, in Kazakhstan, the world's first and largest operational space launch facility. 
 
-<figure class=\"media_widget col col-xs-12\">
+<figure class=\"media_widget\">
 ![The Baikonur Cosmodrome launchpad](/fly-me-to-the-moon/piece_images/Baikonur_Cosmodrome_Soyuz_launch_pad.jpg)
 <figcaption>The modern Soyuz launch pad at the Baikonur Cosmodrome</figcaption>
 </figure>
@@ -91,7 +91,7 @@ As the Cold War escalated and the weapons became ever larger, finally the Americ
 
 In Baikonur, on 21 August 1957, after two failed launches, Korolev was in a difficult situation. His rocket, massively ambitious but also massively complex, had eaten vast amounts of both time and money, and so far had nothing to show for it other than two very expensive fireworks shows. As a result, tensions must have been high. But thankfully, at 12:25, the R-7 launches successfully for the first time. The world now has its first intercontinental ballistic missile. In the meantime, massively frustrated at the increasing complexity, as well as the design and construction issues with the Project D satellite, his team have been working hard to re-develop the concept to something far simpler. In less than a month, they design and build and entire new system. The new design, consisting of little more than a polished metal sphere, a transmitter, thermal measuring instruments, and batteries, weighed about the same as a man.
 
-<figure class=\"media_widget col col-xs-12\">
+<figure class=\"media_widget\">
 ![The Soviet R-7 rocket](/fly-me-to-the-moon/piece_images/sputnik_1.jpg)
 <figcaption>A replica of Sputnik 1 at National Air and Space Museum</figcaption>
 </figure>
