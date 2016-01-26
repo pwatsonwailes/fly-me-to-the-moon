@@ -2372,7 +2372,6 @@ blockquote {
 .media_widget,
 .content {
   color: #666;
-  padding: 1rem;
 }
 .media_widget.youtube {
   margin: 0 auto;
@@ -2394,8 +2393,13 @@ blockquote {
   top: 0;
   width: 100%;
 }
+.media_widget.col,
+.media_widget.col-inverse {
+  padding: 1rem;
+}
 .content {
   margin: 0 auto;
+  padding: 1rem;
   width: 960px;
 }
 .content h1 {
