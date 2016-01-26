@@ -92,7 +92,9 @@ Then, on December 24th, they began a second television transmission. Borman intr
 
 YouTube njpWalYduU4
 
-With that done, all that was left to do was to leave the lunar orbit, return to Earth, and land. Two and a half days later, following a surprise Christmas dinner: a real turkey with stuffing, in the same kind of pack that the troops in Vietnam received, arranged by Deke Slayton, the crew prepared for re-entry. On December 27th, 15:51 and 42 seconds, their mission ended, the team landing in the North Pacific, just south of Hawaii. It ended a turbulent year, which had seen violent unrest in Europe and America, assassinations, deaths and more. The effect on the world of Apollo 8 was perhaps best summed up by a telegram from a stranger, received by Borman after the mission. It read:
+With that done, all that was left to do was to leave the lunar orbit, return to Earth, and land. Two and a half days later, following a surprise Christmas dinner: a real turkey with stuffing, in the same kind of pack that the troops in Vietnam received, arranged by Deke Slayton, the crew prepared for re-entry. On December 27th, 15:51 and 42 seconds, their mission ended, the team landing in the North Pacific, just south of Hawaii. It ended a turbulent year, which had seen violent unrest in Europe and America, the invasion of Czechoslovakia, assassinations, the deaths of Helen Keller, Martin Luther King Jr, Kennedy, Gagarin and more.
+
+The effect on the world of Apollo 8 was perhaps best summed up by a telegram from a stranger, received by Borman after the mission. It read:
 
 > Thank you Apollo 8. You saved 1968.
 
@@ -100,9 +102,43 @@ With that done, all that was left to do was to leave the lunar orbit, return to 
 
 Apollo missions 9 and 10, whilst still very important, didn't have the same electrifying effect as 8. Instead, they were seen as preparatory missions for the flight of 11. Apollo 9 though still saw the first flight of both the Command/Service and Lunar Modules (CSM and LM respectively), whilst 10 was a full dry run of the 11 mission, testing every procedure except for the actual landing itself. Both provided valuable data, and kept America firmly as being seen in the driving seat.
 
-Back in the USSR, things weren't going so well. In January, Soyuz 4 and 5 had conducted the first successful transfer of crew between two craft, the crew members conducting spacewalks between the two vessels. Back on the ground though, the first test of the N1 was about to happen. 
+Back in the USSR, things weren't going so well. In January, Soyuz 4 and 5 had conducted the first successful transfer of crew between two craft, the crew members conducting spacewalks between the two vessels. Back on the ground though, the first test of the N1 was about to happen.
+
+It's February 21st 1969, and the N1 stands on the pad at the Baikonur Cosmodrome. The countdown ticks away, and finally Korolev's rocket takes to the air. A few seconds into launch though, things go wrong. Engine 12 of the first stage shuts down. Engine 24 shuts down to maintain symmetrical thrust and compensate. It doesn't matter though, as the intense vibrations the vehicle suffers from rupture an oxidizer line. Next, a fuel line ruptures too, leaking fuel into the aft section of the booster. The resulting fire burns through wiring, causing electrical arcing, which moments later results in the rocket's control software shutting down the entire first stage, almost a minute into the launch. That signal is also sent to the second and third stages, which effectively stops the ground controllers from controlling anything whatsoever. The N1 falls from the sky, plummeting for over two minutes, before smashing into the ground 32 miles (52 km) away.
+
+Five months later, on July 3rd, the team try again. This time, the rocket blasts off, but things go wrong after a few seconds. Upon clearing the tower, all the engines bar one shut down, causing the rocket to tip over and fall back on to the pad, where almost fully fuelled, 15% of the onboard fuel detonated with the force half that of the nuclear weapon dropped on Hiroshima, producing an explosion visible from 22 miles (25 km) away. The rest is blasted into the air, where it rains down for over an hour. Debris was found six miles (10 km) away. The detonation, which remains possibly the most powerful non-nuclear man-made blast, destroyed the launch pad, which would take 18 months to rebuild, with the cost and delays effectively ending the Soviet's chances at beating the Apollo project to the moon.
+
+The N1 would attempt two more launches in 1971 and 1972. Both would also result in the loss of the rocket involved. Korolev's grandest design, with it's vast engine count, was cancelled in May 1974, having never flown. The unmitigated disaster of the program was made a state secret, and not revealed until 1989.
 
 ### Apollo 11
+
+Back in 1969 however, excitement grows. The Saturn V has performed flawlessly, and preparations are being made for its most important mission: the landing of man on the moon. The crew was to be Commander Niel Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin "Buzz" Aldrin. Originally, Jim Lovell had been slated for CMP, whilst Collins was slated to be the CMP on Apollo 8. However, Collins was bumped after needing surgery on his back. As a result, after Collins was medically cleared, the two men had swapped positions. Lovell was transferred to Apollo 11's backup crew, but promoted to be backup commander.
+
+The rest of the backup crew consisted of CMP William Anders, and LMP Fred Haise. Lovell and Haise would be joined by Ken Mattingly, who had recently been moved from support crew into parallel training with Anders as backup CMP in case Apollo 11 was delayed, as the primary crew for the Apollo 13 mission. The support crew Capsule Communicators, known as CAPCOM, themselves also all astronauts were:
+
+* Charlie Duke
+* Ronald Evans
+* Owen K. Garriott
+* Don L. Lind
+* Ken Mattingly
+* Bruce McCandless II
+* Harrison Schmitt
+* Bill Pogue
+* Jack Swigert
+
+With the following three flight directors:
+
+* Cliff Charlesworth (Green Team), launch and EVA
+* Gene Kranz (White Team), lunar landing
+* Glynn Lunney (Black Team), lunar ascent
+
+The rocket was fuelled, and the countdown progressed at Launch Complex 39, Kennedy Space Center. On July 16th, 1969, the hours counted down. Finally, at 9:32 exactly, Apollo 11 took flight.
+
+YouTube ygBxN5UiOaM
+
+12 minutes later, travelling at huge speed, the vessel entered Earth orbit at an altitude of 100.4 miles (185 km). Around two hours later, having completed the burn to send the ship out of orbit and towards the moon, the three astronauts made their way to the command/service module, and docked with the lunar module, removing it from the third stage of the Saturn V. Everything was set. They were on their way to the moon.
+
+
 
 Gallery
 
