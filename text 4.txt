@@ -138,7 +138,28 @@ YouTube ygBxN5UiOaM
 
 12 minutes later, travelling at huge speed, the vessel entered Earth orbit at an altitude of 100.4 miles (185 km). Around two hours later, having completed the burn to send the ship out of orbit and towards the moon, the three astronauts made their way to the command/service module, and docked with the lunar module, removing it from the third stage of the Saturn V. Everything was set. They were on their way to the moon.
 
+On the afternoon of July 19th, Apollo 11 passed behind the Moon and manoeuvred to enter lunar orbit. The next day, astronauts Alrdin and Armstrong entered the LM, separated from the CSM, and began their descent to the lunar surface. 
 
+Apart from a minor computer glitch, the descent went smoothly at first. However, when Armstrong looked outside, he saw that the computer's landing target was covered in boulders, and next to a crater. Believing the landing was too dangerous to let the computer continue, Armstrong took control of the LM. As he began to pilot the descent, Aldrin started calling out navigation data. The fuel ran down, as Armstrong searched for a new place to land, sending the LM flying along sideways. Finally, at 20:17 and 40 seconds UTC, on July 20, Aldrin and Armstrong went through the final processes, before talking to Charles Duke, CAPCOM back on Earth.
+
+* *Alrin:* Contact light! 
+* *Armstrong:* Shutdown.
+* *Aldrin:* Okay, engine stop. ACA – out of detent.
+* *Armstrong:* Out of detent. Auto
+* *Aldrin:* Mode control - both auto. Descent engine command override off. Engine arm – off. 413 is in.
+* *Duke*: We copy you down, Eagle.
+* *Armstrong:* Engine arm is off. Houston, Tranquillity Base here. The Eagle has landed. 
+* *Duke:* Roger,... Tranquility, we copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot.
+
+Once Armstrong and Aldrin were ready to go outside, Eagle was depressurised, the hatch opened, and Armstrong made his way down the ladder. When he got to the base of the ladder, he radioed back:
+
+> I'm going to step off the LEM now.
+
+He then turned and set his left boot on the lunar surface at 02:56 UTC July 21, 1969, then to the 450 million people (about 12% of the world population) listening, spoke the famous words...
+
+> That's one small step for [a] man, one giant leap for mankind.
+
+About 20 minutes later, Aldrin joined Armstrong on the surface, and the two men began set about their task list. They unveiled a plaque. commemorating their flight, and planted a United States flag in the lunar regolith. Shortly after, President Nixon spoke to them via a telephone call from his office. Having taken a number of photos and set up an experiment package, their final task was to leave small package of memorial items to cosmonauts Yuri Gagarin and Vladimir Komarov, astronauts Gus Grissom, Ed White and Roger Chaffee. Despite never having reached the moon in their lifetimes, the five men, in memory at least, finally arrived.
 
 Gallery
 
@@ -155,3 +176,9 @@ apollo_11_hasselblad_10.jpg
 apollo_11_hasselblad_11.jpg
 apollo_11_hasselblad_12.jpg
 apollo_11_hasselblad_13.jpg
+
+### A Victorious Return
+
+Having re-entered the LM, the hatch was closed and sealed. They repressurised the LM and settled down to sleep. Unfortunately, Armstrong and Aldrin discovered that, thanks to having to move around in a bulky spacesuit, Aldrin had accidentally broken the ignition switch for the ascent engine. They solved the issue through the extremely technical procedure of pushing the circuit breaker with a felt-tip pen, which activated the launch sequence. The LM ascended, the exhaust knocking over the flag which had been planted too close, and docked with Columbia shortly after. All that remained was to leave lunar orbit and return. A few days later, on July 24th, just five days after they took off, the three astronauts returned to Earth, the Columbia command module bringing them down in the Pacific Ocean.
+
+Von Braun had lived to see his dream, and the dream of so many others, come true.
