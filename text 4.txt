@@ -1,0 +1,121 @@
+**It's now 1968**, and the world wakes up and reads the daily news. America's war in Vietnam continues to deteriorate. The Battle of Khe Sanh, which will be one of the most controversial battles of the war is well underway, and the Battle of Lima Site 85 has just resulted in the largest single ground combat loss of U.S. Air Force troops. Aer Lingus Flight 712 has crashed only a few days before en route from Cork to London near Tuskar Rock, Wexford, killing 61 passengers and crew. Only a week ago, Charles "Charlie" Chaplin Jr died aged just 42.
+
+And now, on March 27, while on a routine training flight from Chkalovsky Air Base, Yuri Gagarin and flight instructor Vladimir Seryogin are killed in a MiG-15 crash near the town of Kirzhach. 
+
+It's the latest in a series of blows which the Soviet team doesn't need. The N1-L3 project is beset with issues, and it's become clear they aren't even going to be able to execute on a plan to perform a lunar orbit before America does. Sergei Korolev's dream of a Russian on the moon lays in tatters.
+
+Meanwhile, in America, the Apollo 4 mission has seen the first test of the full Saturn v. Launched on Novermber 9th, it's proved that the rocket works as it was intended. Further, on January 22nd of 1968, the new Apollo lunar module is sent up and tested in the Apollo 5 mission. In April, another test mission is run, named Apollo 6. The missions have suffered huge delays, but even so, it looks likely that Kennedy's dream of man on the moon before the decade is out will be met, if only just.
+
+In the aftermath of Apollo 1, changes are being made, and the team works on trying to build as much safety and solidarity into the system as possible. For example, throughout the Mercury and Gemini programs, Guenter Wendt, who'd been an engineer for McDonnell Aircraft, had been leader of the spacecraft launch pad teams, starting with the flight of Ham the chimpanzee, seven years earlier. His position as the person whom the astronauts would see last meant that he'd come to be known as something of a good luck totem to the crews. He therefore had with ultimate responsibility for condition of the spacecraft at launch. Upon discovering that one engineer intended to personally make a spacecraft change, with or without Wendt's permission, Wendt called security and had him removed.
+
+> The guy comes up on the elevator and he says, 'You like me to put handcuffs on you, or are you going to go by yourself?' The engineer dropped his jaw, but he left. Maybe this system is wrong, but I have had pretty good success with it. If I don't do a good job, I get out. I can't compromise.
+
+<figure class="media_widget col-inverse col-xs-6 col-right">
+<img src="/fly-me-to-the-moon/piece_images/wendt.jpg" alt="Guenter Wendt">
+<figcaption>Guenter Wendt with Commander Walter Schirra</figcaption>
+</figure>
+
+His diligence, care and knowledge had earned the astronauts' respect and admiration. On Apollo 1 though, the contractor for building spacecraft for NASA had changed from McDonnell to North American Rockwell, so Wendt was not the pad leader. After the accident, several people expressed that they wished Wendt that he had been the pad leader that day, as they felt he might have caught the fatal problem. Wendt himself didn't believe it. On the missions since then though, other people had taken the role. And whilst the other astronauts might have been OK with someone else, Walter Schirra, Commander of the Apollo 7 mission, wanted his man back.
+
+Schirra got Deke Slayton, one of the original Mercury Seven astronauts and now Schirra's boss to persuade North American to hire Wendt away from McDonnell. Then Schirra personally lobbied North American's launch operations manager to change Wendt's shift from midnight to day, so he could be pad the leader for Apollo 7. Not only did he get his way, but Wendt went on to remain as Pad Leader for the rest of the Apollo program, and on through the Skylab and ASTP missions. He'd continue to work at the Kennedy Space Center until 1989.
+
+Apollo 7 launched October 11th, having been given it's blessing by Wendt.
+
+Gallery
+
+apollo_7_hasselblad_1.jpg
+apollo_7_hasselblad_2.jpg
+apollo_7_hasselblad_3.jpg
+apollo_7_hasselblad_4.jpg
+apollo_7_hasselblad_5.jpg
+
+### The First Lunar Missions
+
+Change was happening at all levels of NASA in 1968. Administrator of NASA, James Webb was a Democrat who had been closely associated with the President Johnson. However, with the Apollo 1 disaster, and Johnson choosing not to run for re-election, he decided to step down as administrator. The next President, which would in January of the next year be Republican Richard Nixon, would therefore be free to choose his own administrator.
+
+Whilst still in his position though, Webb had been informed by the CIA that it appeared the Soviet Union was developing its own rocket for a manned lunar mission. They'd obtained photographs of the N1-L3, and knew what it would be capable of if it worked. As a result, he directed NASA to prepare Apollo 8 for a possible lunar orbital mission that year. Webb himself though didn't believe the Soviet rocket would fly, and felt that their political issues would ensure that the US was able to get to the moon first. These views were doubted in some quarters, however, later revelations about the N1 would end up proving Webb's conclusions. Nevertheless, in October 1968, just before the first manned flight in the Apollo program, Webb left NASA.
+
+Finally, in December, America drove the final nail into the coffin of the dreams of the Soviet team, with the launch of Apollo 8. For Wernher von Braun, the man who imagined up the mighty Saturn V, the dream of putting a man of the moon was about to come a whole lot closer.
+
+<figure class="media_widget">
+<img src="/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg" alt="Apollo 8 launch">
+<figcaption>The Apollo 8 launch</figcaption>
+</figure>
+
+### Apollo 8
+
+It's December 21st 1968, and Apollo 8 sits on the pad at the Kennedy Space Center. It's to be the first human spaceflight from Kennedy, and tensions are mounting. Work on the Lunar Module has proved slow, and has delayed progress. As a result, the decision was been made by George Low, the Manager of the Apollo Spacecraft Program Office, back in August to change the mission to a more ambitious goal: a lunar orbital flight. This mission won't require the Lunar Module, but it'll make the first human flight around the moon. The crew, consisting of Commander Frank Borman, Command Module Pilot James "Jim" Lovell and Lunar Module Pilot William Anders have had an accelerated training schedule, their mission having been bumped up by several months. It's left them with less time for training and preparation.
+
+The upshot is that the new mission, if successful, will allow the team to test the lunar landing procedures that would otherwise have to wait until Apollo 10, the last mission before the planned lunar landing. It'll also mean almost certainly beating the Soviets to a circumlunar flight, providing a huge boost in morale. There was a lot of pressure to get a human mission to the moon first, as in September the Soviet team had launched the Zond 5 with a Proton-K rocket, which had taken amongst other things two Russian tortoises around the moon and back again. The fear was that with that success, surely a manned mission couldn't be far off.
+
+The night before the launch, the Apollo 8 crew received a visit from Charles Lindbergh and his wife Anne at Kennedy Space Center. They talked about how, before his legendary 1927 flight aboard the Spirit of St. Louis from America to France, Lindbergh had used a piece of string to measure the distance from New York City to Paris on a globe to calculate the fuel needed for the flight. Saturn V would burn tens times the amount Lindbergh had used every second. The next day, from a dune near the launch site, the Lindberghs settled in to watch the launch of Apollo 8.
+
+<figure class="media_widget">
+<img src="/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg" alt="Apollo 8 being taken to the pad">
+<figcaption>The Apollo 8 Saturn V rocket on the Mobile Launcher Platform, being moved to launch</figcaption>
+</figure>
+
+Apollo 8 launched at 07:51am local time on December 21st, and blasted off into space, reaching it mere minutes later. The previous series of rockets used by NASA to put people in to space, the Titan II, had been notoriously uncomfortable at launch, with harsh vibration and huge noise. The design of Saturn V promised a less jarring ascent, having designed the system specifically for the Apollo program rather than adapting an existing missile for the task. Lovell and Borman, both who had both flown on the Titan II, were not disappointed. During liftoff, they reported feeling nothing but a dull, muted rumble in the distance.
+
+YouTube FzCsDVfPQqk
+
+Once the vehicle reached Earth orbit, both the crew onboard and the Houston flight controllers on the ground spent the next 2 hours and 38 minutes checking all was ready for the journey to the moon, while the rocket orbited the Earth. Having satisfied themselves that everything was in good order, less than three hours after launch, the stage IV booster fired, and the crew were off to the moon. 
+
+As Apollo 8 started its journey, the crew began to put the ship into a "barbecue" roll, or Passive Thermal Control (PTC) to give it its proper name. This would mean the spacecraft would rotate steadily around once every hour. This slow roll allowed for even heat distribution as it was heated by the Sun. The part under direct sunlight could reach temperatures as high as 392 °F (200 °C), while the shaded side plunged to −148 °F (−100 °C). If these temperatures were sustained, they could cause the heat shield which would keep the crew alive in re-entry to crack, or cause other damage to the craft. This roll was a constant manoeuvre, requiring refinement around twice per revolution to ensure the ship stayed pointing in the right direction, and that the roll was kept as tight as possible.
+
+This was possible as it was required that one astronaut was to be kept aware at all times, to ensure someone was always ready to respond to any issues. However, between the constant communication with the ground, and the noises of the ship, sleeping wasn't particularly easy anyway. By the second day in to the flight however, the difficulty posed in sleeping in space, combined with space sickness created by the increase space to move and the team therefore moving around the craft grew so great that the crew gave up on their planned schedule and simply slept when they could, with whoever was least tired staying awake. 
+
+64 hours into the flight, the crew began to prepare for Lunar Orbit Insertion, to fly around the far side of the moon. This manoeuvre had to be performed perfectly, and on the far side of the Moon, out of contact with the Earth. After Mission Control polled for a "go/no go" decision, the crew was told they were Go. Thus, at 68 hours and 58 minutes and travelling at 24,200 mph (38,938 km/hr), the crew and their ship shot behind the Moon and out of radio contact with the Earth.
+
+The rocket engines now fired and burned for 4 minutes and 13 seconds, placing the Apollo 8 spacecraft in orbit around the Moon. They'd spend the next 20 hours in orbit, flying around it ten times, orbiting at adsf. After coming back around and resuming contact with Earth, Lovell reported on the status of the spacecraft and then became the first man to give a description of a first-hand close-up look at the lunar surface:
+
+<figure class="media_widget col col-left col-xs-6">
+<img src="/fly-me-to-the-moon/piece_images/apollo_8_lunar_surface.jpg" alt="The Moon as seen from Apollo 8">
+<figcaption>The Moon, as photographed by the crew of Apollo 8</figcaption>
+</figure>
+
+> The Moon is essentially grey, no color; looks like plaster of Paris or sort of a grayish beach sand. We can see quite a bit of detail. The Sea of Fertility doesn't stand out as well here as it does back on Earth. There's not as much contrast between that and the surrounding craters. The craters are all rounded off. There's quite a few of them, some of them are newer. Many of them look like—especially the round ones—look like hit by meteorites or projectiles of some sort. Langrenus is quite a huge crater; it's got a central cone to it. The walls of the crater are terraced, about six or seven different terraces on the way down.
+
+On its forth orbit, for the first time, the crew witnessed something else no other humans had ever seen: Earthrise. Borman was the first to notice it and called to the others, while taking a black-and-white photo. In the ensuing scramble Anders took the more famous colour photo, later picked by Life magazine as one of its hundred photos of the century.
+
+<figure class="media_widget col col-left col-xs-6">
+<img src="/fly-me-to-the-moon/piece_images/earthrise.jpg" alt="Earthrise">
+<figcaption>Earthrise, a view only possible thanks to the orbit of a spacecraft</figcaption>
+</figure>
+
+> Anders: Oh my God! Look at that picture over there! There's the Earth coming up. Wow, is that pretty.
+> Borman: Hey, don't take that, it's not scheduled. (joking)
+> Anders: (laughs) You got a color film, Jim? Hand me that roll of color quick, would you...
+> Lovell: Oh man, that's great!
+
+Then, on December 24th, they began a second television transmission. Borman introduced the crew to the world, followed by each giving their impressions of the lunar surface and how it felt to be orbiting it. After, they made the following short speech, with each man reading a section.
+
+YouTube njpWalYduU4
+
+With that done, all that was left to do was to leave the lunar orbit, return to Earth, and land. Two and a half days later, following a surprise Christmas dinner: a real turkey with stuffing, in the same kind of pack that the troops in Vietnam received, arranged by Deke Slayton, the crew prepared for re-entry. On December 27th, 15:51 and 42 seconds, their mission ended, the team landing in the North Pacific, just south of Hawaii. It ended a turbulent year, which had seen violent unrest in Europe and America, assassinations, deaths and more. The effect on the world of Apollo 8 was perhaps best summed up by a telegram from a stranger, received by Borman after the mission. It read:
+
+> Thank you Apollo 8. You saved 1968.
+
+### Turning Up to 11
+
+Apollo missions 9 and 10, whilst still very important, didn't have the same electrifying effect as 8. Instead, they were seen as preparatory missions for the flight of 11. Apollo 9 though still saw the first flight of both the Command/Service and Lunar Modules (CSM and LM respectively), whilst 10 was a full dry run of the 11 mission, testing every procedure except for the actual landing itself. Both provided valuable data, and kept America firmly as being seen in the driving seat.
+
+Back in the USSR, things weren't going so well. In January, Soyuz 4 and 5 had conducted the first successful transfer of crew between two craft, the crew members conducting spacewalks between the two vessels. Back on the ground though, the first test of the N1 was about to happen. 
+
+### Apollo 11
+
+Gallery
+
+apollo_11_hasselblad_1.jpg
+apollo_11_hasselblad_2.jpg
+apollo_11_hasselblad_3.jpg
+apollo_11_hasselblad_4.jpg
+apollo_11_hasselblad_5.jpg
+apollo_11_hasselblad_6.jpg
+apollo_11_hasselblad_7.jpg
+apollo_11_hasselblad_8.jpg
+apollo_11_hasselblad_9.jpg
+apollo_11_hasselblad_10.jpg
+apollo_11_hasselblad_11.jpg
+apollo_11_hasselblad_12.jpg
+apollo_11_hasselblad_13.jpg
