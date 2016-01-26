@@ -1,7 +1,8 @@
 import React from 'react';
 import marked from 'marked';
-import YouTube from './react-youtube.js';
 import Image from './react-image.js';
+import Gallery from './react-gallery.js';
+import YouTube from './react-youtube.js';
 
 export default class PageContent extends React.Component {
 	constructor() {
@@ -14,6 +15,7 @@ export default class PageContent extends React.Component {
 	renderElement(item) {
 		var components = {
 			'Image': Image,
+			'Gallery': Gallery,
 			'YouTube': YouTube
 		};
 
