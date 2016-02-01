@@ -72,96 +72,24 @@ The deaths of the crew saw Mishin removed from a number of projects, with Chelom
 
 December though would see better news, with Mars 3 landing its probe, and in doing so becoming the first probe to land on Mars and transmit back data.
 
-### The Space Shuttle and Further Stations
+### Saturn V Retires
 
-In America, political and public support for the space program was waning. So much had been put into the idea that the point of the program was to deny the Soviet's the title of first nation to the moon, that having completed it, there was a vacuum left. The last Apollo mission would land on December 19th, marking the last time man would set out to walk on the moon. At the end of his time there, whilst becoming the last man who'd stand on the lunar surface, Before re-entering the LM for the final time, Commander Gene Cernan expressed his thoughts:
+In 1971, the world had witnessed America send into space the first man-made object which would exit the solar system. Pioneer 10 left the Earth on March 3rd, and thundered towards Jupiter. Even at its incredible speed, it didn't reach the largest planet in our solar system for over a year and a half, until it finally arrived within it's magnetosphere on November 16th. Having taken images of the giant planet and its moons and conducted scientific measurements, the spacecraft accelerated using the Jovian gravity up to around 82,000 mph (132,000 km/h) at its fastest, and shot off towards the edge of the solar system. The Jovian gravity well slowed it, but even now it continues at around 27,000 mph (43,400 km/h), at around 10 billion miles from Earth. Many years later, in 1983, it would cross the orbit of Neptune and pass beyond the orbit of our system's final planet.
+
+In America, political and public support for the space program was waning. So much had been put into the idea that the point of the program was to deny the Soviet's the title of first nation to the moon, that having completed it, there was a vacuum left. The last Apollo mission would land on December 19th 1972, marking the last time man would set out to walk on the moon. At the end of his time there, whilst becoming the last man who'd stand on the lunar surface, Before re-entering the LM for the final time, Commander Gene Cernan expressed his thoughts:
 
 > ...I'm on the surface; and, as I take man's last step from the surface, back home for some time to come - but we believe not too long into the future - I'd like to just [say] what I believe history will record. That America's challenge of today has forged man's destiny of tomorrow. And, as we leave the Moon at Taurus-Littrow, we leave as we came and, God willing, as we shall return, with peace and hope for all mankind. "Godspeed the crew of Apollo 17."
 
-That year had also seen the first man-made object sent to exit the solar system. Pioneer 10 left the Earth on March 3rd, and thundered towards Jupiter. Even at its incredible speed, it didn't reach the largest planet in our solar system for over a year and a half, until it finally arrived within it's magnetosphere on November 16th. Having taken images of the giant planet and its moons and conducted scientific measurements, the spacecraft accelerated using the Jovian gravity up to around 82,000 mph (132,000 km/h) at its fastest, and shot off towards the edge of the solar system. The Jovian gravity well slowed it, but even now it continues at around 27,000 mph (43,400 km/h), at around 10 billion miles from Earth. Many years later, in 1983, it would cross the orbit of Neptune and pass beyond the orbit of our system's final planet.
+However, putting objects into space with Saturn and other similar rockets was expensive, and lacking the propaganda benefits of the lunar landing, using such an expensive system for launches started to become politically untenable. Therefore attention in NASA now turned to the building of a re-usable craft, which would be capable of reaching orbit and returning to be used again. On January 5th, 1972, American President Richard Nixon announced that NASA would proceed with the development of a reusable space shuttle system.
 
-Putting objects in space with Saturn and other similar rockets was becoming an expensive chore, and so attention in NASA now turned to the building of a re-usable craft, which would be capable of reaching orbit and returning to be used again. On January 5th, 1972, American President Richard Nixon announced that NASA would proceed with the development of a reusable space shuttle system. Shortly after, Mishin was finally fired, after each of the four N1 test launches failed. The entire N1 program was cancelled. A single design bureau was created to work on space activities, named NPO Energia, with Glushko as chief designer.
+The man who'd been brought to America to create rockets chose this time to bow out. Facing tight budgets and a differing vision from the American leadership on the future of space, Wernher von Braun retired from NASA on May 26th 1972. The next year would see him diagnosed with cancer of the kidneys. Despite this, he'd continue to work, speaking at various colleges and universities, and acting as a consultant.
 
-The next year brought the US its own space station, named Skylab, also launched on a Saturn V, which would orbit for six years, although it would only see occupation for around six months of that time. Nevertheless, it provided a useful platform for performing scientific tests and experiments. 
+For the Soviets though, things continued to go badly. Two more N1 rockets were tested launched, and both failed. As a direct result, Mishin was fired, and the entire N1 program was cancelled. A single design bureau was created to work on space activities taking over from OKB-1, named NPO Energia, with Glushko as chief designer.
 
-July 15, 1975	First multinational human-crewed mission	Soyuz 19	Apollo–Soyuz Test Project
+The next year brought the US its own space station, named Skylab, also launched on a Saturn V, which would orbit for six years, although it would only see occupation for around six months of that time. Nevertheless, it provided a useful platform for performing scientific tests and experiments.
 
+The Saturn V continued to perform useful work, but its time was running out. Finally, on July 15th 1975, it was launched for the final time. "Experimental flight Soyuz-Apollo" was the first joint U.S.–Soviet space flight. The crew consisted of Commander Thomas Stafford, CMP Vance Brand, and Docking Module Pilot Donald "Deke" Slayton. Slayton, despite having been selected as far back as 1959 as one of the original Mercury Seven, had never flown to space, having been grounded due to medical reasons for the following 13 years. In the interim, he'd worked as the Coordinator of Astronaut Activities, which would later become and official position, the Chief of the Astronaut Office. Having chosen the crews for both the Gemini and Apollo programs, deciding that Armstrong would represent humanity as the first person on the Moon, he now took his place as an astronaut himself. While grounded, Slayton had taken up a program of daily exercise, quit smoking and caffeine, and drastically cut back on alcohol.
 
+Having been returned to flight status in 1970, he selected himself for the 1975 flight. Training began in 1973, which included learning Russian training for weeks at the Star City cosmonaut training center, near Moscow. After years of service in ground control, Slayton resigned as Director of Flight Crew Operations in February 1974. The 1975 mission was the first and last time he'd fly to space.
 
-
-
-
-
-
-
-
-****
-
-1 Sep. 1974 Pioneer 11
-
-15-24 Jul. 1975 The Apollo-Soyuz Test Project, last Apollo flight
-
-5 Aug. 1975 NASA research pilot John Manke landed the X-24B lifting body on the Edwards Air Force Base runway, demonstrating that a Space Shuttle-like vehicle could be landed safely without a separate power source for landings on a designated runway after returning from orbit. Lasting from 1963 to 1975, the lifting-body program included the M2-F1, M2-F2, M2-F3, HL-10, X-24A, and X-24B wingless lifting vehicles and served as a precursor not only to the Space Shuttle but to the X-33 technology demonstrator for next-generation reusable space vehicles and the X-38 prototype for a crew return vehicle from the international space station.
-
-20 Aug. 1975-21 May 1983 Viking 1 launch
-
-18 Feb. 1977 The first Space Shuttle orbiter, Enterprise first flown
-
-20 Aug. 1977 Voyager 1 & 2
-
-26 Oct. 1977 The fifth and last free test flight of the Space Shuttle Enterprise 
-
-20 May 1978-9 May 1979 Venus mission
-
-24 Oct. 1978 Nimbus 7: Launched environmental research satellite with multiple instruments, one that provided the global evidence of Antarctic ozone depletion in the 1980s.
-
-11 Jul. 1979 Following the final occupied phase of the Skylab mission in 1974, NASA controllers performed some engineering tests of certain Skylab systems, positioned Skylab into a stable attitude and shut down its systems
-
-14 Feb. 1980 Solar Maximum Mission: The first launch/mission to study the Sun in detail, over the course of heavy sunspot activity.
-
-12 Apr. 1981 Astronauts John W. Young and Robert L. Crippin flew Space Shuttle Columbia on the first flight of the Space Transportation System (STS-1)
-
-25 Jan. 1984 President Ronald Reagan made an Apollo-like announcement to build a Space Station within a decade as part of the State of the Union Address before Congress. Reagan's decision came after a long internal discussion as to the viability of the station in the national space program.
-
-3-10 Feb. 1984 The flight of STS-41B, the Space Shuttle Challenger, took place. During this mission on 4 Feb. the first unteathered flights by American astronauts took place wearing the Manned Maneuvering Unit (MMU).
-
-15 Dec. 1984-Mar. 1986 An international armada of spacecraft encounter the Comet Halley during its nearest approach to the Earth in 76 years. The Soviet Union launched Vega 1 (14 Dec. 1984) and Vega 2 (21 Dec. 1984), both probes that would encounter Venus and deploy landers on their way to their primary target, Halley's Comet. In 1985 the European Space Agency launched the Giotto probe to intercept Halley's Comet. Vega 1 deployed a lander to Venus on 11 Jun. 1985. Its lander released a balloon as it descended, taking measurements. On 15 Jun. 1985 Vega 2 performed the released a similar balloon. Both Soviet spacecraft continued on their way to Halley's Comet. Vega 1 had its closet encounter with the comet on 6 Mar. 1986, closing to within a distance of 5,525 miles. Three days later, 9 Mar., Vega 2 approached to within 4,991 miles of Halley's Comet. Finally, on 13-14 Mar. 1986 Giotto approached Halley's Comet at about 360 miles.
-
-24 Jan. 1986-25 Aug. 1989 Voyager 2 encounters Uranus and Neptune.
-
-28 Jan. 1986 The Space Shuttle Challenger disaster
-
-15 Aug. 1986 NASA secured Presidential and Congressional support for the acquisition of a replacement orbiter for Challenger. This would enable the Agency to continue its efforts to build the international Space Station.
-
-4 May 1989-1993 The highly successful Magellan mission to Venus began on this date following launch on STS-30
-
-18 Oct. 1989-Present The Galileo spacecraft
-
-24 Apr. 1990 Launch of the Hubble Space Telescope
-
-2 Dec. 1993 repair of the optics of the Hubble Space Telescope
-
-27 Jun.-7 Jul. 1995 Twenty years after the world's two greatest spacefaring nations and Cold War rivals staged a dramatic link­up between piloted spacecraft in the Apollo-Soyuz Test Project during the summer of 1975, the space programs of the United States and Russia again met in Earth orbit when the Space Shuttle Atlantis docked to the Mir Space Station
-
-7 Dec. 1995 Galileo: Probe released into Jupiter's atmosphere.
-
-7 Aug. 1996 NASA announced that a team of its scientists had uncovered evidence, however not conclusive proof, that microscopic life may have once existed on Mars
-
-13 Aug. 1996 Data from NASA's Galileo probe at Jupiter revealed that the gas giant's moon, Europa, may harbor "warm ice"
-
-20 Feb. 1997 The space probe Galileo exploring Jupiter and its moons discovered Icebergs on Europa. Images captured during Galileo's closest flyby of Europa showed features of the Jovian moon, lending credence to the possibility of hidden, subsurface oceans. The findings generated new questions about the possibility of life on Europa.
-
-4 Jul. 1997 The inexpensive Mars Pathfinder (costing only $267 million) landed on Mars
-
-Dec. 1997 Scientists using the joint European Space Agency/NASA Solar and Heliospheric Observatory (SOHO) spacecraft have discovered "jet streams" or "rivers" of hot, electrically charged plasma flowing beneath the surface of the Sun
-
-29 Jan. 1998 An International Space Station agreement among 15 countries met in Washington to sign agreements to establish the framework for cooperation among the partners on the design, development, operation, and utilization of the Space Station
-
-May 28, 1998 The Hubble Space Telescope gave humanity its first direct image of what is probably a planet outside our solar syste
-
-
-
-Mir, ISS, Tiangong
-Sojourner and Spirit, Opportunity & Curiosity
-Voyagers, Galileo and New Horizons
-"Space Shuttle
+It seems fitting that the Apollo program, who's roots began in the Second World War, and for which so much money had been spent to serve as propaganda for American superiority over the Soviets, had as its last act as a public demonstration of the policy of détente that the two superpowers were pursuing at the time. It marked the end of the space race, and ushered in a new era.
