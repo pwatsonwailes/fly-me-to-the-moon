@@ -37,6 +37,7 @@ export default class Gallery extends React.Component {
 
 	render() {
 		var gallery = [];
+
 		var n = (this.state.galleryPointer <= this.props.images.length)
 			? this.state.galleryPointer
 			: this.props.images.length;
@@ -49,7 +50,7 @@ export default class Gallery extends React.Component {
 		return (
 			React.createElement("div", { className: 'media_widget ' + classes, key: this.props.key },
 				React.createElement("h4", null, this.props.title),
-				React.createElement("div", { class: 'gallery_cntrols' },
+				React.createElement("div", { class: 'gallery_controls' },
 					React.createElement("span", { className: 'fa_button', id: 'galleryBack', onClick: this.buttonHandler },
 						React.createElement("i", { className: 'fa fa-angle-double-left' })
 					),
