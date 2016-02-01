@@ -40,9 +40,42 @@ Back in America Knowing that the Soviet scientists and engineers were working on
 
 Challenger.
 
-### The Challenger Disaster and its Legacy
+### The Challenger Disaster
 
-On January 24, 1986, NASA celebrated as Voyager 2 reached Uranus. In doing so, it discovered no less than 11 moons, and started to study its atmosphere and rings. Meanwhile, Challenger was being readied at the Kennedy Space Center for launch on mission STS-51-L, which was to be both the 25th shuttle mission, and the tenth flight for the Challenger itself. 
+On January 24, 1986, NASA celebrated as Voyager 2 reached Uranus. In doing so, it discovered no less than 11 moons, and started to study its atmosphere and rings. Meanwhile, Challenger was being readied at the Kennedy Space Center for launch on mission STS-51-L, which was to be both the 25th shuttle mission, and the tenth flight for the Challenger itself. It had been meant to launch that day, but bad weather causted it to be rescheduled repeatedly. Finally, on the 28th, the go-ahead was given.
+
+Forecasts for launch on the 28 predicted a bitterly cold morning, with temperatures down as low as −1 °C (31 °F), which was lowest temperature under which a launch would be allowed. With it being so cold, various of the engineering team of the solid rocket boosters were concerned with launch. The conditions were discussed on a conference call, with the engineers expressing their concerns as to how well the rubber O-rings would hold up. They lobbied for a postponement of the launch until warmer weather, stating that they lacked the data required to know whether the joints would be sealed correctly. The O-rings themselves were vital component, as if they failed, there was no back-up system possible to put in place.
+
+NASA however opposed the delay despite the concerns. The feeling was that it was impossible to have a craft which couldn't launch for several months of the year due to cold. In addition to the concerns of the O-rings, others were afraid that the large build-up of ice on the pad, and on the fuel tank, boosters and orbiter. Some feared ice could be shaken loose during launch and fall to damage the thermal protection tiles on the base of the orbiter, causing it to suffer damage or be destroyed on re-entry. Despite the various concerns raised, Houston-based mission manager Arnold Aldrich gave the go-ahead for a launch, postponing only by an hour to give the team time to try and de-ice the shuttle. They'd already worked through the night, and knew there was no way to remove all the ice before launch. 
+
+At 11:37 and 53 seconds, the Shuttle's main engines fired up and began burning fuel at incredible speed. 6 seconds later, Solid Rocket Boosters (SRB) ignited. Less than a second later, the right SRB started to fail, with plumes of gas coming from it. These were the result of a joint opening and closing as the booster's skin ballooned under the stress of ignition. The metal bent and superheated gasses jetted out at over 2,760 °C (5,000 °F). Previously when this had happened, the primary O-ring shifted and the heat melted it to form a seal, closing the gap. Now though, the freezing ring didn't move. The heat instead seared into the ring, which took damage. It didn't seal the crack, and the secondary O-ring had been moved out of position as the metal had bent. Instead of sealing, both were vaporised.
+
+Challenger blasted its way clear of the control tower after three seconds, and the engines throttled up, guzzling fuel at a rate of 5 tonnes per second. 25 seconds later it was doing 400 mph (644 km/h). Despite throttling back, 15 seconds after that it blasted its way through the sound barrier. The engines were returned to full power 12 seconds later. At just under 59 seconds in to the flight, the shell of the right SRB started to fail completely, with parts beginning to burst into flame. A moment later the vessel passed 1.5 times the speed of sound. The jet of flame interfered with the handling of the Shuttle. 72 seconds in to the flight, everything went wrong.
+
+The SRB detached from the external fuel tank and Shuttle pulled hard to one side. The tank itself then failed, with the hydrogen and liquid oxygen tanks rupturing, the contents mixing and exploding. A second later, the craft began to break up. Massive g-forces ripped the tank and Shuttle apart, whilst the SRBs flew away. The crew compartment was blasted away and began to fall from the sky.
+
+In mission control, the order everyone had hoped never to hear was given - the doors to the control center were locked, communications lines closed, and the process of recording the data from the flight began. 
+
+In the aftermath, a commission was set up to examine what went wrong, both in terms of the accident, and the procedures that had created it. One of the commission's members was physicist Richard Feynman. Were other members of the Commission met with NASA and supplier top management to understand the problem, he went in a different direction. He instead sought out the engineers and technicians, who were able to tip him off as to the issue with the O-rings. Whilst part of a televised hearing, he demonstrated how they would fail at very low temperatures by putting a sample of the material in a glass of ice water. In his own conclusions, he noted that the estimates for the reliability of the Shuttle were vastly different to those of the engineers who designed and maintained it. 
+
+His conclusion summed up the issues neatly:
+
+> For a successful technology, reality must take precedence over public relations, for nature cannot be fooled
+
+### Mir, Hubble and the International Space Station
+
+In the aftermath, NASA was able to secure funding to replace Challenger, with the new Endeavour. This was going to be required if the project to put up another space station was to continue. However, whilst this was given, the US interests in space were being examined closely. Projected costs for the space station proposed kept increasing, whatever design was put forward. 
+
+
+
+
+
+
+
+
+
+
+
 
 15 Aug. 1986 NASA secured Presidential and Congressional support for the acquisition of a replacement orbiter for Challenger. This would enable the Agency to continue its efforts to build the international Space Station.
 
