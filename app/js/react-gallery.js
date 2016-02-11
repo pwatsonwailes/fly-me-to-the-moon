@@ -27,9 +27,9 @@ export default class Gallery extends React.Component {
 		var id = (isset(e.target.id) &&(e.target.id === 'galleryBack' || e.target.id === 'galleryForward')) ? e.target.id : e.target.parentNode.id;
 
 		if (id === 'galleryForward')
-			var newPointerPosition =(this.state.galleryPointer + 3 < this.props.wikiImages.length) ? this.state.galleryPointer + 1 : false;
+			var newPointerPosition = (this.state.galleryPointer + 3 < this.props.images.length) ? this.state.galleryPointer + 1 : false;
 		else
-			var newPointerPosition =(this.state.galleryPointer - 1 < 0) ? false : this.state.galleryPointer - 1;
+			var newPointerPosition = (this.state.galleryPointer - 1 < 0) ? false : this.state.galleryPointer - 1;
 
 		if (newPointerPosition)
 			this.setState({ galleryPointer: newPointerPosition });
@@ -38,18 +38,18 @@ export default class Gallery extends React.Component {
 	render() {
 		var gallery = [];
 
-		var n = (this.state.galleryPointer <= this.props.images.length)
-			? this.state.galleryPointer
-			: this.props.images.length;
+		//var n = (this.state.galleryPointer <= this.props.images.length)
+		//	? this.state.galleryPointer
+		//	: this.props.images.length;
 
-		for (var i = this.state.galleryPointer; i < n; i++) {
-			var img = this.renderGalleryImg(this.props.wikiImages[i]);
-			gallery.push(img);
-		}
+		//for (var i = this.state.galleryPointer; i < n; i++) {
+		//	var img = this.renderGalleryImg(this.props.images[i]);
+		//	gallery.push(img);
+		//}
 
 		return (
-			React.createElement("div", { className: 'media_widget ' + classes, key: this.props.key },
-				React.createElement("h4", null, this.props.title),
+			React.createElement("div", { className: 'gallery_widget', key: this.props.key }, 'hello'
+				/*React.createElement("h4", null, this.props.title),
 				React.createElement("div", { class: 'gallery_controls' },
 					React.createElement("span", { className: 'fa_button', id: 'galleryBack', onClick: this.buttonHandler },
 						React.createElement("i", { className: 'fa fa-angle-double-left' })
@@ -58,7 +58,7 @@ export default class Gallery extends React.Component {
 						React.createElement("i", { className: 'fa fa-angle-double-right' })
 					)
 				),
-				React.createElement("div", { class: 'gallery' }, gallery)
+				React.createElement("div", { class: 'gallery' }, gallery)*/
 			)
 		)
 	}
