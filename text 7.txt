@@ -56,18 +56,58 @@ With the two flights in less than two weeks, the company had claimed their prize
 
 After almost two and a half years of grounding following Columbia, the Space Shuttle was finally returned to flight status. Except for one final mission to repair the Hubble Space Telescope, its missions would now be flown only to the ISS, allowing a potential safe haven in case of damage to the orbiter. It was no longer trusted. Nevertheless, at the end of 2005, with the addition of an external stowage platform (named ESP-2), ISS had its 15th component.
 
-At SpaceX, the team had been busy developing their first rocket, Falcon 1. Preparations were underway for the first test. In March 2006, 
+At SpaceX, the team had been busy developing their first rocket, Falcon 1. Preparations were underway for the first test. In March 2006, they attempted their first launch. However, a fuel line leak and subsequent fire meant that it was unsuccessful. Nevertheless, the team discovered the cause of the fault, rectified it and continued to improve the software behind the machine's systems. A year later they tried again. This time, the system worked, and it paved the way for the first orbital flight a year later, in September of 2008. This marked the first time that a privately funded liquid fueled rocket had managed to reach orbit, and the true start of the private era for space operations. In less than six years, the company had managed to make a rocket capable of orbital travel.
 
-Mar 2006 - First test flight of Falcon 1, failure, fuel line leak and subsequent fire
-Mar 2007 - First successful test flight of Falcon 1
-Sep 2008 - The first privately funded, liquid-fueled rocket (Falcon 1) to reach orbit
-Dec 2010 - First Commercial Orbit and Return (Falcon 9 and Dragon)
-Jul 2011 - Final Flight of the Space Shuttle Program
-May 2012 - First ISS Commercial Supply Mission (Dragon)
-Aug 2012 - Curiosity Rover Lands on Mars
-Aug 2012 - First Man-made Spacecraft in Interstellar Space, Voyager 1
-Nov 2014 - First Spacecraft to Land on a Comet
-Jul 2015 - New Horizons Arrives at Pluto
-Nov 2015 - Blue Origin launches and lands the New Shepard, marking the first time a booster has flown to space and returned
-Dec 2015 - The first landing of a first stage orbital capable rocket (Falcon 9)
-Jan 2016 - Blue Origin's New Shepard becomes the first reusable rocket
+YouTube 8FQhtMrUQlE
+
+Elon Musk's company needed to start paying its way though. Having demonstrated their capability, the massive funds he'd invested started to pay off. In December that same year, NASA awarded a Commercial Resupply Services (CRS) contract to SpaceX, with a minimum value of $1.6 billion. The gamble had paid off in spades. The contract required that SpaceX fly 12 flights to the ISS, carrying a total of 20 tonnes of resupply cargo. That would need something bigger than Falcon 1 though. Fortunately, Musk's team had been working on a second generation rocket, the Falcon 9. Much larger, and capable of lifting far greater payloads, it was just what was needed.
+
+Powered by nine SpaceX designed Merlin 1C engines, generating in total substantially less than a single Saturn V engine, it was nonetheless powerful enough to fulfil the contract. All they had to do now was make it fly. It took its maiden flight after significant testing on June 4, 2010, taking to space for the first time and successfully placing a test payload in orbit. Having managed to prove the craft worked, they next had to prove they could put something of similar size and weight to a NASA payload in orbit. For that, they placed their prototype module, named Dragon, atop the Falcon 9, and launched in December.
+
+It was another success. With two near perfect launches, the company had proven not only the Falcon 9 rocket, but also it's Dragon spacecraft.
+
+However, whilst one spacecraft was just taking to the skies, another was about to fly for the final time. 2011 saw the final flight of the Space Shuttle. The vessels, which had only been intended to fly for 15 years, had instead flown for twice that, totalling 135 missions, lasting for a cumulative total of 3 years, 226 days, 19 hours, 21 minutes and 23 seconds. Discovery was the first to retire, landing for the final time in March, followed by Endeavour in June and finally Atlantis in July. With its final flight, NASA retired many of those who'd spent careers working on and tending to the craft that had become so iconic in their history. With their retirement, only Russia and potentially SpaceX had the capability to send craft to resupply the ISS. The American government, which had for so long lead the world in space exploration, now in part bowed out.
+
+Back with SpaceX, the design of Falcon 9 underwent constant refinement. A second demonstration flight was conducted in 2012, which also worked, and paved the way for SpX-1 - the first commercial resupply mission. For the first time, they were ready to prove the faith NASA had placed in them was justified. On the 8th of October 2012, at shortly after midnight UTC, a Falcon 9 carrying a Dragon spacecraft blasted off into the night sky. 70 seconds later, it passed the speed of sound, and continued to accelerate. One minute 20 seconds later, it was travelling ten times that speed, and heading in to space. Shortly after, it did what it had been designed to do, and put Dragon in to orbit, chasing down the ISS.
+
+Two days later, having thundered around the planet over and over again as it closed the gap, the ISS team reached out with the huge vessel's robotic arm, grabbing the Dragon capsule and pulling it in. It successfully docked, bringing with it almost a tonne of supplies, and allowing the same amount to be returned. The first commercial resupply flight to ISS had been performed.
+
+### Planetary Exploration and the Future
+
+Later that year, NASA's next Mars rover, named Curiousity landed. The tradition of insane-looking landings continued. The most advanced rover landed on the planet to date, it is designed to investigate the Martian climate further, learn about its geology, discover whether the planet may have held environmental conditions which could have supported basic forms of life, study the feasibility of future human exploration. The increasing population of active rovers made some note that it held the amusing distinction of being the only known planet entirely inhabited by robots.
+
+YouTube P4boyXQuUIw
+
+Later that same year, the now elderly Voyager 1, which continued to send signals back to Earth, continued on its long travels and became the first man-made spacecraft to venture out into interstellar space. Having now passed beyond the Solar System, it continued to provide valuable insight as to what lies beyond the reaches of our furthest planets.
+
+If the landing of the Mars rovers seemed challenging however, they were nothing compared to what was coming up next. NASA may not have being flying to the ISS, but machines launched years earlier were now starting to close in on their mission objectives. November of 2014 saw mankind for the first time land on a comet. The Rosetta spacecraft, launched in 2004, ten years later in November of 2014 reached comet 67P/Churyumov–Gerasimenko. It then detached its lander, named Philae, and the two began their series of experiments. Less than a year later, in July of 2015, NASA managed another first, with New Horizons providing the first close-up look at Pluto and it's moon, Charon. 
+
+Launched in 2005, it left Earth at 58,000 km/h (36,000 mph), faster than any other spacecraft. Again, a decade passed, and in July 2015, having travelled for millions of miles, it finally arrived. At such a distance, 4.5 light-hours in total, transmission of data is incredibly slow. As a result, to receive all the data it collected during the Pluto system flyby would require almost a year and a half. It will now continue out further, to examine objects beyond in the Kuiper belt; a vast ring of asteroids on the outer edge of our Solar System.
+
+Somewhat closer to home though, work continued on the SpaceShipOne design. The company had been been funded further by serious entrepreneur Richard Branson. New engines were designed, and the craft continued to advance. However, as has so often been the case, the price paid for such development would be high, in both money and the human cost. In October of 2014, the test craft VSS Enterprise suffered a catastrophic break-up. Co-pilot Michael Alsbury was killed, whilst pilot Peter Siebold was seriously injured.
+
+In answering questions shortly after, Branson said:
+
+> We do understand the risks involved and we are not going to push on blindly; to do so would be an insult to all those affected by this tragedy. We are going to learn from what went wrong, discover how we can improve safety and performance and then move forwards together.
+
+Later in the same meeting, he noted...
+
+> Space is hard, but worth it.
+
+His words could be said to neatly sum up the thoughts of everyone who's been involved in the space programs around the world.
+
+Elsewhere, history was about to be made again. The Space Shuttle, for all its faults, had proven one thing incontrovertibly - the huge value of a reusable space vehicle. The world had been without that capacity for four years, but November and December of 2015 would bring that period to an end. Quietly working away, conducting their operations without the media fanfare of SpaceX, Blue Origin had been developing their own rocket system, named New Shepherd. On 23rd November, on its second test flight, the oddly shaped rocket took to the skies, crossing the Kármán line and returning to land vertically, making the first landing of a booster rocket flown to space. A third flight on 22 January 2016 marked the first reuse of a reusable booster rocket, less than a month after Falcon 9 also managed a landing, marking the first vertical landing of an orbital-capable rocket.
+
+YouTube 74tyedGkoUc
+
+The era of the the commercial, private space race had arrived.
+
+### The Future
+
+Where we go from here, no-one really knows. SpaceX have a stated goal of putting humans on Mars, and starting limited colonisation. Blue Origin have been more abstract and vague with their goals, but they appear to be aiming in a similar direction, with talk of space tourism and exploration, and aiming to put the price down far enough that it would be broadly attainable. Exactly how this will be achieved remains to be seen.
+
+Meanwhile, far above us, the rovers on Mars will continue to do good work for years to come, bringing ever more knowledge about the most likely target for the first human settlement beyond Earth. Elsewhere, other probes will reach to the planets and comets beyond us. The Chinese space program now reaches for the Moon, and if they get there, they would become only the second nation to do so, after more than four or possibly even five decades of our absence.
+
+The ISS meanwhile is due to continue until at least 2024, and in all likelihood on further than that. What may replace it though is still a matter of some debate, although it seems unlikely that the answer will be "nothing". At NASA, work is well underway on the next generation of heavy lift vehicle, called the Space Launch System, or SLS for short. Designed to be upgraded over time, it will likely eventually have the power to conduct interplanetary scale missions. NASA, like SpaceX, have a stated goal of wanting to put people on Mars, with the first planned mission being a lunar orbit in 2018, and sending people to an asteroid to be captured and placed in lunar orbit ten years later.
+
+It's impossible to say what other companies will join this modern era of space exploration, or where it will lead. It seems certain now that at some point we will venture at least as far as Mars. Beyond that, missions to the asteroid belt are certainly far off, although not impossible. One thing's for certain though; whilst today's space missions may not have the fevered rush of excitement that those of the late 60's did, the future for the exploration of our universe is no less vital, and moving faster than ever.
