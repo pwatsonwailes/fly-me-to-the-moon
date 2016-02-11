@@ -90,7 +90,7 @@ As a result, the newly established European Space Agency was contacted to see if
 
 Construction proceeded apace, but not altogether smoothly. Two years later, the project was already 30% over budget and three months behind schedule. And then there was the Challenger disaster. Work on the US space program shuddered to a halt, with the entire Shuttle fleet grounded. Hubble was now complete though, and powered up ready to be launched. To keep the delicate instruments from damage, the team kept it in a clean room, filled with nitrogen and powered up, until it could be launched. The operation to keep it ready cost an eye-watering $6 million a month. The delay was useful though, as the team hadn't yet actually written the software to make the telescope work. In the following four years, they worked to get it ready.
 
-<figure class=\"media_widget col col-xs-8 col-left\">
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
 ![The Hubble mirror being polished](/fly-me-to-the-moon/piece_images/hubble_mirror.jpg)
 <figcaption>The mirror for Hubble, undergoing polishing</figcaption>
 </figure>
@@ -107,19 +107,21 @@ He declared the office no more, and cede powers to Boris Yeltsin. The same day, 
 
 ### Hubble Triumphant
 
-<figure class=\"media_widget col col-xs-8 col-left\">
+<figure class=\"media_widget col col-xs-6 col-left\">
 ![Hubble being fixed](/fly-me-to-the-moon/piece_images/hubble_fix.jpg)
 <figcaption>A spacewalk as part of the fixing of the Hubble mirror</figcaption>
 </figure>
 
 In NASA, the broken Hubble was problematic, but not awful. There had always been plans in place for servicing missions, so the team did the best they could for three years while they waited. Finally, in December of 1993, the optics were repaired by five EVAs with shuttle mission STS-61, conducted from the new Endeavour, which had had its maiden flight just a year before.
 
-<figure class=\"media_widget col col-xs-8 col-left\">
+<figure class=\"media_widget\">
 ![Hubble in space](/fly-me-to-the-moon/piece_images/hubble_space.jpg)
 <figcaption>Hubble as seen after the completed servicing</figcaption>
 </figure>
 
-In January, NASA declared the mission a complete success. It would mark the start of a period of astronomy unmatched in both the beauty of its images, and the importance of the secrets it would reveal, looking back to the start of the universe, and forwards into its future. Through Hubble, the world watched comet Shoemaker-Levy 9 collide with Jupiter in 1994; the first time such impacts had been observed. It imaged galaxies billions of lightyears away, watched the first predicted reappearance of a supernova, and imaged the birth of stars in the Pillars of Creation.
+In January, NASA declared the mission a complete success.
+
+The following period of operation, and the sights Hubble would unveil would mark the start of a period of astronomy unmatched in both the beauty of its images, to say nothing of the value of the scientific output. The bus-sized telescope would look back to the start of the universe, and forwards into its future. Through Hubble, the world watched comet Shoemaker-Levy 9 collide with Jupiter in 1994; the first time such impacts had been observed. It imaged galaxies billions of lightyears away, watched the first predicted reappearance of a supernova, and imaged the birth of stars in the Pillars of Creation.
 
 hubble_deep_field.png
 saturn_aurora.jpg
@@ -141,7 +143,7 @@ Finally, they discussed the idea of a joint space station. The early components,
 
 The timing was perfect. The Russians had been planning Mir 2, but hadn't the funds to complete such a project, let alone to run both it and Mir. Further, whilst the Americans hadn't yet invented technologies for solving many of the challenges faced with running a space station. Their focus on the Apollo and Shuttle programs had left them to fall behind, whilst the Russians had been running stations for years. The Russian team launched the first part in November 1998, named Zarya, meaning sunrise. Weighing over 19 tonnes, it was blasted in to space atop a Proton-K rocket. Two weeks later, the Space Shuttle arrived with the second module, named Unity. The creation of the ISS had begun.
 
-<figure class=\"media_widget col col-xs-8 col-left\">
+<figure class=\"media_widget col col-xs-6 col-left\">
 ![The ISS at 2 modules](/fly-me-to-the-moon/piece_images/zarya_unity.jpg)
 <figcaption>Zarya and Unity modules attach to create the ISS</figcaption>
 </figure>
