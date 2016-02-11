@@ -11,7 +11,7 @@ export default class YouTube extends React.Component {
 		return (
 			React.createElement("div", { className: 'media_widget youtube ' + classes, key: this.props.key },
 				React.createElement("figure", { className: 'video_container' },
-					React.createElement("iframe", { src: 'https://www.youtube.com/embed/' + this.props.sourceId, className: 'youtube' })
+					React.createElement("iframe", { src: 'https://www.youtube.com/embed/' + this.props.sourceId + '?iv_load_policy=3', className: 'youtube' })
 				)
 			)
 		)
