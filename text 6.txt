@@ -114,14 +114,16 @@ He declared the office no more, and cede powers to Boris Yeltsin. The same day, 
 
 In NASA, the broken Hubble was problematic, but not awful. There had always been plans in place for servicing missions, so the team did the best they could for three years while they waited. Finally, in December of 1993, the optics were repaired by five EVAs with shuttle mission STS-61, conducted from the new Endeavour, which had had its maiden flight just a year before.
 
+In January, NASA declared the mission a complete success.
+
+The following period of operation, and the sights Hubble would unveil would mark the start of a period of astronomy unmatched in both the beauty of its images, to say nothing of the value of the scientific output. The bus-sized telescope would look back to the start of the universe, and forwards into its future. Through Hubble, the world watched comet Shoemaker-Levy 9 collide with Jupiter in 1994; the first time such impacts had been observed. It imaged galaxies billions of lightyears away, watched the first predicted reappearance of a supernova, and imaged the birth of stars in the Pillars of Creation.
+
 <figure class=\"media_widget\">
 ![Hubble in space](/fly-me-to-the-moon/piece_images/hubble_space.jpg)
 <figcaption>Hubble as seen after the completed servicing</figcaption>
 </figure>
 
-In January, NASA declared the mission a complete success.
-
-The following period of operation, and the sights Hubble would unveil would mark the start of a period of astronomy unmatched in both the beauty of its images, to say nothing of the value of the scientific output. The bus-sized telescope would look back to the start of the universe, and forwards into its future. Through Hubble, the world watched comet Shoemaker-Levy 9 collide with Jupiter in 1994; the first time such impacts had been observed. It imaged galaxies billions of lightyears away, watched the first predicted reappearance of a supernova, and imaged the birth of stars in the Pillars of Creation.
+Further, it demonstrated incontrovertibly the value of the Space Shuttle. The dramatic craft scored another PR win in 1995, when for the first time, the US Space Shuttle Atlantis docked with Russian Mir Space Station. By this time, the Buran program had been cancelled, amidst a pained Russian economy. Further, the Baikonur Cosmodrome, not being located in Russia, forced the new country to sign a lease with Kazakhstan, allowing continued use of the site.
 
 hubble_deep_field.png
 saturn_aurora.jpg
@@ -130,8 +132,6 @@ hubble_mystic_mountain_2.jpg
 hubble_emission_nebula.jpg
 hubble_pillars_creation.jpg
 hubble_butterfly_nebula.jpg
-
-Further, it demonstrated incontrovertibly the value of the Space Shuttle. The dramatic craft scored another PR win in 1995, when for the first time, the US Space Shuttle Atlantis docked with Russian Mir Space Station. By this time, the Buran program had been cancelled, amidst a pained Russian economy. Further, the Baikonur Cosmodrome, not being located in Russia, forced the new country to sign a lease with Kazakhstan, allowing continued use of the site.
 
 ### The ISS Takes Flight
 

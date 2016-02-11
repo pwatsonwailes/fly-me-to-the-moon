@@ -67,21 +67,20 @@ This was possible as it was required that one astronaut was to be kept aware at 
 
 64 hours into the flight, the crew began to prepare for Lunar Orbit Insertion, to fly around the far side of the moon. This manoeuvre had to be performed perfectly, and on the far side of the Moon, out of contact with the Earth. After Mission Control polled for a \"go/no go\" decision, the crew was told they were Go. Thus, at 68 hours and 58 minutes and travelling at 24,200 mph (38,938 km/hr), the crew and their ship shot behind the Moon and out of radio contact with the Earth.
 
-The rocket engines now fired and burned for 4 minutes and 13 seconds, placing the Apollo 8 spacecraft in orbit around the Moon. They'd spend the next 20 hours in orbit, flying around it ten times, orbiting at adsf. After coming back around and resuming contact with Earth, Lovell reported on the status of the spacecraft and then became the first man to give a description of a first-hand close-up look at the lunar surface:
-
 <figure class=\"media_widget col col-left col-xs-6\">
 <img src=\"/fly-me-to-the-moon/piece_images/apollo_8_lunar_surface.jpg\" alt=\"The Moon as seen from Apollo 8\">
-<figcaption>The Moon, as photographed by the crew of Apollo 8</figcaption>
+<figcaption>The Moon as seen from Apollo 8</figcaption>
 </figure>
+<figure class=\"media_widget col col-left col-xs-6\">
+<img src=\"/fly-me-to-the-moon/piece_images/earthrise.jpg\" alt=\"Earthrise\">
+<figcaption>Earthrise, only seen by orbiting spacecraft</figcaption>
+</figure>
+
+The rocket engines now fired and burned for 4 minutes and 13 seconds, placing the Apollo 8 spacecraft in orbit around the Moon. They'd spend the next 20 hours in orbit, flying around it ten times, orbiting at adsf. After coming back around and resuming contact with Earth, Lovell reported on the status of the spacecraft and then became the first man to give a description of a first-hand close-up look at the lunar surface:
 
 > The Moon is essentially grey, no color; looks like plaster of Paris or sort of a grayish beach sand. We can see quite a bit of detail. The Sea of Fertility doesn't stand out as well here as it does back on Earth. There's not as much contrast between that and the surrounding craters. The craters are all rounded off. There's quite a few of them, some of them are newer. Many of them look like—especially the round ones—look like hit by meteorites or projectiles of some sort. Langrenus is quite a huge crater; it's got a central cone to it. The walls of the crater are terraced, about six or seven different terraces on the way down.
 
 On its forth orbit, for the first time, the crew witnessed something else no other humans had ever seen: Earthrise. Borman was the first to notice it and called to the others, while taking a black-and-white photo. In the ensuing scramble Anders took the more famous colour photo, later picked by Life magazine as one of its hundred photos of the century.
-
-<figure class=\"media_widget col col-left col-xs-6\">
-<img src=\"/fly-me-to-the-moon/piece_images/earthrise.jpg\" alt=\"Earthrise\">
-<figcaption>Earthrise, a view only possible thanks to the orbit of a spacecraft</figcaption>
-</figure>
 
 > Anders: Oh my God! Look at that picture over there! There's the Earth coming up. Wow, is that pretty.
 > Borman: Hey, don't take that, it's not scheduled. (joking)
