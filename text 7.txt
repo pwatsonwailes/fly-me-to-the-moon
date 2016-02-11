@@ -1,19 +1,73 @@
-**The 21st Century has arrived**. 
+**The 21st Century has arrived**. Mankind continues to send probes around the solar system and run missions to the ISS, adding components. February of 2001 saw the 100th space walk for America, with the Destiny module installed in position, adding laboratory facilities, and slowly expanding the station further. However, interest amongst the general global populous waned in the intervening years. With nothing like the Apollo missions to fire the imagination of the public, people had begun to view the ongoing mission of space exploration as just part and parcel of everyday life. A few still had imaginations fired by the promise of the stars though, and thus in April the world got it's first space tourist, American engineer and multimillionaire Dennis Tito. Launched into space with a Russian crew after being turned down by NASA, Tito spent 7 days, 22 hours and 4 minutes in space, performing scientific testing as part of the crew of the Soyuz TM-32 mission.
 
+Whilst this was a controversial move, it marked a significant milestone in the history of spaceflight - what had previously been only in the realm of governments and the lucky chosen few who had "The Right Stuff", was now starting to become something that private businesses could conceivably get involved with. The starting gun had fired a few years earlier, and now wheels were in motion that would lead to a renewed interest in space.
 
+### The X Factor
 
-Feb 2001 - 100th us space walk, destiny installed on ISS
-Apr 2001 - First Tourist in Space, Dennis Tito
-Feb 2003 - Space Shuttle Columbia Disaster
-Oct 2003 - First Chinese Manned Spaceflight
-Jan 2004 - Spirit and Opportunity land on Mars
-Jun 2004 - First Manned Private Space Flight
-Jul 2005 - Space Shuttle Returns to Flight
-Dec 2010 - First Commercial Orbit and Return
+The Ansari X Prize was first set up in 1996. In 1919, the Orteig Prize was created, offering a $25,000 reward put up by hotelier Raymond Orteig for the first non-stop flight between New York and Paris. The prize would be won by Charles Lindbergh, in the modified single-engined Spirit of St. Louis. Now others looked to that challenge as inspiration. An idea is spawned, and Peter Diamandis offers a $10 million reward for the first non-government entity to to launch a reusable manned three-passenger vehicle into space twice in under a fortnight. The concept sparked interest, and teams start to be put together to answer the call.
+
+One team put together was Mojave Aerospace Ventures, founded by Microsoft co-founder Paul Allen and aerospace engineer and founder of Scaled Composites, Burt Rutan. Rutan is a maverick, designing outlandish-looking machines, notable for their light weight and efficiency. They come up with the concept for Scaled Composites model 316, which will become known as SpaceShipOne. It's goals are simple:
+
+* Carry a crew of three in a pressurised cabin
+* Use a rocket to travel from 15km (9.3 miles) to above the Kármán line, 100 km (62 miles) up, considered the boundary between space and the Earth's atmosphere
+* Reenter the atmosphere and glide back to ground
+* Land on a normal runway
+
+The craft is designed to be lifted to an initial height by a second craft named White Knight, which carries it to the initial 15km height, before detaching and igniting the rockets. It's a novel design, and looks nothing like anything built to travel to space before it.
+
+<figure class=\"media_widget col col-xs-6 col-left\">
+![SpaceShipOne at takeoff](/fly-me-to-the-moon/piece_images/SpaceShipOne_takeoff.jpg)
+<figcaption>SpaceShipOne on its final take-off</figcaption>
+</figure>
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
+![SpaceShipOne landing](/fly-me-to-the-moon/piece_images/SpaceShipOne_landing.jpg)
+<figcaption>SpaceShipOne returning to land</figcaption>
+</figure>
+
+Elsewhere, in 2000, Amazon founder Jeff Bezos incorporates the company Blue Origin, but keeps it a closely guarded secret. Finally, in 2002, Elon Musk, formally of PayPal, grows frustrated with his attempts to buy Russian ICBMs with the aim of starting a company with interest in space, and so creates SpaceX.
+
+However, whilst the public may have grown complacent, everyone was about to get a stark reminder as to just how incredibly dangerous and difficult space travel is.
+
+### Columbia
+
+January 16th 2003. Columbia sits on the pad ready to ignite its engines and solid rocket boosters to take it to space. Its engines fire up, the bolts holding it down are blown, and the 113th Shuttle launch begins. However, at 82 seconds after launch, a large piece of foam breaks away from the huge external tank. The foam thumps into the left wing, blowing a hole in it. This isn't noticed by anyone on the ground at the time though, and when it's found during review, it'll be considered non-hazardous.
+
+The Shuttle carries on on its way to space, and the crew performs their mission. Everything goes relatively smoothly, and around two weeks later, on February 1st, the crew begins re-entry. The hole which had been opened on launch now began to heat up as the Shuttle plunged into the atmosphere at around 25 times the speed of sound. The heat on the leading edges of the wings rose to a maximum temperature around 3,000 °F (1,650 °C). The hole began to rupture further. At 9:00, around 16 minutes into re-entry, the craft tore itself apart, exploding in the morning sky, with the loss of all seven crew members.
+
+In the aftermath, Space Shuttle flights were suspended for more than two years. The ISS had to rely entirely on Russian resupply missions for a total of 29 months. Although it would fly again, the Shuttle was now on borrowed time.
+
+### A Prize is Won
+
+The X prize continues to heat up. More than two dozen groups are competing, some with more success than others. In October of 2003, China sent Yang Liwei, it's country's first astronaut into space using a Long March 2F rocket and the Shenzhou 5 spacecraft. That year also saw the first interest in Blue Origin, when Bezos becomes unable to hide it any longer after beginning to buying land in Texas.
+
+At Scaled Composites, work and testing was going well on both the White Knight mothership and SpaceShipOne itself. White Knight has successfully flown a year earlier, and the program was made public in April, just prior to its first test in May. As the year progresses, further tests see the team advance further, leading to a powered test on December 17.
+
+It's the following year, 2004, that sees the next major advances. First, in January, NASA landed the twin craft Spirit and Opportunity on Mars, beginning what will be the longest exploration of the red planet to date.
+
+YouTube XRCIzZHpFtY
+
+Spirit would work until 2010, whilst Opportunity is still working today. Between their to-date 18 years of operational time, they would send back huge amounts of data, expanding our knowledge of our favourite neighbour.
+
+Of equal importance though were the events of June, with SpaceShipOne flight 15P, when the SpaceShipOne craft first successfully reaches space, crossing the Kármán line by 124 meters, and therefore travelling to space for around 10 seconds. Two further flights, designed to complete the X Prize challenge followed on September 19th, and again on October 4th, the 47th anniversary of the Sputnik 1 launch.
+
+With the two flights in less than two weeks, the company had claimed their prize, and the list of space firsts had a new entry: the first private manned spaceflight, in a reusable craft.
+
+### The Privateer Rockets
+
+After almost two and a half years of grounding following Columbia, the Space Shuttle was finally returned to flight status. Except for one final mission to repair the Hubble Space Telescope, its missions would now be flown only to the ISS, allowing a potential safe haven in case of damage to the orbiter. It was no longer trusted. Nevertheless, at the end of 2005, with the addition of an external stowage platform (named ESP-2), ISS had its 15th component.
+
+At SpaceX, the team had been busy developing their first rocket, Falcon 1. Preparations were underway for the first test. In March 2006, 
+
+Mar 2006 - First test flight of Falcon 1, failure, fuel line leak and subsequent fire
+Mar 2007 - First successful test flight of Falcon 1
+Sep 2008 - The first privately funded, liquid-fueled rocket (Falcon 1) to reach orbit
+Dec 2010 - First Commercial Orbit and Return (Falcon 9 and Dragon)
 Jul 2011 - Final Flight of the Space Shuttle Program
-May 2012 - First ISS Commercial Supply Mission
+May 2012 - First ISS Commercial Supply Mission (Dragon)
 Aug 2012 - Curiosity Rover Lands on Mars
 Aug 2012 - First Man-made Spacecraft in Interstellar Space, Voyager 1
 Nov 2014 - First Spacecraft to Land on a Comet
 Jul 2015 - New Horizons Arrives at Pluto
+Nov 2015 - Blue Origin launches and lands the New Shepard, marking the first time a booster has flown to space and returned
+Dec 2015 - The first landing of a first stage orbital capable rocket (Falcon 9)
 Jan 2016 - Blue Origin's New Shepard becomes the first reusable rocket
