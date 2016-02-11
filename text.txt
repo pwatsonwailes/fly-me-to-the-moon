@@ -34,13 +34,13 @@ At the same time, Korolev had been recalled from the Gulag and transported to Ge
 
 Back in the Alps, von Braun was able to convince the SS Major in charge that if they were grouped together, they'd be an easy target for the US bombing raids and other retaliatory strikes. They were therefore ordered to spread out into a collection of villages. As a result, when it was announced that Hitler had committed suicide and the SS troops went to find the scientists, they only found empty beds. Von Braun and his people had swiftly fled to Austria, the moment they could. On May 2, 1945, upon finding an American private from the U.S. 44th Infantry Division, von Braun's brother and fellow rocket engineer, Magnus, approached the soldier on a bicycle, calling out in broken English:
 
-> \"My name is Magnus von Braun. My brother invented the V-2. We want to surrender.\"
+> My name is Magnus von Braun. My brother invented the V-2. We want to surrender.
 
 ### The Post-War Scientists
 
 In 1943, Werner Osenberg, the head of the German Military Research Association, or Wehrforschungsgemeinschaft, had created a list of the top scientists and engineers of the age. In 1945, Staver managed to get hold of that list, and used it to create a hit list of people the Americans wanted to capture. At the top, was von Braun. His knowledge would, they knew, prove invaluable. Thus the capture of von Braun was a huge coup of the Americans, and the loss felt by the Soviets, despite their creation of their own team, was equally huge. Stalin's reaction perhaps best sums up the feeling of the Soviet leadership:
 
-> \"This is absolutely intolerable. We defeated the Nazi armies; we occupied Berlin and Peenemunde, but the Americans got the rocket engineers. What could be more revolting and inexcusable?\"
+> This is absolutely intolerable. We defeated the Nazi armies; we occupied Berlin and Peenemunde, but the Americans got the rocket engineers. What could be more revolting and inexcusable?
 
 Staver was then tasked with Operation Overcast, the American plan to interrogate the German scientists. What von Braun and the others had to say though made him decide to write to his superiors, and urge their evacuation. As it grew, the beginnings of Operation Paperclip were forming. In total, over 1,500 German intellectuals would be brought to America from previously occupied European countries, with the aims of denying the advanced German scientific expertise to the Soviet Union and United Kingdom, whilst also preventing Germany from redeveloping its military research.
 
@@ -60,6 +60,8 @@ In the meantime, things weren't going well in America for von Braun and his peop
 In 1952, tensions between the USSR and America grew further, as America tested the first hydrogen bomb, then the most powerful weapon ever detonated, and by a huge margin. Ivy Mike as it was known, was an 74 tonne building, designed to test the theory of a Teller-Ulam fusion bomb. 
 
 The 10.4 megaton blast was almost 700 times more powerful than the one dropped on Hiroshima. It left a crater 1.2 miles wide and 164 feet (50 metres) deep and blasted radioactive coral into the stratosphere, from where it fell to land on ships as far as 35 miles away. The Soviets responded by detonating their own a year later. Which didn't exactly cool things down.
+
+YouTube NNcQX033V_M
 
 Whilst Gröttrup had been sidelined at the turn of the 50's, Sergei Korolev was still active and had been tasked with a new challenge: create a rocket with enough range to reach America, whilst carrying a five tonne payload, the expected weight of a thermonuclear device. Meanwhile, in back America, von Braun was tasked with creating short range rockets, his dreams of creating rockets to send humans to space in tatters. Instead, they were working on the Hermes series of rockets, which were around 25% of the size of a V-2, with a maximum range of just 38 miles. 
 
@@ -98,19 +100,21 @@ In Baikonur, on 21 August 1957, after two failed launches, Korolev was in a diff
 
 Finally on 4 October 1957, at 19:28, on an R-7, the R-7 launched, and at 00:03, Sputnik became the first object to be placed in orbit by mankind. The USSR had won the race to space.
 
+YouTube KMFvr1VwSSo
+
 ### A Call to Space
 
 The effects on the two world superpowers couldn't have been more different. In the USSR, Khrushchev was pleased with this success, and decreed that it should be followed up by an encore for the 40th anniversary of the October Revolution, on November 3rd, just 30 days away. The result of that would be Sputnik 2. In the US though, the launch was met with incredulity and disbelief. Indeed, Vice President Richard Nixon proclaimed it a hoax. When they realised however that both the launch and Sputnik were in fact real, the collective Western governments concluded that the Soviet ICBM program must more advanced than it actually was. This was a belief Khrushchev was more than happy to encourage, as he stated in an interview that the USSR had all the rockets, of whatever capacity, that it needed.
 
 The result of Khrushchev's pronouncement was Sputnik 2, which put the first living creature in to space; a small stray dog, named Laika. Before the launch, Dr. Vladimir Yazdovsky, one of the scientists on the project, took Laika home to play with his children. In a book chronicling the story of Soviet space medicine, he remembered:
 
-> \"I wanted to do something nice for her: She had so little time left to live.\"
+> I wanted to do something nice for her: She had so little time left to live.
 
 Sadly, after only a few hours in space, Laika died of overheating, a fact that wasn't revealed until as recently as 2002.
 
-Finally, after years of being held back, and being told that the US Navy must be given a shot before he can have his turn, von Braun is given the go-ahead to attempt to put an American satellite into orbit. He named it Explorer. The Navy prepared it's own Vanguard rocket, which was as then untested. The world's media turned up, watched the rocket lift three feet from the pad, and then explode in a huge fireball. The only surviving piece was the satellite, which fell to the ground and began to transmit. The press response was scathing, labelling it "Kaputnik" and other less than flattering names. As Time Magazine noted:
+Finally, after years of being held back, and being told that the US Navy must be given a shot before he can have his turn, von Braun is given the go-ahead to attempt to put an American satellite into orbit. He named it Explorer. The Navy prepared it's own Vanguard rocket, which was as then untested. The world's media turned up, watched the rocket lift three feet from the pad, and then explode in a huge fireball. The only surviving piece was the satellite, which fell to the ground and began to transmit. The press response was scathing, labelling it \"Kaputnik\" and other less than flattering names. As Time Magazine noted:
 
-> But in the midst of the cold war, Vanguard's cool scientific goal proved to be disastrously modest: the Russians got there first. The post-Sputnik White House explanation that the U.S. was not in a satellite "race" with Russia was not just an after-the-fact alibi. Said Dr. Hagen ten months ago: \"We are not attempting in any way to race with the Russians.\" But in the eyes of the world, the U.S. was in a satellite race whether it wanted to be or not, and because of the Administration's costly failure of imagination, Project Vanguard shuffled along when it should have been running. It was still shuffling when Sputnik's beeps told the world that Russia's satellite program, not the U.S.'s, was the vanguard.
+> But in the midst of the cold war, Vanguard's cool scientific goal proved to be disastrously modest: the Russians got there first. The post-Sputnik White House explanation that the U.S. was not in a satellite \"race\" with Russia was not just an after-the-fact alibi. Said Dr. Hagen ten months ago: \"We are not attempting in any way to race with the Russians.\" But in the eyes of the world, the U.S. was in a satellite race whether it wanted to be or not, and because of the Administration's costly failure of imagination, Project Vanguard shuffled along when it should have been running. It was still shuffling when Sputnik's beeps told the world that Russia's satellite program, not the U.S.'s, was the vanguard.
 
 Whether the US wanted to be in a race was irrelevant - the media had deemed it so, and now it was up to them to respond. With no other option, the administration gave von Braun and his team their shot.
 

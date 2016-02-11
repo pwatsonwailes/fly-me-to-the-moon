@@ -1,4 +1,4 @@
-**It's now 1968**, and the world wakes up and reads the daily news. America's war in Vietnam continues to deteriorate. The Battle of Khe Sanh, which will be one of the most controversial battles of the war is well underway, and the Battle of Lima Site 85 has just resulted in the largest single ground combat loss of U.S. Air Force troops. Aer Lingus Flight 712 has crashed only a few days before en route from Cork to London near Tuskar Rock, Wexford, killing 61 passengers and crew. Only a week ago, Charles "Charlie" Chaplin Jr died aged just 42.
+**It's now 1968**, and the world wakes up and reads the daily news. America's war in Vietnam continues to deteriorate. The Battle of Khe Sanh, which will be one of the most controversial battles of the war is well underway, and the Battle of Lima Site 85 has just resulted in the largest single ground combat loss of U.S. Air Force troops. Aer Lingus Flight 712 has crashed only a few days before en route from Cork to London near Tuskar Rock, Wexford, killing 61 passengers and crew. Only a week ago, Charles \"Charlie\" Chaplin Jr died aged just 42.
 
 And now, on March 27, while on a routine training flight from Chkalovsky Air Base, Yuri Gagarin and flight instructor Vladimir Seryogin are killed in a MiG-15 crash near the town of Kirzhach. 
 
@@ -10,8 +10,8 @@ In the aftermath of Apollo 1, changes are being made, and the team works on tryi
 
 > The guy comes up on the elevator and he says, 'You like me to put handcuffs on you, or are you going to go by yourself?' The engineer dropped his jaw, but he left. Maybe this system is wrong, but I have had pretty good success with it. If I don't do a good job, I get out. I can't compromise.
 
-<figure class="media_widget col-inverse col-xs-6 col-right">
-<img src="/fly-me-to-the-moon/piece_images/wendt.jpg" alt="Guenter Wendt">
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
+<img src=\"/fly-me-to-the-moon/piece_images/wendt.jpg\" alt=\"Guenter Wendt\">
 <figcaption>Guenter Wendt with Commander Walter Schirra</figcaption>
 </figure>
 
@@ -37,21 +37,21 @@ Whilst still in his position though, Webb had been informed by the CIA that it a
 
 Finally, in December, America drove the final nail into the coffin of the dreams of the Soviet team, with the launch of Apollo 8. For Wernher von Braun, the man who imagined up the mighty Saturn V, the dream of putting a man of the moon was about to come a whole lot closer.
 
-<figure class="media_widget">
-<img src="/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg" alt="Apollo 8 launch">
+<figure class=\"media_widget\">
+<img src=\"/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg\" alt=\"Apollo 8 launch\">
 <figcaption>The Apollo 8 launch</figcaption>
 </figure>
 
 ### Apollo 8
 
-It's December 21st 1968, and Apollo 8 sits on the pad at the Kennedy Space Center. It's to be the first human spaceflight from Kennedy, and tensions are mounting. Work on the Lunar Module has proved slow, and has delayed progress. As a result, the decision was been made by George Low, the Manager of the Apollo Spacecraft Program Office, back in August to change the mission to a more ambitious goal: a lunar orbital flight. This mission won't require the Lunar Module, but it'll make the first human flight around the moon. The crew, consisting of Commander Frank Borman, Command Module Pilot James "Jim" Lovell and Lunar Module Pilot William Anders have had an accelerated training schedule, their mission having been bumped up by several months. It's left them with less time for training and preparation.
+It's December 21st 1968, and Apollo 8 sits on the pad at the Kennedy Space Center. It's to be the first human spaceflight from Kennedy, and tensions are mounting. Work on the Lunar Module has proved slow, and has delayed progress. As a result, the decision was been made by George Low, the Manager of the Apollo Spacecraft Program Office, back in August to change the mission to a more ambitious goal: a lunar orbital flight. This mission won't require the Lunar Module, but it'll make the first human flight around the moon. The crew, consisting of Commander Frank Borman, Command Module Pilot James \"Jim\" Lovell and Lunar Module Pilot William Anders have had an accelerated training schedule, their mission having been bumped up by several months. It's left them with less time for training and preparation.
 
 The upshot is that the new mission, if successful, will allow the team to test the lunar landing procedures that would otherwise have to wait until Apollo 10, the last mission before the planned lunar landing. It'll also mean almost certainly beating the Soviets to a circumlunar flight, providing a huge boost in morale. There was a lot of pressure to get a human mission to the moon first, as in September the Soviet team had launched the Zond 5 with a Proton-K rocket, which had taken amongst other things two Russian tortoises around the moon and back again. The fear was that with that success, surely a manned mission couldn't be far off.
 
 The night before the launch, the Apollo 8 crew received a visit from Charles Lindbergh and his wife Anne at Kennedy Space Center. They talked about how, before his legendary 1927 flight aboard the Spirit of St. Louis from America to France, Lindbergh had used a piece of string to measure the distance from New York City to Paris on a globe to calculate the fuel needed for the flight. Saturn V would burn tens times the amount Lindbergh had used every second. The next day, from a dune near the launch site, the Lindberghs settled in to watch the launch of Apollo 8.
 
-<figure class="media_widget">
-<img src="/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg" alt="Apollo 8 being taken to the pad">
+<figure class=\"media_widget\">
+<img src=\"/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg\" alt=\"Apollo 8 being taken to the pad\">
 <figcaption>The Apollo 8 Saturn V rocket on the Mobile Launcher Platform, being moved to launch</figcaption>
 </figure>
 
@@ -61,16 +61,16 @@ YouTube FzCsDVfPQqk
 
 Once the vehicle reached Earth orbit, both the crew onboard and the Houston flight controllers on the ground spent the next 2 hours and 38 minutes checking all was ready for the journey to the moon, while the rocket orbited the Earth. Having satisfied themselves that everything was in good order, less than three hours after launch, the stage IV booster fired, and the crew were off to the moon. 
 
-As Apollo 8 started its journey, the crew began to put the ship into a "barbecue" roll, or Passive Thermal Control (PTC) to give it its proper name. This would mean the spacecraft would rotate steadily around once every hour. This slow roll allowed for even heat distribution as it was heated by the Sun. The part under direct sunlight could reach temperatures as high as 392 °F (200 °C), while the shaded side plunged to −148 °F (−100 °C). If these temperatures were sustained, they could cause the heat shield which would keep the crew alive in reentry to crack, or cause other damage to the craft. This roll was a constant manoeuvre, requiring refinement around twice per revolution to ensure the ship stayed pointing in the right direction, and that the roll was kept as tight as possible.
+As Apollo 8 started its journey, the crew began to put the ship into a \"barbecue\" roll, or Passive Thermal Control (PTC) to give it its proper name. This would mean the spacecraft would rotate steadily around once every hour. This slow roll allowed for even heat distribution as it was heated by the Sun. The part under direct sunlight could reach temperatures as high as 392 °F (200 °C), while the shaded side plunged to −148 °F (−100 °C). If these temperatures were sustained, they could cause the heat shield which would keep the crew alive in reentry to crack, or cause other damage to the craft. This roll was a constant manoeuvre, requiring refinement around twice per revolution to ensure the ship stayed pointing in the right direction, and that the roll was kept as tight as possible.
 
 This was possible as it was required that one astronaut was to be kept aware at all times, to ensure someone was always ready to respond to any issues. However, between the constant communication with the ground, and the noises of the ship, sleeping wasn't particularly easy anyway. By the second day in to the flight however, the difficulty posed in sleeping in space, combined with space sickness created by the increase space to move and the team therefore moving around the craft grew so great that the crew gave up on their planned schedule and simply slept when they could, with whoever was least tired staying awake. 
 
-64 hours into the flight, the crew began to prepare for Lunar Orbit Insertion, to fly around the far side of the moon. This manoeuvre had to be performed perfectly, and on the far side of the Moon, out of contact with the Earth. After Mission Control polled for a "go/no go" decision, the crew was told they were Go. Thus, at 68 hours and 58 minutes and travelling at 24,200 mph (38,938 km/hr), the crew and their ship shot behind the Moon and out of radio contact with the Earth.
+64 hours into the flight, the crew began to prepare for Lunar Orbit Insertion, to fly around the far side of the moon. This manoeuvre had to be performed perfectly, and on the far side of the Moon, out of contact with the Earth. After Mission Control polled for a \"go/no go\" decision, the crew was told they were Go. Thus, at 68 hours and 58 minutes and travelling at 24,200 mph (38,938 km/hr), the crew and their ship shot behind the Moon and out of radio contact with the Earth.
 
 The rocket engines now fired and burned for 4 minutes and 13 seconds, placing the Apollo 8 spacecraft in orbit around the Moon. They'd spend the next 20 hours in orbit, flying around it ten times, orbiting at adsf. After coming back around and resuming contact with Earth, Lovell reported on the status of the spacecraft and then became the first man to give a description of a first-hand close-up look at the lunar surface:
 
-<figure class="media_widget col col-left col-xs-6">
-<img src="/fly-me-to-the-moon/piece_images/apollo_8_lunar_surface.jpg" alt="The Moon as seen from Apollo 8">
+<figure class=\"media_widget col col-left col-xs-6\">
+<img src=\"/fly-me-to-the-moon/piece_images/apollo_8_lunar_surface.jpg\" alt=\"The Moon as seen from Apollo 8\">
 <figcaption>The Moon, as photographed by the crew of Apollo 8</figcaption>
 </figure>
 
@@ -78,8 +78,8 @@ The rocket engines now fired and burned for 4 minutes and 13 seconds, placing th
 
 On its forth orbit, for the first time, the crew witnessed something else no other humans had ever seen: Earthrise. Borman was the first to notice it and called to the others, while taking a black-and-white photo. In the ensuing scramble Anders took the more famous colour photo, later picked by Life magazine as one of its hundred photos of the century.
 
-<figure class="media_widget col col-left col-xs-6">
-<img src="/fly-me-to-the-moon/piece_images/earthrise.jpg" alt="Earthrise">
+<figure class=\"media_widget col col-left col-xs-6\">
+<img src=\"/fly-me-to-the-moon/piece_images/earthrise.jpg\" alt=\"Earthrise\">
 <figcaption>Earthrise, a view only possible thanks to the orbit of a spacecraft</figcaption>
 </figure>
 
@@ -112,7 +112,7 @@ The N1 would attempt two more launches in 1971 and 1972. Both would also result 
 
 ### Apollo 11
 
-Back in 1969 however, excitement grows. The Saturn V has performed flawlessly, and preparations are being made for its most important mission: the landing of man on the moon. The crew was to be Commander Niel Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin "Buzz" Aldrin. Originally, Jim Lovell had been slated for CMP, whilst Collins was slated to be the CMP on Apollo 8. However, Collins was bumped after needing surgery on his back. As a result, after Collins was medically cleared, the two men had swapped positions. Lovell was transferred to Apollo 11's backup crew, but promoted to be backup commander.
+Back in 1969 however, excitement grows. The Saturn V has performed flawlessly, and preparations are being made for its most important mission: the landing of man on the moon. The crew was to be Commander Niel Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin. Originally, Jim Lovell had been slated for CMP, whilst Collins was slated to be the CMP on Apollo 8. However, Collins was bumped after needing surgery on his back. As a result, after Collins was medically cleared, the two men had swapped positions. Lovell was transferred to Apollo 11's backup crew, but promoted to be backup commander.
 
 The rest of the backup crew consisted of CMP William Anders, and LMP Fred Haise. Lovell and Haise would be joined by Ken Mattingly, who had recently been moved from support crew into parallel training with Anders as backup CMP in case Apollo 11 was delayed, as the primary crew for the Apollo 13 mission. The support crew Capsule Communicators, known as CAPCOM, themselves also all astronauts were:
 

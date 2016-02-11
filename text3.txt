@@ -206,8 +206,8 @@ Korolev had even larger issues though. The Soviet leadership weren't willing to 
 
 The program was running in to problems though. A lack of budget, an overly ambitious design, and a temperamental engine were one thing, but crisis was closer to hand. On the 5th January 1966, he was taken in to hospital for surgery. What happened in the hospital is still disputed, with various accounts stating different things. Whatever the truth though, it didn't go well. His health continued to deteriorate, during his time there.
 
-<figure class="media_widget col col-xs-6 col-left">
-<img src="/fly-me-to-the-moon/piece_images/korolyev_kremlin_wall.jpg" alt="Korolev's tomb in the Kremlin Wall Necropolis">
+<figure class=\"media_widget col col-xs-6 col-left\">
+<img src=\"/fly-me-to-the-moon/piece_images/korolyev_kremlin_wall.jpg\" alt=\"Korolev's tomb in the Kremlin Wall Necropolis\">
 <figcaption>Korolev's tomb in the Kremlin Wall Necropolis</figcaption>
 </figure>
 
@@ -219,8 +219,8 @@ Under a policy instigated by Stalin, which his successors continued, Korolev's i
 
 Back in America, the desperate race to fulfil the government's command was causing development to run at breakneck speed. In December of 1964, Gemini's 6 & 7 made the first rendezvous in space, eventually coming within 1 ft of each other. Gemini 6 would then go on to land within 10 miles (18 km) of the intended target site, making it the first accurate atmospheric reentry.
 
-<figure class="media_widget col-inverse col-xs-6 col-right">
-<img src="/fly-me-to-the-moon/piece_images/pacific_gemini_7.jpg" alt="The Pacific, from Gemini 7">
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
+<img src=\"/fly-me-to-the-moon/piece_images/pacific_gemini_7.jpg\" alt=\"The Pacific, from Gemini 7\">
 <figcaption>The view of the Pacific ocean, from Gemini 7</figcaption>
 </figure>
 
@@ -228,14 +228,14 @@ Apollo 1 was scheduled to have served as the first manned test flight of the Apo
 
 Deke Slayton, who'd been one of the Mercury Seven, had been grounded after it had been found he had an erratic heart rate. Then grounded by the Air Force too, he'd become first unofficially, and then in 1963 officially the Coordinator of Astronaut Activities working as the head of astronaut selection. He had then moved on to become Director of Flight Crew Operations, and selected the first Apollo crew in January 1966. His choices were:
 
-* Virgil "Gus" Grissom as Command Pilot
+* Virgil \"Gus\" Grissom as Command Pilot
 * Edward White as Senior Pilot
 * Donn Eisele as Pilot.
 
 Eisele however suffered from dislocation of the shoulder twice while undergoing weightlessness training, and had to undergo surgery. In response, Slayton replaced him with Roger Chaffee, and NASA announced the crew selection on March 21, with James McDivitt, David Scott and Russell Schweickart named as the backup crew.
 
-<figure class="media_widget col col-xs-6 col-left">
-<img src="/fly-me-to-the-moon/piece_images/a1prayer.jpg" alt="The Apollo 1 crew photo">
+<figure class=\"media_widget col col-xs-6 col-left\">
+<img src=\"/fly-me-to-the-moon/piece_images/a1prayer.jpg\" alt=\"The Apollo 1 crew photo\">
 <figcaption>The crew of Apollo 1 with a model of the Command Module. From left to right: Ed White, Gus Grissom, and Roger Chaffee</figcaption>
 </figure>
 

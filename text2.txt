@@ -40,7 +40,7 @@ After months of preparation and testing, on July 28th 1960, a Vostok-L rocket wi
 
 More though, it was conclusive, incontrovertible proof that the USSR could send a man into space. With a ship that didn't need a pilot, just someone along for the ride, it was now just a matter of time.
 
-America hadn't even yet managed to get a crewed vessel off the ground. Attempting a launch test of the Mercury-Redstone 1 on November 7th, last minute problems caused an abort to be called. The flight was rescheduled for the 21st, and at 09:00 local time, the rocket fired, rose a few inches, and then immediately landed again. This lead to then procedures officer Gene Kranz, who would later become the NASA lead flight director dubbing it the "four inch flight".
+America hadn't even yet managed to get a crewed vessel off the ground. Attempting a launch test of the Mercury-Redstone 1 on November 7th, last minute problems caused an abort to be called. The flight was rescheduled for the 21st, and at 09:00 local time, the rocket fired, rose a few inches, and then immediately landed again. This lead to then procedures officer Gene Kranz, who would later become the NASA lead flight director dubbing it the \"four inch flight\".
 
 After which the capsule's escape rocket jettisoned itself, leaving the capsule behind. Then, three seconds later, the capsule itself deployed its drogue parachute, along with the the main and reserve parachutes moments later, ejecting the radio antenna in the process. The only thing that had been successfully launched was the escape rocket, which wasn't supposed to have done anything. Now though, there was a bigger problem: the active Redstone, with its full compliment of fuel, was now sitting on the launch pad with nothing whatsoever securing it.
 
@@ -50,7 +50,7 @@ YouTube 7O4V7JfeTSU
 
 Fortunately, good weather conditions allowed the flight director Chris Kraft to make the decision to simply leave it. Over the next day, the batteries ran down, and the oxidiser boiled away into the atmosphere. The failure and subsequent panic in the control room led Kraft to declare:
 
-> \"That is the first rule of flight control. If you don't know what to do, don't do anything.\"
+> That is the first rule of flight control. If you don't know what to do, don't do anything.
 
 ### Mounting Tensions and Soviet Disaster
 
@@ -96,7 +96,7 @@ Nevertheless, on April 12, 1961, 09:07 local time, Yuri Gagarin and the Vostock 
 
 One can only imagine what went through the minds of the farmer and her daughter, watching Gagarin in his bright orange cosmonaut suit and large white helmet, landing near them by parachute. He later recalled:
 
-> \"When they saw me in my space suit and the parachute dragging alongside as I walked, they started to back away in fear. I told them, don't be afraid, I am a Soviet citizen like you, who has descended from space and I must find a telephone to call Moscow!\"
+> When they saw me in my space suit and the parachute dragging alongside as I walked, they started to back away in fear. I told them, don't be afraid, I am a Soviet citizen like you, who has descended from space and I must find a telephone to call Moscow!
 
 Image	The Vostok 1 orbital flight path	map.svg
 
@@ -106,7 +106,7 @@ The Americans, used to being second by this point, send Alan Shepard less than a
 
 Prior to Gagarin reaching space, now US President John F. Kennedy hadn't been a particularly large supporter of the American manned space program. Having only been in the job for just over three months, it was a shock to be woken up, and told that the Soviets had managed what NASA had not. Just the previous month, NASA administrator James Webb had submitted a budget request to fund a Moon landing , aiming to be there before the end of the decade. Kennedy however rejected it, believing that the costs involved were just too high. He also had one eye on Vietnam and Laos, as well as the situations in Europe and Latin America. Indeed, in his inaugural address, he'd pledged to:
 
-> "...pay any price, bear any burden, meet any hardship, support any friend, oppose any foe, in order to assure the survival and success of liberty."
+> ...pay any price, bear any burden, meet any hardship, support any friend, oppose any foe, in order to assure the survival and success of liberty.
 
 Gagarin's flight forced his hand though. In light of the success of the Vostok 1 mission, Kennedy knew how the American public would respond emotionally. The sense of humiliation and fear was palpable. Seeking advice, he tasked the new Vice President, Lyndon B. Johnson with assessing the state of America's space program, and how NASA could rapidly advance and respond. The two options proposed in response were the establishment of an orbital space station, or putting a man on the Moon. Only those would carry the gravitas required to allow the American public to see itself as putting the Soviets back in their place. Johnson therefore turned to von Braun, who gave his estimates on the feasibility of each. Johnson brought the answers back to Kennedy, concluding that a manned Moon landing was difficult enough that neither side could currently achieve it, and that if they made it their sole aim, that the US could potentially beat the Soviets to the punch.
 
@@ -116,6 +116,6 @@ Kennedy took Johnson's advice, and launched what would become the Apollo program
 >
 > There is no strife, no prejudice, no national conflict in outer space as yet. Its hazards are hostile to us all. Its conquest deserves the best of all mankind, and its opportunity for peaceful cooperation may never come again. But why, some say, the Moon? Why choose this as our goal? And they may well ask, why climb the highest mountain? Why, 35 years ago, fly the Atlantic? Why does Rice play Texas?
 >
->We choose to go to the Moon! We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard; because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one we intend to win.
+> We choose to go to the Moon! We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard; because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one we intend to win.
 
 YouTube ouRbkBAOGEw
