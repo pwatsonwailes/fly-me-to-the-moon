@@ -1,5 +1,5 @@
 import React from 'react';
-import marked from 'marked';
+import Markdown from './react-markdown.js';
 import Image from './react-image.js';
 import Gallery from './react-gallery.js';
 import YouTube from './react-youtube.js';
@@ -14,14 +14,13 @@ export default class PageContent extends React.Component {
 
 	renderElement(item) {
 		var components = {
+			'Markdown': Markdown,
 			'Image': Image,
 			'Gallery': Gallery,
 			'YouTube': YouTube
 		};
 
-		return (item.type === 'markdown')
-			? React.createElement("div", { key: item.key, className: item.className, dangerouslySetInnerHTML: { __html: marked(item.content) } })
-			: React.createElement(components[item.type], item);
+		return React.createElement(components[item.type], item);
 	}
 
 	recurseElements(item) {
