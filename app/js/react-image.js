@@ -17,7 +17,7 @@ export default class Image extends React.Component {
 		var caption = (typeof this.props.caption !== 'undefined' && this.props.caption !== '') ? this.renderCaption() : '';
 
 		return (
-			React.createElement("div", { className: 'media_widget ' + classes, key: this.props.key },
+			React.createElement("div", { className: 'media_widget ' + classes, id: this.props.id, key: this.props.key },
 				React.createElement("figure", { className: 'image_container' },
 					React.createElement("img", { src: this.props.src, alt: alt }),
 					caption
