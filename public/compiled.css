@@ -2377,6 +2377,25 @@ blockquote {
   margin: 0 auto;
   max-width: 960px;
 }
+.gallery_widget {
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+}
+.gallery_widget #galleryBack,
+.gallery_widget #galleryForward {
+  top: 50%;
+}
+.gallery_widget #galleryBack {
+  left: -40px;
+}
+.gallery_widget #galleryForward {
+  right: -40px;
+}
+.gallery_widget .gallery {
+  position: relative;
+  text-align: center;
+}
 .media_widget .video_container {
   height: 0;
   overflow: hidden;
