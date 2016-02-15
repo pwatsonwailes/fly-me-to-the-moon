@@ -1,42 +1,41 @@
-Time Code,Height (feet),Horizontal speed (feet per second),Distance from landing site (km),Notes
-102:33:11,50000,   -,~550000,P63 PDI begins. 10% thrust for 26 seconds. This gives the computer the data it needs to calculate the centre of mass and align the thrust of the engine correctly
-102:35:14,47000,   -,      -,
-102:36:46,    -,   -,      -,Begins roll. Yaw rate is set too slow and Eagle rolls at 5 degrees per second
-102:37:03,40000,   -,      -,
-102:37:22,    -,   -,      -,Armstrong realises rate of rotation switch is at its low setting and changes it to high, speeding the roll
-102:38:32,33500,   -,      -,
-102:39:10,27000,   -,      -,
-102:39:50,21000,1200,      -,
-102:40:47,16000,   -,      -,
-102:40:55,13500, 910,      -,
-102:41:05,    -, 760,      -,
-102:41:35,    -,   -,      -,P64 begins. Eagle pitches to be more upright, as the craft has slowed significantly, and will now have to slow both decent and horizontal speed
-102:41:51, 5000,   -,      -,
-102:42:17, 3000,   -,  ~8000,
-102:42:31, 2000,   -,      -,
-102:43:01,  750,   -,      -,
-102:43:07,  700,   -,      -,
-102:43:11,  600,   -,      -,
-102:43:15,    -,   -,      -,P66 begins. Armstrong takes control of altitude to carry Eagle over a field of boulders which the computer was going to land in
-102:43:16,  540,   -,      -,
-102:43:26,  400,  58,      -,
-102:43:33,  350,   -,      -,
-102:43:35,  330,   -,      -,
-102:43:46,  300,  47,      -,
-102:43:52,  270,   -,      -,
-102:44:07,  250,  19,      -,
-102:44:16,  220,  13,      -,
-102:44:23,    -,  11,      -,
-102:44:24,  200,   -,      -,
-102:44:31,  160,   -,      -,
-102:44:33,    -,   9,      -,
-102:44:40,  120,   -,      -,
-102:44:45,  100,   9,      -,Quantity light comes on, indicating 5.6% fuel remaining, starting a 94 second countdown to bingo fuel call (land in 20s or abort)
-102:44:54,   75,   6,      -,
-102:45:08,   60,   2,      -,
-102:45:17,   40,   -,      -,
-102:45:21,   30,   -,      -,
-102:45:25,   20,   -,      -,
-102:45:40,    5,   -,      -,
-102:45:43,    0,   -,      -,
-
+Mission Time	T+	Altitude (feet)	Horizontal speed (feet/second)	Notes
+102:33:11	00:00:00	50000		P63 PDI begins. 10% thrust for 26 seconds. This gives the computer the data it needs to calculate the centre of mass and align the thrust of the engine correctly
+102:35:14	00:02:30	47000		
+102:36:46	00:03:35			Begins roll. Yaw rate is set too slow and Eagle rolls at 5 degrees per second
+102:37:03	00:03:52	40000		
+102:37:22	00:04:11			Armstrong realises rate of rotation switch is at its low setting and changes it to high,  speeding the roll
+102:38:32	00:05:21	33500		
+102:39:10	00:05:59	27000		
+102:39:50	00:06:39	21000	1200	
+102:40:47	00:07:36	16000		
+102:40:55	00:07:44	13500	910	
+102:41:05	00:07:54		760	
+102:41:35	00:08:24			P64 begins. Eagle pitches to be more upright,  as the craft has slowed significantly,  and will now have to slow both decent and horizontal speed
+102:41:51	00:08:40	5000		
+102:42:17	00:10:00	3000		
+102:42:31	00:09:20	2000		
+102:43:01	00:09:50	750		
+102:43:07	00:09:56	700		
+102:43:11	00:10:00	600		
+102:43:15	00:10:40			P66 begins. Armstrong takes control of altitude to carry Eagle over a field of boulders which the computer was going to land in
+102:43:16	00:10:50	540		
+102:43:26	00:10:15	400	58	
+102:43:33	00:10:22	350		
+102:43:35	00:10:24	330		
+102:43:46	00:10:35	300	47	
+102:43:52	00:10:41	270		
+102:44:07	00:10:56	250	19	
+102:44:16	00:11:50	220	13	
+102:44:23	00:11:12		11	
+102:44:24	00:11:13	200		
+102:44:31	00:11:20	160		
+102:44:33	00:11:22		9	
+102:44:40	00:11:29	120		
+102:44:45	00:11:34	100	9	Quantity light comes on, indicating 5.6% fuel remaining, starting a 94 second countdown to bingo fuel call (land in 20s or abort)
+102:44:54	00:11:43	75	6	
+102:45:08	00:11:57	60	2	
+102:45:17	00:13:00	40		
+102:45:21	00:12:10	30		
+102:45:25	00:12:14	20		
+102:45:40	00:12:29	5	0	
+102:45:43	00:12:32	0	0	
