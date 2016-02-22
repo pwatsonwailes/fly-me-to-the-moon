@@ -3,8 +3,6 @@ import React from 'react';
 export default class Image extends React.Component {
 	constructor() {
 		super();
-
-		this.renderCaption = this.renderCaption.bind(this);
 	}
 
 	renderCaption(caption) {
