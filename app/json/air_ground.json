@@ -1,0 +1,1020 @@
+[{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:30:45",
+	"text": "Hit VERB 77?"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:31:04",
+	"text": "Okay. Sequence camera coming on."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:31:32",
+	"text": "Eagle, Houston. If you'd like to try high gain, pitch 212, yaw 37. Over."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:31:45",
+	"text": "Roger. I think I've got you on high gain now."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:31:49",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:32:03",
+	"text": "Say again the angles, though."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:32:05",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:32:06",
+	"text": "I'll set them in to use them before we yaw around."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:32:08",
+	"text": "Roger. Pitch 212, yaw plus 37."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:32:24",
+	"text": "OMNI's in."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:33:09",
+	"text": "... 10 ... 10 percent ..."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:33:41",
+	"text": "Columbia, Houston. We've lost them. Tell them to go aft OMNI. Over."
+},
+{
+	"position": "CMP",
+	"person": "Michael Collins",
+	"time": "102:33:51",
+	"text": "They've lost you. Use the OMNI's again."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:34:01",
+	"text": "..."
+},
+{
+	"position": "CMP",
+	"person": "Michael Collins",
+	"time": "102:34:05",
+	"text": "Say again, Neil?"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:34:07",
+	"text": "I'll leave it in SLEW. Relay to us. See if they have got me now. I've got good signal strength in SLEW."
+},
+{
+	"position": "CMP",
+	"person": "Michael Collins",
+	"time": "102:34:13",
+	"text": "Okay. You should have him now, Houston."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:34:16",
+	"text": "Eagle, we've got you now. It's looking good. Over."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:34:23",
+	"text": "Eagle - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:34:24",
+	"text": "- - descent looks good."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:34:25",
+	"text": "Eagle, Houston. Everything is looking good here. Over."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:34:29",
+	"text": "Roger. Copy."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:34:34",
+	"text": "Eagle, Houston. After yaw around, angles: S band pitch, minus 9, yaw plus 18."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:34:46",
+	"text": "Copy."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:34:59",
+	"text": "PGNS agree very closely."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:35:01",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:35:14",
+	"text": "Beta ARM. Altitudes are a little high."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:35:45",
+	"text": "Houston. I'm getting a little fluctuation in the AC voltage now."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:35:51",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:35:52",
+	"text": "Could be our meter, maybe, huh?"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:35:54",
+	"text": "Stand by, Looking good to us. You're still looking good at 3, coming up 3 minutes."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:36:13",
+	"text": "... real good .... about on."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:36:18",
+	"text": "Our. position checks downrange show us to be a little long."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:36:21",
+	"text": "Roger. Copy."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:36:24",
+	"text": "AGS has gone about 2 feet per second greater ..."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:36:36",
+	"text": "... ought to be ... Stand by.,"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:36:43",
+	"text": "Altitude ..."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:37:00",
+	"text": "... it's going to stop."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:37:18",
+	"text": "Eagle, Houston. You are GO to continue - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:37:19",
+	"text": "... closed ... GO ... at 4 minutes."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:37:22",
+	"text": "Roger. You are GO - You are GO to continue powered descent. You are GO to continue powered descent."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:37:30",
+	"text": "Roger."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:37:35",
+	"text": "And, Eagle, Houston. We've got data dropout. You're still looking good."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:38:04",
+	"text": "... DELTA-H is minus 2 900."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:38:18",
+	"text": "Roger. We copy."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:38:20",
+	"text": "Got the Earth right out our front window."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:38:23",
+	"text": "Houston, you're looking at our DELTA-H?"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:38:25",
+	"text": "That's affirmative."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:38:26",
+	"text": "PROGRAM ALARM."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:38:28",
+	"text": "It's looking good to us. Over."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:38:30",
+	"text": "It's a 1202."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:38:32",
+	"text": "1202."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:38:48",
+	"text": "Give us a reading on the 1202 PROGRAM ALARM."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:38:53",
+	"text": "Roger. We got - We're GO on that alarm"
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:38:59",
+	"text": "Roger. P30."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:01",
+	"text": "6 plus 25, throttle down - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:02",
+	"text": "Looks like about 820 -"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:03",
+	"text": "- - 6 plus 25, throttle down."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:39:06",
+	"text": "Roger. Copy. 6 plus 25."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:14",
+	"text": "Same alarm, and it appears to come up when we have a 1668 up."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:17",
+	"text": "Roger. Copy."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:23",
+	"text": "Eagle, Houston. We'll monitor your DELTA-H."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:24",
+	"text": "... worked out beautifully."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:28",
+	"text": "DELTA-H - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:29",
+	"text": "... looks good now."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:30",
+	"text": "Roger. DELTA-H is looking good to us."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:34",
+	"text": "Ah! Throttle down - -"
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:39:35",
+	"text": "Throttle down on time!"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:36",
+	"text": "Roger, We copy throttle down - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:37",
+	"text": "- - ... throttles down. Better than the simulator."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:39:42",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:39:48",
+	"text": "PGNS look real close."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:40:08",
+	"text": "At 7 minutes, you're looking great to us, Eagle."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:40:13",
+	"text": "Okay. I'm still on SLEW so we may tend to lose as we gradually pitch over. Let me try AUTO again now and see what happens."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:40:21",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:40:23",
+	"text": "Okay. Looks like it's holding."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:40:24",
+	"text": "Roger. We got good data."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:40:49",
+	"text": "Eagle, Houston. It's descent 2 fuel to MONITOR. Over."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:40:55",
+	"text": "Going to 2."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:41:01",
+	"text": "Give us an estimated switchover time please, Houston."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:41:05",
+	"text": "Roger. Stand by. You're looking great at 8 minutes."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:41:10",
+	"text": "At 7000 -"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:41:12",
+	"text": "Eagle, you've got 30 seconds to P64."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:41:15",
+	"text": "... Roger."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:41:27",
+	"text": "Eagle, Houston. Coming up 8 30; you're looking great."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:41:35",
+	"text": "P64."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:41:37",
+	"text": "We copy."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:41:51",
+	"text": "Eagle, you're looking great. Coming up 9 minutes."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:42:05",
+	"text": "Manual attitude control is good."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:08",
+	"text": "Roger. Copy."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:10",
+	"text": "Eagle, Houston. You're GO for landing. Over."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:42:17",
+	"text": "Roger. Understand. GO for landing. 3000 feet. PROGRAM ALARM."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:19",
+	"text": "Copy."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:42:22",
+	"text": "1201"
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:42:24",
+	"text": "1201."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:25",
+	"text": "Roger. 1201 alarm. We're GO. Same type. We're GO."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:42:31",
+	"text": "2000 feet. 2000 feet. Into the AGS, 47 degrees."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:35",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:42:36",
+	"text": "47 degrees."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:41",
+	"text": "Eagle, looking great. You're GO."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:42:58",
+	"text": "Roger. 1202. We copy it."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:01",
+	"text": "35 degrees. 35 degrees. 750. Coming down to 23."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:07",
+	"text": "700 feet, 21 down, 33 degrees."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:11",
+	"text": "600 feet, down at 19."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:15",
+	"text": "540 feet, down at - 30. Down at 15."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:26",
+	"text": "At 400 feet, down at 9."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:29",
+	"text": "... forward."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:32",
+	"text": "350 feet, down at 4."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:35",
+	"text": "30, ... one-half down."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:42",
+	"text": "We're pegged on horizontal velocity."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:46",
+	"text": "300 feet, down 3 1/2, 47 forward."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:51",
+	"text": "... up."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:43:52",
+	"text": "On 1 a minute, 1 1/2 down."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:43:57",
+	"text": "70."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:04",
+	"text": "Watch your shadow out there."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:07",
+	"text": "50, down at 2 1/2, 19 forward."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:13",
+	"text": "Altitude-velocity light."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:16",
+	"text": "3 1/2 down, 220 feet, 13 forward."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:23",
+	"text": "11 forward. Coming down nicely."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:24",
+	"text": "200 feet, 4 1/2 down."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:26",
+	"text": "5 1/2 down."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:31",
+	"text": "160, 6 - 6 1/2 down."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:33",
+	"text": "5 1/2 down, 9 forward. That's good."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:40",
+	"text": "120 feet."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:45",
+	"text": "100 feet, 3 1/2 down, 9 forward. Five percent."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:51",
+	"text": "..."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:44:54",
+	"text": "Okay. 75 feet. There's looking good. Down a half, 6 forward."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:45:02",
+	"text": "60 seconds."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:04",
+	"text": "Lights on. ..."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:08",
+	"text": "Down 2 1/2. Forward. Forward. Good."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:17",
+	"text": "40 feet, down 2 1/2. Kicking up some dust."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:21",
+	"text": "30 feet, 2 1/2 down. Faint shadow."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:25",
+	"text": "4 forward. 4 forward. Drifting to the right a little. Okay. Down a half."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:45:31",
+	"text": "30 seconds."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:45:32",
+	"text": "Forward drift?"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:33",
+	"text": "Yes."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:34",
+	"text": "Okay."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:40",
+	"text": "CONTACT LIGHT."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:43",
+	"text": "Okay. ENGINE STOP."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:45",
+	"text": "ACA - out of DETENT."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:45:46",
+	"text": "Out of DETENT."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:47",
+	"text": "MODE CONTROL - both AUTO. DESCENT ENGINE COMMAND OVERRIDE - OFF. ENGINE ARM - OFF."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:45:52",
+	"text": "413 is in."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:45:57",
+	"text": "We copy you down, Eagle."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:45:59",
+	"text": "Houston, Tranquility Base here."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:46:04",
+	"text": "<b>THE EAGLE HAS LANDED.</b>"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:46:06",
+	"text": "Roger, Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:46:16",
+	"text": "Thank you."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:46:18",
+	"text": "You're looking good here."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:46:23",
+	"text": "Okay. We're going to be busy for a minute."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:46:25",
+	"text": "MASTER ARM, ON. Take care of the ... I'll get this ..."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:46:38",
+	"text": "Very smooth touchdown."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:46:52",
+	"text": "..."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:47:03",
+	"text": "Okay. It looks like we're venting the oxidizer now."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:47:06",
+	"text": "Roger, Eagle. And you are STAY for - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:47:08",
+	"text": "..."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:47:09",
+	"text": "- - T1."
+},
+{
+	"position": "CDR",
+	"person": "Neil A. Armstrong",
+	"time": "102:47:12",
+	"text": "Roger. Understand, STAY for T1."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:47:15",
+	"text": "Roger. And we see you venting the 0X."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:47:20",
+	"text": "Roger."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:47:37",
+	"text": "... circuit breaker."
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:48:10",
+	"text": "... copy NOUN 60, NOUN 43. Over."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:48:13",
+	"text": "Roger. We have it."
+},
+{
+	"position": "CMP",
+	"person": "Michael Collins",
+	"time": "102:48:14",
+	"text": "Houston, how do you read Columbia on the high gain?"
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:48:17",
+	"text": "Roger - -"
+},
+{
+	"position": "LMP",
+	"person": "Buzz Aldrin",
+	"time": "102:48:18",
+	"text": "..."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:48:19",
+	"text": "- - We read you five by, Columbia. He has landed, Tranquility Base. Eagle is at Tranquility. Over."
+},
+{
+	"position": "CMP",
+	"person": "Michael Collins",
+	"time": "102:48:26",
+	"text": "Yes. I heard the whole thing."
+},
+{
+	"position": "CAPCOM",
+	"person": "Charlie Duke",
+	"time": "102:48:27",
+	"text": "... good show."
+},
+{
+	"position": "CMP",
+	"person": "Michael Collins",
+	"time": "102:48:31",
+	"text": "Fantastic."
+}]

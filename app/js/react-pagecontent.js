@@ -3,6 +3,7 @@ import Markdown from './react-markdown.js';
 import Image from './react-image.js';
 import Gallery from './react-gallery.js';
 import YouTube from './react-youtube.js';
+import MoonLanding from './react-moonlanding.js';
 
 export default class PageContent extends React.Component {
 	constructor() {
@@ -14,6 +15,7 @@ export default class PageContent extends React.Component {
 
 	renderElement(item) {
 		var components = {
+			'MoonLanding': MoonLanding,
 			'Markdown': Markdown,
 			'Image': Image,
 			'Gallery': Gallery,
