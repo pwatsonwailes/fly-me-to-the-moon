@@ -1784,7 +1784,7 @@
 		{
 			"position": "FLIGHT",
 			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, about 45 seconds to T1 Stay NoStay."
+			"text": "Okay all flight controllers, about 45 seconds to T1 STAY/NO-STAY."
 		}
 	],
 	"956": [
@@ -1826,7 +1826,7 @@
 		{
 			"position": "FLIGHT",
 			"name": "Gene Kranz",
-			"text": "Okay T1 to Stay NoStay. RETRO."
+			"text": "Okay T1 to STAY/NO-STAY. RETRO."
 		}
 	],
 	"977": [
@@ -1967,7 +1967,7 @@
 		{
 			"position": "FLIGHT",
 			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, 4 more minutes to T2 Stay NoStay."
+			"text": "Okay all flight controllers, 4 more minutes to T2 STAY/NO-STAY."
 		}
 	],
 	"1051": [
