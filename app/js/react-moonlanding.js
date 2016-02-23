@@ -1,6 +1,7 @@
 import React from 'react';
 import GroundAir from '../json/air_ground.json';
 import FlightDirector from '../json/flight_director.json';
+import Descent from '../json/descent.json';
 
 export default class MoonLanding extends React.Component {
 	constructor(){
@@ -16,6 +17,7 @@ export default class MoonLanding extends React.Component {
 		this.handleResize = this.handleResize.bind(this);
 
 		this.renderControls = this.renderControls.bind(this);
+		this.renderStats = this.renderStats.bind(this);
 		this.renderComms = this.renderComms.bind(this);
 		this.renderCommsList = this.renderCommsList.bind(this);
 		this.renderBookmark = this.renderBookmark.bind(this);
@@ -23,6 +25,8 @@ export default class MoonLanding extends React.Component {
 		this.state = {
 			ga: [],
 			fd: [],
+			a: {},
+			s: {},
 			playing: false,
 			currentTime: 0,
 			loaded: 0,
@@ -116,21 +120,69 @@ export default class MoonLanding extends React.Component {
 			tbc.fillStyle = activePosition;
 			tbc.fillRect(Math.max(0, posX - 1), 0, 3, tbHeight);
 
-			var currentFloorTime = Math.floor(currentTime);
+			var cFT = Math.floor(currentTime);
 
 			// now let's sort out the conversation stuff
 			var newState = {
-				ga: (reset) ? [] : this.state.ga,
-				fd: (reset) ? [] : this.state.fd,
-				currentTime: currentFloorTime,
+				ga: this.state.ga,
+				fd: this.state.fd,
+				currentTime: cFT,
 				loaded: this.refs.audio.buffered.end(0) / this.refs.audio.duration,
 				played: currentTime / this.refs.audio.duration
 			};
 
-			if (currentFloorTime > this.state.currentTime) { // so we only do this once per second
-				if (typeof GroundAir[currentFloorTime] !== 'undefined') {
-					for (var i = 0; i < GroundAir[currentFloorTime].length; i++) {
-						newState.ga.unshift(GroundAir[currentFloorTime][i]);
+			if (reset) {
+				newState.ga = [];
+				newState.fd = [];
+
+				// work out altitude and speed
+				var aKeys = Object.keys(Descent.altitude);
+				var sKeys = Object.keys(Descent.speed);
+
+				for (var i = 0; i < aKeys.length; i++) {
+					if (cFT > aKeys[i])
+						var aKey = aKeys[i];
+				}
+
+				for (var i = 0; i < sKeys.length; i++) {
+					if (cFT > sKeys[i])
+						var sKey = sKeys[i];
+				}
+
+				var aOjb = JSON.parse(JSON.stringify(Descent.altitude[aKey]));
+				var sOjb = JSON.parse(JSON.stringify(Descent.speed[sKey]));
+
+				aOjb.v = aOjb.v - (aOjb.r * (cFT - aKey));
+				sOjb.v = sOjb.v - (sOjb.r * (cFT - aKey));
+
+				newState.a = aOjb;
+				newState.s = sOjb;
+			}
+			else {
+				// sort out the descent stats for a non-reset command
+				if (Descent.altitude[cFT])
+					newState.a = JSON.parse(JSON.stringify(Descent.altitude[cFT]));
+				else if (cFT > this.state.currentTime) { // so we only do this once per second
+					var newAltitude = this.state.a;
+					newAltitude.v = newAltitude.v + newAltitude.r;
+
+					newState.a = newAltitude;
+				}
+
+				if (Descent.speed[cFT])
+					newState.s = JSON.parse(JSON.stringify(Descent.speed[cFT]));
+				else if (cFT > this.state.currentTime) { // so we only do this once per second
+					var newSpeed = this.state.s;
+					newSpeed.v = newSpeed.v + newSpeed.r;
+
+					newState.s = newSpeed;
+				}
+			}
+
+			if (cFT > this.state.currentTime) { // so we only do this once per second
+				if (typeof GroundAir[cFT] !== 'undefined') {
+					for (var i = 0; i < GroundAir[cFT].length; i++) {
+						newState.ga.unshift(GroundAir[cFT][i]);
 					}
 
 					while (newState.ga.length > 6) {
@@ -138,9 +190,9 @@ export default class MoonLanding extends React.Component {
 					}
 				}
 
-				if (typeof FlightDirector[currentFloorTime] !== 'undefined') {
-					for (var i = 0; i < FlightDirector[currentFloorTime].length; i++) {
-						newState.fd.unshift(FlightDirector[currentFloorTime][i]);
+				if (typeof FlightDirector[cFT] !== 'undefined') {
+					for (var i = 0; i < FlightDirector[cFT].length; i++) {
+						newState.fd.unshift(FlightDirector[cFT][i]);
 					}
 
 					while (newState.fd.length > 6) {
@@ -244,23 +296,7 @@ export default class MoonLanding extends React.Component {
 
 	renderControls(){
 		var playbackClass = (this.state.playing === true) ? "fa fa-pause-circle" : "fa fa-play-circle";
-
-		var bookmarks = [
-			{ t: 380, text: "Go NoGo", key: "GoNoGo1" },
-			{ t: 467, text: "First Program Alarm, 1202", key: "FirstProgramAlarm1202" },
-			{ t: 515, text: "Second Program Alarm, 1202", key: "SecondProgramAlarm1202" },
-			{ t: 668, text: "Go NoGo", key: "GoNoGo2" },
-			{ t: 698, text: "Third Program Alarm, 1201", key: "ThirdProgramAlarm1201" },
-			{ t: 739, text: "Fourth Program Alarm, 1202", key: "FourthProgramAlarm1202" },
-			{ t: 838, text: "Low Level Fuel Warning", key: "LowLevelFuelWarning" },
-			{ t: 857, text: "60 Seconds of Fuel Warning", key: "60SecondsofFuelWarning" },
-			{ t: 885, text: "30 Seconds of Fuel Warning", key: "30SecondsofFuelWarning" },
-			{ t: 901, text: "Contact Light", key: "ContactLight" },
-			{ t: 920, text: "The Eagle has Landed!", key: "TheEaglehasLanded" },
-			{ t: 973, text: "T1 Stay NoStay", key: "T1StayNoStay" }
-		];
-
-		var list = (!this.refs || !this.refs.audio || !this.refs.audio.duration) ? [] : bookmarks.map(this.renderBookmark);
+		var list = (!this.refs || !this.refs.audio || !this.refs.audio.duration) ? [] : Descent.bookmarks.map(this.renderBookmark);
 
 		return (
 			React.createElement("div", { className: "audioplayer_controls col col-xs-12" },
@@ -274,28 +310,53 @@ export default class MoonLanding extends React.Component {
 	}
 
 	renderStats(){
-		var altitude = 0,
-				hSpeed = 0,
-				dRate = 0,
-				tLeft = 0;
+		var ct = (!this.refs || !this.refs.audio || !this.refs.audio.currentTime) ? 0 : this.refs.audio.currentTime;
+
+		if (typeof moment !== 'undefined') {
+			var momentAudioTime = moment.duration(ct | 0, "seconds");
+
+			var audioTimeMin = (momentAudioTime.minutes() > 9) ? momentAudioTime.minutes() : "" + 0 + momentAudioTime.minutes();
+			var audioTimeSec = (momentAudioTime.seconds() > 9) ? momentAudioTime.seconds() : "" + 0 + momentAudioTime.seconds();
+
+			var audioTime = audioTimeMin + ':' + audioTimeSec;
+		}
+		else
+			var audioTime = "00:00"
+		
+		if (typeof moment !== 'undefined') {
+			var momentTimeToLanding = moment.duration(905 - ct | 0, "seconds");
+
+			var timeToLandingMin = (momentTimeToLanding.minutes() > 9) ? momentTimeToLanding.minutes() : "" + 0 + momentTimeToLanding.minutes();
+			var timeToLandingSec = (momentTimeToLanding.seconds() > 9) ? momentTimeToLanding.seconds() : "" + 0 + momentTimeToLanding.seconds();
+
+			var timeToLanding = (momentTimeToLanding.seconds() > 0) ? timeToLandingMin + ':' + timeToLandingSec : "00:00";
+		}
+		else
+			var timeToLanding = "15:05"
+
+		var aFormat = (this.state.a.v % 1 === 0) ? '0,0' : '0,0.0';
+		var sFormat = (this.state.s.v % 1 === 0) ? '0,0' : '0,0.0';
+
+		var formattedA = (typeof this.state.a.v !== 'undefined') ? numeral(this.state.a.v).format(aFormat) : 0
+		var formattedS = (typeof this.state.s.v !== 'undefined') ? numeral(this.state.s.v).format(sFormat) : 0
 
 		return (
 			React.createElement("div", { className: "row" },
 				React.createElement("div", { className: "col col-xs-3" },
 					React.createElement("h3", null, "Altitude"),
-					React.createElement("p", null, altitude)
+					React.createElement("p", null, formattedA + ' feet')
 				),
 				React.createElement("div", { className: "col col-xs-3" },
 					React.createElement("h3", null, "Horizontal Speed"),
-					React.createElement("p", null, hSpeed)
+					React.createElement("p", null, formattedS + ' feet per second')
 				),
 				React.createElement("div", { className: "col col-xs-3" },
-					React.createElement("h3", null, "Descent Rate"),
-					React.createElement("p", null, dRate)
+					React.createElement("h3", null, "Audio Time"),
+					React.createElement("p", null, audioTime)
 				),
 				React.createElement("div", { className: "col col-xs-3" },
 					React.createElement("h3", null, "Time to Landing"),
-					React.createElement("p", null, tLeft)
+					React.createElement("p", null, timeToLanding)
 				)
 			)
 		)
