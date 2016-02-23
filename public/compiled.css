@@ -18,7 +18,7 @@ Common Mixins
 Grid rules & column-widths in variables, in ems
 */
 @import url(//fonts.googleapis.com/css?family=Amiri:400italic|Open+Sans:300|Crimson+Text);
-@import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css);
+@import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css);
 .grid {
   padding-right: 2rem;
   padding-left: 2rem;
@@ -2436,6 +2436,39 @@ blockquote {
   font-size: 23px;
   font-style: italic;
   line-height: 1.22;
+}
+.audioplayer_controls {
+  margin-bottom: 1.6rem;
+}
+.audioplayer_controls canvas {
+  -webkit-border-radius: 4px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  border-radius: 4px;
+  background-clip: padding-box;
+  height: 15px;
+  width: 100%;
+}
+.audioplayer_controls .fa-pause-circle,
+.audioplayer_controls .fa-play-circle,
+.audioplayer_controls .fa-volume-up,
+.audioplayer_controls .fa-volume-down {
+  cursor: pointer;
+  font-size: 1.6rem;
+  margin-right: 1rem;
+}
+#events_panel {
+  display: block;
+  margin: 0;
+  position: relative;
+  top: 15px;
+}
+#events_panel li {
+  color: #1E98F1;
+  cursor: pointer;
+  list-style: none;
+  position: absolute;
 }
 #footer {
   -webkit-box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);

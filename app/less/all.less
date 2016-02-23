@@ -362,6 +362,39 @@
 	}
 }
 
+.audioplayer_controls {
+	margin-bottom: 1.6rem;
+
+	canvas {
+		.border-radius(4px);
+		height: 15px;
+		width: 100%;
+	}
+
+	.fa-pause-circle,
+	.fa-play-circle,
+	.fa-volume-up,
+	.fa-volume-down {
+		cursor: pointer;
+		font-size: 1.6rem;
+		margin-right: 1rem;
+	}
+}
+
+#events_panel {
+	display: block;
+	margin: 0;
+	position: relative;
+	top: 15px;
+
+	li {
+		color: #1E98F1;
+		cursor: pointer;
+		list-style: none;
+		position: absolute;
+	}
+}
+
 #footer {
 	.box-shadow(inset 0 5px 7px rgba(0,0,0,0.2));
 	background: #b8ccd0;
