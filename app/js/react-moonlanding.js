@@ -152,8 +152,8 @@ export default class MoonLanding extends React.Component {
 				var aOjb = JSON.parse(JSON.stringify(Descent.altitude[aKey]));
 				var sOjb = JSON.parse(JSON.stringify(Descent.speed[sKey]));
 
-				aOjb.v = aOjb.v - (aOjb.r * (cFT - aKey));
-				sOjb.v = sOjb.v - (sOjb.r * (cFT - aKey));
+				aOjb.v = aOjb.v + (aOjb.r * (cFT - aKey));
+				sOjb.v = sOjb.v + (sOjb.r * (cFT - aKey));
 
 				newState.a = aOjb;
 				newState.s = sOjb;

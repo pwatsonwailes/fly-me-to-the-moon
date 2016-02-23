@@ -518,8 +518,8 @@ var MoonLanding = (function (_React$Component) {
 					var aOjb = JSON.parse(JSON.stringify(_descent2.default.altitude[aKey]));
 					var sOjb = JSON.parse(JSON.stringify(_descent2.default.speed[sKey]));
 
-					aOjb.v = aOjb.v - aOjb.r * (cFT - aKey);
-					sOjb.v = sOjb.v - sOjb.r * (cFT - aKey);
+					aOjb.v = aOjb.v + aOjb.r * (cFT - aKey);
+					sOjb.v = sOjb.v + sOjb.r * (cFT - aKey);
 
 					newState.a = aOjb;
 					newState.s = sOjb;
