@@ -2704,7 +2704,7 @@ module.exports={
 				"className": "content",
 				"key": "p6",
 				"id": "p6",
-				"content": "Once Armstrong and Aldrin were ready to go outside, Eagle was depressurised, the hatch opened, and Armstrong made his way down the ladder. When he got to the base of the ladder, he radioed back:\n\n> I'm going to step off the LEM now.\n\nHe then turned and set his left boot on the lunar surface at 02:56 UTC July 21, 1969, then to the 450 million people (about 12% of the world population) listening, spoke the famous words...\n\n> That's one small step for [a] man, one giant leap for mankind.\n\nAbout 20 minutes later, Aldrin joined Armstrong on the surface, and the two men began set about their task list. They unveiled a plaque. commemorating their flight, and planted a United States flag in the lunar regolith. The plaque was mounted on the LM, and depicted the Eastern and Western hemispheres, and carried the inscribed signatures of the astronauts and President Nixon, along with the message:\n\n> Here men from the planet Earth first set foot upon the Moon, July 1969 A.D. We came in peace for all mankind.\n\nShortly after, President Nixon spoke to them via a telephone call from his office. Having taken a number of photos and set up an experiment package, their final task was to leave small package of memorial items to cosmonauts Yuri Gagarin and Vladimir Komarov, astronauts Gus Grissom, Ed White and Roger Chaffee. Despite never having reached the moon in their lifetimes, the five men, in memory at least, finally arrived."
+				"content": "Once Armstrong and Aldrin were ready to go outside, Eagle was depressurised, the hatch opened, and Armstrong made his way down the ladder. When he got to the base of the ladder, he radioed back:\n\n> I'm going to step off the LEM now.\n\nHe then turned and set his left boot on the lunar surface at 02:56 UTC July 21, 1969, then to the 450 million people (about 12% of the world population) listening, spoke the famous words...\n\n> That's one small step for [a] man, one giant leap for mankind."
 			},
 			{
 				"type": "YouTube",
@@ -2712,6 +2712,13 @@ module.exports={
 				"key": "apollo-11-walk",
 				"id": "apollo-11-walk",
 				"sourceId": "RMINSD7MmT4"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p7",
+				"id": "p7",
+				"content": "About 20 minutes later, Aldrin joined Armstrong on the surface, and the two men began set about their task list. They unveiled a plaque. commemorating their flight, and planted a United States flag in the lunar regolith. The plaque was mounted on the LM, and depicted the Eastern and Western hemispheres, and carried the inscribed signatures of the astronauts and President Nixon, along with the message:\n\n> Here men from the planet Earth first set foot upon the Moon, July 1969 A.D. We came in peace for all mankind.\n\nShortly after, President Nixon spoke to them via a telephone call from his office. Having taken a number of photos and set up an experiment package, their final task was to leave small package of memorial items to cosmonauts Yuri Gagarin and Vladimir Komarov, astronauts Gus Grissom, Ed White and Roger Chaffee. Despite never having reached the moon in their lifetimes, the five men, in memory at least, finally arrived."
 			},
 			{
 				"type": "Gallery",
@@ -2790,8 +2797,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p7",
-				"id": "p7",
+				"key": "p8",
+				"id": "p8",
 				"content": "### A Victorious Return\n\nHaving re-entered the LM, the hatch was closed and sealed. They repressurised the LM and settled down to sleep. Unfortunately, Armstrong and Aldrin discovered that, thanks to having to move around in a bulky spacesuit, Aldrin had accidentally broken the ignition switch for the ascent engine. They solved the issue through the extremely technical procedure of pushing the circuit breaker with a felt-tip pen, which activated the launch sequence. The LM ascended, the exhaust knocking over the flag which had been planted too close, and docked with Columbia shortly after. All that remained was to leave lunar orbit and return. A few days later, on July 24th, just five days after they took off, the three astronauts returned to Earth, the Columbia command module bringing them down in the Pacific Ocean.\n\nVon Braun had lived to see his dream, and the dream of so many others, come true."
 			}
 		]
