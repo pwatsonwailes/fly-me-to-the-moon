@@ -1915,6 +1915,36 @@ figure.col-inverse {
 /*
  * Other imports (FontAwesome etc, if used)
 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', 'sans-serif';
+}
+p,
+a,
+span,
+table,
+div,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+td,
+dialog,
+blockquote,
+pre,
+code,
+address,
+form label,
+form input,
+tspan {
+  font-family: georgia, 'times new roman', times, serif;
+}
 table {
   font-size: 14px;
 }
@@ -2378,19 +2408,21 @@ blockquote {
   max-width: 960px;
 }
 .gallery_widget {
-  margin: 0 auto;
-  max-width: 960px;
+  margin: 0 auto 1.6em;
   position: relative;
+}
+.gallery_widget h4 {
+  text-align: center;
 }
 .gallery_widget #galleryBack,
 .gallery_widget #galleryForward {
   top: 50%;
 }
 .gallery_widget #galleryBack {
-  left: -40px;
+  left: 40px;
 }
 .gallery_widget #galleryForward {
-  right: -40px;
+  right: 40px;
 }
 .gallery_widget .gallery {
   position: relative;
@@ -2419,8 +2451,11 @@ blockquote {
 }
 .content {
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 1rem 0;
   width: 960px;
+}
+.content:last-child {
+  margin-bottom: 0;
 }
 .content h1 {
   font-family: 'Open Sans';

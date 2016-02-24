@@ -301,15 +301,18 @@
 }
 
 .gallery_widget {
-	margin: 0 auto;
-	max-width: 960px;
+	margin: 0 auto 1.6em;
 	position: relative;
+
+	h4 {
+		text-align: center;
+	}
 
 	#galleryBack,
 	#galleryForward { top: 50%; }
 
-	#galleryBack { left: -40px }
-	#galleryForward { right: -40px }
+	#galleryBack { left: 40px }
+	#galleryForward { right: 40px }
 
 	.gallery {
 		position: relative;
@@ -341,8 +344,12 @@
 
 .content {
 	margin: 0 auto;
-	padding: 1rem;
+	padding: 1rem 1rem 0;
 	width: 960px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 
 	h1 {
 		font-family: 'Open Sans';
