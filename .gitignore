@@ -7,3 +7,4 @@ $RECYCLE.BIN/
 
 node_modules/
 public/piece_images
+public/audio
