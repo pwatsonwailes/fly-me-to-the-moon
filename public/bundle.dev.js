@@ -2062,7 +2062,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
+				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
 			},
 			{
 				"type": "Markdown",
@@ -2082,7 +2082,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -2164,7 +2164,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -2237,7 +2237,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -2299,7 +2299,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -2544,7 +2544,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -2612,7 +2612,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -2763,7 +2763,7 @@ module.exports={
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
