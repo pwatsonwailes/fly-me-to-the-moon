@@ -9,7 +9,6 @@ export default class Gallery extends React.Component {
 		this.buttonHandler = this.buttonHandler.bind(this);
 
 		this.state = {
-			showImgs: 1,
 			galleryPointer: 0,
 			maxHeight: 600,
 			maxWidth: 600
@@ -63,9 +62,11 @@ export default class Gallery extends React.Component {
 	}
 
 	buttonHandler(e) {
+		var showImgs = (typeof this.props.showImgs !== 'undefined') ? this.props.showImgs : 1;
+
 		// detect activation on the icon, or on the parent
 		if (e.target.dataset.direction === 'forward')
-			var newPointerPosition = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.state.galleryPointer + 1 : false;
+			var newPointerPosition = (this.state.galleryPointer + showImgs < this.props.images.length) ? this.state.galleryPointer + 1 : false;
 		else
 			var newPointerPosition = (this.state.galleryPointer - 1 < 0) ? false : this.state.galleryPointer - 1;
 
@@ -91,8 +92,10 @@ export default class Gallery extends React.Component {
 	}
 
 	render() {
-		var n = (this.state.galleryPointer + this.state.showImgs <= this.props.images.length)
-			? this.state.galleryPointer + this.state.showImgs
+		var showImgs = (typeof this.props.showImgs !== 'undefined') ? this.props.showImgs : 1;
+
+		var n = (this.state.galleryPointer + showImgs <= this.props.images.length)
+			? this.state.galleryPointer + showImgs
 			: this.props.images.length;
 
 		var gallery = [];
@@ -101,7 +104,7 @@ export default class Gallery extends React.Component {
 		}
 
 		var leftPointer = (this.state.galleryPointer > 0) ? this.leftPointer() : [];
-		var rightPointer = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.rightPointer() : [];
+		var rightPointer = (this.state.galleryPointer + showImgs < this.props.images.length) ? this.rightPointer() : [];
 
 		return (
 			React.createElement("div", { className: 'gallery_widget', id: this.props.id, key: this.props.key },
