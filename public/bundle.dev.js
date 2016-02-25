@@ -123,19 +123,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Gallery = (function (_React$Component) {
 	_inherits(Gallery, _React$Component);
 
-	function Gallery() {
+	function Gallery(props) {
 		_classCallCheck(this, Gallery);
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Gallery).call(this));
 
 		_this.componentWillReceiveProps = _this.componentWillReceiveProps.bind(_this);
 		_this.renderGalleryImg = _this.renderGalleryImg.bind(_this);
+		_this.setGallerySettings = _this.setGallerySettings.bind(_this);
 		_this.buttonHandler = _this.buttonHandler.bind(_this);
 
 		_this.state = {
 			galleryPointer: 0,
 			maxHeight: 600,
-			maxWidth: 600
+			maxWidth: 600,
+			showImgs: 0
 		};
 		return _this;
 	}
@@ -143,12 +145,32 @@ var Gallery = (function (_React$Component) {
 	_createClass(Gallery, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			if (typeof window !== 'undefined') this.setState({ maxHeight: getViewportSize().height, maxWidth: $(this.props.id).clientWidth });
+			if (typeof window !== 'undefined') {
+				this.setGallerySettings();
+				window.addEventListener('resize', this.setGallerySettings);
+			}
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			window.removeEventListener('resize', this.setGallerySettings);
 		}
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps() {
 			this.setState({ galleryPointer: 0 });
+		}
+	}, {
+		key: 'setGallerySettings',
+		value: function setGallerySettings() {
+			var dims = typeof getViewportSize === 'function' ? getViewportSize() : false;
+			var showImgs = typeof this.props.showImgs !== 'undefined' && dims !== false && dims.width > 1120 ? this.props.showImgs : 1;
+
+			this.setState({
+				maxHeight: dims !== false ? dims.height : 0,
+				maxWidth: dims !== false ? dims.width : 0,
+				showImgs: showImgs
+			});
 		}
 	}, {
 		key: 'renderGalleryImg',
@@ -192,10 +214,8 @@ var Gallery = (function (_React$Component) {
 	}, {
 		key: 'buttonHandler',
 		value: function buttonHandler(e) {
-			var showImgs = typeof this.props.showImgs !== 'undefined' ? this.props.showImgs : 1;
-
 			// detect activation on the icon, or on the parent
-			if (e.target.dataset.direction === 'forward') var newPointerPosition = this.state.galleryPointer + showImgs < this.props.images.length ? this.state.galleryPointer + 1 : false;else var newPointerPosition = this.state.galleryPointer - 1 < 0 ? false : this.state.galleryPointer - 1;
+			if (e.target.dataset.direction === 'forward') var newPointerPosition = this.state.galleryPointer + this.state.showImgs < this.props.images.length ? this.state.galleryPointer + 1 : false;else var newPointerPosition = this.state.galleryPointer - 1 < 0 ? false : this.state.galleryPointer - 1;
 
 			// need to explicitly check for false, as if () checks ==, not ===
 			if (newPointerPosition !== false) this.setState({ galleryPointer: newPointerPosition });
@@ -213,9 +233,7 @@ var Gallery = (function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var showImgs = typeof this.props.showImgs !== 'undefined' ? this.props.showImgs : 1;
-
-			var n = this.state.galleryPointer + showImgs <= this.props.images.length ? this.state.galleryPointer + showImgs : this.props.images.length;
+			var n = this.state.galleryPointer + this.state.showImgs <= this.props.images.length ? this.state.galleryPointer + this.state.showImgs : this.props.images.length;
 
 			var gallery = [];
 			for (var i = this.state.galleryPointer; i < n; i++) {
@@ -223,7 +241,7 @@ var Gallery = (function (_React$Component) {
 			}
 
 			var leftPointer = this.state.galleryPointer > 0 ? this.leftPointer() : [];
-			var rightPointer = this.state.galleryPointer + showImgs < this.props.images.length ? this.rightPointer() : [];
+			var rightPointer = this.state.galleryPointer + this.state.showImgs < this.props.images.length ? this.rightPointer() : [];
 
 			return _react2.default.createElement("div", { className: 'gallery_widget', id: this.props.id, key: this.props.key }, _react2.default.createElement("h4", null, this.props.title), _react2.default.createElement("div", { className: 'gallery' }, leftPointer, rightPointer, gallery));
 		}

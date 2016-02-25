@@ -1,26 +1,42 @@
 import React from 'react';
 
 export default class Gallery extends React.Component {
-	constructor() {
+	constructor(props) {
 		super();
 
 		this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
 		this.renderGalleryImg = this.renderGalleryImg.bind(this);
+		this.setGallerySettings = this.setGallerySettings.bind(this);
 		this.buttonHandler = this.buttonHandler.bind(this);
 
 		this.state = {
 			galleryPointer: 0,
 			maxHeight: 600,
-			maxWidth: 600
+			maxWidth: 600,
+			showImgs: 0
 		};
 	}
 
 	componentDidMount() {
-		if (typeof window !== 'undefined')
-			this.setState({ maxHeight: getViewportSize().height, maxWidth: $(this.props.id).clientWidth })
+		if (typeof window !== 'undefined') {
+			this.setGallerySettings();
+			window.addEventListener('resize', this.setGallerySettings);
+		}
 	}
-	
-	componentWillReceiveProps() { this.setState({ galleryPointer: 0 }); }
+
+	componentWillUnmount(){ window.removeEventListener('resize', this.setGallerySettings) }
+	componentWillReceiveProps() { this.setState({ galleryPointer: 0 }) }
+		
+	setGallerySettings() {
+		var dims = (typeof getViewportSize === 'function') ? getViewportSize() : false;
+		var showImgs = (typeof this.props.showImgs !== 'undefined' && dims !== false && dims.width > 1120) ? this.props.showImgs : 1;
+
+		this.setState({
+			maxHeight: (dims !== false) ? dims.height : 0,
+			maxWidth: (dims !== false) ? dims.width : 0,
+			showImgs: showImgs
+		});
+	}
 
 	renderGalleryImg(imgData) {
 		// width and height are less than max settings
@@ -62,11 +78,9 @@ export default class Gallery extends React.Component {
 	}
 
 	buttonHandler(e) {
-		var showImgs = (typeof this.props.showImgs !== 'undefined') ? this.props.showImgs : 1;
-
 		// detect activation on the icon, or on the parent
 		if (e.target.dataset.direction === 'forward')
-			var newPointerPosition = (this.state.galleryPointer + showImgs < this.props.images.length) ? this.state.galleryPointer + 1 : false;
+			var newPointerPosition = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.state.galleryPointer + 1 : false;
 		else
 			var newPointerPosition = (this.state.galleryPointer - 1 < 0) ? false : this.state.galleryPointer - 1;
 
@@ -92,10 +106,8 @@ export default class Gallery extends React.Component {
 	}
 
 	render() {
-		var showImgs = (typeof this.props.showImgs !== 'undefined') ? this.props.showImgs : 1;
-
-		var n = (this.state.galleryPointer + showImgs <= this.props.images.length)
-			? this.state.galleryPointer + showImgs
+		var n = (this.state.galleryPointer + this.state.showImgs <= this.props.images.length)
+			? this.state.galleryPointer + this.state.showImgs
 			: this.props.images.length;
 
 		var gallery = [];
@@ -104,7 +116,7 @@ export default class Gallery extends React.Component {
 		}
 
 		var leftPointer = (this.state.galleryPointer > 0) ? this.leftPointer() : [];
-		var rightPointer = (this.state.galleryPointer + showImgs < this.props.images.length) ? this.rightPointer() : [];
+		var rightPointer = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.rightPointer() : [];
 
 		return (
 			React.createElement("div", { className: 'gallery_widget', id: this.props.id, key: this.props.key },
