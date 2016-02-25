@@ -71,17 +71,20 @@ function getViewportSize() {
 	dims.width = 0;
 	dims.height = 0;
 
-	if( typeof( window.innerWidth ) == 'number' ) {
+	if (typeof window === 'undefined' )
+		return false;
+
+	if (typeof window.innerWidth === 'number' ) {
 		//Non-IE
 		dims.width = window.innerWidth;
 		dims.height = window.innerHeight;
 	}
-	else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+	else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
 		//IE 6+ in 'standards compliant mode'
 		dims.width = document.documentElement.clientWidth;
 		dims.height = document.documentElement.clientHeight;
 	}
-	else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+	else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
 		//IE 4 compatible
 		dims.width = document.body.clientWidth;
 		dims.height = document.body.clientHeight;
