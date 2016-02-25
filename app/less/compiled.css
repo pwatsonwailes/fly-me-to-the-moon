@@ -2057,7 +2057,7 @@ blockquote {
 }
 #heading > h1 {
   color: #fff;
-  margin: 19rem 0 0 3rem;
+  margin: 7rem 0 0 3rem;
 }
 #heading > h1 #top_title {
   font-size: 32px;
@@ -2074,9 +2074,11 @@ blockquote {
   top: -1em;
 }
 #heading > p {
+  background: rgba(0, 0, 0, 0.15);
   color: #fff;
   font-family: 'Open Sans';
   margin: 0 0 0 3rem;
+  padding: 1rem;
 }
 #heading > p:last-child {
   margin-bottom: 0;
@@ -2623,6 +2625,9 @@ blockquote {
   .fa_button {
     height: 30px;
     width: 30px;
+  }
+  #heading > h1 {
+    margin: 19rem 0 0 3rem;
   }
 }
 @media screen and (min-width: 1300px) {
