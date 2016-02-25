@@ -347,9 +347,14 @@
 	padding: 1rem 1rem 0;
 	width: 960px;
 
-	&:last-child {
-		margin-bottom: 0;
+	// deal with floated content inside; images and the like etc
+	&:before,
+	&:after {
+	    content: " ";
+	    display: table;
 	}
+
+	&:after { clear: both; }
 
 	h1 {
 		font-family: 'Open Sans';
