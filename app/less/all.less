@@ -297,16 +297,15 @@
 
 .media_widget.youtube {
 	margin: 0 auto;
-	max-width: 960px;
+	max-width: 1120px;
 }
 
 .gallery_widget {
 	margin: 0 auto 1.6em;
 	position: relative;
 
-	h4 {
-		text-align: center;
-	}
+	h4 { text-align: center; }
+	img { margin: 0 1rem; }
 
 	#galleryBack,
 	#galleryForward { top: 50%; }
@@ -369,55 +368,90 @@
 	}
 }
 
-.audioplayer_controls {
-	margin-bottom: 1.6rem;
+#moonlanding {
+	.box-shadow(0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4));
+	margin: 0 auto 1.6rem;
+	padding: 1rem;
+	width: 1120px;
 
-	canvas {
-		.border-radius(4px);
-		height: 15px;
-		width: 100%;
+	.audioplayer_controls {
+		.box-shadow(inset 3px 3px 3px #DFE4E3);
+		background: #eee;
+		margin-bottom: 1.6rem;
+		padding: 1rem 1.25rem 0.6rem;
+
+		canvas {
+			.border-radius(4px);
+			height: 15px;
+			width: 100%;
+		}
+
+		.fa-pause-circle,
+		.fa-play-circle,
+		.fa-volume-up,
+		.fa-volume-down {
+			cursor: pointer;
+			font-size: 1.6rem;
+			margin-right: 1rem;
+		}
 	}
 
-	.fa-pause-circle,
-	.fa-play-circle,
-	.fa-volume-up,
-	.fa-volume-down {
-		cursor: pointer;
-		font-size: 1.6rem;
-		margin-right: 1rem;
+	#events_panel {
+		display: block;
+		margin: 0;
+		position: relative;
+		top: 15px;
+
+		li {
+			color: #1E98F1;
+			cursor: pointer;
+			list-style: none;
+			position: absolute;
+
+			/* Hide the tooltip content by default */
+			&:hover {
+				width: 20px;
+
+				&:after {
+					.background-image(linear-gradient(top, #ffffff,#eeeeee));
+					.border-radius(3px);
+					.box-shadow(0px 0px 2px #c0c1c2);
+					color: #666;
+					content: attr(title);
+					font-family: sans-serif;
+					font-size: 13px;
+					padding: 0 8px;
+					position: absolute;
+					right: 0;
+					top: -36px;
+					white-space: nowrap;
+					z-index: 20;
+				}
+			}
+		}
 	}
-}
 
-#events_panel {
-	display: block;
-	margin: 0;
-	position: relative;
-	top: 15px;
+	#stats p { font-family: Inconsolata, monospace; }
 
-	li {
-		color: #1E98F1;
-		cursor: pointer;
-		list-style: none;
-		position: absolute;
+	.dialogue ul {
+		list-style-type: none;
+		margin: 0;
 
-		/* Hide the tooltip content by default */
-		&:hover {
-			width: 20px;
+		li {
+			font-size: 16px;
+			margin-bottom: 0.5rem;
 
-			&:after {
-				.background-image(linear-gradient(top, #ffffff,#eeeeee));
-				.border-radius(3px);
-				.box-shadow(0px 0px 2px #c0c1c2);
-				color: #666;
-				content: attr(title);
-				font-family: sans-serif;
-				font-size: 13px;
-				padding: 0 8px;
-				position: absolute;
-				right: 0;
-				top: -36px;
-				white-space: nowrap;
-				z-index: 20;
+			span {
+				font-family: Inconsolata, monospace;
+
+				&.position {
+					display: block;
+					float: left;
+					font-weight: bold;
+					width: 100px;
+				}
+
+				&.text {} 
 			}
 		}
 	}
