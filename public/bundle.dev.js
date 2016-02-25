@@ -133,7 +133,6 @@ var Gallery = (function (_React$Component) {
 		_this.buttonHandler = _this.buttonHandler.bind(_this);
 
 		_this.state = {
-			showImgs: 1,
 			galleryPointer: 0,
 			maxHeight: 600,
 			maxWidth: 600
@@ -193,8 +192,10 @@ var Gallery = (function (_React$Component) {
 	}, {
 		key: 'buttonHandler',
 		value: function buttonHandler(e) {
+			var showImgs = typeof this.props.showImgs !== 'undefined' ? this.props.showImgs : 1;
+
 			// detect activation on the icon, or on the parent
-			if (e.target.dataset.direction === 'forward') var newPointerPosition = this.state.galleryPointer + this.state.showImgs < this.props.images.length ? this.state.galleryPointer + 1 : false;else var newPointerPosition = this.state.galleryPointer - 1 < 0 ? false : this.state.galleryPointer - 1;
+			if (e.target.dataset.direction === 'forward') var newPointerPosition = this.state.galleryPointer + showImgs < this.props.images.length ? this.state.galleryPointer + 1 : false;else var newPointerPosition = this.state.galleryPointer - 1 < 0 ? false : this.state.galleryPointer - 1;
 
 			// need to explicitly check for false, as if () checks ==, not ===
 			if (newPointerPosition !== false) this.setState({ galleryPointer: newPointerPosition });
@@ -212,7 +213,9 @@ var Gallery = (function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var n = this.state.galleryPointer + this.state.showImgs <= this.props.images.length ? this.state.galleryPointer + this.state.showImgs : this.props.images.length;
+			var showImgs = typeof this.props.showImgs !== 'undefined' ? this.props.showImgs : 1;
+
+			var n = this.state.galleryPointer + showImgs <= this.props.images.length ? this.state.galleryPointer + showImgs : this.props.images.length;
 
 			var gallery = [];
 			for (var i = this.state.galleryPointer; i < n; i++) {
@@ -220,7 +223,7 @@ var Gallery = (function (_React$Component) {
 			}
 
 			var leftPointer = this.state.galleryPointer > 0 ? this.leftPointer() : [];
-			var rightPointer = this.state.galleryPointer + this.state.showImgs < this.props.images.length ? this.rightPointer() : [];
+			var rightPointer = this.state.galleryPointer + showImgs < this.props.images.length ? this.rightPointer() : [];
 
 			return _react2.default.createElement("div", { className: 'gallery_widget', id: this.props.id, key: this.props.key }, _react2.default.createElement("h4", null, this.props.title), _react2.default.createElement("div", { className: 'gallery' }, leftPointer, rightPointer, gallery));
 		}
@@ -273,7 +276,7 @@ var Image = (function (_React$Component) {
 			var alt = typeof this.props.alt !== 'undefined' ? this.props.alt : '';
 			var caption = typeof this.props.caption !== 'undefined' && this.props.caption !== '' ? this.renderCaption() : '';
 
-			return _react2.default.createElement("div", { className: 'media_widget ' + classes, id: this.props.id, key: this.props.key }, _react2.default.createElement("figure", { className: 'image_container' }, _react2.default.createElement("img", { src: this.props.src, alt: alt }), caption));
+			return _react2.default.createElement("div", { className: 'media_widget image ' + classes, id: this.props.id, key: this.props.key }, _react2.default.createElement("figure", { className: 'image_container' }, _react2.default.createElement("img", { src: this.props.src, alt: alt }), caption));
 		}
 	}]);
 
@@ -343,13 +346,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _air_ground = require('../json/air_ground.json');
-
-var _air_ground2 = _interopRequireDefault(_air_ground);
-
 var _flight_director = require('../json/flight_director.json');
 
 var _flight_director2 = _interopRequireDefault(_flight_director);
+
+var _air_ground = require('../json/air_ground.json');
+
+var _air_ground2 = _interopRequireDefault(_air_ground);
 
 var _descent = require('../json/descent.json');
 
@@ -374,7 +377,8 @@ var MoonLanding = (function (_React$Component) {
 		_this.togglePlayback = _this.togglePlayback.bind(_this);
 		_this.toggleVolume = _this.toggleVolume.bind(_this);
 
-		_this.onPlayStart = _this.onPlayStart.bind(_this);
+		_this.getLoopText = _this.getLoopText.bind(_this);
+
 		_this.onProgress = _this.onProgress.bind(_this);
 		_this.handleTimeChange = _this.handleTimeChange.bind(_this);
 		_this.handleBookmarkTimeChange = _this.handleBookmarkTimeChange.bind(_this);
@@ -387,14 +391,13 @@ var MoonLanding = (function (_React$Component) {
 		_this.renderBookmark = _this.renderBookmark.bind(_this);
 
 		_this.state = {
-			ga: [],
 			fd: [],
-			a: {},
-			s: {},
-			playing: false,
+			ga: [],
+			fdPointer: 0,
+			gaPointer: 0,
 			currentTime: 0,
-			loaded: 0,
-			played: 0
+			altitude: {},
+			speed: {}
 		};
 		return _this;
 	}
@@ -404,11 +407,8 @@ var MoonLanding = (function (_React$Component) {
 		value: function componentDidMount() {
 			this.refs.audio.addEventListener('timeupdate', this.onProgress);
 			this.refs.audio.addEventListener('progress', this.onProgress);
-			this.refs.audio.addEventListener('playing', this.onPlayStart);
-			this.refs.audio.addEventListener('ended', this.onEnded);
 
 			window.addEventListener('resize', this.handleResize);
-
 			this.handleResize();
 		}
 	}, {
@@ -431,7 +431,8 @@ var MoonLanding = (function (_React$Component) {
 				var tbWidth = this.refs.trackbar.clientWidth,
 				    tbHeight = this.refs.trackbar.clientHeight,
 				    length = this.refs.audio.duration,
-				    currentTime = this.refs.audio.currentTime;
+				    currentTime = this.refs.audio.currentTime,
+				    cFT = Math.floor(this.refs.audio.currentTime);
 
 				var tbc = this.refs.trackbar.getContext("2d");
 
@@ -488,20 +489,31 @@ var MoonLanding = (function (_React$Component) {
 				tbc.fillStyle = activePosition;
 				tbc.fillRect(Math.max(0, posX - 1), 0, 3, tbHeight);
 
-				var cFT = Math.floor(currentTime);
-
 				// now let's sort out the conversation stuff
-				var newState = {
-					ga: this.state.ga,
-					fd: this.state.fd,
-					currentTime: cFT,
-					loaded: this.refs.audio.buffered.end(0) / this.refs.audio.duration,
-					played: currentTime / this.refs.audio.duration
-				};
+				var newState = { currentTime: cFT };
 
 				if (reset) {
-					newState.ga = [];
-					newState.fd = [];
+					// first sort comms
+					for (var i = 0; i < _descent2.default.fdComms.length; i++) {
+						if (cFT > _descent2.default.fdComms[i]) var fdTime = _descent2.default.fdComms[i];
+					}
+
+					for (var i = 0; i < _descent2.default.gaComms.length; i++) {
+						if (cFT > _descent2.default.gaComms[i]) var gaTime = _descent2.default.gaComms[i];
+					}
+
+					var fd = this.getLoopText('fd', fdTime);
+					var ga = this.getLoopText('ga', gaTime);
+
+					if (fd !== false) {
+						newState.fd = fd.data;
+						newState.fdPointer = fd.pointer;
+					}
+
+					if (fd !== false) {
+						newState.ga = ga.data;
+						newState.gaPointer = ga.pointer;
+					}
 
 					// work out altitude and speed
 					var aKeys = Object.keys(_descent2.default.altitude);
@@ -521,47 +533,53 @@ var MoonLanding = (function (_React$Component) {
 					aOjb.v = aOjb.v + aOjb.r * (cFT - aKey);
 					sOjb.v = sOjb.v + sOjb.r * (cFT - aKey);
 
-					newState.a = aOjb;
-					newState.s = sOjb;
+					newState.altitude = aOjb;
+					newState.speed = sOjb;
 				} else {
 					// sort out the descent stats for a non-reset command
-					if (_descent2.default.altitude[cFT]) newState.a = JSON.parse(JSON.stringify(_descent2.default.altitude[cFT]));else if (cFT > this.state.currentTime) {
+					if (_descent2.default.altitude[cFT]) newState.altitude = JSON.parse(JSON.stringify(_descent2.default.altitude[cFT]));else if (cFT > this.state.currentTime) {
 						// so we only do this once per second
-						var newAltitude = this.state.a;
+						var newAltitude = this.state.altitude;
 						newAltitude.v = newAltitude.v + newAltitude.r;
 
-						newState.a = newAltitude;
+						newState.altitude = newAltitude;
 					}
 
-					if (_descent2.default.speed[cFT]) newState.s = JSON.parse(JSON.stringify(_descent2.default.speed[cFT]));else if (cFT > this.state.currentTime) {
+					if (_descent2.default.speed[cFT]) newState.speed = JSON.parse(JSON.stringify(_descent2.default.speed[cFT]));else if (cFT > this.state.currentTime) {
 						// so we only do this once per second
-						var newSpeed = this.state.s;
+						var newSpeed = this.state.speed;
 						newSpeed.v = newSpeed.v + newSpeed.r;
 
-						newState.s = newSpeed;
+						newState.speed = newSpeed;
+					}
+
+					var fd = this.getLoopText('fd', cFT);
+					var ga = this.getLoopText('ga', cFT);
+
+					if (fd !== false) {
+						newState.fd = fd.data;
+						newState.fdPointer = fd.pointer;
+					}
+
+					if (ga !== false) {
+						newState.ga = ga.data;
+						newState.gaPointer = ga.pointer;
 					}
 				}
 
 				if (cFT > this.state.currentTime) {
 					// so we only do this once per second
-					if (typeof _air_ground2.default[cFT] !== 'undefined') {
-						for (var i = 0; i < _air_ground2.default[cFT].length; i++) {
-							newState.ga.unshift(_air_ground2.default[cFT][i]);
-						}
+					var fd = this.getLoopText('fd', cFT);
+					var ga = this.getLoopText('ga', cFT);
 
-						while (newState.ga.length > 6) {
-							newState.ga.pop();
-						}
+					if (fd !== false) {
+						newState.fd = fd.data;
+						newState.fdPointer = fd.pointer;
 					}
 
-					if (typeof _flight_director2.default[cFT] !== 'undefined') {
-						for (var i = 0; i < _flight_director2.default[cFT].length; i++) {
-							newState.fd.unshift(_flight_director2.default[cFT][i]);
-						}
-
-						while (newState.fd.length > 6) {
-							newState.fd.pop();
-						}
+					if (ga !== false) {
+						newState.ga = ga.data;
+						newState.gaPointer = ga.pointer;
 					}
 				}
 
@@ -569,9 +587,22 @@ var MoonLanding = (function (_React$Component) {
 			}
 		}
 	}, {
-		key: 'onPlayStart',
-		value: function onPlayStart() {
-			this.setState({ played: 0, loaded: 0 });
+		key: 'getLoopText',
+		value: function getLoopText(mode, cFT) {
+			var pointer = mode === 'fd' ? 'fdPointer' : 'gaPointer';
+			var comms = mode === 'fd' ? 'fdComms' : 'gaComms';
+			var index = _descent2.default[comms].indexOf(cFT);
+
+			// make sure we only do this once per second, and that there's data
+			if (cFT === this.state[pointer] && cFT > 0 || index === -1) return false;
+
+			var output = { data: [], pointer: cFT };
+
+			for (var i = index; i < index + 8; i++) {
+				output.data.push(mode === 'fd' ? _flight_director2.default[i] : _air_ground2.default[i]);
+			}
+
+			return output;
 		}
 	}, {
 		key: 'getRelativeLocation',
@@ -637,18 +668,16 @@ var MoonLanding = (function (_React$Component) {
 		value: function renderComms(mode) {
 			var list = [];
 
-			if (this.state[mode].length > 0) {
-				for (var i = 0; i < this.state[mode].length; i++) {
-					list[i] = this.renderCommsList(this.state[mode][i], mode, i);
-				}
+			for (var i = 0; i < this.state[mode].length; i++) {
+				list[i] = this.renderCommsList(this.state[mode][i], mode, i);
+			}
 
-				return _react2.default.createElement("ul", { key: 'comms' + mode }, list);
-			} else return list;
+			return _react2.default.createElement("ul", { key: 'comms' + mode }, list);
 		}
 	}, {
 		key: 'renderCommsList',
 		value: function renderCommsList(item, mode, i) {
-			return _react2.default.createElement("li", { key: mode + i }, item.name + "  (" + item.position + "): " + item.text);
+			return _react2.default.createElement("li", { key: mode + i }, _react2.default.createElement("span", { title: item.name, className: "position" }, item.position), _react2.default.createElement("span", { title: item.name, className: "text" }, item.text));
 		}
 	}, {
 		key: 'renderBookmark',
@@ -668,10 +697,10 @@ var MoonLanding = (function (_React$Component) {
 	}, {
 		key: 'renderStats',
 		value: function renderStats() {
-			var ct = !this.refs || !this.refs.audio || !this.refs.audio.currentTime ? 0 : this.refs.audio.currentTime;
+			var cFT = !this.refs || !this.refs.audio || !this.refs.audio.currentTime ? 0 : Math.floor(this.refs.audio.currentTime);
 
 			if (typeof moment !== 'undefined') {
-				var momentAudioTime = moment.duration(ct | 0, "seconds");
+				var momentAudioTime = moment.duration(cFT | 0, "seconds");
 
 				var audioTimeMin = momentAudioTime.minutes() > 9 ? momentAudioTime.minutes() : "" + 0 + momentAudioTime.minutes();
 				var audioTimeSec = momentAudioTime.seconds() > 9 ? momentAudioTime.seconds() : "" + 0 + momentAudioTime.seconds();
@@ -680,7 +709,7 @@ var MoonLanding = (function (_React$Component) {
 			} else var audioTime = "00:00";
 
 			if (typeof moment !== 'undefined') {
-				var momentTimeToLanding = moment.duration(905 - ct | 0, "seconds");
+				var momentTimeToLanding = moment.duration(905 - cFT | 0, "seconds");
 
 				var timeToLandingMin = momentTimeToLanding.minutes() > 9 ? momentTimeToLanding.minutes() : "" + 0 + momentTimeToLanding.minutes();
 				var timeToLandingSec = momentTimeToLanding.seconds() > 9 ? momentTimeToLanding.seconds() : "" + 0 + momentTimeToLanding.seconds();
@@ -688,13 +717,13 @@ var MoonLanding = (function (_React$Component) {
 				var timeToLanding = momentTimeToLanding.seconds() > 0 ? timeToLandingMin + ':' + timeToLandingSec : "00:00";
 			} else var timeToLanding = "15:05";
 
-			var aFormat = this.state.a.v % 1 === 0 ? '0,0' : '0,0.0';
-			var sFormat = this.state.s.v % 1 === 0 ? '0,0' : '0,0.0';
+			var aFormat = this.state.altitude.v % 1 === 0 ? '0,0' : '0,0.0';
+			var sFormat = this.state.speed.v % 1 === 0 ? '0,0' : '0,0.0';
 
-			var formattedA = typeof this.state.a.v !== 'undefined' ? numeral(this.state.a.v).format(aFormat) : 0;
-			var formattedS = typeof this.state.s.v !== 'undefined' ? numeral(this.state.s.v).format(sFormat) : 0;
+			var formattedA = typeof this.state.altitude.v !== 'undefined' ? numeral(this.state.altitude.v).format(aFormat) : 0;
+			var formattedS = typeof this.state.speed.v !== 'undefined' ? numeral(this.state.speed.v).format(sFormat) : 0;
 
-			return _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Altitude"), _react2.default.createElement("p", null, formattedA + ' feet')), _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Horizontal Speed"), _react2.default.createElement("p", null, formattedS + ' feet per second')), _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Audio Time"), _react2.default.createElement("p", null, audioTime)), _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Time to Landing"), _react2.default.createElement("p", null, timeToLanding)));
+			return _react2.default.createElement("div", { className: "row", id: "stats" }, _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Altitude"), _react2.default.createElement("p", null, formattedA + ' feet')), _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Speed"), _react2.default.createElement("p", null, formattedS + ' feet per second')), _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Time"), _react2.default.createElement("p", null, audioTime)), _react2.default.createElement("div", { className: "col col-xs-3" }, _react2.default.createElement("h3", null, "Landing"), _react2.default.createElement("p", null, timeToLanding)));
 		}
 	}, {
 		key: 'render',
@@ -702,10 +731,11 @@ var MoonLanding = (function (_React$Component) {
 			var audio = this.renderAudio();
 			var controls = this.renderControls();
 			var stats = this.renderStats();
-			var groundAir = this.renderComms('ga');
-			var flightDirector = this.renderComms('fd');
 
-			return _react2.default.createElement("div", null, audio, controls, stats, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col col-xs-6" }, _react2.default.createElement("h3", null, 'CAPCOM/Eagle'), groundAir), _react2.default.createElement("div", { className: "col col-xs-6" }, _react2.default.createElement("h3", null, 'Flight Director COMMs'), flightDirector)));
+			var flightDirector = typeof this.state.fd !== 'undefined' && this.state.fd.length > 0 ? this.renderComms('fd') : [];
+			var groundAir = typeof this.state.ga !== 'undefined' && this.state.ga.length > 0 ? this.renderComms('ga') : [];
+
+			return _react2.default.createElement("div", { id: "moonlanding" }, audio, controls, stats, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col col-xs-6 dialogue" }, _react2.default.createElement("h3", null, 'CAPCOM/Eagle'), groundAir), _react2.default.createElement("div", { className: "col col-xs-6 dialogue" }, _react2.default.createElement("h3", null, 'Mission Control'), flightDirector)));
 		}
 	}]);
 
@@ -1033,1375 +1063,993 @@ var YouTube = (function (_React$Component) {
 exports.default = YouTube;
 
 },{"react":194}],9:[function(require,module,exports){
-module.exports={
-	"7": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Verb 77"
-		}
-	],
-	"26": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. Sequence camera coming on."
-		}
-	],
-	"54": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston. If you'd like to try high gain, pitch 212, yaw 37. Over."
-		}
-	],
-	"67": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Roger. I think I've got you on high gain now."
-		}
-	],
-	"71": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger."
-		},
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(To Buzz) Okay, you got anything..."
-		}
-	],
-	"85": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(To Houston) Say again the angles, though."
-		}
-	],
-	"87": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger."
-		}
-	],
-	"88": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "I'll set them in to use them before we yaw around."
-		}
-	],
-	"90": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Rog. Pitch 212, yaw plus 37. "
-		}
-	],
-	"101": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Copy."
-		}
-	],
-	"104": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(To Buzz) Okay! What else is left to do here?"
-		}
-	],
-	"107": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Engine Arm, Descent. 40 seconds."
-		}
-	],
-	"116": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Is the (16mm) camera running?"
-		}
-	],
-	"117": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Camera's running. 1970 Armstrong: Okay, the override at 5 seconds. Descent armed."
-		}
-	],
-	"145": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Altitude light's on."
-		}
-	],
-	"147": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "proceed."
-		}
-	],
-	"150": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Proceed. One, Zero."
-		}
-	],
-	"153": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Ignition."
-		},
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Ignition. (Thrust) 10 percent static)"
-		}
-	],
-	"161": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Just about on time."
-		}
-	],
-	"167": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "light is on. 24, 25, 26, Throttle up. Looks good!"
-		}
-	],
-	"183": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Columbia, Houston. We've lost them. Tell them to go aft OMNI. Over."
-		}
-	],
-	"186": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay."
-		}
-	],
-	"188": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "s holding. "
-		}
-	],
-	"193": [
-		{
-			"name": "Michael Collins",
-			"position": "CMP",
-			"text": "(To Eagle) They'd like to use the OMNI "
-		}
-	],
-	"203": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(To Mike) Okay, we're reading you relayed to us, Mike. (Static fades)"
-		}
-	],
-	"207": [
-		{
-			"name": "Michael Collins",
-			"position": "CMP",
-			"text": "(Making a mis-identification) Say again, Neil?"
-		}
-	],
-	"209": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(To Mike) I'll leave it in SLEW."
-		}
-	],
-	"211": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(To Mike) Relay to us."
-		}
-	],
-	"212": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(To Mike) See if they have got me now. I've got good signal strength in SLEW."
-		}
-	],
-	"215": [
-		{
-			"name": "Michael Collins",
-			"position": "CMP",
-			"text": "Okay. You should have him now, Houston."
-		}
-	],
-	"218": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, we('ve) got you now. It's looking good. Over. Eagle..."
-		}
-	],
-	"224": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(To Neil) Okay, rate of descent looks good."
-		}
-	],
-	"227": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston. Everything's looking good here. Over."
-		}
-	],
-	"231": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Roger. Copy. "
-		}
-	],
-	"236": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston. (Our recommendation is that), after yaw-around, (use pointing) angles: S-band pitch, minus 9, yaw plus 18."
-		}
-	],
-	"253": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Copy. "
-		}
-	],
-	"257": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay. Two minutes (into the burn); going good."
-		}
-	],
-	"263": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "AGS and PGNS agree very closely."
-		}
-	],
-	"269": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "RCS is good. No flags. DPS pressure is good. 2110 Duke: Roger."
-		}
-	],
-	"276": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Data, On. Altitude's a little high. "
-		}
-	],
-	"290": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay, what do you want? Let's get...Want to get rid of this radar?"
-		}
-	],
-	"299": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Yeah."
-		}
-	],
-	"300": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "You're SLEW? Okay. "
-		}
-	],
-	"308": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Houston. I'm getting a little fluctuation in the AC voltage now."
-		}
-	],
-	"314": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger."
-		}
-	],
-	"316": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Could be our meter, maybe, huh?"
-		}
-	],
-	"318": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Standby. Looking good to us. You're still looking good at 3...Coming up 3 minutes."
-		}
-	],
-	"333": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay, we went by the three-minute point early. We're (going to land) long."
-		}
-	],
-	"335": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Rate of descent looking real good. Altitude's right about on."
-		}
-	],
-	"340": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(To Houston) Our position checks down range show us to be a little long."
-		}
-	],
-	"343": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. Copy. (Heavy Static)"
-		}
-	],
-	"346": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "AGS is showing about 2 feet per second greater (altitude) rate (than is the PGNS). "
-		}
-	],
-	"357": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Mark. I show us to be...Stand by. 2203 Aldrin: Altitude rate looks right down the groove."
-		}
-	],
-	"368": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Roger, about 3 seconds long. Rolling over. Okay, now watch that signal strength."
-		}
-	],
-	"382": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Well, I think it's going to drop."
-		}
-	],
-	"385": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "You know, I tell you. This is much harder to do than it was..."
-		}
-	],
-	"393": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(To Neil) Keep it going. "
-		}
-	],
-	"400": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston..."
-		},
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(Under Charlie) Okay, Houston; the ED Batts are Go..."
-		}
-	],
-	"401": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "...You are Go to continue..."
-		},
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "...at 4 minutes."
-		}
-	],
-	"404": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. You are Go. You are Go to continue powered descent. You are Go to continue powered descent."
-		}
-	],
-	"412": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Roger. (Static)"
-		}
-	],
-	"417": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "And, Eagle, Houston. We've got data dropout. You're still looking good. (Long static fades)"
-		}
-	],
-	"429": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "How do you look, over there?"
-		}
-	],
-	"431": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay"
-		}
-	],
-	"446": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. We got good (landing radar) lock-on."
-		}
-	],
-	"451": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "We got a lock-on?"
-		}
-	],
-	"453": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Yeah. Altitude light's out. DELTA-H is minus 2,900."
-		}
-	],
-	"460": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. We copy."
-		}
-	],
-	"462": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Got the Earth straight out our front window."
-		}
-	],
-	"463": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Sure do. Houston, (I hope) you're looking at our DELTA-H."
-		}
-	],
-	"467": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "That's affirmative."
-		}
-	],
-	"468": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(With the slightest touch of urgency) Program Alarm."
-		}
-	],
-	"470": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "It's looking good to us. Over."
-		}
-	],
-	"472": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(To Houston) It's a 1202."
-		}
-	],
-	"474": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "1202. "
-		}
-	],
-	"484": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(To Buzz) What is it? Let's incorporate (the landing radar data). (To Houston) Give us a reading on the 1202 Program Alarm."
-		}
-	],
-	"495": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. We got you...(With some urgency in his voice) We're Go on that alarm."
-		}
-	],
-	"501": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Roger. (To Buzz) 330."
-		}
-	],
-	"503": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "6 plus 25. Throttle down..."
-		}
-	],
-	"504": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. Looks like about 820...(Listens)"
-		}
-	],
-	"505": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "...6 plus 25, throttle down."
-		}
-	],
-	"508": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Roger. Copy."
-		}
-	],
-	"510": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "6 plus 25."
-		}
-	],
-	"516": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Same alarm, and it appears to come up when we have a 16/68 up."
-		}
-	],
-	"519": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. Copy. "
-		}
-	],
-	"522": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston. We'll monitor your DELTA-H."
-		}
-	],
-	"523": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "ere we...Was it (meaning the large DELTA-H reading) coming down?"
-		}
-	],
-	"526": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Yes, it's coming down beautifully."
-		}
-	],
-	"530": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "DELTA-H..."
-		}
-	],
-	"531": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Roger, it looks good now."
-		}
-	],
-	"532": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. DELTA-H is looking good to us."
-		}
-	],
-	"536": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Wow! Throttle down..."
-		}
-	],
-	"537": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Throttle down on time."
-		}
-	],
-	"538": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. We copy throttle down..."
-		}
-	],
-	"540": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "You can feel it in here when it throttles down. Better than the (stationary) simulator."
-		}
-	],
-	"544": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Rog. "
-		}
-	],
-	"550": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "AGS and PGNS look real close."
-		}
-	],
-	"552": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay. No flags. RCS is good. DPS (Descent Propulsion System, pronounced 'dips') is good. Pressure...Okay."
-		}
-	],
-	"570": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "At 7 minutes, you're looking great to us, Eagle."
-		}
-	],
-	"575": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. I'm still on SLEW so we may tend to lose (the high-gain) as we gradually pitch over. Let me try Auto again now and see what happens."
-		}
-	],
-	"583": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger."
-		}
-	],
-	"585": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. Looks like it's holding."
-		}
-	],
-	"586": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. We got good data. "
-		}
-	],
-	"589": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay, 7:30 coming up. Should be... tad long."
-		}
-	],
-	"609": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "And I have the window. view out the window."
-		}
-	],
-	"611": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston. It's Descent 2 fuel to Monitor. Over."
-		}
-	],
-	"617": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Going to 2. Coming up on 8 minutes."
-		}
-	],
-	"623": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Give us an estimated switchover time please, Houston."
-		}
-	],
-	"627": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. Standby. You're looking great at 8 minutes."
-		}
-	],
-	"632": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "You're at 7000, Looking good."
-		}
-	],
-	"634": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, you've got 30 seconds to P64."
-		}
-	],
-	"641": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Roger. "
-		}
-	],
-	"649": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, Houston. Coming up 8:30; you're looking great. "
-		}
-	],
-	"657": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "P64."
-		}
-	],
-	"659": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "We copy."
-		}
-	],
-	"666": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "2511 Armstrong: Okay. 5000 (feet altitude). 100 feet per second (descent rate) is good. Going to check my attitude control. Attitude control is good"
-		}
-	],
-	"673": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, you're looking great. Coming up 9 minutes. "
-		}
-	],
-	"687": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Manual attitude control is good."
-		}
-	],
-	"690": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. Copy. Eagle, Houston. You're Go for landing. Over."
-		}
-	],
-	"695": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay. 3000 at 70."
-		}
-	],
-	"699": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Roger. Understand. Go for landing. 3000 feet."
-		}
-	],
-	"701": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Copy."
-		},
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Program Alarm. 1201"
-		}
-	],
-	"706": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "1201. Okay, 2000 at 50."
-		}
-	],
-	"707": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. 1201 alarm. We're Go. Same type. We're Go."
-		}
-	],
-	"713": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "2000 feet. 2000 feet."
-		}
-	],
-	"715": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(With some urgency in his voice, possibly as he sees West Crater) Give me an LPD (angle)."
-		}
-	],
-	"716": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Into the AGS, 47 degrees."
-		}
-	],
-	"717": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger."
-		}
-	],
-	"719": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "(Confirming Buzz's LPD readout) 47. That's not a bad looking area. Okay. 1000 at 30 is good. What's LPD?"
-		}
-	],
-	"723": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Eagle, looking great. You're Go. Roger. 1202. We copy it."
-		}
-	],
-	"743": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "35 degrees. 35 degrees. 750. Coming down at 23 (feet per second)."
-		}
-	],
-	"749": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay."
-		},
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "700 feet, 21 (feet per second) down, 33 degrees."
-		}
-	],
-	"752": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Pretty rocky area."
-		}
-	],
-	"753": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "600 feet, down at 19."
-		}
-	],
-	"757": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "I'm going to..."
-		}
-	],
-	"758": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "540 feet, down at...(LPD angle is) 30. Down at 15. "
-		}
-	],
-	"768": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay, 400 feet, down at 9 (feet per second). 58 (feet per second) forward."
-		}
-	],
-	"774": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "No problem."
-		}
-	],
-	"775": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "350 feet, down at 4."
-		}
-	],
-	"777": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "330, three and a half down. "
-		}
-	],
-	"784": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay, you're pegged on horizontal velocity."
-		}
-	],
-	"788": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "300 feet (altitude), down 3 1/2 (feet per second), 47 (feet per second) forward. Slow it up."
-		}
-	],
-	"794": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "1 1/2 down. Ease her down. 270."
-		}
-	],
-	"800": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay, how's the fuel?"
-		}
-	],
-	"802": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Eight percent."
-		}
-	],
-	"804": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay. Here's a...Looks like a good area here."
-		}
-	],
-	"806": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "I got the shadow out there."
-		}
-	],
-	"809": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "250 (feet altitude), down at 2 1/2, 19 forward. "
-		}
-	],
-	"815": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Altitude (and) velocity lights (on)."
-		}
-	],
-	"818": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "3 1/2 down, 220 feet, 13 forward. "
-		}
-	],
-	"825": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "11 forward. Coming down nicely."
-		}
-	],
-	"827": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Gonna be right over that crater."
-		}
-	],
-	"826": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "200 feet, 4 1/2 down."
-		}
-	],
-	"828": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "5 1/2 down."
-		}
-	],
-	"831": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "I got a good spot "
-		}
-	],
-	"833": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "160 feet, 6 1/2 down."
-		}
-	],
-	"835": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "5 1/2 down, 9 forward. You're looking good."
-		}
-	],
-	"842": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "120 feet."
-		}
-	],
-	"847": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "100 feet, 3 1/2 down, 9 forward. Five percent (fuel remaining). Quantity light."
-		}
-	],
-	"856": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. 75 feet. And it's looking good. Down a half, 6 forward."
-		}
-	],
-	"864": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "60 seconds (of fuel left before the 'Bingo' call)."
-		}
-	],
-	"866": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "(Velocity) light's on."
-		}
-	],
-	"870": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "60 feet, down 2 1/2. 2 forward. 2 forward. That's good."
-		}
-	],
-	"879": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "40 feet, down 2 1/2. Picking up some dust."
-		}
-	],
-	"883": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "30 feet, 2 1/2 down. shadow."
-		}
-	],
-	"887": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "4 forward. 4 forward. Drifting to the right a little. 20 feet, down a half."
-		}
-	],
-	"893": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "30 seconds (until the 'Bingo' call)."
-		}
-	],
-	"894": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Drifting forward just a little bit; that's good. "
-		}
-	],
-	"902": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Contact Light."
-		}
-	],
-	"905": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Shutdown"
-		}
-	],
-	"906": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. Engine Stop."
-		}
-	],
-	"907": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "ACA out of Detent."
-		}
-	],
-	"908": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Out of Detent. Auto."
-		}
-	],
-	"909": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Mode Control, both Auto. Descent Engine Command Override, Off. Engine Arm, Off. 413 is in."
-		}
-	],
-	"919": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "We copy you down, Eagle."
-		}
-	],
-	"920": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Engine arm is off. (Now on voice-activated comm) Houston, Tranquility Base here. The Eagle has landed."
-		}
-	],
-	"928": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "(Momentarily tongue-tied) Roger, Twan...(correcting himself) Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
-		}
-	],
-	"938": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Thank you."
-		}
-	],
-	"940": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "You're looking good here."
-		}
-	],
-	"945": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Okay. (To Buzz) Let's get on with it. (To Houston) Okay. We're going to be busy for a minute."
-		}
-	],
-	"947": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Master Arm, On. Take care of the descent vent."
-		}
-	],
-	"952": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "I'll get the pressure check."
-		}
-	],
-	"960": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Very smooth touchdown. "
-		}
-	],
-	"974": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "That looks..."
-		}
-	],
-	"985": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Okay. It looks like we're venting the oxidizer now."
-		}
-	],
-	"988": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger, Eagle. And you are Stay for..."
-		}
-	],
-	"990": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "...T1. Over. Eagle, you are Stay for T1."
-		}
-	],
-	"994": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Roger. Understand, Stay for T1."
-		}
-	],
-	"997": [
-		{
-			"name": "Charlie Duke",
-			"position": "CAPCOM",
-			"text": "Roger. And we see you venting the Ox(idizer)."
-		}
-	],
-	"1002": [
-		{
-			"name": "Neil Armstrong",
-			"position": "CDR",
-			"text": "Roger."
-		}
-	],
-	"1018": [
-		{
-			"name": "Buzz Aldrin",
-			"position": "LMP",
-			"text": "Radar circuit breaker."
-		}
-	]
-}
+module.exports=[
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Verb 77"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. Sequence camera coming on."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston. If you'd like to try high gain, pitch 212, yaw 37. Over."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Roger. I think I've got you on high gain now."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(To Buzz) Okay, you got anything..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(To Houston) Say again the angles, though."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "I'll set them in to use them before we yaw around."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Rog. Pitch 212, yaw plus 37. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Copy."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(To Buzz) Okay! What else is left to do here?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Engine Arm, Descent. 40 seconds."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Is the (16mm) camera running?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Camera's running. 1970 Armstrong: Okay, the override at 5 seconds. Descent armed."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Altitude light's on."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "proceed."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Proceed. One, Zero."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Ignition."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Ignition. (Thrust) 10 percent static)"
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Just about on time."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "light is on. 24, 25, 26, Throttle up. Looks good!"
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Columbia, Houston. We've lost them. Tell them to go aft OMNI. Over."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "s holding. "
+	},
+	{
+		"name": "Michael Collins",
+		"position": "CMP",
+		"text": "(To Eagle) They'd like to use the OMNI "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(To Mike) Okay, we're reading you relayed to us, Mike. (Static fades)"
+	},
+	{
+		"name": "Michael Collins",
+		"position": "CMP",
+		"text": "(Making a mis-identification) Say again, Neil?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(To Mike) I'll leave it in SLEW."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(To Mike) Relay to us."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(To Mike) See if they have got me now. I've got good signal strength in SLEW."
+	},
+	{
+		"name": "Michael Collins",
+		"position": "CMP",
+		"text": "Okay. You should have him now, Houston."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, we('ve) got you now. It's looking good. Over. Eagle..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(To Neil) Okay, rate of descent looks good."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston. Everything's looking good here. Over."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Roger. Copy. "
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston. (Our recommendation is that), after yaw-around, (use pointing) angles: S-band pitch, minus 9, yaw plus 18."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Copy. "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay. Two minutes (into the burn); going good."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "AGS and PGNS agree very closely."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "RCS is good. No flags. DPS pressure is good. 2110 Duke: Roger."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Data, On. Altitude's a little high. "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay, what do you want? Let's get...Want to get rid of this radar?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Yeah."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "You're SLEW? Okay. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Houston. I'm getting a little fluctuation in the AC voltage now."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Could be our meter, maybe, huh?"
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Standby. Looking good to us. You're still looking good at 3...Coming up 3 minutes."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay, we went by the three-minute point early. We're (going to land) long."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Rate of descent looking real good. Altitude's right about on."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(To Houston) Our position checks down range show us to be a little long."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. Copy. (Heavy Static)"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "AGS is showing about 2 feet per second greater (altitude) rate (than is the PGNS). "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Mark. I show us to be...Stand by. 2203 Aldrin: Altitude rate looks right down the groove."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Roger, about 3 seconds long. Rolling over. Okay, now watch that signal strength."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Well, I think it's going to drop."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "You know, I tell you. This is much harder to do than it was..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(To Neil) Keep it going. "
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(Under Charlie) Okay, Houston; the ED Batts are Go..."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "...You are Go to continue..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "...at 4 minutes."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. You are Go. You are Go to continue powered descent. You are Go to continue powered descent."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Roger. (Static)"
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "And, Eagle, Houston. We've got data dropout. You're still looking good. (Long static fades)"
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "How do you look, over there?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. We got good (landing radar) lock-on."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "We got a lock-on?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Yeah. Altitude light's out. DELTA-H is minus 2,900."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. We copy."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Got the Earth straight out our front window."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Sure do. Houston, (I hope) you're looking at our DELTA-H."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "That's affirmative."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(With the slightest touch of urgency) Program Alarm."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "It's looking good to us. Over."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(To Houston) It's a 1202."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "1202. "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(To Buzz) What is it? Let's incorporate (the landing radar data). (To Houston) Give us a reading on the 1202 Program Alarm."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. We got you...(With some urgency in his voice) We're Go on that alarm."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Roger. (To Buzz) 330."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "6 plus 25. Throttle down..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. Looks like about 820...(Listens)"
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "...6 plus 25, throttle down."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Roger. Copy."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "6 plus 25."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Same alarm, and it appears to come up when we have a 16/68 up."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. Copy. "
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston. We'll monitor your DELTA-H."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "ere we...Was it (meaning the large DELTA-H reading) coming down?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Yes, it's coming down beautifully."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "DELTA-H..."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Roger, it looks good now."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. DELTA-H is looking good to us."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Wow! Throttle down..."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Throttle down on time."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. We copy throttle down..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "You can feel it in here when it throttles down. Better than the (stationary) simulator."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Rog. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "AGS and PGNS look real close."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay. No flags. RCS is good. DPS (Descent Propulsion System, pronounced 'dips') is good. Pressure...Okay."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "At 7 minutes, you're looking great to us, Eagle."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. I'm still on SLEW so we may tend to lose (the high-gain) as we gradually pitch over. Let me try Auto again now and see what happens."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. Looks like it's holding."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. We got good data. "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay, 7:30 coming up. Should be... tad long."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "And I have the window. view out the window."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston. It's Descent 2 fuel to Monitor. Over."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Going to 2. Coming up on 8 minutes."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Give us an estimated switchover time please, Houston."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. Standby. You're looking great at 8 minutes."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "You're at 7000, Looking good."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, you've got 30 seconds to P64."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Roger. "
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, Houston. Coming up 8:30; you're looking great. "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "P64."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "We copy."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "2511 Armstrong: Okay. 5000 (feet altitude). 100 feet per second (descent rate) is good. Going to check my attitude control. Attitude control is good"
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, you're looking great. Coming up 9 minutes. "
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Manual attitude control is good."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. Copy. Eagle, Houston. You're Go for landing. Over."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay. 3000 at 70."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Roger. Understand. Go for landing. 3000 feet."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Copy."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Program Alarm. 1201"
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "1201. Okay, 2000 at 50."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. 1201 alarm. We're Go. Same type. We're Go."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "2000 feet. 2000 feet."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(With some urgency in his voice, possibly as he sees West Crater) Give me an LPD (angle)."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Into the AGS, 47 degrees."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "(Confirming Buzz's LPD readout) 47. That's not a bad looking area. Okay. 1000 at 30 is good. What's LPD?"
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Eagle, looking great. You're Go. Roger. 1202. We copy it."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "35 degrees. 35 degrees. 750. Coming down at 23 (feet per second)."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "700 feet, 21 (feet per second) down, 33 degrees."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Pretty rocky area."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "600 feet, down at 19."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "I'm going to..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "540 feet, down at...(LPD angle is) 30. Down at 15. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay, 400 feet, down at 9 (feet per second). 58 (feet per second) forward."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "No problem."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "350 feet, down at 4."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "330, three and a half down. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay, you're pegged on horizontal velocity."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "300 feet (altitude), down 3 1/2 (feet per second), 47 (feet per second) forward. Slow it up."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "1 1/2 down. Ease her down. 270."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay, how's the fuel?"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Eight percent."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay. Here's a...Looks like a good area here."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "I got the shadow out there."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "250 (feet altitude), down at 2 1/2, 19 forward. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Altitude (and) velocity lights (on)."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "3 1/2 down, 220 feet, 13 forward. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "11 forward. Coming down nicely."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Gonna be right over that crater."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "200 feet, 4 1/2 down."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "5 1/2 down."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "I got a good spot "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "160 feet, 6 1/2 down."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "5 1/2 down, 9 forward. You're looking good."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "120 feet."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "100 feet, 3 1/2 down, 9 forward. Five percent (fuel remaining). Quantity light."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. 75 feet. And it's looking good. Down a half, 6 forward."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "60 seconds (of fuel left before the 'Bingo' call)."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "(Velocity) light's on."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "60 feet, down 2 1/2. 2 forward. 2 forward. That's good."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "40 feet, down 2 1/2. Picking up some dust."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "30 feet, 2 1/2 down. shadow."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "4 forward. 4 forward. Drifting to the right a little. 20 feet, down a half."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "30 seconds (until the 'Bingo' call)."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Drifting forward just a little bit; that's good. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Contact Light."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Shutdown"
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. Engine Stop."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "ACA out of Detent."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Out of Detent. Auto."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Mode Control, both Auto. Descent Engine Command Override, Off. Engine Arm, Off. 413 is in."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "We copy you down, Eagle."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Engine arm is off. (Now on voice-activated comm) Houston, Tranquility Base here. The Eagle has landed."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "(Momentarily tongue-tied) Roger, Twan...(correcting himself) Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Thank you."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "You're looking good here."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Okay. (To Buzz) Let's get on with it. (To Houston) Okay. We're going to be busy for a minute."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Master Arm, On. Take care of the descent vent."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "I'll get the pressure check."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Very smooth touchdown. "
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "That looks..."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Okay. It looks like we're venting the oxidizer now."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger, Eagle. And you are Stay for..."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "...T1. Over. Eagle, you are Stay for T1."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Roger. Understand, Stay for T1."
+	},
+	{
+		"name": "Charlie Duke",
+		"position": "CAPCOM",
+		"text": "Roger. And we see you venting the Ox(idizer)."
+	},
+	{
+		"name": "Neil Armstrong",
+		"position": "CDR",
+		"text": "Roger."
+	},
+	{
+		"name": "Buzz Aldrin",
+		"position": "LMP",
+		"text": "Radar circuit breaker."
+	}
+]
 },{}],10:[function(require,module,exports){
 module.exports={
 	"home": {
@@ -2441,34 +2089,68 @@ module.exports={
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
-				"content": "# The Race to Space\n\n## 1944 - 1958: From a legacy of death, to the dream of space\n\n**The date is August 2nd, 1955**. The USSR responds to the American declaration of intent, just four days earlier, to put satellites in to space, with a simple message: if you want to do it, we'll do it too, and faster. These two announcements come during the escalating the Cold War. Tensions are increasing, with both sides having recently demonstrated the capability to create a portable hydrogen bomb. With the memory of the bombings of Hiroshima and Nagasaki both still less than ten years old, the prospect of weapons with a thousand times the power ushers in the era of \"duck and cover\". And yet, the still infant science of rocketry, developed in the aftermath of World War II, promises more than just the prospect of global annihilation. It's a time when both countries, using the knowledge of their captured German engineers, have begun developing modern rocket arsenals to create intercontinental ballistic missiles. It will culminate in a mere 14 years with men walking on the surface of the moon, and spawn a legacy that continues onwards to today's exploration of the solar system and beyond. \n\nOur story begins however, at the end stages of the Second World War.\n\n### The Bloody Phoenix\n\nTowards the end of WW2 in 1944, Hitler's Nazi Germany faced catastrophic defeat. With his options limited, he ordered the use of a new, secret weapon. Designed as a tool to retaliate against the bombing of German cities by the allies, this weapon can travel at four times the speed of sound, travel 200 miles, cross the boundary of space, and deliver almost a tonne of explosive.\n\nIt was called the Vergeltungswaffe 2 (Retribution Weapon 2), or simply the V-2 for short.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The V-2 rocket assembled](/fly-me-to-the-moon/piece_images/v-2_assembled.jpg)\n<figcaption>The V-2 rocket assembled in the Peenemünde Museum</figcaption>\n</figure>\n\nThen U.S. Army Major Robert B. Staver, Chief of the Jet Propulsion Section of the Research and Intelligence Branch of the U.S. Army Ordnance Corps, is ordered to a top secret meeting convened by the British, which will discuss the V-2 rocket. His superior, Colonel Holger Toftoy has orders to capture a V-2 at any cost. The Americans have realised that if they can create their own variant on the V-2, and combine it with their own secret project, the atom bomb, they will have military superiority over the rest of the world for years to come.\n\nToftoy gave Staver a simple order: capture the lead German scientist on the V-2 project, a man called Wernher von Braun. Von Braun was, at the time, stationed in Peenemünde in northern Germany, but the Americans had a problem. The Soviets were currently in Poland, pushing the Nazi forces back, where they'd discovered something the Americans would have literally killed for - the intact shell of a V-2, abandoned in the retreat. They already had the vessel, and in days, they'd reach von Braun.\n\nWhile the Soviet forces were less than 100 miles away, von Braun assembled his planning staff and gave them a choice. They would be attacked soon, and their research was too valuable to be lost. As a result, he presented them with two simple options: surrender to the Soviets, or the allied forces of the West. Afraid of the Soviet forces and their reprisals against Germans, even prisoners of war, von Braun and his staff decided on the latter, and to surrender to the Americans if possible. Fortuitously, they have been given two conflicting sets of orders: to relocate to central Germany, and also to join the army and fight. They believed that the former offered the greatest chance of giving an opportunity to defect to the advancing American forces, von Braun moved his people to close to Nordhausen, to the Mittelwerk facility, where they resumed their work. Determined to continue his progress, he knows that whilst the rockets they're working on can be used for destruction, he can also see their potential for manned use.\n\nBy March, the Soviets are on the outskirts of Berlin. However, for all the the Nazi regieme is about to fall, they aren't any closer to capturing von Braun or his team. Preparing for the possibility they may not be able to reach them before the Americans do, they decide to put together a team to work on rocketry in the absence of the Nazi scientists. There was just one problem. The man who they needed to lead the team, and the man recommended by their leading rocket scientist (Ivan Kleymyonov), had been sent to the Gulag, put after being tortured and forced to confess to deliberately slowing research into rockets. That man was Sergei Korolev. Currently, Korolev was in a Sharashka, a Soviet prison for intellectual prisoners. Slave labour camps in all but name, those there were forced to work on projects dictated by the Soviet party.\n\nIn April, as the Allied forces advanced into Germany, von Braun and his top 500 scientists were ordered to the Bavarian Alps. The Americans were getting too close, and the fear was that the scientists and their research would fall into enemy hands. Ordered to destroy their research, von Braun instead had his men hide their papers in a disused mine, destroying as much as they needed to to appear to be following orders. Then, under guard by the SS, who were given orders to execute the team if they were over-run and to fall into enemy hands, or if Germany lost the war, they set off on a train to the Alps. The soldiers sent were fanatical and on edge, and knew the end would occur in weeks at most.\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![A cutaway drawing of the V-2 rocket](/fly-me-to-the-moon/piece_images/v-2_cutaway.jpg)\n<figcaption>V-2 cutaway drawing (U.S. Air Force photo)</figcaption>\n</figure>\n\nOnly days after they left, the Americans arrived and found the remains of the V-2 mass production plant which had produced over 5,000 V-2 rockets. It wasn't empty though - in the rush to leave, the Nazi forces had left 100 intact V-2 rockets. They also found the slave labour and concentration camp nearby, Mittelbau-Dora. Over 20,000 dead were found there, with another 40,000 survivors freed. More were killed creating the rockets, than by their use. The American team called in Staver and his people, who released immediately what this represented. He ordered the rockets to be broken down and shipped back, starting the single largest movement of material for the entire war. Knowing that the factory would fall under Soviet control, Staver was given less than a month to complete the operation.\n\nAt the same time, Korolev had been recalled from the Gulag and transported to Germany, to work under Dmitriy Ustinov, with Korolev serving as a chief designer of long-range missiles at the Special Design Bureau 1 (OKB-1). OKB-1 had been given the brief of research and design with regards to the V-2 rocket, aiming at advancing the technology for Soviet purposes.\n\nBack in the Alps, von Braun was able to convince the SS Major in charge that if they were grouped together, they'd be an easy target for the US bombing raids and other retaliatory strikes. They were therefore ordered to spread out into a collection of villages. As a result, when it was announced that Hitler had committed suicide and the SS troops went to find the scientists, they only found empty beds. Von Braun and his people had swiftly fled to Austria, the moment they could. On May 2, 1945, upon finding an American private from the U.S. 44th Infantry Division, von Braun's brother and fellow rocket engineer, Magnus, approached the soldier on a bicycle, calling out in broken English:\n\n> My name is Magnus von Braun. My brother invented the V-2. We want to surrender.\n\n### The Post-War Scientists\n\nIn 1943, Werner Osenberg, the head of the German Military Research Association, or Wehrforschungsgemeinschaft, had created a list of the top scientists and engineers of the age. In 1945, Staver managed to get hold of that list, and used it to create a hit list of people the Americans wanted to capture. At the top, was von Braun. His knowledge would, they knew, prove invaluable. Thus the capture of von Braun was a huge coup of the Americans, and the loss felt by the Soviets, despite their creation of their own team, was equally huge. Stalin's reaction perhaps best sums up the feeling of the Soviet leadership:\n\n> This is absolutely intolerable. We defeated the Nazi armies; we occupied Berlin and Peenemunde, but the Americans got the rocket engineers. What could be more revolting and inexcusable?\n\nStaver was then tasked with Operation Overcast, the American plan to interrogate the German scientists. What von Braun and the others had to say though made him decide to write to his superiors, and urge their evacuation. As it grew, the beginnings of Operation Paperclip were forming. In total, over 1,500 German intellectuals would be brought to America from previously occupied European countries, with the aims of denying the advanced German scientific expertise to the Soviet Union and United Kingdom, whilst also preventing Germany from redeveloping its military research.\n\nVon Braun was taken to America shortly after, and along with over 100 of his men he was escorted to Fort Bliss, whilst the Soviets were left with the now derelict V-2 plant. However, the Soviets didn't realise just how outmatched they currently were, until the 6th August, 1945. With the bombing of Hiroshima, and then Nagasaki shortly after, they realised that the Americans now had both the intelligence with which to make long range rockets, and a payload that could flatten cities. This was a terrifying, and immediate threat.\n\n<figure class=\"media_widget\">\n![A rusty V-2 rocket engine](/fly-me-to-the-moon/piece_images/V-2_Mittelbau_engine.jpg)\n<figcaption>A rusty V-2 rocket engine in the underground production facilities at Dora-Mittelbau, Nordhausen</figcaption>\n</figure>\n\nBack in Nordhausen , the Soviets put out a call for anyone who'd worked on the V-2 rockets to come and help them restart the rocket facility and to continue their research. A few did, including Helmut Gröttrup, wouldn't been von Braun's assistant and had developed the radio guidance system for the V-2. Having helped the Soviets get a V-2 engine to fire, he's promised that he can stay in Germany. In short order however, on 22 October 1946, he was betrayed. He and the other newly captured engineers, were deported to Moscow with their families as part of Operation Osoaviakhim. Over 2,000 other German intellectuals were moved with him, deported to Russia to aid the Soviet research programs. Once there, they were tasked with reproducing the technical drawings for the V-2, to enable research to begin again. It would take two years to compile the entire new set of blueprints. The rockets constructed had a dismal record though, and shortly after, research would begin on the R-1, the first Soviet rocket system. It had it's first launch scheduled for the 17th September 1948. Trials and refinement of the missile continued, until on the 25th November 1950, it was accepted into service. For Gröttrup and his team however, it was the beginning of the end of their usefulness. Too powerful, and too useful, they hid them away, and consigned them to quiet work, back in Germany.\n\nIn the meantime, things weren't going well in America for von Braun and his people. The program had become nicknamed Operation Icebox, due to the lack of activity. The captured Germans were kept isolated, but given no work, left to their own devices. The American military had decided to focus on air and submarine delivery systems for their weapons, rather than rocketry, leaving their captured geniuses in a state of limbo.\n\n### The Cold War Heightens\n\nIn 1952, tensions between the USSR and America grew further, as America tested the first hydrogen bomb, then the most powerful weapon ever detonated, and by a huge margin. Ivy Mike as it was known, was an 74 tonne building, designed to test the theory of a Teller-Ulam fusion bomb. \n\nThe 10.4 megaton blast was almost 700 times more powerful than the one dropped on Hiroshima. It left a crater 1.2 miles wide and 164 feet (50 metres) deep and blasted radioactive coral into the stratosphere, from where it fell to land on ships as far as 35 miles away. The Soviets responded by detonating their own a year later. Which didn't exactly cool things down."
+				"content": "**It's August 2nd, 1955**. Four days ago, the United States has stated its intent to put satellites in to space. Now, the USSR responds with a simple message: if you can do it, we'll do it too, and faster and better. These two announcements come amidst the rising tensions of the escalating Cold War. Both sides have demonstrated their nuclear fusion bomb capacity; weapons with previously unimaginably destructive yields. The twin bombings of Hiroshima and Nagasaki were less than a decade prior, and now the prospect of weapons with literally a thousand times the power in the hands of belligerent nations ushers in the era of \"duck and cover\". And yet, the young science of rocketry which will deliver such devices, formed in the worst parts of World War II, promises more than just the prospect of global annihilation. It will culminate in a mere 14 years with men walking on the surface of the moon, and spawn a legacy that continues onwards to today's exploration of the solar system and beyond. \n\nOur story begins however, in 1944, with a small group of German engineers and scientists.\n\n### The Bloody Phoenix\n\nTowards the end of WW2 in 1944, Hitler's Nazi Germany faced catastrophic defeat. With his options limited, he ordered the use of a new, secret weapon. Designed as a tool to retaliate against the bombing of German cities by the allies, this weapon can travel 200 miles in less than four minutes, crossing the boundary of space in the process, and deliver almost a tonne of explosives.\n\nIt's name: Vergeltungswaffe 2, or V-2 for short.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The V-2 rocket assembled](/fly-me-to-the-moon/piece_images/v-2_assembled.jpg)\n<figcaption>The V-2 rocket assembled in the Peenemünde Museum</figcaption>\n</figure>\n\nThe Chief of the Jet Propulsion Section of the Research and Intelligence Branch of the U.S. Army Ordnance Corps Major Robert Staver was ordered to a meeting convened by the British military intelligence. The single subject for discussion was the V-2. His commanding officer Colonel Holger Toftoy had orders to capture a V-2 at any cost, for the Americans had realised that if they can could their own rockets, they could use them as a delivery mechanism for the atom bomb. Such a weapon would give military superiority over the rest of the world for years to come.\n\nTo complete his own orders, Toftoy has gave Staver an order simple enough in nature, though difficult in practice: capture Wernher von Braun, the leader of the V-2 project technical team. However, Staver had two problems:\n\n1. Von Braun is currently stationed in Peenemünde in northern Germany\n2. The Soviet forces have pushed their way into Poland, forcing the Nazi forces back\n\nWhile in Poland, they have come across the intact shell of an abandoned V-2. They already had the vessel, and in days, they'd reach von Braun.\n\nThe Soviet forces advance to less than 100 miles from where von Braun and his team were stationed. They knew it was just a matter of days until they too would be attacked. The work they were doing was too valuable to be lost, and so von Braun assembled his planning staff and presented them with a choice. Surrender to the Soviets, or to the allied forces of the West. Tales of the reprisals dealt out by Soviet forces against German nationals, even including prisoners of war, they decide to try to surrender to the Western nations, with the American forces as their ideal candidates.\n\nFortuitously, they have been given two conflicting sets of orders. On the one hand, they're told to relocate to central Germany to keep them safe, but they've also been ordered to join the army and fight. Retreating will both keep them safer from the Soviets, and present a greater chance of allowing defection to the advancing American forces. Von Braun therefore moved his people to close to Nordhausen, to the Mittelwerk facility. Far from any German cities, it's about as safe as they can hope to be. Determined to continue his work, von Braun knew that the rockets they're working on could do far more than deliver bombs. In secret, he dreams of men using them to reach the stars.\n\nThe Soviets continued their advance, reaching the outskirts of Berlin by March. However, for all the the Nazi regieme is about to fall, von Braun and his people are now hundreds of miles away. Preparing for the possibility they may not be able to reach them before the Americans do, they decide to put together a team to work on rocketry in the absence of the Nazi scientists. There's just one minor issue with this though. They've done their research on who would be best to lead such an endeavour, and the man recommended was tortured and sent to the Gulag, before being moved to a Sharashka, a Soviet prison for intellectual prisoners. The man's name: Sergei Korolev.\n\nA month later von Braun and his top 500 scientists were ordered to head south to the Bavarian Alps, to keep them from the Allied forces now advancing into Germany. Ahead of their travels, von Braun was ordered to destroy all his research. He had other ideas however, and instead had his men hide their papers in a disused mine, destroying as much as they needed to to appear to be following orders, whilst saving what they could. Now under guard by the SS, who have orders to execute everyone if it either it appears they will over-run and to fall into enemy hands or Germany loses the war, they set off on a train south.\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![A cutaway drawing of the V-2 rocket](/fly-me-to-the-moon/piece_images/v-2_cutaway.jpg)\n<figcaption>V-2 cutaway drawing (U.S. Air Force photo)</figcaption>\n</figure>\n\nOnly days after they left, the Americans arrived and found the remains of the V-2 mass production plant which had produced over 5,000 V-2 rockets, along with 100 intact V-2 rockets. They also discovered the nearby Mittelbau-Dora, a vast concentration camp. It had provided the slave labour required to build the rockets. 20,000 people are found dead there, with double that starved and in hellish conditions. More people were killed in creating the V-2 than by them. The American forces who discovered the factory realised its value and called in Staver and his people. The order was given for the rockets to be broken down and shipped back to the US. It had to be completed in less than a month to keep everything from the Soviets, and so it would be the largest single movement of material for the entire war.\n\nAt the same time, Korolev had been recalled from the Gulag and transported to Germany to serve as chief designer of long-range missiles at the Special Design Bureau 1 (OKB-1). OKB-1 had been given the brief of research and design with regards to the V-2 rocket, aiming at advancing the technology for Soviet purposes.\n\nBack in the Alps, von Braun pointed out to the SS Major in charge if his people were grouped together, they'd be an easy target for the US. They were therefore ordered to spread out into a collection of villages. This gave ample opportunity for all the team to escape, with the SS officers now spread out with far too many people to keep an eye on. Von Braun and his people siezed the opportunity offered and immediately fled south-east, crossing the border in to Austria. On May 2, 1945, upon finding an American private from the U.S. 44th Infantry Division, Magnus von Braun, Wernher's brother and also a rocket engineer, approached the soldier and called out:\n\n> My name is Magnus von Braun. My brother invented the V-2. We want to surrender.\n\n### The Post-War Scientists\n\nIn 1943, head of the German Military Research Association Werner Osenberg had created a list of the top scientists and engineers of the age. Now in 1945, Staver had managed to get hold of it and used it to mark targets of opportunity the Americans would want to capture. At the top was von Braun. His capture of von Braun was therefore a huge coup of the Americans, and the loss felt by the Soviets, despite their creation of their own team, was equally huge. Stalin's reaction perhaps best sums up the feeling of the Soviet leadership.\n\n> This is absolutely intolerable. We defeated the Nazi armies; we occupied Berlin and Peenemunde, but the Americans got the rocket engineers. What could be more revolting and inexcusable?\n\nStaver was then tasked with Operation Overcast, the American plan to interrogate the German scientists. What emerged from von Braun and the others though forced him to write to his superiors, urging their immediate evacuation. As the expatriation gained steam, the beginnings of what would become known as Operation Paperclip were taking shape. The aim was to deny the Soviet Union and United Kingdom of the advanced German scientific expertise these people held, whilst also preventing Germany from redeveloping its military research. In total, over 1,500 German intellectuals would be brought to America from previously occupied European countries.\n\nVon Braun was taken to America shortly after, and along with over 100 of his men he was escorted to Fort Bliss, whilst the Soviets were left with the now derelict V-2 plant. However, the Soviets didn't realise just how outmatched they currently were, until the 6th August, 1945. With the bombing of Hiroshima, and then Nagasaki shortly after, they realised that the Americans now had both the intelligence with which to make long range rockets, and a payload that could flatten cities. This was a terrifying, and immediate threat."
 			},
 			{
-				"type": "YouTube",
+				"type": "Image",
 				"className": "",
-				"key": "ivy-mike",
-				"id": "ivy-mike",
-				"sourceId": "NNcQX033V_M"
+				"key": "rocket_engine",
+				"id": "rocket_engine",
+				"caption": "A rusty V-2 rocket engine in the underground production facilities at Dora-Mittelbau, Nordhausen",
+				"alt": "A rusty V-2 rocket engine",
+				"src": "/fly-me-to-the-moon/piece_images/v-2_Mittelbau_engine.jpg"
 			},
 			{
 				"type": "Markdown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
-				"content": "Whilst Gröttrup had been sidelined at the turn of the 50's, Sergei Korolev was still active and had been tasked with a new challenge: create a rocket with enough range to reach America, whilst carrying a five tonne payload, the expected weight of a thermonuclear device. Meanwhile, in back America, von Braun was tasked with creating short range rockets, his dreams of creating rockets to send humans to space in tatters. Instead, they were working on the Hermes series of rockets, which were around 25% of the size of a V-2, with a maximum range of just 38 miles. \n\nAnd then, in 1953, whilst working on the Hermes A-3B (a slightly larger rocket), funding was cut, and a year later, the project was canned entirely. Von Braun himself was the focus of attacks by the US media, who reminded the public of his history as an officer in the SS. During this time though, he'd realised that if the military wouldn't take notice of his ideas, maybe he could win the support he needed appealing to the American public. \n\n<figure class=\"media_widget col-inverse col-xs-4 col-right\">\n![The Soviet R-7 rocket](/fly-me-to-the-moon/piece_images/r-7_rocket.png)\n<figcaption>A 2-view drawing of the R-7 Semyorka</figcaption>\n</figure>\n\nOn May 14, 1950, shortly after he and his team were transferred to Huntsville, Alabama, and the beginning of the Korean War, The Huntsville Times published the article \"Dr. von Braun Says Rocket Flights Possible to Moon\". At the same time, his team had started work on the Redstone rocket, which led to both the development of the first high-precision inertial guidance system, and a launch system capable of carrying a nuclear payload. His concepts in his ongoing writings, which included ideas for a space station would, in 1968, be presented on the silver screen as the basis for Space Station V in 2001: A Space Odyssey. However, it was his work with Walt Disney's Disney studios as technical director that initially let him bring his vision to the public at scale. \"Man in Space\", aired on March 9, 1955, drawing 42 million viewers and becoming unofficially the second-highest rated television show in American history. Von Braun had found a way to tap into the American public's consciousness, in a way he'd never been able to truly manage with the military. Overnight, he became a household name, and behind the scenes, things start to go his way.\n\nBack in Russia, Korolev was busy working on his ideas for putting a satellite into space. Korolev therefore teamed up with Valentin Glushko, a genius rocket engine designer working at OKB 456. The two men had worked together previously building RD-1 KhZ, a rocket motor designed to be attached to a Lavochkin La-7R fighter plane to help protect Russia from high-altitude Luftwaffe attacks. Now Korolev proposed a unique idea: the R-7; a rocket with four detachable rockets which would fall away to leave a central rocket to continue on. Glushko would design the engines, Korolev the rocket. Such a system could both act as the delivery system the military want, and put Korolev's satellites into space. There were only three problems. Firstly, no-one had ever built anything close to such a rocket, secondly, the military had no interest in satellites, and three, it would be so huge, there was nowhere where it could be built.\n\nThe first would be overcome by research, the second didn't matter to his military backers who could use it to deliver warheads, and the third? Well, the third would result in the creation of the Baikonur Cosmodrome, in Kazakhstan, the world's first and largest operational space launch facility. \n\n<figure class=\"media_widget\">\n![The Baikonur Cosmodrome launchpad](/fly-me-to-the-moon/piece_images/Baikonur_Cosmodrome_Soyuz_launch_pad.jpg)\n<figcaption>The modern Soyuz launch pad at the Baikonur Cosmodrome</figcaption>\n</figure>\n\nAmerica, however, had other ideas. Whilst Korolev couldn't sell the idea of satellites to the Russians, America liked the idea. Under the cover of launching a scientific instrument, but actually wanting to develop orbital spying technology, America announced its intention to put a satellite in space. At the same time as von Braun was applying for, and receiving citizenship of the United States, ten years after leaving Germany, he found himself bidding against the US Navy for a satellite contract. Just at the point where Korolev was on the verge of a breakthrough, von Braun received the news that the contract had been awarded to the Navy. His dreams would have to wait for another day. For Korolev though, they were about to come true.\n\n### Sputnik\n\nWhile visiting the Baikonur facility, then Soviet leader Nikita Khrushchev was shown the R-7, and Korolev was able to argue for sending his satellite project. Finally, after pointing out the Americans would get there first if the Soviets didn't, Khrushchev gave the go ahead. Dozens of institutes were involved in what became known as Project D. This turned into a logistical nightmare though, and the project dragged. Far worse though, on the first two tests of the R-7 rocket, the massively complex system with its 32 rocket engines and 280 tonne weight, failed disastrously.\n\nAs the Cold War escalated and the weapons became ever larger, finally the American military condescended to give von Braun his funding and to build medium range rockets. However, the focus was still very much on a delivery system for weapons payloads. The result was the Jupiter-C. Far smaller and simpler than the Russian R-7 rocket, it would nonetheless be more than capable of putting a small satellite into orbit. In fact, the administration was so suspicious of von Braun and his team, that inspectors from the Pentagon were sent to monitor the maiden launch, to ensure they didn't try and send a satellite up anyway. Despite the interference, and suspicion, von Braun's launch was a success. America now had a rocket capable of putting systems into orbit. The balance had shifted back in America's favour.\n\nIn Baikonur, on 21 August 1957, after two failed launches, Korolev was in a difficult situation. His rocket, massively ambitious but also massively complex, had eaten vast amounts of both time and money, and so far had nothing to show for it other than two very expensive fireworks shows. As a result, tensions must have been high. But thankfully, at 12:25, the R-7 launches successfully for the first time. The world now has its first intercontinental ballistic missile. In the meantime, massively frustrated at the increasing complexity, as well as the design and construction issues with the Project D satellite, his team have been working hard to re-develop the concept to something far simpler. In less than a month, they design and build and entire new system. The new design, consisting of little more than a polished metal sphere, a transmitter, thermal measuring instruments, and batteries, weighed about the same as a man.\n\n<figure class=\"media_widget\">\n![The Soviet R-7 rocket](/fly-me-to-the-moon/piece_images/sputnik_1.jpg)\n<figcaption>A replica of Sputnik 1 at National Air and Space Museum</figcaption>\n</figure>\n\nFinally on 4 October 1957, at 19:28, on an R-7, the R-7 launched, and at 00:03, Sputnik became the first object to be placed in orbit by mankind. The USSR had won the race to space."
+				"content": "Back in Nordhausen, the Soviets put out a call for anyone who'd worked on the V-2 rockets to come and help them restart the rocket facility and to continue their research. A few did, including Helmut Gröttrup, who had previously been von Braun's assistant and had developed the radio guidance system for the V-2. As a gesture of thanks for having helped the Soviets get a V-2 engine to fire, he was promised that he'd be allowed to remain in Germany. In short order however the Soviets reneged on the deal. On 22nd October 1946, he and the other newly captured engineers were deported to Moscow with their families as part of Operation Osoaviakhim. Over 2,000 other German intellectuals were deported to Russia with him to aid the Soviet research programs. Once there, Gröttrup and the other rocket engineers were tasked with reproducing the technical drawings for the V-2 to enable research to begin again. Doing so would take two years, and ultimately prove fruitless, as the rockets had a dismal record. As a result, research began on the R-1, the first Soviet rocket system, with a maiden launch scheduled for the 17th September 1948. Research and development on the R-1 moved apace, leading to it being accepted into service on 25th November 1950. For Gröttrup and his team however, the success was the beginning of the end of their usefulness. Knowing too much, and proving too useful, the leadership hid them away, consigned to quiet work back in Germany.\n\nIn America, von Braun and his people were receiving similar treatment. The program to develop rockets in the US had become nicknamed Operation Icebox, due to the lack of activity. The captured Germans were kept isolated, but given no work, left to their own devices. The American military had decided to focus on air and submarine delivery systems for their weapons, rather than rocketry, leaving their captured geniuses in a state of limbo.\n\n### The Cold War Heightens\n\nIn 1952, tensions between the USSR and America grew further, as America tested the first hydrogen bomb. The 74 tonne building/bomb named Ivy Mike wasn't exactly a portable weapon, but the 10.4 megaton blast it created on detonation was almost 700 times more powerful than the bomb dropped on Hiroshima. It left a crater 1.2 miles wide and 164 feet (50 metres) deep, blasting radioactive coral into the stratosphere from where it fell to land on ships as far as 35 miles away. The Soviets responded by detonating their own a year later, which didn't exactly cool things down.\n\nWhilst Gröttrup may have been sidelined, Sergei Korolev was still active and had been tasked with a new challenge. The goal was to create a rocket with enough range to reach America, whilst carrying a five tonne payload, the expected weight of a thermonuclear device. Meanwhile back in America, von Braun was working on the Hermes series of rockets, which were around 25% of the size of a V-2 and had a maximum range of just 38 miles. His dreams of creating a machine to send humans to space in tatters. If he thought things were bad now though, they were about to get even worse. In 1953, whilst working on the Hermes A-3B, funding was cut. A year later, the project was canned entirely. Von Braun himself had become the focus of attacks by the US media, who reminded the public of his history as an officer in the SS. The media attention though, however negative it might have been, had given him an idea. He realised that if the military wouldn't take notice of his ideas, maybe he could win the support he needed appealing to the American public. \n\n<figure class=\"media_widget col-inverse col-xs-4 col-right\">\n![The Soviet R-7 rocket](/fly-me-to-the-moon/piece_images/r-7_rocket.png)\n<figcaption>A 2-view drawing of the R-7 Semyorka</figcaption>\n</figure>\n\nShortly after he and his team were transferred to Huntsville, Alabama and the outbreak of the Korean War, The Huntsville Times on May 14 1950 published the article \"Dr. von Braun Says Rocket Flights Possible to Moon\". His team had started work on the Redstone rocket, which led to the development of the first high-precision inertial guidance system, and gave the Americans a launch system capable of carrying a nuclear payload. However, it was his work with Walt Disney's Disney studios as technical director that initially let him bring his vision for space travel to the public. \"Man in Space\", aired on March 9, 1955, drawing 42 million viewers and becoming unofficially the second-highest rated television show in American history. Von Braun had found a way to tap into the American public's consciousness, in a way he'd never been able to truly manage with the military. Overnight, he became a household name, and behind the scenes, things start to go his way.\n\nBack in Russia, Korolev was busy working on his ideas for putting a satellite into space. Korolev had therefore teamed up with Valentin Glushko, a genius rocket engine designer working at OKB 456. The two men had worked together previously building RD-1 KhZ, a rocket motor designed to be attached to a fighter plane to help protect Russia from high-altitude Luftwaffe attacks. Now Korolev proposed a unique idea. The R-7 was to be a rocket with four detachable boosters around a central core. The boosters would ignite, deliver vast thrust, and then fall away to leave the central rocket to continue on. Glushko would design the engines, Korolev the rocket. Such a system could both act as the delivery system the military wanted, and allow Korolev to pursue his own dream of putting satellites into space. There were only three problems. Firstly, no-one had ever built anything close to such a rocket, secondly, the military had no interest in satellites, and three, it would be so huge, there was nowhere where it could be built.\n\nThe first was solvable through time and research, the second didn't matter to his military backers, who still wanted it anyway to use to deliver warheads, and the third? The third would result in the creation of the Baikonur Cosmodrome in Kazakhstan, the world's first and largest operational space launch facility."
 			},
 			{
-				"type": "YouTube",
+				"type": "Image",
 				"className": "",
-				"key": "sputnik",
-				"id": "sputnik",
-				"sourceId": "KMFvr1VwSSo"
+				"key": "baikonur",
+				"id": "baikonur",
+				"caption": "The modern Soyuz launch pad at the Baikonur Cosmodrome",
+				"alt": "The Baikonur Cosmodrome launchpad",
+				"src": "/fly-me-to-the-moon/piece_images/Baikonur_Cosmodrome_Soyuz_launch_pad.jpg"
 			},
 			{
 				"type": "Markdown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
+				"content": "Ironically, Korolev would probably have had more success at the time in America. Whilst he couldn't sell the idea of satellites to the Russians, America liked the idea. Under the cover of launching a scientific instrument, but actually wanting to develop orbital spying technology, America announced its intention to put a satellite in space. Von Braun meanwhile applied for and received citizenship, ten years after leaving Germany. Now officially a US citizen, he found himself bidding against the US Navy for a satellite contract. His team put together a proposal and presented it. It wasn't enough though. The contract was instead awarded to the Navy. Von Braun's dreams would have to wait for another day. For Korolev though, they were about to come true.\n\n### Sputnik\n\nWhile visiting the Baikonur facility, then Soviet leader Nikita Khrushchev was shown Korolev's latest invention, the giant R-7 Semyorka. Weighing 280 tonnes, with 32 engines and a range of 8,000 km (5,000 mi), it was vastly larger than the R-1. Research and development had begun in 1953, and while it continued, Korolev pushed again and again for funds for a satellite project. Finally, after pointing out the Americans would get there first if the Soviets didn't, Khrushchev had given the go-ahead. Dozens of institutes were involved in what became known as Project D. This was a double-edged sword though, and the project became logistical nightmare, with competing interests slowing progress enormously. Far worse though, on the first two tests of the R-7 rocket, the massively complex system failed disastrously. The Soviet leadership in attendance were less than impressed.\n\nAs the Cold War escalated and the weapons became ever larger, finally the American military deigned to give von Braun his funding and to build medium range rockets. However, with the Soviet's working on the R-7 and the tense atmosphere, the focus was still very much on a delivery system for weapons payloads. The result was the Jupiter-C. Far smaller and simpler than the Russian R-7 rocket, it would nonetheless be more than capable of putting a small satellite into orbit. In fact, the administration was so suspicious of von Braun and his team that inspectors from the Pentagon were sent to monitor the maiden launch, to ensure they didn't try and send a satellite up anyway. Despite the interference, von Braun's launch was a success. America now had a rocket capable of putting systems into orbit. The balance had shifted back in America's favour.\n\nIn Baikonur, Korolev was in a difficult situation. His rocket, massively ambitious but also massively complex, had eaten vast amounts of both time and money. This wouldn't have been an issue if his tests had worked, but so far had nothing to show for it after four years other than two very expensive failures. Now though, on on 21st August 1957 at 12:25, the R-7 was tested for the third time. It launched successfully, giving the world its first multi-stage intercontinental ballistic missile. In the meantime though Project D wasn't going so well. Massively frustrated at the increasing complexity, as well as mounting design and construction issues, his team had decided to work to re-develop it into simpler. In less than a month, they designed and built a new satellite. The new design, consisting of little more than a polished metal sphere containing a transmitter, thermal measuring instruments, and batteries, weighed about the same as a man. It's hard to believe that was a co-incidence."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "sputnik",
+				"id": "sputnik",
+				"caption": "A replica of Sputnik 1 at National Air and Space Museum",
+				"alt": "Sputnik 1",
+				"src": "/fly-me-to-the-moon/piece_images/sputnik_1.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p4",
+				"id": "p4",
+				"content": "Finally on 4 October 1957, at 19:28, the R-7 carrying Korolev's rocket launched towards the heavens. Just past midnight, a mere four and a half hours later, Sputnik became the first object to be placed in orbit by mankind. The USSR had won the race to space."
+			},
+			{
+				"type": "YouTube",
+				"className": "",
+				"key": "sputnik_video",
+				"id": "sputnik_video",
+				"sourceId": "KMFvr1VwSSo"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p5",
+				"id": "p5",
 				"content": "### A Call to Space\n\nThe effects on the two world superpowers couldn't have been more different. In the USSR, Khrushchev was pleased with this success, and decreed that it should be followed up by an encore for the 40th anniversary of the October Revolution, on November 3rd, just 30 days away. The result of that would be Sputnik 2. In the US though, the launch was met with incredulity and disbelief. Indeed, Vice President Richard Nixon proclaimed it a hoax. When they realised however that both the launch and Sputnik were in fact real, the collective Western governments concluded that the Soviet ICBM program must more advanced than it actually was. This was a belief Khrushchev was more than happy to encourage, as he stated in an interview that the USSR had all the rockets, of whatever capacity, that it needed.\n\nThe result of Khrushchev's pronouncement was Sputnik 2, which put the first living creature in to space; a small stray dog, named Laika. Before the launch, Dr. Vladimir Yazdovsky, one of the scientists on the project, took Laika home to play with his children. In a book chronicling the story of Soviet space medicine, he remembered:\n\n> I wanted to do something nice for her: She had so little time left to live.\n\nSadly, after only a few hours in space, Laika died of overheating, a fact that wasn't revealed until as recently as 2002.\n\nFinally, after years of being held back, and being told that the US Navy must be given a shot before he can have his turn, von Braun is given the go-ahead to attempt to put an American satellite into orbit. He named it Explorer. The Navy prepared it's own Vanguard rocket, which was as then untested. The world's media turned up, watched the rocket lift three feet from the pad, and then explode in a huge fireball. The only surviving piece was the satellite, which fell to the ground and began to transmit. The press response was scathing, labelling it \"Kaputnik\" and other less than flattering names. As Time Magazine noted:\n\n> But in the midst of the cold war, Vanguard's cool scientific goal proved to be disastrously modest: the Russians got there first. The post-Sputnik White House explanation that the U.S. was not in a satellite \"race\" with Russia was not just an after-the-fact alibi. Said Dr. Hagen ten months ago: \"We are not attempting in any way to race with the Russians.\" But in the eyes of the world, the U.S. was in a satellite race whether it wanted to be or not, and because of the Administration's costly failure of imagination, Project Vanguard shuffled along when it should have been running. It was still shuffling when Sputnik's beeps told the world that Russia's satellite program, not the U.S.'s, was the vanguard.\n\nWhether the US wanted to be in a race was irrelevant - the media had deemed it so, and now it was up to them to respond. With no other option, the administration gave von Braun and his team their shot.\n\nOn the 31st January 1958, at 22:48, von Braun's Juno I, a Jupiter-C derived rocket, launched with Explorer on-board. Less than two hours later, America had its own satellite. The race to put a man in space was on."
 			}
 		]
@@ -2489,7 +2171,23 @@ module.exports={
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
-				"content": "# Man in the Heavens\n\n## 1959 - 1961: Putting a man amongst the stars\n\n**With the arrival** of the age of the satellite, both the USSR and United States have set their sights on the next goal: putting a man in space, and bringing him safely back home. No mean feat, given the challenges involved. Putting an object in orbit is one thing - making a vessel able to carry a man, keep him alive with the vacuum of space less than a metre away, ensuring he survives not just the ascent but reentry, and returning him to Earth without the end of the journey killing him too. It's a massive step beyond anything that's been tried before, and both countries know it.\n\nMore than that, the man who's going to accept such a mission must be highly trained, completely loyal, and understand he may well not return. He needs to have what will become known as \"The Right Stuff\".\n\nIn the US, the Americans were busy finding their people. President Eisenhower insisted that all candidates be test pilots. In addition, anyone chosen could be no taller than 5' 11\" (180cm), weigh no more than 12st 12lbs (82 kg), be under 40 years old, hold a Bachelor's degree or similar, and have logged 1,500 hours or more of flight time. The newly created NASA searched for people who met all the requirements given, and identified in total 110 pilots who fit the bill. 69 were brought to Washington DC in two groups but due to the level of interest and commitment from the first two groups, the final 41 were never asked to submit themselves for testing. And testing it was; candidates had to spend hours on treadmills and tilt tables, to test cardiovascular function and resistance to motion sickness, they had their feet placed in buckets of ice water, and had to receive a series of enemas. 39 failed or dropped out before or during the first phase of exams, and more refused to take part in the second round of tests. In total, just 18 made it through.\n\n<figure class=\"media_widget\">\n![The Mercury Seven astronauts](/fly-me-to-the-moon/piece_images/mercury_seven.jpg)\n<figcaption>The Mercury Seven astronauts in front of a U.S.A.F. F-106B. From left to right: Carpenter, Cooper, Glenn, Grissom, Schirra, Shepard & Slayton</figcaption>\n</figure>\n\nFrom a nation of 157 million souls, the selection process had done its work, finally presenting seven men. Each had excellent mental and athletic abilities, and were considered the best for the job. They were Scott Carpenter, Gordon Cooper, John Glenn, Gus Grissom, Wally Schirra, Alan Shepard, and Deke Slayton, the Mercury Seven.\n\nNASA finally introduced their future astronauts in Washington on April 9, 1959. Although internally Project Mercury was planned simply to test the if humans could be sent to space and returned safely, the concept of American men in space electrified the nation. They were instantly seen as dare-devil explorer heroes, with TIME magazine going so far as to compare them to \"Columbus, Magellan, Daniel Boone, and the Wright brothers.\" Two hundred reporters overflowed the room used for the announcement, and upon the meeting's conclusion, gave rapturous applause.\n\nIn Russia meanwhile, secrecy is everything. Those being interviewed aren't told who they'd be working for, or what they'd be doing. Known at OKB-1 as the Vostok programme, the selection criteria is at one focused and abstract. Potential cosmonauts had to be qualified Air Force pilots, as they would be more used to exposure to the extreme g-forces likely to be experienced. Beyond that, the candidates had to be intelligent, physically fit, mentally resilient, male, between 25 and 30 years of age, no taller than 5' 7.5\" (175cm), and no heavier than 11st 5lbs (72kg). Their tests were similarly arduous, exposing candidates to extreme low pressure, high G in a centrifuge and more. Unlike NASA's astronaut however, the Soviet group were less experienced aviators, with the Soviet R-7 being more automated than the American systems at the time.\n\nFinally, the group was whittled down to just six men, who'd become known as the Vanguard Six: Yuri Gagarin, Valerij Bykovskiy, Grigoriy Nelyubov, Andriyan Nikolayev, Pavel Popovich and German Titov. Initially, Anatoli Kartashov and Valentin Varlamov had been on the team, instead of Bykovskiy and Nelyubov, but during training, two Kartashov suffered an injury whilst in a centrifuge, and Varlamov injured his spine in a diving accident. Both were replaced, and training continued.\n\nWhilst the focus on both sides was on selecting men for space, progress was being rapidly made in the realm of satellites. Vanguard 1, which remains orbitting in space some 56 years later had been launched in March of 1958, along with Sputnik 3 in May. From there on though, only the US would continue the push to put satellites in orbit, with a further 14 attempts before 1960, but with a painful 9 failing to be put into orbit, several resulting in the complete destruction of the rockets and payloads involved.\n\nThe dream of consistent, safe spaceflight still seemed a long way off. The thought of launching human payloads shortly must have seemed daunting, to say the least.\n\n### A Scientific Outlet\n\nThe Cold War had continued to intensify, but the public interest in the developing space race had given both sides an outlet - domination of space, and of each side's scientific teams had created a way for each side to show its own capabilities, outside of the military domain.\n\nThe men chosen to go to space were undoubtedly capable, on both sides. But it must have been a reminder that there was a good chance they'd be killed, every time they watched a rocket test, and it ended in disaster. And this wasn't a rare event - after watching an Atlas ICBM explode shortly after launch, Grissom remarked \"Are we really going to get on top of one of those things?\". With the ongoing failures of the Atlas systems, NASA started to look back to an old friend - Wernher von Braun. Von Braun had developed the Redstone missile, also capable of putting a man in space, and the vessel which had put America's first satellite into orbit. The Redstone has a problem though; it's not currently capable of carrying a human and keeping them alive, and unlike the USSR's R-7 rocket, which has thrust to spare, the Redstone is only barely capable of reaching space.\n\n<figure class=\"media_widget col col-left col-xs-6\">\n![The far side of the moon](/fly-me-to-the-moon/piece_images/Luna_3_moon.jpg)\n<figcaption>The first photo of the far side of the moon, taken by Luna 3</figcaption>\n</figure>\n\nHowever, whilst von Braun was working to try and develop a version of the Redstone capable of manned flight, the Soviet team were powering ahead with other missions. They gained a massive political advantage when, on September 14th, the Luna 2 probe impacted the Moon, east of Mare Imbrium near the craters Aristides, Archimedes, and Autolycus. In doing so, it became the first spacecraft to reach the surface of the Moon, and the first man-made object to react a celestial body beyond the Earth. This was no Sputnik either - unlike the satellite sent up less than a year earlier, this was a full scientific device, with scintillation and geiger counters, a magnetometer, Cherenkov detectors, and micrometeorite detectors. The timing was impeccable. The leader of the USSR, Nikita Khrushchev was in America when the news broke. Just three weeks later, another Soviet probe, Luna 3, will swing around the far side of the moon and photograph it, something also never before done.\n\nAnd things were only getting worse for NASA. It had emerged that the Mercury capsule didn't fit on the Redstone rocket. The project, almost a year behind schedule already, was slipping further. If things were bad for von Braun though, one can only imagine what his Soviet counterpart, Sergei Korolev felt. For all the success Korolev was having with his Luna rockets, based on his R-7 design, the Soviets were looking in to using a separate system, built by another team. To counter this threat, he created a plan for an audacious mission: the first to take a living creature to space and return.\n\nAfter months of preparation and testing, on July 28th 1960, a Vostok-L rocket with a Vostok-1K spacecraft carried two space dogs, named Chayka and Lisichka. 28 seconds into the flight, an explosion destroyed the spacecraft shortly after launch. Undeterred, the next mission, designated Korabl-Sputnik 2, was launched merely weeks later. And so it was that, on August 19, 1960, two dogs named Belka and Strelka, along with a variety of mice and insects became the first living beings recovered from orbit, having been in to space.\n\nMore though, it was conclusive, incontrovertible proof that the USSR could send a man into space. With a ship that didn't need a pilot, just someone along for the ride, it was now just a matter of time.\n\nAmerica hadn't even yet managed to get a crewed vessel off the ground. Attempting a launch test of the Mercury-Redstone 1 on November 7th, last minute problems caused an abort to be called. The flight was rescheduled for the 21st, and at 09:00 local time, the rocket fired, rose a few inches, and then immediately landed again. This lead to then procedures officer Gene Kranz, who would later become the NASA lead flight director dubbing it the \"four inch flight\".\n\nAfter which the capsule's escape rocket jettisoned itself, leaving the capsule behind. Then, three seconds later, the capsule itself deployed its drogue parachute, along with the the main and reserve parachutes moments later, ejecting the radio antenna in the process. The only thing that had been successfully launched was the escape rocket, which wasn't supposed to have done anything. Now though, there was a bigger problem: the active Redstone, with its full compliment of fuel, was now sitting on the launch pad with nothing whatsoever securing it.\n\nSuffice to say, this wasn't to plan."
+				"content": "# Man in the Heavens\n\n## 1959 - 1961: Putting a man amongst the stars\n\n**With the arrival** of the age of the satellite, both the USSR and United States have set their sights on the next goal: putting a man in space, and bringing him safely back home. No mean feat, given the challenges involved. Putting an object in orbit is one thing - making a vessel able to carry a man, keep him alive with the vacuum of space less than a metre away, ensuring he survives not just the ascent but reentry, and returning him to Earth without the end of the journey killing him too. It's a massive step beyond anything that's been tried before, and both countries know it.\n\nMore than that, the man who's going to accept such a mission must be highly trained, completely loyal, and understand he may well not return. He needs to have what will become known as \"The Right Stuff\".\n\nIn the US, the Americans were busy finding their people. President Eisenhower insisted that all candidates be test pilots. In addition, anyone chosen could be no taller than 5' 11\" (180cm), weigh no more than 12st 12lbs (82 kg), be under 40 years old, hold a Bachelor's degree or similar, and have logged 1,500 hours or more of flight time. The newly created NASA searched for people who met all the requirements given, and identified in total 110 pilots who fit the bill. 69 were brought to Washington DC in two groups but due to the level of interest and commitment from the first two groups, the final 41 were never asked to submit themselves for testing. And testing it was; candidates had to spend hours on treadmills and tilt tables, to test cardiovascular function and resistance to motion sickness, they had their feet placed in buckets of ice water, and had to receive a series of enemas. 39 failed or dropped out before or during the first phase of exams, and more refused to take part in the second round of tests. In total, just 18 made it through."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "baikonur",
+				"id": "baikonur",
+				"caption": "The Mercury Seven astronauts in front of a U.S.A.F. F-106B. From left to right: Carpenter, Cooper, Glenn, Grissom, Schirra, Shepard & Slayton",
+				"alt": "The Mercury Seven astronauts",
+				"src": "/fly-me-to-the-moon/piece_images/mercury_seven.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p2",
+				"id": "p2",
+				"content": "From a nation of 157 million souls, the selection process had done its work, finally presenting seven men. Each had excellent mental and athletic abilities, and were considered the best for the job. They were Scott Carpenter, Gordon Cooper, John Glenn, Gus Grissom, Wally Schirra, Alan Shepard, and Deke Slayton, the Mercury Seven.\n\nNASA finally introduced their future astronauts in Washington on April 9, 1959. Although internally Project Mercury was planned simply to test the if humans could be sent to space and returned safely, the concept of American men in space electrified the nation. They were instantly seen as dare-devil explorer heroes, with TIME magazine going so far as to compare them to \"Columbus, Magellan, Daniel Boone, and the Wright brothers.\" Two hundred reporters overflowed the room used for the announcement, and upon the meeting's conclusion, gave rapturous applause.\n\nIn Russia meanwhile, secrecy is everything. Those being interviewed aren't told who they'd be working for, or what they'd be doing. Known at OKB-1 as the Vostok programme, the selection criteria is at one focused and abstract. Potential cosmonauts had to be qualified Air Force pilots, as they would be more used to exposure to the extreme g-forces likely to be experienced. Beyond that, the candidates had to be intelligent, physically fit, mentally resilient, male, between 25 and 30 years of age, no taller than 5' 7.5\" (175cm), and no heavier than 11st 5lbs (72kg). Their tests were similarly arduous, exposing candidates to extreme low pressure, high G in a centrifuge and more. Unlike NASA's astronaut however, the Soviet group were less experienced aviators, with the Soviet R-7 being more automated than the American systems at the time.\n\nFinally, the group was whittled down to just six men, who'd become known as the Vanguard Six: Yuri Gagarin, Valerij Bykovskiy, Grigoriy Nelyubov, Andriyan Nikolayev, Pavel Popovich and German Titov. Initially, Anatoli Kartashov and Valentin Varlamov had been on the team, instead of Bykovskiy and Nelyubov, but during training, two Kartashov suffered an injury whilst in a centrifuge, and Varlamov injured his spine in a diving accident. Both were replaced, and training continued.\n\nWhilst the focus on both sides was on selecting men for space, progress was being rapidly made in the realm of satellites. Vanguard 1, which remains orbitting in space some 56 years later had been launched in March of 1958, along with Sputnik 3 in May. From there on though, only the US would continue the push to put satellites in orbit, with a further 14 attempts before 1960, but with a painful 9 failing to be put into orbit, several resulting in the complete destruction of the rockets and payloads involved.\n\nThe dream of consistent, safe spaceflight still seemed a long way off. The thought of launching human payloads shortly must have seemed daunting, to say the least.\n\n### A Scientific Outlet\n\nThe Cold War had continued to intensify, but the public interest in the developing space race had given both sides an outlet - domination of space, and of each side's scientific teams had created a way for each side to show its own capabilities, outside of the military domain.\n\nThe men chosen to go to space were undoubtedly capable, on both sides. But it must have been a reminder that there was a good chance they'd be killed, every time they watched a rocket test, and it ended in disaster. And this wasn't a rare event - after watching an Atlas ICBM explode shortly after launch, Grissom remarked \"Are we really going to get on top of one of those things?\". With the ongoing failures of the Atlas systems, NASA started to look back to an old friend - Wernher von Braun. Von Braun had developed the Redstone missile, also capable of putting a man in space, and the vessel which had put America's first satellite into orbit. The Redstone has a problem though; it's not currently capable of carrying a human and keeping them alive, and unlike the USSR's R-7 rocket, which has thrust to spare, the Redstone is only barely capable of reaching space.\n\n<figure class=\"media_widget col col-left col-xs-6\">\n![The far side of the moon](/fly-me-to-the-moon/piece_images/Luna_3_moon.jpg)\n<figcaption>The first photo of the far side of the moon, taken by Luna 3</figcaption>\n</figure>\n\nHowever, whilst von Braun was working to try and develop a version of the Redstone capable of manned flight, the Soviet team were powering ahead with other missions. They gained a massive political advantage when, on September 14th, the Luna 2 probe impacted the Moon, east of Mare Imbrium near the craters Aristides, Archimedes, and Autolycus. In doing so, it became the first spacecraft to reach the surface of the Moon, and the first man-made object to react a celestial body beyond the Earth. This was no Sputnik either - unlike the satellite sent up less than a year earlier, this was a full scientific device, with scintillation and geiger counters, a magnetometer, Cherenkov detectors, and micrometeorite detectors. The timing was impeccable. The leader of the USSR, Nikita Khrushchev was in America when the news broke. Just three weeks later, another Soviet probe, Luna 3, will swing around the far side of the moon and photograph it, something also never before done.\n\nAnd things were only getting worse for NASA. It had emerged that the Mercury capsule didn't fit on the Redstone rocket. The project, almost a year behind schedule already, was slipping further. If things were bad for von Braun though, one can only imagine what his Soviet counterpart, Sergei Korolev felt. For all the success Korolev was having with his Luna rockets, based on his R-7 design, the Soviets were looking in to using a separate system, built by another team. To counter this threat, he created a plan for an audacious mission: the first to take a living creature to space and return.\n\nAfter months of preparation and testing, on July 28th 1960, a Vostok-L rocket with a Vostok-1K spacecraft carried two space dogs, named Chayka and Lisichka. 28 seconds into the flight, an explosion destroyed the spacecraft shortly after launch. Undeterred, the next mission, designated Korabl-Sputnik 2, was launched merely weeks later. And so it was that, on August 19, 1960, two dogs named Belka and Strelka, along with a variety of mice and insects became the first living beings recovered from orbit, having been in to space.\n\nMore though, it was conclusive, incontrovertible proof that the USSR could send a man into space. With a ship that didn't need a pilot, just someone along for the ride, it was now just a matter of time.\n\nAmerica hadn't even yet managed to get a crewed vessel off the ground. Attempting a launch test of the Mercury-Redstone 1 on November 7th, last minute problems caused an abort to be called. The flight was rescheduled for the 21st, and at 09:00 local time, the rocket fired, rose a few inches, and then immediately landed again. This lead to then procedures officer Gene Kranz, who would later become the NASA lead flight director dubbing it the \"four inch flight\".\n\nAfter which the capsule's escape rocket jettisoned itself, leaving the capsule behind. Then, three seconds later, the capsule itself deployed its drogue parachute, along with the the main and reserve parachutes moments later, ejecting the radio antenna in the process. The only thing that had been successfully launched was the escape rocket, which wasn't supposed to have done anything. Now though, there was a bigger problem: the active Redstone, with its full compliment of fuel, was now sitting on the launch pad with nothing whatsoever securing it.\n\nSuffice to say, this wasn't to plan."
 			},
 			{
 				"type": "YouTube",
@@ -2501,13 +2199,13 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p2",
-				"id": "p2",
+				"key": "p3",
+				"id": "p3",
 				"content": "Fortunately, good weather conditions allowed the flight director Chris Kraft to make the decision to simply leave it. Over the next day, the batteries ran down, and the oxidiser boiled away into the atmosphere. The failure and subsequent panic in the control room led Kraft to declare:\n\n> That is the first rule of flight control. If you don't know what to do, don't do anything.\n\n### Mounting Tensions and Soviet Disaster\n\nIn 1960, amid mounting tensions, things suddenly took a turn for the worse. On 1 May, 15 days before the the east–west summit conference in Paris was set to begin, Captain Francis Gary Powers, flew from the US base in Peshawar in a U-2 spy plane, on a mission to overfly the Soviet Union, photographing locations including ICBM sites at the Baikonur and Plesetsk Cosmodromes, before land at Bodø in Norway. He was shot down near Kosulino, in the Ural Region, by the an SA-2 Guideline (S-75 Dvina) surface-to-air missile. He was captured soon after parachuting safely down onto Russian soil. His capture was a political nightmare. President Eisenhower was left with two choices: he could take responsibility for the U-2 flight, and in doing so destroy his credibility for the Summit in two weeks, or deny any knowledge, and appear politically impotent, with a government acting behind his back.\n\nAgainst this backdrop of increasing belligerence on both sides, development continued apace. Despite the setbacks the Americans were having though, true disaster wasn't far away for the Soviets.\n\nIn October 1960, the Soviets suffered a series of catastrophic setbacks to their aerospace and nuclear experiments. The worst of these undoubtedly came on the 24th, at the Tyuratam base, near the Baikonur Cosmodrome. \n\nThe Soviets were preparing for the first trial of the R-16, a completely new rocket designed to carry nuclear payloads. It was eventually to prove vastly superior to the existing R-7 design. Marshal Mitrofan Nedelin, the Commander of the Strategic Rocket Forces was the head of the program, and had commanded that all the members of the State Commission were present for the test. Others present included Mikhail Yangel, one of the leading Soviet missle designers, who'd had ambitions to challenge Korolev as leader of the Manned Space program.\n\nThe launch had been suffering a series of setbacks though, the test was repeatedly delayed. The first stage ignition had not fired successfully. Nedelin therefore demanded an immediate fix.\n\n<figure class=\"media_widget col-inverse col-right col-xs-5\">\n![The explosion at Tyuratam](/fly-me-to-the-moon/piece_images/nedelin.jpg)\n<figcaption>The exploding R-16, at Tyuratam</figcaption>\n</figure>\n\nFrustrated at the continued delays, and feeling annoyed with the continual failure to launch, Nedelin left the command bunker and sat on a wooden chair at the foot of the rocket, surrounded by his senior staff in order to assist with the final preparations. This was a gross violation of procedure, and put both himself and his team in grave danger. There was no opportunity for questioning the orders given though, if only as KGB agents had been tasked with ensuring they were carried out.\n\nA short circuit in the replaced main sequencer however, caused the second stage engines, still mounted over the first stage which was now nearly fully fuelled, to fire.\n\nNedelin was killed, along with 91 senior officers and engineers. Yangel and a test range commanding officer only survived as they had gone to smoke a cigarette behind a bunker a few hundred yards away, just moment before.\n\n### Man Steps Beyond Earth\n\nBack in America, von Braun had his own problems. On January 31st, 1961, the American team had launched Mercury-Redstone 2, with Ham the chimp on-board. Issues with the flight however, caused von Braun to have to make a difficult decision: test the vessel again, having fixed the problems found, or launch the next rocket with a man on board. NASA had already decided who to send; Alan Shepard was to be the first American to pilot the rocket and become an astronaut. His team however weren't willing to send a human yet. Another test would be conducted first, before Shepard was to get his shot.\n\nAt the same time, the structure at NASA for what would become the Apollo missions was starting to take shape. On February 14, 1961, James Webb accepted the role of Administrator of NASA. \n\nMeanwhile, the Soviet team had chosen who they were to send. Yuri Gagarin was well liked by his fellow cosmonauts, and by his superiors. With Gherman Titov and Grigori Nelyubov as backups, he would be the first choice to send.\n\nKorolev however had other issues. Whilst he had the man to fly, he wasn't yet ready to send him. There were still lingering issues with the rocket. The question now was, which would be ready first - the Soviet rocket, or the American?\n\n<figure class=\"media_widget col col-left col-xs-6\">\n![The Vostok 1 takes flight](/fly-me-to-the-moon/piece_images/Vostok_1.gif)\n<figcaption>The Vostok 1 takes flight</figcaption>\n</figure>\n\nIn the end, the Vostok 1 was prepared first. Because of weight constraints, there was no backup retrorocket engine to help the vessel descend. Instead, the spacecraft was loaded with 10 days of provisions to allow Gagarin to survive while the ship's orbit decayed in case the retrorockets failed. But there were a hundred other issues. For example, during the pre-launch preparations, it was decided to paint \"СССР\" on Gagarin's helmet in large red letters. It was still less than a year since Powers had been captured, and there was a fear that when he landed, local police could mistake Gagarin for a foreign agent, parachuting from an aircraft. The concern was so great about the vessel that some have rated the chances of success at just 50%.\n\nNevertheless, on April 12, 1961, 09:07 local time, Yuri Gagarin and the Vostock 1 took flight. Just three minutes later, the rocket reached 17,500 mph, the speed required to leave Earth's gravity. Then, a mere seven minutes later, Gagarin was able to look out the window, and having become the first human to experience weightlessness, and float in a man-made vessel, in space. Two hours later, he'd have returned, having flown entirely around the world, across the edge of the sleeping South America, and landed back on Earth, around 170 miles (280km) from Baikonur.\n\nOne can only imagine what went through the minds of the farmer and her daughter, watching Gagarin in his bright orange cosmonaut suit and large white helmet, landing near them by parachute. He later recalled:\n\n> When they saw me in my space suit and the parachute dragging alongside as I walked, they started to back away in fear. I told them, don't be afraid, I am a Soviet citizen like you, who has descended from space and I must find a telephone to call Moscow!"
 			},
 			{
 				"type": "Image",
-				"className": "content",
+				"className": "",
 				"key": "flightpath",
 				"id": "flightpath",
 				"caption": "The Vostok 1 orbital flight path",
@@ -2517,8 +2215,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p3",
-				"id": "p3",
+				"key": "p4",
+				"id": "p4",
 				"content": "### One Place Left to Go\n\nThe Americans, used to being second by this point, send Alan Shepard less than a month later. In contrast to the Gagarin's flight, Shepard's lasts 16 minutes, and travels just 300 miles. He was weightless for 6 minutes, and with the much less powerful Redstone rocket, was incapable of reaching orbit. It was enough to allow America to say they'd also put a man in space, but America needed a much bigger win.\n\nPrior to Gagarin reaching space, now US President John F. Kennedy hadn't been a particularly large supporter of the American manned space program. Having only been in the job for just over three months, it was a shock to be woken up, and told that the Soviets had managed what NASA had not. Just the previous month, NASA administrator James Webb had submitted a budget request to fund a Moon landing , aiming to be there before the end of the decade. Kennedy however rejected it, believing that the costs involved were just too high. He also had one eye on Vietnam and Laos, as well as the situations in Europe and Latin America. Indeed, in his inaugural address, he'd pledged to:\n\n> ...pay any price, bear any burden, meet any hardship, support any friend, oppose any foe, in order to assure the survival and success of liberty.\n\nGagarin's flight forced his hand though. In light of the success of the Vostok 1 mission, Kennedy knew how the American public would respond emotionally. The sense of humiliation and fear was palpable. Seeking advice, he tasked the new Vice President, Lyndon B. Johnson with assessing the state of America's space program, and how NASA could rapidly advance and respond. The two options proposed in response were the establishment of an orbital space station, or putting a man on the Moon. Only those would carry the gravitas required to allow the American public to see itself as putting the Soviets back in their place. Johnson therefore turned to von Braun, who gave his estimates on the feasibility of each. Johnson brought the answers back to Kennedy, concluding that a manned Moon landing was difficult enough that neither side could currently achieve it, and that if they made it their sole aim, that the US could potentially beat the Soviets to the punch.\n\nKennedy took Johnson's advice, and launched what would become the Apollo program. He justified the colossal expenditure by emphasising the importance to national security and putting focus scientific and social endeavours. Now all that was left to do was to reassure the American people that all was in hand. So it was that the world watched in wonder in autumn of 1962, as John F. Kennedy spoke at Rice University on September 12th, announcing America's response. In no uncertain terms, the US laid down the gauntlet: they were sending men to the moon. The Soviets were welcome to beat them to it, if they could.\n\n> We set sail on this new sea because there is new knowledge to be gained, and new rights to be won, and they must be won and used for the progress of all people. For space science, like nuclear science and all technology, has no conscience of its own. Whether it will become a force for good or ill depends on man, and only if the United States occupies a position of pre-eminence can we help decide whether this new ocean will be a sea of peace or a new terrifying theatre of war. I do not say that we should or will go unprotected against the hostile misuse of space any more than we go unprotected against the hostile use of land or sea, but I do say that space can be explored and mastered without feeding the fires of war, without repeating the mistakes that man has made in extending his writ around this globe of ours.\n>\n> There is no strife, no prejudice, no national conflict in outer space as yet. Its hazards are hostile to us all. Its conquest deserves the best of all mankind, and its opportunity for peaceful cooperation may never come again. But why, some say, the Moon? Why choose this as our goal? And they may well ask, why climb the highest mountain? Why, 35 years ago, fly the Atlantic? Why does Rice play Texas?\n>\n> We choose to go to the Moon! We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard; because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one we intend to win."
 			},
 			{
@@ -2615,6 +2313,7 @@ module.exports={
 				"className": "",
 				"key": "gallery_apollo_7",
 				"id": "gallery_apollo_7",
+				"showImgs": 2,
 				"title": "Images taken by the crew of Apollo 7",
 				"images": [
 					{
@@ -2649,7 +2348,39 @@ module.exports={
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
-				"content": "### The First Lunar Missions\n\nChange was happening at all levels of NASA in 1968. Administrator of NASA, James Webb was a Democrat who had been closely associated with the President Johnson. However, with the Apollo 1 disaster, and Johnson choosing not to run for re-election, he decided to step down as administrator. The next President, which would in January of the next year be Republican Richard Nixon, would therefore be free to choose his own administrator.\n\nWhilst still in his position though, Webb had been informed by the CIA that it appeared the Soviet Union was developing its own rocket for a manned lunar mission. They'd obtained photographs of the N1-L3, and knew what it would be capable of if it worked. As a result, he directed NASA to prepare Apollo 8 for a possible lunar orbital mission that year. Webb himself though didn't believe the Soviet rocket would fly, and felt that their political issues would ensure that the US was able to get to the moon first. These views were doubted in some quarters, however, later revelations about the N1 would end up proving Webb's conclusions. Nevertheless, in October 1968, just before the first manned flight in the Apollo program, Webb left NASA.\n\nFinally, in December, America drove the final nail into the coffin of the dreams of the Soviet team, with the launch of Apollo 8. For Wernher von Braun, the man who imagined up the mighty Saturn V, the dream of putting a man of the moon was about to come a whole lot closer.\n\n<figure class=\"media_widget\">\n<img src=\"/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg\" alt=\"Apollo 8 launch\">\n<figcaption>The Apollo 8 launch</figcaption>\n</figure>\n\n### Apollo 8\n\nIt's December 21st 1968, and Apollo 8 sits on the pad at the Kennedy Space Center. It's to be the first human spaceflight from Kennedy, and tensions are mounting. Work on the Lunar Module has proved slow, and has delayed progress. As a result, the decision was been made by George Low, the Manager of the Apollo Spacecraft Program Office, back in August to change the mission to a more ambitious goal: a lunar orbital flight. This mission won't require the Lunar Module, but it'll make the first human flight around the moon. The crew, consisting of Commander Frank Borman, Command Module Pilot James \"Jim\" Lovell and Lunar Module Pilot William Anders have had an accelerated training schedule, their mission having been bumped up by several months. It's left them with less time for training and preparation.\n\nThe upshot is that the new mission, if successful, will allow the team to test the lunar landing procedures that would otherwise have to wait until Apollo 10, the last mission before the planned lunar landing. It'll also mean almost certainly beating the Soviets to a circumlunar flight, providing a huge boost in morale. There was a lot of pressure to get a human mission to the moon first, as in September the Soviet team had launched the Zond 5 with a Proton-K rocket, which had taken amongst other things two Russian tortoises around the moon and back again. The fear was that with that success, surely a manned mission couldn't be far off.\n\nThe night before the launch, the Apollo 8 crew received a visit from Charles Lindbergh and his wife Anne at Kennedy Space Center. They talked about how, before his legendary 1927 flight aboard the Spirit of St. Louis from America to France, Lindbergh had used a piece of string to measure the distance from New York City to Paris on a globe to calculate the fuel needed for the flight. Saturn V would burn tens times the amount Lindbergh had used every second. The next day, from a dune near the launch site, the Lindberghs settled in to watch the launch of Apollo 8.\n\n<figure class=\"media_widget\">\n<img src=\"/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg\" alt=\"Apollo 8 being taken to the pad\">\n<figcaption>The Apollo 8 Saturn V rocket on the Mobile Launcher Platform, being moved to launch</figcaption>\n</figure>\n\nApollo 8 launched at 07:51am local time on December 21st, and blasted off into space, reaching it mere minutes later. The previous series of rockets used by NASA to put people in to space, the Titan II, had been notoriously uncomfortable at launch, with harsh vibration and huge noise. The design of Saturn V promised a less jarring ascent, having designed the system specifically for the Apollo program rather than adapting an existing missile for the task. Lovell and Borman, both who had both flown on the Titan II, were not disappointed. During liftoff, they reported feeling nothing but a dull, muted rumble in the distance."
+				"content": "### The First Lunar Missions\n\nChange was happening at all levels of NASA in 1968. Administrator of NASA, James Webb was a Democrat who had been closely associated with the President Johnson. However, with the Apollo 1 disaster, and Johnson choosing not to run for re-election, he decided to step down as administrator. The next President, which would in January of the next year be Republican Richard Nixon, would therefore be free to choose his own administrator.\n\nWhilst still in his position though, Webb had been informed by the CIA that it appeared the Soviet Union was developing its own rocket for a manned lunar mission. They'd obtained photographs of the N1-L3, and knew what it would be capable of if it worked. As a result, he directed NASA to prepare Apollo 8 for a possible lunar orbital mission that year. Webb himself though didn't believe the Soviet rocket would fly, and felt that their political issues would ensure that the US was able to get to the moon first. These views were doubted in some quarters, however, later revelations about the N1 would end up proving Webb's conclusions. Nevertheless, in October 1968, just before the first manned flight in the Apollo program, Webb left NASA.\n\nFinally, in December, America drove the final nail into the coffin of the dreams of the Soviet team, with the launch of Apollo 8. For Wernher von Braun, the man who imagined up the mighty Saturn V, the dream of putting a man of the moon was about to come a whole lot closer."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "apollo_8",
+				"id": "apollo_8",
+				"caption": "The Apollo 8 launch",
+				"alt": "Apollo 8 launch",
+				"src": "/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p3",
+				"id": "p3",
+				"content": "### Apollo 8\n\nIt's December 21st 1968, and Apollo 8 sits on the pad at the Kennedy Space Center. It's to be the first human spaceflight from Kennedy, and tensions are mounting. Work on the Lunar Module has proved slow, and has delayed progress. As a result, the decision was been made by George Low, the Manager of the Apollo Spacecraft Program Office, back in August to change the mission to a more ambitious goal: a lunar orbital flight. This mission won't require the Lunar Module, but it'll make the first human flight around the moon. The crew, consisting of Commander Frank Borman, Command Module Pilot James \"Jim\" Lovell and Lunar Module Pilot William Anders have had an accelerated training schedule, their mission having been bumped up by several months. It's left them with less time for training and preparation.\n\nThe upshot is that the new mission, if successful, will allow the team to test the lunar landing procedures that would otherwise have to wait until Apollo 10, the last mission before the planned lunar landing. It'll also mean almost certainly beating the Soviets to a circumlunar flight, providing a huge boost in morale. There was a lot of pressure to get a human mission to the moon first, as in September the Soviet team had launched the Zond 5 with a Proton-K rocket, which had taken amongst other things two Russian tortoises around the moon and back again. The fear was that with that success, surely a manned mission couldn't be far off.\n\nThe night before the launch, the Apollo 8 crew received a visit from Charles Lindbergh and his wife Anne at Kennedy Space Center. They talked about how, before his legendary 1927 flight aboard the Spirit of St. Louis from America to France, Lindbergh had used a piece of string to measure the distance from New York City to Paris on a globe to calculate the fuel needed for the flight. Saturn V would burn tens times the amount Lindbergh had used every second. The next day, from a dune near the launch site, the Lindberghs settled in to watch the launch of Apollo 8."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "apollo_8_pad",
+				"id": "apollo_8_pad",
+				"caption": "The Apollo 8 Saturn V rocket on the Mobile Launcher Platform, being moved to launch",
+				"alt": "Apollo 8 being taken to the pad",
+				"src": "/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p4",
+				"id": "p4",
+				"content": "Apollo 8 launched at 07:51am local time on December 21st, and blasted off into space, reaching it mere minutes later. The previous series of rockets used by NASA to put people in to space, the Titan II, had been notoriously uncomfortable at launch, with harsh vibration and huge noise. The design of Saturn V promised a less jarring ascent, having designed the system specifically for the Apollo program rather than adapting an existing missile for the task. Lovell and Borman, both who had both flown on the Titan II, were not disappointed. During liftoff, they reported feeling nothing but a dull, muted rumble in the distance."
 			},
 			{
 				"type": "YouTube",
@@ -2661,8 +2392,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p3",
-				"id": "p3",
+				"key": "p5",
+				"id": "p5",
 				"content": "Once the vehicle reached Earth orbit, both the crew onboard and the Houston flight controllers on the ground spent the next 2 hours and 38 minutes checking all was ready for the journey to the moon, while the rocket orbited the Earth. Having satisfied themselves that everything was in good order, less than three hours after launch, the stage IV booster fired, and the crew were off to the moon. \n\nAs Apollo 8 started its journey, the crew began to put the ship into a \"barbecue\" roll, or Passive Thermal Control (PTC) to give it its proper name. This would mean the spacecraft would rotate steadily around once every hour. This slow roll allowed for even heat distribution as it was heated by the Sun. The part under direct sunlight could reach temperatures as high as 392 °F (200 °C), while the shaded side plunged to −148 °F (−100 °C). If these temperatures were sustained, they could cause the heat shield which would keep the crew alive in reentry to crack, or cause other damage to the craft. This roll was a constant manoeuvre, requiring refinement around twice per revolution to ensure the ship stayed pointing in the right direction, and that the roll was kept as tight as possible.\n\nThis was possible as it was required that one astronaut was to be kept aware at all times, to ensure someone was always ready to respond to any issues. However, between the constant communication with the ground, and the noises of the ship, sleeping wasn't particularly easy anyway. By the second day in to the flight however, the difficulty posed in sleeping in space, combined with space sickness created by the increase space to move and the team therefore moving around the craft grew so great that the crew gave up on their planned schedule and simply slept when they could, with whoever was least tired staying awake. \n\n64 hours into the flight, the crew began to prepare for Lunar Orbit Insertion, to fly around the far side of the moon. This manoeuvre had to be performed perfectly, and on the far side of the Moon, out of contact with the Earth. After Mission Control polled for a \"go/no go\" decision, the crew was told they were Go. Thus, at 68 hours and 58 minutes and travelling at 24,200 mph (38,938 km/hr), the crew and their ship shot behind the Moon and out of radio contact with the Earth.\n\n<figure class=\"media_widget col col-left col-xs-6\">\n<img src=\"/fly-me-to-the-moon/piece_images/apollo_8_lunar_surface.jpg\" alt=\"The Moon as seen from Apollo 8\">\n<figcaption>The Moon as seen from Apollo 8</figcaption>\n</figure>\n<figure class=\"media_widget col col-left col-xs-6\">\n<img src=\"/fly-me-to-the-moon/piece_images/earthrise.jpg\" alt=\"Earthrise\">\n<figcaption>Earthrise, only seen by orbiting spacecraft</figcaption>\n</figure>\n\nThe rocket engines now fired and burned for 4 minutes and 13 seconds, placing the Apollo 8 spacecraft in orbit around the Moon. They'd spend the next 20 hours in orbit, flying around it ten times, orbiting at adsf. After coming back around and resuming contact with Earth, Lovell reported on the status of the spacecraft and then became the first man to give a description of a first-hand close-up look at the lunar surface:\n\n> The Moon is essentially grey, no color; looks like plaster of Paris or sort of a grayish beach sand. We can see quite a bit of detail. The Sea of Fertility doesn't stand out as well here as it does back on Earth. There's not as much contrast between that and the surrounding craters. The craters are all rounded off. There's quite a few of them, some of them are newer. Many of them look like—especially the round ones—look like hit by meteorites or projectiles of some sort. Langrenus is quite a huge crater; it's got a central cone to it. The walls of the crater are terraced, about six or seven different terraces on the way down.\n\nOn its forth orbit, for the first time, the crew witnessed something else no other humans had ever seen: Earthrise. Borman was the first to notice it and called to the others, while taking a black-and-white photo. In the ensuing scramble Anders took the more famous colour photo, later picked by Life magazine as one of its hundred photos of the century.\n\n> Anders: Oh my God! Look at that picture over there! There's the Earth coming up. Wow, is that pretty.\n> Borman: Hey, don't take that, it's not scheduled. (joking)\n> Anders: (laughs) You got a color film, Jim? Hand me that roll of color quick, would you...\n> Lovell: Oh man, that's great!\n\nThen, on December 24th, they began a second television transmission. Borman introduced the crew to the world, followed by each giving their impressions of the lunar surface and how it felt to be orbiting it. After, they made the following short speech, with each man reading a section."
 			},
 			{
@@ -2675,8 +2406,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p4",
-				"id": "p4",
+				"key": "p6",
+				"id": "p6",
 				"content": "With that done, all that was left to do was to leave the lunar orbit, return to Earth, and land. Two and a half days later, following a surprise Christmas dinner: a real turkey with stuffing, in the same kind of pack that the troops in Vietnam received, arranged by Deke Slayton, the crew prepared for reentry. On December 27th, 15:51 and 42 seconds, their mission ended, the team landing in the North Pacific, just south of Hawaii. It ended a turbulent year, which had seen violent unrest in Europe and America, the invasion of Czechoslovakia, assassinations, the deaths of Helen Keller, Martin Luther King Jr, Kennedy, Gagarin and more.\n\nThe effect on the world of Apollo 8 was perhaps best summed up by a telegram from a stranger, received by Borman after the mission. It read:\n\n> Thank you Apollo 8. You saved 1968.\n\n### Turning Up to 11\n\nApollo missions 9 and 10, whilst still very important, didn't have the same electrifying effect as 8. Instead, they were seen as preparatory missions for the flight of 11. Apollo 9 though still saw the first flight of both the Command/Service and Lunar Modules (CSM and LM respectively), whilst 10 was a full dry run of the 11 mission, testing every procedure except for the actual landing itself. Both provided valuable data, and kept America firmly as being seen in the driving seat.\n\nBack in the USSR, things weren't going so well. In January, Soyuz 4 and 5 had conducted the first successful transfer of crew between two craft, the crew members conducting spacewalks between the two vessels. Back on the ground though, the first test of the N1 was about to happen.\n\nIt's February 21st 1969, and the N1 stands on the pad at the Baikonur Cosmodrome. The countdown ticks away, and finally Korolev's rocket takes to the air. A few seconds into launch though, things go wrong. Engine 12 of the first stage shuts down. Engine 24 shuts down to maintain symmetrical thrust and compensate. It doesn't matter though, as the intense vibrations the vehicle suffers from rupture an oxidizer line. Next, a fuel line ruptures too, leaking fuel into the aft section of the booster. The resulting fire burns through wiring, causing electrical arcing, which moments later results in the rocket's control software shutting down the entire first stage, almost a minute into the launch. That signal is also sent to the second and third stages, which effectively stops the ground controllers from controlling anything whatsoever. The N1 falls from the sky, plummeting for over two minutes, before smashing into the ground 32 miles (52 km) away.\n\nFive months later, on July 3rd, the team try again. This time, the rocket blasts off, but things go wrong after a few seconds. Upon clearing the tower, all the engines bar one shut down, causing the rocket to tip over and fall back on to the pad, where almost fully fuelled, 15% of the onboard fuel detonated with the force half that of the nuclear weapon dropped on Hiroshima, producing an explosion visible from 22 miles (25 km) away. The rest is blasted into the air, where it rains down for over an hour. Debris was found six miles (10 km) away. The detonation, which remains possibly the most powerful non-nuclear man-made blast, destroyed the launch pad, which would take 18 months to rebuild, with the cost and delays effectively ending the Soviet's chances at beating the Apollo project to the moon.\n\nThe N1 would attempt two more launches in 1971 and 1972. Both would also result in the loss of the rocket involved. Korolev's grandest design, with it's vast engine count, was cancelled in May 1974, having never flown. The unmitigated disaster of the program was made a state secret, and not revealed until 1989.\n\n### Apollo 11\n\nBack in 1969 however, excitement grows. The Saturn V has performed flawlessly, and preparations are being made for its most important mission: the landing of man on the moon. The crew was to be Commander Niel Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin. Originally, Jim Lovell had been slated for CMP, whilst Collins was slated to be the CMP on Apollo 8. However, Collins was bumped after needing surgery on his back. As a result, after Collins was medically cleared, the two men had swapped positions. Lovell was transferred to Apollo 11's backup crew, but promoted to be backup commander.\n\nThe rest of the backup crew consisted of CMP William Anders, and LMP Fred Haise. Lovell and Haise would be joined by Ken Mattingly, who had recently been moved from support crew into parallel training with Anders as backup CMP in case Apollo 11 was delayed, as the primary crew for the Apollo 13 mission. The support crew Capsule Communicators, known as CAPCOM, themselves also all astronauts were:\n\n* Charlie Duke\n* Ronald Evans\n* Owen K. Garriott\n* Don L. Lind\n* Ken Mattingly\n* Bruce McCandless II\n* Harrison Schmitt\n* Bill Pogue\n* Jack Swigert\n\nWith the following three flight directors:\n\n* Cliff Charlesworth (Green Team), launch and EVA\n* Gene Kranz (White Team), lunar landing\n* Glynn Lunney (Black Team), lunar ascent\n\nThe rocket was fuelled, and the countdown progressed at Launch Complex 39, Kennedy Space Center. On July 16th, 1969, the hours counted down. Finally, at 9:32 exactly, Apollo 11 took flight."
 			},
 			{
@@ -2689,8 +2420,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p5",
-				"id": "p5",
+				"key": "p7",
+				"id": "p7",
 				"content": "12 minutes later, travelling at huge speed, the vessel entered Earth orbit at an altitude of 100.4 miles (185 km). Around two hours later, having completed the burn to send the ship out of orbit and towards the moon, the three astronauts made their way to the command/service module, and docked with the lunar module, removing it from the third stage of the Saturn V. Everything was set. They were on their way to the moon.\n\nOn the afternoon of July 19th, Apollo 11 passed behind the Moon and manoeuvred to enter lunar orbit. The next day, astronauts Alrdin and Armstrong entered the LM, separated from the CSM, and began their descent to the lunar surface. \n\nApart from a minor computer glitch, the descent went smoothly at first. However, when Armstrong looked outside, he saw that the computer's landing target was covered in boulders, and next to a crater. Believing the landing was too dangerous to let the computer continue, Armstrong took control of the LM. As he began to pilot the descent, Aldrin started calling out navigation data. The fuel ran down, as Armstrong searched for a new place to land, sending the LM flying along sideways. Finally, at 20:17 and 40 seconds UTC, on July 20, Aldrin and Armstrong went through the final processes, before talking to Charles Duke, CAPCOM back on Earth."
 			},
 			{
@@ -2702,8 +2433,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p6",
-				"id": "p6",
+				"key": "p8",
+				"id": "p8",
 				"content": "Once Armstrong and Aldrin were ready to go outside, Eagle was depressurised, the hatch opened, and Armstrong made his way down the ladder. When he got to the base of the ladder, he radioed back:\n\n> I'm going to step off the LEM now.\n\nHe then turned and set his left boot on the lunar surface at 02:56 UTC July 21, 1969, then to the 450 million people (about 12% of the world population) listening, spoke the famous words...\n\n> That's one small step for [a] man, one giant leap for mankind."
 			},
 			{
@@ -2716,8 +2447,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p7",
-				"id": "p7",
+				"key": "p9",
+				"id": "p9",
 				"content": "About 20 minutes later, Aldrin joined Armstrong on the surface, and the two men began set about their task list. They unveiled a plaque. commemorating their flight, and planted a United States flag in the lunar regolith. The plaque was mounted on the LM, and depicted the Eastern and Western hemispheres, and carried the inscribed signatures of the astronauts and President Nixon, along with the message:\n\n> Here men from the planet Earth first set foot upon the Moon, July 1969 A.D. We came in peace for all mankind.\n\nShortly after, President Nixon spoke to them via a telephone call from his office. Having taken a number of photos and set up an experiment package, their final task was to leave small package of memorial items to cosmonauts Yuri Gagarin and Vladimir Komarov, astronauts Gus Grissom, Ed White and Roger Chaffee. Despite never having reached the moon in their lifetimes, the five men, in memory at least, finally arrived."
 			},
 			{
@@ -2725,6 +2456,7 @@ module.exports={
 				"className": "",
 				"key": "gallery_apollo_11",
 				"id": "gallery_apollo_11",
+				"showImgs": 2,
 				"title": "Images from the Apollo 11 moonwalk",
 				"images": [
 					{
@@ -2797,8 +2529,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p8",
-				"id": "p8",
+				"key": "p10",
+				"id": "p10",
 				"content": "### A Victorious Return\n\nHaving re-entered the LM, the hatch was closed and sealed. They repressurised the LM and settled down to sleep. Unfortunately, Armstrong and Aldrin discovered that, thanks to having to move around in a bulky spacesuit, Aldrin had accidentally broken the ignition switch for the ascent engine. They solved the issue through the extremely technical procedure of pushing the circuit breaker with a felt-tip pen, which activated the launch sequence. The LM ascended, the exhaust knocking over the flag which had been planted too close, and docked with Columbia shortly after. All that remained was to leave lunar orbit and return. A few days later, on July 24th, just five days after they took off, the three astronauts returned to Earth, the Columbia command module bringing them down in the Pacific Ocean.\n\nVon Braun had lived to see his dream, and the dream of so many others, come true."
 			}
 		]
@@ -2819,7 +2551,55 @@ module.exports={
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
-				"content": "# The Race Ends\n\n## 1970 - 1975: The start of the space station era, and the end of Apollo\n\nMankind returned to the moon five months later, in November 1969 with the Apollo 12 mission. During the launch, the vehicle's height and ionised exhaust twice triggered lightning strikes, knocking the service module's fuel cells offline, as well as taking out the attitude indicator and confusing the data sent back to mission control, not to mention lighting up the warning lights inside the ship like a Christmas tree. The command module limps on emergency batteries. If the problem can't be fixed, there'll be no option but for first time flight director Gerry Griffin to call for an abort of the mission. Fortunately, a quick thinking man by the name of John Aaron is sat at his position as EECOM (Electrical, Environmental and Consumables Manager). He saw what was happening, and knew that he'd seen the data coming back before.\n\nA year earlier, Aaron had been at Kennedy Space Center as an observer of an Apollo test, when he'd noticed unusual telemetry. It was the same data he was presented with now. Years later, Aaron would comment that what made a good EECOM was someone who was \"a natural curiosity about how things things work, even if you ... are not responsible for them\". These instincts now caused him to be bugged by the data, he tracked it down to the obscure Signal Conditioning Electronics (SCE) system, which had been affected by a faulty power supply. SCE was designed to convert the signals sent by the instrumentation to data for the spacecraft instruments, as well as for the telemetry for mission control. He realised, as he investigated further, that the readings would have been restored by putting the SCE on its auxiliary setting, which was designed for low-voltage operation.\n\nNow presented with what appeared to be the same issue, Aaron decided it was worth a shot. He radioed to the crew:\n\n> Apollo, Houston, try SCE to Auxiliary, over.\n\nSo low down the list of systems was SCE, that most of his colleagues in mission control had no idea what he was asking for, including Griffin and Gerald Carr (CAPCOM). Griffin, believing he'd misheard, asked Aaron to repeat the recommendation, whilst on the Saturn V, Commander Pete Conrad's response was more to the point, radioing back \"What the hell is that?\"\n\nFortunately, Lunar Module Pilot Alan Bean knew what was being called for, and where the SCE switch was located. He reached out and flipped it, setting it to the auxiliary mode. Telemetry was immediately restored, and the abort was never called for. Conrad was so affected by the sudden release of tension that he spent the entire remained of the journey in to space belly laughing, which could be heard over the radio back in mission control.\n\nThe episode earned Aaron a huge amount of respect, who declared him a \"steely-eyed missile man\", which has since become considered the highest compliment given to someone at NASA.\n\nFortunately the rest of the Apollo 12 flight went smoothly. Worthy of note though is the humour that these men had, and the minor pranks and practical jokes the they often played on each other. The crew who launched were all originally from the Navy, whilst the backup crew had come from the Air Force. For a joke, the backup team managed to get minature copies of the Playboy Playmates inserted into the astronauts' lunar checklists, which were on the cuffs of the space suits. This somewhat surprised the pair when they looked through the checklist flip-book during their first EVA. Command Module Pilot Richard \"Dick\" Gordon wasn't left out of the joke though, as a copy of another calendar had been stowed in a locker, which he discovered while the others were conducting EVA on the lunar surface.\n\nThe jokes weren't just levelled at the crews though; at the back of Conrad's checklist, the backup crew had prepared two pages of geological terms and definitions, to allow him to talk to Mission Control as if he had trained as a geologist.\n\nThe Air Force backup crew would go on to fly to the moon themselves on Apollo 15.\n\n### The Space Station Era Begins and Disaster Strikes\n\nWith the United States having landed on the moon not once, but twice in 1969, any hope the Soviet team had of beating the Americans to a lunar project was dead. All was not lost though, and Vladimir Chelomey, the lead of OKB-52 and now under the Vasily Mishin run OKB-1, was looking at other options. One potential alternative was Zvezda, a manned lunar base which had been proposed by Sergei Korolev prior to his death, which would be launched with the N1-L3. Chelomey however went to Minister of Defence Dmitriy Ustinov, who had final say on the space program, pushing for his ideas for a military space station, named Almaz. His argument was that this offered the best chance as a means of beating the US's announced Skylab project. In 1970, Ustinov approved Chelomey's plan. Control of the project though was left with Mishin.\n\nIn America, the politics may have been simpler, but things were about to go very wrong.\n\nThe crew of Apollo 13 was originally to have consisted of Commander James \"Jim\" Lovell, Ken Mattingly as Command Module Pilot, and completed with and Fred Haise as Lunar Module Pilot. However, Mattingly was found to have been exposed to German measles, and grounded by the flight surgeon. As a result, backup pilot John \"Jack\" Swigert was swapped in as CMP to replace him.\n\nApollo 13 blasted off on April 11th 1970 at 14:13 local time. On its ascent, the center engine shut down two minutes before the planned cut-off time. However, the other four engines were able to be burned for slightly longer to compensate, allowing for a normal insertion in to orbit and then exit towards the moon. Two days later though, while around 205,000 miles (330,000 km) from Earth, the flight controllers in Houston asked Swigert to turn on the hydrogen and oxygen tank fans in the Service Module. These stirred their cryogenic contents, giving a more even distribution increasing the accuracy of their quantity readings.\n\n<figure class=\"media_widget col col-xs-8 col-left\">\n![The Moon, from Apollo 13](/fly-me-to-the-moon/piece_images/apollo_13_moon.jpg)\n<figcaption>A picture of the Moon, as seen by the crew of Apollo 13</figcaption>\n</figure>\n\nTwo minutes later, the craft suffered an explosion.\n\nLead flight director Gene Kranz and his team were on duty at the time, and it fell to them to help the astronauts survive. On board the command module, the three astronauts were working fast. The second oxygen tank read empty, and three minutes later, the fuel cells began to fail, with numbers 1 and 3 falling offline. At the same time, the first oxygen tank was leaking more slowly, and would empty itself over the next two and a bit hours. Worse still, the fuel cells powered the CSM by combining hydrogen and oxygen into water. When O2 tank 1 ran dry, fuel cell 2, the only one still functioning, finally shut down. The Command Module was now deeply broken, with limited battery power and water. To ensure that, should they survive the next few days, they could conduct a reentry, the crew was forced to shut down the CSM completely, powering up the LM instead for use as a lifeboat. Debate raged as to how much needed to be switched off, with John Aaron saying everything had to go. Aaron got his way, having been the only man to tour every station and see the data coming in across everything. The ship was bleeding power, and if they didn't turn everything off, they wouldn't have power for reentry. This was something which had been suggested in training simulation, but had not been considered likely, given the vast number of systems required to fail enough to suggest it as an option. Now though, theory turned in to practical fact. \n\nWith the CSM damaged, a lunar mission was now off. Kranz now called for an abort of the mission. The question though was how to abort. The existing plans, created four years earlier, consisted of three options:\n\n* Direct Abort trajectory, using the SPS (Service Module Propulsion System) engine to turn the crew around\n* Burn the SPS fuel until it ran out, before decoupling and using the DPS (LM Descent Propulsion System) engine\n* A circumlunar free-return trajectory, using the moon's gravity to assist the ship's speed and fire it back at the Earth\n\nA Direct Abort was impractical, as the maximum speed attainable was possible only by decoupling the LM. With the crew needing it to stay alive, that was out. The second option was also problematic, as the CSM was currently serving the useful purpose of acting as an insulator for the heat shield, protecting it from damage. Also, in either of these two cases, the SPS engine would have to fire, and there were concerns about the damage the CSM may have suffered. The use of that engine was therefore relegated to being an absolute last resort.\n\nWith no other reasonable option, Kranz chose the free-return trajectory. Apollo 13 had previously been on the correct course for this, but had moved from it in preparation for the lunar landing. Firstly then, that course had to be re-established, by a 30.7-second burn of the DPS, followed by a second burn of four minutes and 27 seconds to pick up speed and allow for a landing in the Pacific, rather than Indian ocean.\n\nMeanwhile the LM began to run low on things. It had been equipped to sustain two people for a day and a half. Now it was going to have to provide for three people, for four days. Unlike the CSM, which was powered by fuel cells that produced water as a by-product, the LM was powered by silver-zinc batteries. As a result, both water, which acted as both coolant and fluid for the crew to drink, and electrical power were issues. To conserve as much power as possible, the LM was powered down as far as possible. This included everything up to the primary guidance system, with the Abort Guidance System acting for navigation instead, as it drew less power and required less cooling.\n\nThe second serious issue was the lack of lithium hydroxide (LiOH) for removing carbon dioxide from the sealed atmosphere. The LM hadn't been designed to take so many people for so long, and its own internal stock of LiOH canisters would run out before the crew got back, suffocating them as they were poisoned by the rising CO2 levels. Worse, the spare canisters were stored in the descent stage of the LM, designed for the moon landing, which was now unreachable. The CSM meanwhile had more than enough, but these were manufactured in a cuboid shape, whilst the LM took a cylindrical canister. Engineers rapidly invented what the astronauts would nickname \"the mailbox\", a device which drew air through the CSM canisters using a hose taken from a spacesuit.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Mailbox](/fly-me-to-the-moon/piece_images/apollo_13_mailbox_onboard.jpg)\n<figcaption>The crew of Apollo 13 assemble the Mailbox</figcaption>\n</figure>\n\nWith the consumables situation under control for the moment, work turned to how to switch everything back on for the reentry. The CSM had been completely shut down, and would now have to be re-powered for reentry. However, there was virtually no power to do this with, as only the backup batteries were available. John Aaron and Jim Kelly, a CSM controller who specialised in the power systems sat down to work out how to do it. The two men sketched out a rough timeline of what to turn on and when, then invited the rest of the controllers to pitch for what else would be required. The final procedure clocked in at 5 pages. However, it'd have to be executed perfect, with limited time, in temperatures as low as 4 °C (39 °F), with water condensation on almost every surface, and no power to separate the CSM and LM, by a group of people who'd had no sleep for three days.\n\n<figure class=\"media_widget\">\n![Mission Control](/fly-me-to-the-moon/piece_images/apollo_13_mission_control.jpg)\n<figcaption>Mission Control during the Apollo 13 flight, the day before reentry</figcaption>\n</figure>\n\nBeyond that, they also needed to work out how to split the CSM in two. The Command Module was used for reentry, whilst the Service Module was to be left behind. However, there was no power to break the two apart. That problem was given to a team of six engineers at the University of Toronto, who had just one day to solve the problem. They concluded that pressurising connecting tunnel between the CSM and LM just before separation would provide enough force when explosively decompressed to push the modules apart. However, they still had to work how much pressure was required at minimum. Too much could damage the seals, causing the astronauts to burn up during reentry. Too low on the other hand, and they wouldn't be far enough away, which could cause the LM to crash into the CSM. Using nothing more advanced than slide rules, they calculated the required pressure and sent the calculations back. NASA relayed the numbers up to the waiting astronauts, who began the process of locking themselves into the CSM, and raising the pressure between it and the LM. While they went through the procedures to prepare for descent, Lovell and Joe Kerwin, CAPCOM joked on the radio...\n\n* **Lovell**: Well, I can't say that this week hasn't been filled with excitement.\n* **Kerwin**: Well, James, if you can't take any better care of a spacecraft than that, we might not give you another one.\n\nWhen the time was right, they triggered the break, and the two machines pushed apart. It had worked.\n\n<figure class=\"media_widget\">\n![Apollo 13 Service Module](/fly-me-to-the-moon/piece_images/apollo_13_service_module.jpg)\n<figcaption>The Apollo 13 Service Module photographed just after separation. Panel four is missing</figcaption>\n</figure>\n\nNow they got their first look at the CSM, and the damage that had been done to it.\n\n* **Lovell**: And there's one whole side of that spacecraft missing.\n* **Kerwin**: Is that right?\n* **Lovell**: Right by the - Look out there, will you? Right by the high gain antenna, the whole panel is blown out, almost from the base to the engine.\n* **Kerwin**: Copy that.\n* **Haise**: Yes, it looks like it got to the SPS bell, too, Houston.\n* **Kerwin**: Think it zinged the SPS engine bell, huh?\n* **Haise**: That's the way it looks; unless that's just a dark brown streak. It's really a mess.\n\n...\n\n* **Lovell**: All right. She's drifting right down in front of our windows now, Houston.\n* **Kerwin**: Okay.\n* **Haise**: Okay, Joe, I'm now looking down the SPS bell, and it looks - looks okay on the inside; maybe it is just a streak.\n* **Kerwin**: Okay. Copy that, Fred. Was the bell deformed on the outside or just nicked or what?\n* **Lovell**: I think the explosion, from what I could see, Joe, had - had stained it. I don't know whether it did any actual deformation or not.\n* **Kerwin**: Okay.\n* **Haise**: Man, that's unbelievable!\n\nOne entire side panel had been blown clear. Panel four, a hinged panel normally used for access to the ship's components had been blasted free. In the second half of the compartment revealed, there should have been the second oxygen tank. Instead, there was just a gaping void. The entire tank was gone. The crew took photos to record the damage, and then returned to powering up the ship. Whilst things went smoothly onboard, back on the ground, there was more than a little tension at Aaron's desk. The order he'd prepared was now being put to the test. The ship could afford to pull 43 amps and no more, to get through the two hours required for reentry. The numbers had looked good in testing; now they'd find out if they were right in practice.\n\nAfter a long wait, Lovell radioed down - everything was back on. The four EECOMs looked at the amp readout.\n\n45 amps.\n\nThe team scrambled around, trying to work out what was on that shouldn't have been. Working fast, they realised the backup gyros were on, which was draining two amps which they badly needed. Aaron called Kerwin and got him to radio the crew, telling them to turn them off. Swigert flicked the appropriate switch off, and they watched for the readout to change.\n\n43.\n\nThey'd done it. Miles above, the crew prepared for reentry, strapping in for the descent. The craft thundered into the atmosphere, the heat shield soaking up punishment as it ploughed through the thickening air. Even as it fell though, the crew still weren't safe. After a few minutes of radio silence, caused by reentry, the crew were waiting for the parachutes to deploy. If they didn't, the CM would smash into the ocean surface. Fortunately, thanks to the power-up procedures, the warming of the pyros and the hard work of thousands, they fired into the sky and began to slow the craft down to a survivable speed. A few minutes later, on April 17th at 18:07:41 UTC, the crew splashed down, having returned safely.\n\nPandemonium reigned in mission control upon seeing the parachutes deploy and the crew land safely.\n\nKranz recalled:\n\n> I cried. I think many of the controllers did. The emotional release at that instant was so intense many of us were unable to control our emotions. There were an awful lot of wet eyes that day.\n\n### The First Space Station and Continued Soviet Efforts\n\nWhilst 1969 had ensured the Soviet teams wouldn't be first to put a man on the moon, 1970 saw further successes for them in various other areas. The Lunokhod programme put the Lunokhod 1 on the moon, the first unmanned lunar rover. It was also the first remotely operated roving robot to land on another celestial body.\n\nAs 1971 rolled around, Chelomey's first space station was about to go in to orbit. The Salyut 1, a modification of the military-conceived Almaz program had been constructed in 1970, before being shipped to the Baikonour Cosmodrome. Assembly was completed, and on April 19th, just after the 10 year anniversary of Yuri Gagarin's death, the world gained its first space station.\n\nIt had been intended that the Soyuz 10 crew, who put the vessel in to orbit, would enter it. Technical issues delayed this though, and so it would fall to the crew of Soyuz 11 to come aboard first.\n\nMeanwhile, on May 28th, the Mars 3 craft was launched with a Proton-K rocket, which had also put the Salyut in to orbit. It was a refinement of Chelomey's original Proton design, now with a first stage powered by six RD-253 engines, designed by Valentin Glushko, and a second stage and third stage with four and one RD-0210 engines respectively.\n\nThe crew, consisting of Commander Georgy Dobrovolsky, Flight Engineer Vladislav Volkov and Test Engineer Viktor Patsayev were launched on the 6th June, with docking proceeding the next day. The team entered Salyut 1, and began their stay, remaining there for 23 days. This was a record which would stand for more than two years. Having conducted various tests and checks, their mission was cut short due to issues on-board the station, not least of which was an electrical fire. Sadly, whilst returning to Earth, a pressure valve failed. The crew weren't wearing pressure suits, as Soviet manned craft hadn't done since the earlier Vostok program. All three men were killed by exposure to vacuum. They remain to this day the only people to die in space.\n\nThe three cosmonauts were given a state funeral, and buried in the Kremlin Wall Necropolis near the remains of Yuri Gagarin. The US astronaut Tom Stafford, a veteran of the Gemini program and Commander of Apollo 10 was one of the pallbearers. They were each also posthumously awarded the Hero of the Soviet Union.\n\nThe deaths of the crew saw Mishin removed from a number of projects, with Chelomey being given back control of Salyut.\n\nDecember though would see better news, with Mars 3 landing its probe, and in doing so becoming the first probe to land on Mars and transmit back data.\n\n### Saturn V Retires\n\nIn 1971, the world had witnessed America send into space the first man-made object which would exit the solar system. Pioneer 10 left the Earth on March 3rd, and thundered towards Jupiter. Even at its incredible speed, it didn't reach the largest planet in our solar system for over a year and a half, until it finally arrived within it's magnetosphere on November 16th. Having taken images of the giant planet and its moons and conducted scientific measurements, the spacecraft accelerated using the Jovian gravity up to around 82,000 mph (132,000 km/h) at its fastest, and shot off towards the edge of the solar system. The Jovian gravity well slowed it, but even now it continues at around 27,000 mph (43,400 km/h), at around 10 billion miles from Earth. Many years later, in 1983, it would cross the orbit of Neptune and pass beyond the orbit of our system's final planet.\n\nIn America, political and public support for the space program was waning. So much had been put into the idea that the point of the program was to deny the Soviet's the title of first nation to the moon, that having completed it, there was a vacuum left. The last Apollo mission would land on December 19th 1972, marking the last time man would set out to walk on the moon. At the end of his time there, whilst becoming the last man who'd stand on the lunar surface, Before re-entering the LM for the final time, Commander Gene Cernan expressed his thoughts:\n\n> ...I'm on the surface; and, as I take man's last step from the surface, back home for some time to come - but we believe not too long into the future - I'd like to just [say] what I believe history will record. That America's challenge of today has forged man's destiny of tomorrow. And, as we leave the Moon at Taurus-Littrow, we leave as we came and, God willing, as we shall return, with peace and hope for all mankind. \"Godspeed the crew of Apollo 17.\"\n\nHowever, putting objects into space with Saturn and other similar rockets was expensive, and lacking the propaganda benefits of the lunar landing, using such an expensive system for launches started to become politically untenable. Therefore attention in NASA now turned to the building of a re-usable craft, which would be capable of reaching orbit and returning to be used again. On January 5th, 1972, American President Richard Nixon announced that NASA would proceed with the development of a reusable space shuttle system.\n\nThe man who'd been brought to America to create rockets chose this time to bow out. Facing tight budgets and a differing vision from the American leadership on the future of space, Wernher von Braun retired from NASA on May 26th 1972. The next year would see him diagnosed with cancer of the kidneys. Despite this, he'd continue to work, speaking at various colleges and universities, and acting as a consultant.\n\nFor the Soviets though, things continued to go badly. Two more N1 rockets were tested launched, and both failed. As a direct result, Mishin was fired, and the entire N1 program was cancelled. A single design bureau was created to work on space activities taking over from OKB-1, named NPO Energia, with Glushko as chief designer.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Skylab space station](/fly-me-to-the-moon/piece_images/skylab.jpg)\n<figcaption>The Skylab space station</figcaption>\n</figure>\n\nThe next year brought the US its own space station, named Skylab, also launched on a Saturn V, which would orbit for six years, although it would only see occupation for around six months of that time. Nevertheless, it provided a useful platform for performing scientific tests and experiments.\n\nThe Saturn V continued to perform useful work, but its time was running out. Finally, on July 15th 1975, it was launched for the final time. \"Experimental flight Soyuz-Apollo\" was the first joint U.S.–Soviet space flight. The crew consisted of Commander Thomas Stafford, CMP Vance Brand, and Docking Module Pilot Donald \"Deke\" Slayton. Slayton, despite having been selected as far back as 1959 as one of the original Mercury Seven, had never flown to space, having been grounded due to medical reasons for the following 13 years. In the interim, he'd worked as the Coordinator of Astronaut Activities, which would later become and official position, the Chief of the Astronaut Office. Having chosen the crews for both the Gemini and Apollo programs, deciding that Armstrong would represent humanity as the first person on the Moon, he now took his place as an astronaut himself. While grounded, Slayton had taken up a program of daily exercise, quit smoking and caffeine, and drastically cut back on alcohol.\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![Deke Slayton](/fly-me-to-the-moon/piece_images/slayton.jpg)\n<figcaption>Deke Slayton</figcaption>\n</figure>\n\nHaving been returned to flight status in 1970, he selected himself for the 1975 flight. Training began in 1973, which included learning Russian training for weeks at the Star City cosmonaut training center, near Moscow. After years of service in ground control, Slayton resigned as Director of Flight Crew Operations in February 1974. The 1975 mission was the first and last time he'd fly to space.\n\nIt seems fitting that the Apollo program, who's roots began in the Second World War, and for which so much money had been spent to serve as propaganda for American superiority over the Soviets, had as its last act as a public demonstration of the policy of détente that the two superpowers were pursuing at the time. It marked the end of the space race, and ushered in a new era."
+				"content": "# The Race Ends\n\n## 1970 - 1975: The start of the space station era, and the end of Apollo\n\nMankind returned to the moon five months later, in November 1969 with the Apollo 12 mission. During the launch, the vehicle's height and ionised exhaust twice triggered lightning strikes, knocking the service module's fuel cells offline, as well as taking out the attitude indicator and confusing the data sent back to mission control, not to mention lighting up the warning lights inside the ship like a Christmas tree. The command module limps on emergency batteries. If the problem can't be fixed, there'll be no option but for first time flight director Gerry Griffin to call for an abort of the mission. Fortunately, a quick thinking man by the name of John Aaron is sat at his position as EECOM (Electrical, Environmental and Consumables Manager). He saw what was happening, and knew that he'd seen the data coming back before.\n\nA year earlier, Aaron had been at Kennedy Space Center as an observer of an Apollo test, when he'd noticed unusual telemetry. It was the same data he was presented with now. Years later, Aaron would comment that what made a good EECOM was someone who was \"a natural curiosity about how things things work, even if you ... are not responsible for them\". These instincts now caused him to be bugged by the data, he tracked it down to the obscure Signal Conditioning Electronics (SCE) system, which had been affected by a faulty power supply. SCE was designed to convert the signals sent by the instrumentation to data for the spacecraft instruments, as well as for the telemetry for mission control. He realised, as he investigated further, that the readings would have been restored by putting the SCE on its auxiliary setting, which was designed for low-voltage operation.\n\nNow presented with what appeared to be the same issue, Aaron decided it was worth a shot. He radioed to the crew:\n\n> Apollo, Houston, try SCE to Auxiliary, over.\n\nSo low down the list of systems was SCE, that most of his colleagues in mission control had no idea what he was asking for, including Griffin and Gerald Carr (CAPCOM). Griffin, believing he'd misheard, asked Aaron to repeat the recommendation, whilst on the Saturn V, Commander Pete Conrad's response was more to the point, radioing back \"What the hell is that?\"\n\nFortunately, Lunar Module Pilot Alan Bean knew what was being called for, and where the SCE switch was located. He reached out and flipped it, setting it to the auxiliary mode. Telemetry was immediately restored, and the abort was never called for. Conrad was so affected by the sudden release of tension that he spent the entire remained of the journey in to space belly laughing, which could be heard over the radio back in mission control.\n\nThe episode earned Aaron a huge amount of respect, who declared him a \"steely-eyed missile man\", which has since become considered the highest compliment given to someone at NASA.\n\nFortunately the rest of the Apollo 12 flight went smoothly. Worthy of note though is the humour that these men had, and the minor pranks and practical jokes the they often played on each other. The crew who launched were all originally from the Navy, whilst the backup crew had come from the Air Force. For a joke, the backup team managed to get minature copies of the Playboy Playmates inserted into the astronauts' lunar checklists, which were on the cuffs of the space suits. This somewhat surprised the pair when they looked through the checklist flip-book during their first EVA. Command Module Pilot Richard \"Dick\" Gordon wasn't left out of the joke though, as a copy of another calendar had been stowed in a locker, which he discovered while the others were conducting EVA on the lunar surface.\n\nThe jokes weren't just levelled at the crews though; at the back of Conrad's checklist, the backup crew had prepared two pages of geological terms and definitions, to allow him to talk to Mission Control as if he had trained as a geologist.\n\nThe Air Force backup crew would go on to fly to the moon themselves on Apollo 15.\n\n### The Space Station Era Begins and Disaster Strikes\n\nWith the United States having landed on the moon not once, but twice in 1969, any hope the Soviet team had of beating the Americans to a lunar project was dead. All was not lost though, and Vladimir Chelomey, the lead of OKB-52 and now under the Vasily Mishin run OKB-1, was looking at other options. One potential alternative was Zvezda, a manned lunar base which had been proposed by Sergei Korolev prior to his death, which would be launched with the N1-L3. Chelomey however went to Minister of Defence Dmitriy Ustinov, who had final say on the space program, pushing for his ideas for a military space station, named Almaz. His argument was that this offered the best chance as a means of beating the US's announced Skylab project. In 1970, Ustinov approved Chelomey's plan. Control of the project though was left with Mishin.\n\nIn America, the politics may have been simpler, but things were about to go very wrong.\n\nThe crew of Apollo 13 was originally to have consisted of Commander James \"Jim\" Lovell, Ken Mattingly as Command Module Pilot, and completed with and Fred Haise as Lunar Module Pilot. However, Mattingly was found to have been exposed to German measles, and grounded by the flight surgeon. As a result, backup pilot John \"Jack\" Swigert was swapped in as CMP to replace him.\n\nApollo 13 blasted off on April 11th 1970 at 14:13 local time. On its ascent, the center engine shut down two minutes before the planned cut-off time. However, the other four engines were able to be burned for slightly longer to compensate, allowing for a normal insertion in to orbit and then exit towards the moon. Two days later though, while around 205,000 miles (330,000 km) from Earth, the flight controllers in Houston asked Swigert to turn on the hydrogen and oxygen tank fans in the Service Module. These stirred their cryogenic contents, giving a more even distribution increasing the accuracy of their quantity readings.\n\n<figure class=\"media_widget col col-xs-8 col-left\">\n![The Moon, from Apollo 13](/fly-me-to-the-moon/piece_images/apollo_13_moon.jpg)\n<figcaption>A picture of the Moon, as seen by the crew of Apollo 13</figcaption>\n</figure>\n\nTwo minutes later, the craft suffered an explosion.\n\nLead flight director Gene Kranz and his team were on duty at the time, and it fell to them to help the astronauts survive. On board the command module, the three astronauts were working fast. The second oxygen tank read empty, and three minutes later, the fuel cells began to fail, with numbers 1 and 3 falling offline. At the same time, the first oxygen tank was leaking more slowly, and would empty itself over the next two and a bit hours. Worse still, the fuel cells powered the CSM by combining hydrogen and oxygen into water. When O2 tank 1 ran dry, fuel cell 2, the only one still functioning, finally shut down. The Command Module was now deeply broken, with limited battery power and water. To ensure that, should they survive the next few days, they could conduct a reentry, the crew was forced to shut down the CSM completely, powering up the LM instead for use as a lifeboat. Debate raged as to how much needed to be switched off, with John Aaron saying everything had to go. Aaron got his way, having been the only man to tour every station and see the data coming in across everything. The ship was bleeding power, and if they didn't turn everything off, they wouldn't have power for reentry. This was something which had been suggested in training simulation, but had not been considered likely, given the vast number of systems required to fail enough to suggest it as an option. Now though, theory turned in to practical fact. \n\nWith the CSM damaged, a lunar mission was now off. Kranz now called for an abort of the mission. The question though was how to abort. The existing plans, created four years earlier, consisted of three options:\n\n* Direct Abort trajectory, using the SPS (Service Module Propulsion System) engine to turn the crew around\n* Burn the SPS fuel until it ran out, before decoupling and using the DPS (LM Descent Propulsion System) engine\n* A circumlunar free-return trajectory, using the moon's gravity to assist the ship's speed and fire it back at the Earth\n\nA Direct Abort was impractical, as the maximum speed attainable was possible only by decoupling the LM. With the crew needing it to stay alive, that was out. The second option was also problematic, as the CSM was currently serving the useful purpose of acting as an insulator for the heat shield, protecting it from damage. Also, in either of these two cases, the SPS engine would have to fire, and there were concerns about the damage the CSM may have suffered. The use of that engine was therefore relegated to being an absolute last resort.\n\nWith no other reasonable option, Kranz chose the free-return trajectory. Apollo 13 had previously been on the correct course for this, but had moved from it in preparation for the lunar landing. Firstly then, that course had to be re-established, by a 30.7-second burn of the DPS, followed by a second burn of four minutes and 27 seconds to pick up speed and allow for a landing in the Pacific, rather than Indian ocean.\n\nMeanwhile the LM began to run low on things. It had been equipped to sustain two people for a day and a half. Now it was going to have to provide for three people, for four days. Unlike the CSM, which was powered by fuel cells that produced water as a by-product, the LM was powered by silver-zinc batteries. As a result, both water, which acted as both coolant and fluid for the crew to drink, and electrical power were issues. To conserve as much power as possible, the LM was powered down as far as possible. This included everything up to the primary guidance system, with the Abort Guidance System acting for navigation instead, as it drew less power and required less cooling.\n\nThe second serious issue was the lack of lithium hydroxide (LiOH) for removing carbon dioxide from the sealed atmosphere. The LM hadn't been designed to take so many people for so long, and its own internal stock of LiOH canisters would run out before the crew got back, suffocating them as they were poisoned by the rising CO2 levels. Worse, the spare canisters were stored in the descent stage of the LM, designed for the moon landing, which was now unreachable. The CSM meanwhile had more than enough, but these were manufactured in a cuboid shape, whilst the LM took a cylindrical canister. Engineers rapidly invented what the astronauts would nickname \"the mailbox\", a device which drew air through the CSM canisters using a hose taken from a spacesuit.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Mailbox](/fly-me-to-the-moon/piece_images/apollo_13_mailbox_onboard.jpg)\n<figcaption>The crew of Apollo 13 assemble the Mailbox</figcaption>\n</figure>\n\nWith the consumables situation under control for the moment, work turned to how to switch everything back on for the reentry. The CSM had been completely shut down, and would now have to be re-powered for reentry. However, there was virtually no power to do this with, as only the backup batteries were available. John Aaron and Jim Kelly, a CSM controller who specialised in the power systems sat down to work out how to do it. The two men sketched out a rough timeline of what to turn on and when, then invited the rest of the controllers to pitch for what else would be required. The final procedure clocked in at 5 pages. However, it'd have to be executed perfect, with limited time, in temperatures as low as 4 °C (39 °F), with water condensation on almost every surface, and no power to separate the CSM and LM, by a group of people who'd had no sleep for three days."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "mission_control",
+				"id": "mission_control",
+				"caption": "Mission Control during the Apollo 13 flight, the day before reentry",
+				"alt": "Mission Control for Apollo 13",
+				"src": "/fly-me-to-the-moon/piece_images/apollo_13_mission_control.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p2",
+				"id": "p2",
+				"content": "Beyond that, they also needed to work out how to split the CSM in two. The Command Module was used for reentry, whilst the Service Module was to be left behind. However, there was no power to break the two apart. That problem was given to a team of six engineers at the University of Toronto, who had just one day to solve the problem. They concluded that pressurising connecting tunnel between the CSM and LM just before separation would provide enough force when explosively decompressed to push the modules apart. However, they still had to work how much pressure was required at minimum. Too much could damage the seals, causing the astronauts to burn up during reentry. Too low on the other hand, and they wouldn't be far enough away, which could cause the LM to crash into the CSM. Using nothing more advanced than slide rules, they calculated the required pressure and sent the calculations back. NASA relayed the numbers up to the waiting astronauts, who began the process of locking themselves into the CSM, and raising the pressure between it and the LM. While they went through the procedures to prepare for descent, Lovell and Joe Kerwin, CAPCOM joked on the radio...\n\n* **Lovell**: Well, I can't say that this week hasn't been filled with excitement.\n* **Kerwin**: Well, James, if you can't take any better care of a spacecraft than that, we might not give you another one.\n\nWhen the time was right, they triggered the break, and the two machines pushed apart. It had worked."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "apollo_13_service_module",
+				"id": "apollo_13_service_module",
+				"caption": "The Apollo 13 Service Module photographed just after separation. Panel four is obviously missing",
+				"alt": "Apollo 13 Service Module",
+				"src": "/fly-me-to-the-moon/piece_images/apollo_13_service_module.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p3",
+				"id": "p3",
+				"content": "Now they got their first look at the CSM, and the damage that had been done to it.\n\n* **Lovell**: And there's one whole side of that spacecraft missing.\n* **Kerwin**: Is that right?\n* **Lovell**: Right by the - Look out there, will you? Right by the high gain antenna, the whole panel is blown out, almost from the base to the engine.\n* **Kerwin**: Copy that.\n* **Haise**: Yes, it looks like it got to the SPS bell, too, Houston.\n* **Kerwin**: Think it zinged the SPS engine bell, huh?\n* **Haise**: That's the way it looks; unless that's just a dark brown streak. It's really a mess.\n\n...\n\n* **Lovell**: All right. She's drifting right down in front of our windows now, Houston.\n* **Kerwin**: Okay.\n* **Haise**: Okay, Joe, I'm now looking down the SPS bell, and it looks - looks okay on the inside; maybe it is just a streak.\n* **Kerwin**: Okay. Copy that, Fred. Was the bell deformed on the outside or just nicked or what?\n* **Lovell**: I think the explosion, from what I could see, Joe, had - had stained it. I don't know whether it did any actual deformation or not.\n* **Kerwin**: Okay.\n* **Haise**: Man, that's unbelievable!\n\nOne entire side panel had been blown clear. Panel four, a hinged panel normally used for access to the ship's components had been blasted free. In the second half of the compartment revealed, there should have been the second oxygen tank. Instead, there was just a gaping void. The entire tank was gone. The crew took photos to record the damage, and then returned to powering up the ship. Whilst things went smoothly onboard, back on the ground, there was more than a little tension at Aaron's desk. The order he'd prepared was now being put to the test. The ship could afford to pull 43 amps and no more, to get through the two hours required for reentry. The numbers had looked good in testing; now they'd find out if they were right in practice.\n\nAfter a long wait, Lovell radioed down - everything was back on. The four EECOMs looked at the amp readout.\n\n45 amps.\n\nThe team scrambled around, trying to work out what was on that shouldn't have been. Working fast, they realised the backup gyros were on, which was draining two amps which they badly needed. Aaron called Kerwin and got him to radio the crew, telling them to turn them off. Swigert flicked the appropriate switch off, and they watched for the readout to change.\n\n43 amps.\n\nThey'd done it. Miles above, the crew prepared for reentry, strapping in for the descent. The craft thundered into the atmosphere, the heat shield soaking up punishment as it ploughed through the thickening air. Even as it fell though, the crew still weren't safe. After a few minutes of radio silence, caused by reentry, the crew were waiting for the parachutes to deploy. If they didn't, the CM would smash into the ocean surface. Fortunately, thanks to the power-up procedures, the warming of the pyros and the hard work of thousands, they fired into the sky and began to slow the craft down to a survivable speed. A few minutes later, on April 17th at 18:07:41 UTC, the crew splashed down, having returned safely.\n\nPandemonium reigned in mission control upon seeing the parachutes deploy and the crew land safely.\n\nKranz recalled:\n\n> I cried. I think many of the controllers did. The emotional release at that instant was so intense many of us were unable to control our emotions. There were an awful lot of wet eyes that day.\n\n### The First Space Station and Continued Soviet Efforts\n\nWhilst 1969 had ensured the Soviet teams wouldn't be first to put a man on the moon, 1970 saw further successes for them in various other areas. The Lunokhod programme put the Lunokhod 1 on the moon, the first unmanned lunar rover. It was also the first remotely operated roving robot to land on another celestial body."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "lunokhod_1",
+				"id": "lunokhod_1",
+				"caption": "Lunokhod 1, the first rover on the moon",
+				"alt": "Lunokhod 1",
+				"src": "/fly-me-to-the-moon/piece_images/lunokhod_1.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p4",
+				"id": "p4",
+				"content": "As 1971 rolled around, Chelomey's first space station was about to go in to orbit. The Salyut 1, a modification of the military-conceived Almaz program had been constructed in 1970, before being shipped to the Baikonour Cosmodrome. Assembly was completed, and on April 19th, just after the 10 year anniversary of Yuri Gagarin's death, the world gained its first space station.\n\nIt had been intended that the Soyuz 10 crew, who put the vessel in to orbit, would enter it. Technical issues delayed this though, and so it would fall to the crew of Soyuz 11 to come aboard first.\n\nMeanwhile, on May 28th, the Mars 3 craft was launched with a Proton-K rocket, which had also put the Salyut in to orbit. It was a refinement of Chelomey's original Proton design, now with a first stage powered by six RD-253 engines, designed by Valentin Glushko, and a second stage and third stage with four and one RD-0210 engines respectively.\n\nThe crew, consisting of Commander Georgy Dobrovolsky, Flight Engineer Vladislav Volkov and Test Engineer Viktor Patsayev were launched on the 6th June, with docking proceeding the next day. The team entered Salyut 1, and began their stay, remaining there for 23 days. This was a record which would stand for more than two years. Having conducted various tests and checks, their mission was cut short due to issues on-board the station, not least of which was an electrical fire. Sadly, whilst returning to Earth, a pressure valve failed. The crew weren't wearing pressure suits, as Soviet manned craft hadn't done since the earlier Vostok program. All three men were killed by exposure to vacuum. They remain to this day the only people to die in space.\n\nThe three cosmonauts were given a state funeral, and buried in the Kremlin Wall Necropolis near the remains of Yuri Gagarin. The US astronaut Tom Stafford, a veteran of the Gemini program and Commander of Apollo 10 was one of the pallbearers. They were each also posthumously awarded the Hero of the Soviet Union.\n\nThe deaths of the crew saw Mishin removed from a number of projects, with Chelomey being given back control of Salyut.\n\nDecember though would see better news, with Mars 3 landing its probe, and in doing so becoming the first probe to land on Mars and transmit back data.\n\n### Saturn V Retires\n\nIn 1971, the world had witnessed America send into space the first man-made object which would exit the solar system. Pioneer 10 left the Earth on March 3rd, and thundered towards Jupiter. Even at its incredible speed, it didn't reach the largest planet in our solar system for over a year and a half, until it finally arrived within it's magnetosphere on November 16th. Having taken images of the giant planet and its moons and conducted scientific measurements, the spacecraft accelerated using the Jovian gravity up to around 82,000 mph (132,000 km/h) at its fastest, and shot off towards the edge of the solar system. The Jovian gravity well slowed it, but even now it continues at around 27,000 mph (43,400 km/h), at around 10 billion miles from Earth. Many years later, in 1983, it would cross the orbit of Neptune and pass beyond the orbit of our system's final planet.\n\nIn America, political and public support for the space program was waning. So much had been put into the idea that the point of the program was to deny the Soviet's the title of first nation to the moon, that having completed it, there was a vacuum left. The last Apollo mission would land on December 19th 1972, marking the last time man would set out to walk on the moon. At the end of his time there, whilst becoming the last man who'd stand on the lunar surface, Before re-entering the LM for the final time, Commander Gene Cernan expressed his thoughts:\n\n> ...I'm on the surface; and, as I take man's last step from the surface, back home for some time to come - but we believe not too long into the future - I'd like to just [say] what I believe history will record. That America's challenge of today has forged man's destiny of tomorrow. And, as we leave the Moon at Taurus-Littrow, we leave as we came and, God willing, as we shall return, with peace and hope for all mankind. \"Godspeed the crew of Apollo 17.\"\n\nHowever, putting objects into space with Saturn and other similar rockets was expensive, and lacking the propaganda benefits of the lunar landing, using such an expensive system for launches started to become politically untenable. Therefore attention in NASA now turned to the building of a re-usable craft, which would be capable of reaching orbit and returning to be used again. On January 5th, 1972, American President Richard Nixon announced that NASA would proceed with the development of a reusable space shuttle system.\n\nThe man who'd been brought to America to create rockets chose this time to bow out. Facing tight budgets and a differing vision from the American leadership on the future of space, Wernher von Braun retired from NASA on May 26th 1972. The next year would see him diagnosed with cancer of the kidneys. Despite this, he'd continue to work, speaking at various colleges and universities, and acting as a consultant.\n\nFor the Soviets though, things continued to go badly. Two more N1 rockets were tested launched, and both failed. As a direct result, Mishin was fired, and the entire N1 program was cancelled. A single design bureau was created to work on space activities taking over from OKB-1, named NPO Energia, with Glushko as chief designer.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Skylab space station](/fly-me-to-the-moon/piece_images/skylab.jpg)\n<figcaption>The Skylab space station</figcaption>\n</figure>\n\nThe next year brought the US its own space station, named Skylab, also launched on a Saturn V, which would orbit for six years, although it would only see occupation for around six months of that time. Nevertheless, it provided a useful platform for performing scientific tests and experiments.\n\nThe Saturn V continued to perform useful work, but its time was running out. Finally, on July 15th 1975, it was launched for the final time. \"Experimental flight Soyuz-Apollo\" was the first joint U.S.–Soviet space flight. The crew consisted of Commander Thomas Stafford, CMP Vance Brand, and Docking Module Pilot Donald \"Deke\" Slayton. Slayton, despite having been selected as far back as 1959 as one of the original Mercury Seven, had never flown to space, having been grounded due to medical reasons for the following 13 years. In the interim, he'd worked as the Coordinator of Astronaut Activities, which would later become and official position, the Chief of the Astronaut Office. Having chosen the crews for both the Gemini and Apollo programs, deciding that Armstrong would represent humanity as the first person on the Moon, he now took his place as an astronaut himself. While grounded, Slayton had taken up a program of daily exercise, quit smoking and caffeine, and drastically cut back on alcohol.\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![Deke Slayton](/fly-me-to-the-moon/piece_images/slayton.jpg)\n<figcaption>Deke Slayton</figcaption>\n</figure>\n\nHaving been returned to flight status in 1970, he selected himself for the 1975 flight. Training began in 1973, which included learning Russian training for weeks at the Star City cosmonaut training center, near Moscow. After years of service in ground control, Slayton resigned as Director of Flight Crew Operations in February 1974. The 1975 mission was the first and last time he'd fly to space.\n\nIt seems fitting that the Apollo program, who's roots began in the Second World War, and for which so much money had been spent to serve as propaganda for American superiority over the Soviets, had as its last act as a public demonstration of the policy of détente that the two superpowers were pursuing at the time. It marked the end of the space race, and ushered in a new era."
 			}
 		]
 	},
@@ -2903,7 +2683,23 @@ module.exports={
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
-				"content": "In mission control, the order everyone had hoped never to hear was given - the doors to the control center were locked, communications lines closed, and the process of recording the data from the flight began. \n\nIn the aftermath, a commission was set up to examine what went wrong, both in terms of the accident, and the procedures that had created it. One of the commission's members was physicist Richard Feynman. Were other members of the Commission met with NASA and supplier top management to understand the problem, he went in a different direction. He instead sought out the engineers and technicians, who were able to tip him off as to the issue with the O-rings. Whilst part of a televised hearing, he demonstrated how they would fail at very low temperatures by putting a sample of the material in a glass of ice water. In his own conclusions, he noted that the estimates for the reliability of the Shuttle were vastly different to those of the engineers who designed and maintained it. \n\nHis conclusion summed up the issues neatly:\n\n> For a successful technology, reality must take precedence over public relations, for nature cannot be fooled\n\n### Politics and Change\n\nIn the aftermath, NASA was able to secure funding to replace Challenger, with the new Endeavour. This was going to be required if the project to put up another space station was to continue. However, whilst this was given, the US interests in space were being examined closely. Projected costs for Freedom kept increasing, whatever design was put forward. \n\nMeanwhile, Mir was growing. The second module, and the first to expand the station went on in early 1987. Kvant-1 was designed for astrophysics experiments, with a variety of telescopes, an X-ray/gamma ray detector and other parts. This was followed by Kvant-2 in November of 1989, shortly after Voyager 2 flew by Neptune. Also in 1989, the Soviet Union noted the passing of Valentin Glushko. The man who had for so long played second fiddle in the Soviet internal power struggle in the space race, and who's engines had been so instrumental to powering Soviet space vessels, died in Moscow, aged 80. His role at Energia was taken up by Yuriy Semenov, who'd continue until 2005.\n\nThe following year would mark the next leap forward for space exploration. The end of May 1990 saw the Kristall technology module added to Mir, but the real event had happened a month earlier, when NASA launched a piece of equipment which would produce some of the most striking and recognisable images of space ever produced.\n\nBack as far as 1966, when von Braun was still alive and active, NASA had launched the first Orbiting Astronomical Observatory (OAO) mission. Whilst it died after just three days, its replacement OAO-2 worked from 1968 to 1972, three years longer than intended. As work continued and the vital role of space-based astronomy became apparent, funding had started to be gathered for a much more powerful device. The problem was, the proposed cost, which was (no pun intended) astronomical. In 1974, unsatisfied with the apparent projected costs, Congress pulled all funding for the project. It was only after serious lobbying by the scientific establishment, and the agreement to cut the scale of the proposed device, that funds were made available again. Even then, they were only half what was needed.\n\nAs a result, the newly established European Space Agency was contacted to see if they'd be interested in a collaboration. The ESA agreed, planning to provide funding and the solar cells required to power the telescope, in exchange for a guarantee of time allocation once it was in space. In 1978 funding was approved, with a projected launch date of 1983. The future telescope was named \"Hubble\".\n\nConstruction proceeded apace, but not altogether smoothly. Two years later, the project was already 30% over budget and three months behind schedule. And then there was the Challenger disaster. Work on the US space program shuddered to a halt, with the entire Shuttle fleet grounded. Hubble was now complete though, and powered up ready to be launched. To keep the delicate instruments from damage, the team kept it in a clean room, filled with nitrogen and powered up, until it could be launched. The operation to keep it ready cost an eye-watering $6 million a month. The delay was useful though, as the team hadn't yet actually written the software to make the telescope work. In the following four years, they worked to get it ready.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Hubble mirror being polished](/fly-me-to-the-moon/piece_images/hubble_mirror.jpg)\n<figcaption>The mirror for Hubble, undergoing polishing</figcaption>\n</figure>\n\nThe shuttle program resumed flights two years later, in 1988, and in April of 1990, Discovery took to the skies to place Hubble in orbit. It had been planned to cost $400 million. Instead, thanks to over-runs and the delays in launching, it had cost over $2.5 billion.\n\nThings weren't right though. As the team pointed their new toy and waiting to see what images it would return, it quickly became apparent that something was very wrong. The telescope didn't seem to be able to focus properly. Analysis of the flawed images it sent back revealed that the primary mirror had been ground to the wrong shape. Although even in its current state, it was still likely the most perfect mirror ever made, it was still too flat by 2.2 micrometers (millionths of a meter). This tiny distortion was catastrophic.\n\nBack in the Soviet Union, things weren't much better. The Buran program, which had seen its only flight (and even that was unmanned) at the tail end of 1988 was being downsized. The Soviet Union itself was finally collapsing. 1988 had seen the Caucasus erupt in civil war, and various areas started to rise up, demanding autonomy. 1989 saw 2 million people join hands, forming a human chain stretching 600 km (370 miles) across three countries (Estonia, Latvia and Lithuania). A year later, with political power waning and lacking any real ability to keep the Union together, Moscow allowed all fifteen republics open elections. Six turned away, breaking the Soviet economic and political will further. Finally, in 1991, the entire thing came crashing down. Between August and December, 10 republics declared independence. In a nationally televised speech on Christmas morning, 1991, the final President of the Soviet Union, Mikhail Gorbachev resigned, stating:\n\n> Dear fellow countrymen, compatriots. Due to the situation which has evolved as a result of the formation of the Commonwealth of Independent States, I hereby discontinue my activities at the post of President of the Union of Soviet Socialist Republics.\n\nHe declared the office no more, and cede powers to Boris Yeltsin. The same day, Russia's legal name changed from \"Russian Soviet Federative Socialist Republic\" to \"Russian Federation\". It was now a sovereign state, on its own. That night, the Soviet flag was lowered for the last time, taken down, and the Russian tricolor raised in its place. The Soviet Union which had fought so hard for the moon, and for progress in space, was no more.\n\n### Hubble Triumphant\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![Hubble being fixed](/fly-me-to-the-moon/piece_images/hubble_fix.jpg)\n<figcaption>A spacewalk as part of the fixing of the Hubble mirror</figcaption>\n</figure>\n\nIn NASA, the broken Hubble was problematic, but not awful. There had always been plans in place for servicing missions, so the team did the best they could for three years while they waited. Finally, in December of 1993, the optics were repaired by five EVAs with shuttle mission STS-61, conducted from the new Endeavour, which had had its maiden flight just a year before.\n\nIn January, NASA declared the mission a complete success.\n\nThe following period of operation, and the sights Hubble would unveil would mark the start of a period of astronomy unmatched in both the beauty of its images, to say nothing of the value of the scientific output. The bus-sized telescope would look back to the start of the universe, and forwards into its future. Through Hubble, the world watched comet Shoemaker-Levy 9 collide with Jupiter in 1994; the first time such impacts had been observed. It imaged galaxies billions of lightyears away, watched the first predicted reappearance of a supernova, and imaged the birth of stars in the Pillars of Creation.\n\n<figure class=\"media_widget\">\n![Hubble in space](/fly-me-to-the-moon/piece_images/hubble_space.jpg)\n<figcaption>Hubble as seen after the completed servicing</figcaption>\n</figure>\n\nFurther, it demonstrated incontrovertibly the value of the Space Shuttle. The dramatic craft scored another PR win in 1995, when for the first time, the US Space Shuttle Atlantis docked with Russian Mir Space Station. By this time, the Buran program had been cancelled, amidst a pained Russian economy. Further, the Baikonur Cosmodrome, not being located in Russia, forced the new country to sign a lease with Kazakhstan, allowing continued use of the site."
+				"content": "In mission control, the order everyone had hoped never to hear was given - the doors to the control center were locked, communications lines closed, and the process of recording the data from the flight began. \n\nIn the aftermath, a commission was set up to examine what went wrong, both in terms of the accident, and the procedures that had created it. One of the commission's members was physicist Richard Feynman. Were other members of the Commission met with NASA and supplier top management to understand the problem, he went in a different direction. He instead sought out the engineers and technicians, who were able to tip him off as to the issue with the O-rings. Whilst part of a televised hearing, he demonstrated how they would fail at very low temperatures by putting a sample of the material in a glass of ice water. In his own conclusions, he noted that the estimates for the reliability of the Shuttle were vastly different to those of the engineers who designed and maintained it. \n\nHis conclusion summed up the issues neatly:\n\n> For a successful technology, reality must take precedence over public relations, for nature cannot be fooled\n\n### Politics and Change\n\nIn the aftermath, NASA was able to secure funding to replace Challenger, with the new Endeavour. This was going to be required if the project to put up another space station was to continue. However, whilst this was given, the US interests in space were being examined closely. Projected costs for Freedom kept increasing, whatever design was put forward. \n\nMeanwhile, Mir was growing. The second module, and the first to expand the station went on in early 1987. Kvant-1 was designed for astrophysics experiments, with a variety of telescopes, an X-ray/gamma ray detector and other parts. This was followed by Kvant-2 in November of 1989, shortly after Voyager 2 flew by Neptune. Also in 1989, the Soviet Union noted the passing of Valentin Glushko. The man who had for so long played second fiddle in the Soviet internal power struggle in the space race, and who's engines had been so instrumental to powering Soviet space vessels, died in Moscow, aged 80. His role at Energia was taken up by Yuriy Semenov, who'd continue until 2005.\n\nThe following year would mark the next leap forward for space exploration. The end of May 1990 saw the Kristall technology module added to Mir, but the real event had happened a month earlier, when NASA launched a piece of equipment which would produce some of the most striking and recognisable images of space ever produced.\n\nBack as far as 1966, when von Braun was still alive and active, NASA had launched the first Orbiting Astronomical Observatory (OAO) mission. Whilst it died after just three days, its replacement OAO-2 worked from 1968 to 1972, three years longer than intended. As work continued and the vital role of space-based astronomy became apparent, funding had started to be gathered for a much more powerful device. The problem was, the proposed cost, which was (no pun intended) astronomical. In 1974, unsatisfied with the apparent projected costs, Congress pulled all funding for the project. It was only after serious lobbying by the scientific establishment, and the agreement to cut the scale of the proposed device, that funds were made available again. Even then, they were only half what was needed.\n\nAs a result, the newly established European Space Agency was contacted to see if they'd be interested in a collaboration. The ESA agreed, planning to provide funding and the solar cells required to power the telescope, in exchange for a guarantee of time allocation once it was in space. In 1978 funding was approved, with a projected launch date of 1983. The future telescope was named \"Hubble\".\n\nConstruction proceeded apace, but not altogether smoothly. Two years later, the project was already 30% over budget and three months behind schedule. And then there was the Challenger disaster. Work on the US space program shuddered to a halt, with the entire Shuttle fleet grounded. Hubble was now complete though, and powered up ready to be launched. To keep the delicate instruments from damage, the team kept it in a clean room, filled with nitrogen and powered up, until it could be launched. The operation to keep it ready cost an eye-watering $6 million a month. The delay was useful though, as the team hadn't yet actually written the software to make the telescope work. In the following four years, they worked to get it ready.\n\n<figure class=\"media_widget col-inverse col-xs-6 col-right\">\n![The Hubble mirror being polished](/fly-me-to-the-moon/piece_images/hubble_mirror.jpg)\n<figcaption>The mirror for Hubble, undergoing polishing</figcaption>\n</figure>\n\nThe shuttle program resumed flights two years later, in 1988, and in April of 1990, Discovery took to the skies to place Hubble in orbit. It had been planned to cost $400 million. Instead, thanks to over-runs and the delays in launching, it had cost over $2.5 billion.\n\nThings weren't right though. As the team pointed their new toy and waiting to see what images it would return, it quickly became apparent that something was very wrong. The telescope didn't seem to be able to focus properly. Analysis of the flawed images it sent back revealed that the primary mirror had been ground to the wrong shape. Although even in its current state, it was still likely the most perfect mirror ever made, it was still too flat by 2.2 micrometers (millionths of a meter). This tiny distortion was catastrophic.\n\nBack in the Soviet Union, things weren't much better. The Buran program, which had seen its only flight (and even that was unmanned) at the tail end of 1988 was being downsized. The Soviet Union itself was finally collapsing. 1988 had seen the Caucasus erupt in civil war, and various areas started to rise up, demanding autonomy. 1989 saw 2 million people join hands, forming a human chain stretching 600 km (370 miles) across three countries (Estonia, Latvia and Lithuania). A year later, with political power waning and lacking any real ability to keep the Union together, Moscow allowed all fifteen republics open elections. Six turned away, breaking the Soviet economic and political will further. Finally, in 1991, the entire thing came crashing down. Between August and December, 10 republics declared independence. In a nationally televised speech on Christmas morning, 1991, the final President of the Soviet Union, Mikhail Gorbachev resigned, stating:\n\n> Dear fellow countrymen, compatriots. Due to the situation which has evolved as a result of the formation of the Commonwealth of Independent States, I hereby discontinue my activities at the post of President of the Union of Soviet Socialist Republics.\n\nHe declared the office no more, and cede powers to Boris Yeltsin. The same day, Russia's legal name changed from \"Russian Soviet Federative Socialist Republic\" to \"Russian Federation\". It was now a sovereign state, on its own. That night, the Soviet flag was lowered for the last time, taken down, and the Russian tricolor raised in its place. The Soviet Union which had fought so hard for the moon, and for progress in space, was no more.\n\n### Hubble Triumphant\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![Hubble being fixed](/fly-me-to-the-moon/piece_images/hubble_fix.jpg)\n<figcaption>A spacewalk as part of the fixing of the Hubble mirror</figcaption>\n</figure>\n\nIn NASA, the broken Hubble was problematic, but not awful. There had always been plans in place for servicing missions, so the team did the best they could for three years while they waited. Finally, in December of 1993, the optics were repaired by five EVAs with shuttle mission STS-61, conducted from the new Endeavour, which had had its maiden flight just a year before.\n\nIn January, NASA declared the mission a complete success.\n\nThe following period of operation, and the sights Hubble would unveil would mark the start of a period of astronomy unmatched in both the beauty of its images, to say nothing of the value of the scientific output. The bus-sized telescope would look back to the start of the universe, and forwards into its future. Through Hubble, the world watched comet Shoemaker-Levy 9 collide with Jupiter in 1994; the first time such impacts had been observed. It imaged galaxies billions of lightyears away, watched the first predicted reappearance of a supernova, and imaged the birth of stars in the Pillars of Creation."
+			},
+			{
+				"type": "Image",
+				"className": "",
+				"key": "hubble",
+				"id": "hubble",
+				"caption": "Hubble as seen after the completed servicing",
+				"alt": "Hubble in space",
+				"src": "/fly-me-to-the-moon/piece_images/hubble_space.jpg"
+			},
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "p5",
+				"id": "p5",
+				"content": "Further, it demonstrated incontrovertibly the value of the Space Shuttle. The dramatic craft scored another PR win in 1995, when for the first time, the US Space Shuttle Atlantis docked with Russian Mir Space Station. By this time, the Buran program had been cancelled, amidst a pained Russian economy. Further, the Baikonur Cosmodrome, not being located in Russia, forced the new country to sign a lease with Kazakhstan, allowing continued use of the site."
 			},
 			{
 				"type": "Gallery",
@@ -2952,8 +2748,8 @@ module.exports={
 			{
 				"type": "Markdown",
 				"className": "content",
-				"key": "p5",
-				"id": "p5",
+				"key": "p6",
+				"id": "p6",
 				"content": "### The ISS Takes Flight\n\nThe latter half of the final decade of the 20th century saw the Pathfinder mission, consisting of a relatively cheap rover called Sojourner launch and land on Mars. The first planned project from NASA's Discovery Program (although the second to launch), the Discovery project's motto was (and remains) \"cheaper, faster and better\". During its operation, it would go on to take 16,500 pictures and make 8.5 million atmospheric measurements, as well as conducting analysis of the Martian soil and rocks. The entire mission cost less than a single shuttle launch, and continued the tradition of the various space probes, demonstrating the increasing ability of rovers and unmanned machines to do what people couldn't.\n\nBack on Earth, a debate had begun to heat up. With Freedom's projected costs becoming eye-wateringly high, a solution was needed. In the spirit of co-operation, the Americans went to the Russians in secret, to discuss what could be done. The Russians initially suggested that the Americans join them in extending Mir. The US team thanked them politely, but expressed that this wasn't exactly what they had in mind. The second offer was that America fund a Russian program to build a space station for the US. This was, unsurprisingly, rejected as well.\n\n<figure class=\"media_widget col col-xs-6 col-left\">\n![The ISS at 2 modules](/fly-me-to-the-moon/piece_images/zarya_unity.jpg)\n<figcaption>Zarya and Unity modules attach to create the ISS</figcaption>\n</figure>\n\nFinally, they discussed the idea of a joint space station. The early components, including life support systems, propulsion and emergency escape vehicle would all be of Russian design and construction. Other components would be built by a consortium of international countries, with modules coming from America, Japan and the European nations. It would mark the end of space as something to be grasped for by a nation, and the start of a new, internationally co-operative era. Thus in 1998, 15 countries met in Washington to sign their support for the framework for the design, development, operation, and ongoing running of the International Space Station.\n\nThe timing was perfect. The Russians had been planning Mir 2, but hadn't the funds to complete such a project, let alone to run both it and Mir. Further, whilst the Americans hadn't yet invented technologies for solving many of the challenges faced with running a space station. Their focus on the Apollo and Shuttle programs had left them to fall behind, whilst the Russians had been running stations for years. The Russian team launched the first part in November 1998, named Zarya, meaning sunrise. Weighing over 19 tonnes, it was blasted in to space atop a Proton-K rocket. Two weeks later, the Space Shuttle arrived with the second module, named Unity. The creation of the ISS had begun."
 			}
 		]
@@ -3098,2010 +2894,1508 @@ module.exports={
 		{ "t": 901, "text": "Contact Light", "key": "ContactLight" },
 		{ "t": 920, "text": "Touchdown", "key": "Touchdown" },
 		{ "t": 973, "text": "T1 STAY/NO-STAY", "key": "T1StayNoStay" }
-	]
+	],
+	"fdComms": [0,19,20,30,33,35,35,37,41,45,48,49,50,51,72,76,79,81,82,83,84,85,86,87,87,88,89,113,123,124,143,144,148,155,156,167,168,172,173,174,177,200,202,203,204,205,209,212,214,216,217,219,221,224,244,245,254,255,256,258,259,260,264,267,269,274,275,276,278,280,282,288,289,289,292,306,308,316,325,327,332,334,337,338,340,346,348,349,350,354,360,381,388,390,391,391,392,392,393,393,394,394,395,395,396,396,397,397,404,406,412,415,416,416,419,420,421,422,442,443,444,445,446,452,467,468,470,474,477,481,486,488,489,489,491,493,494,496,498,499,500,508,510,511,512,521,523,524,525,528,529,529,534,540,541,549,553,555,558,558,559,560,560,561,562,562,566,568,568,570,575,576,577,583,585,589,590,592,596,599,600,601,601,602,604,607,607,610,621,622,630,632,634,639,640,641,642,642,643,645,647,659,663,664,667,669,683,686,686,687,687,688,688,689,689,690,690,691,691,708,708,710,712,714,719,721,722,722,723,729,730,742,744,745,746,746,747,747,748,763,764,767,768,777,815,839,840,858,860,861,862,886,891,891,917,921,952,956,958,967,971,972,974,977,977,978,978,979,979,980,980,981,981,982,982,983,983,990,991,991,992,1001,1002,1047],
+	"gaComms": [0,67,71,85,87,88,90,101,104,107,116,117,145,147,150,153,161,167,183,186,188,193,203,207,209,211,212,215,218,224,227,231,236,253,257,263,269,276,290,299,300,308,314,316,318,333,335,340,343,346,357,368,382,385,393,400,401,404,412,417,429,431,446,451,453,460,462,463,467,468,470,472,474,484,495,501,503,504,505,508,510,516,519,522,523,526,530,531,532,536,537,538,540,544,550,552,570,575,583,585,586,589,609,611,617,623,627,632,634,641,649,657,659,666,673,687,690,695,699,701,706,707,713,715,716,717,719,723,743,749,752,753,757,758,768,774,775,777,784,788,794,800,802,804,806,809,815,818,825,827,826,828,831,833,835,842,847,856,864,866,870,879,883,887,893,894,902,905,906,907,908,909,919,920,928,938,940,945,947,952,960,974,985,988,990]
 }
 },{}],12:[function(require,module,exports){
-module.exports={
-	"17": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO."
-		}
-	],
-	"18": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go FIDO."
-		},
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "MSFN shows we may be a little low."
-		}
-	],
-	"19": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"20": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "No problem."
-		}
-	],
-	"30": [
-		{
-			"position": "CAPCOM",
-			"name": "Charlie Duke",
-			"text": "He's with us on the TIG FLIGHT."
-		}
-	],
-	"33": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"35": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "FLIGHT TELCOM."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go TELCOM."
-		}
-	],
-	"37": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "May be able to pick up the steerable if you desire to try. Pitch 212 yaw 37."
-		}
-	],
-	"41": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Pitch 212, yaw 37."
-		}
-	],
-	"45": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "That's affirm FLIGHT."
-		}
-	],
-	"48": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CAPCOM, why don't you try it."
-		}
-	],
-	"49": [
-		{
-			"position": "CAPCOM",
-			"name": "Charlie Duke",
-			"text": "Roger, we on the OMNIs now?"
-		}
-	],
-	"50": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "That's affirm."
-		}
-	],
-	"51": [
-		{
-			"position": "CAPCOM",
-			"name": "Charlie Duke",
-			"text": "Okay."
-		}
-	],
-	"72": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Got us locked up there TELCOM?"
-		}
-	],
-	"76": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Okay, it's just real weak FLIGHT."
-		}
-	],
-	"79": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay, how you looking? All your systems go?"
-		}
-	],
-	"81": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "That's affirm FLIGHT."
-		}
-	],
-	"82": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "How about you CONTROL?"
-		}
-	],
-	"83": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We look good."
-		}
-	],
-	"84": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GUIDANCE, you happy?"
-		}
-	],
-	"85": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Go, both systems."
-		}
-	],
-	"86": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "FIDO, how about you?"
-		}
-	],
-	"87": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "We're go"
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"88": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "We, we're a little low FLIGHT, no problem."
-		}
-	],
-	"89": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"113": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay, all flight controllers, thirty seconds to ignition."
-		}
-	],
-	"123": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Negative, not yet. Stand by."
-		}
-	],
-	"124": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Bob, you're on the loop."
-		}
-	],
-	"143": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "DPS arm."
-		}
-	],
-	"144": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. DPS arm"
-		}
-	],
-	"148": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Ullage."
-		}
-	],
-	"155": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "10 percent TCP."
-		}
-	],
-	"156": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. 10 percent."
-		}
-	],
-	"167": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Lost data FLIGHT."
-		}
-	],
-	"168": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Copy."
-		}
-	],
-	"172": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Going to aft OMNI?"
-		}
-	],
-	"173": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "No. Let's wait until they get through throttling up here."
-		}
-	],
-	"174": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Aft OMNI."
-		}
-	],
-	"177": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Let's wait until they get through throttle up, they should be through about now. Go ahead, try aft OMNI."
-		}
-	],
-	"200": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO, we've lost MSFN"
-		}
-	],
-	"202": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, we've lost MSFN."
-		}
-	],
-	"203": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "FLIGHT GUIDANCE."
-		}
-	],
-	"204": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go GUIDANCE."
-		}
-	],
-	"205": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "They turn on with 20 foot per second residual that is probably due to downtrack error."
-		}
-	],
-	"209": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. About 20 foot residual due to downtrack error."
-		}
-	],
-	"212": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "I think, and it was in radial."
-		}
-	],
-	"214": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "We have data FLIGHT."
-		}
-	],
-	"216": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"217": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO. GTC go."
-		}
-	],
-	"219": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. GTC go."
-		}
-	],
-	"221": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "FLIGHT CONTROL, we're go. ... looks good."
-		}
-	],
-	"224": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"244": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO. We have negative MSFN."
-		}
-	],
-	"245": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Negative MSFN. You got doppler? FIDO what data do you have?"
-		}
-	],
-	"254": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "AGS and doppler FLIGHT. We're go."
-		}
-	],
-	"255": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"256": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Restarting MSFN now."
-		}
-	],
-	"258": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. How's the doppler looking?"
-		}
-	],
-	"259": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Looks good FLIGHT."
-		}
-	],
-	"260": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"264": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "DPS thrust 9820."
-		}
-	],
-	"267": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Thrust 9820."
-		}
-	],
-	"269": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Copy FLIGHT."
-		}
-	],
-	"274": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Data's solid."
-		}
-	],
-	"275": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "How you looking GUIDANCE."
-		}
-	],
-	"276": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Hanging out 20 foot per second. Looks good."
-		}
-	],
-	"278": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. No change is what you're saying."
-		}
-	],
-	"280": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "No change. That's downtrack, I know it."
-		}
-	],
-	"282": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"288": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO."
-		}
-	],
-	"289": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go FIDO."
-		}
-	],
-	"289": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "We've reinitialized the filter, we do have an altitude difference."
-		}
-	],
-	"292": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"306": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO. GTC is right on nominal."
-		}
-	],
-	"308": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Roger. GTC nominal."
-		}
-	],
-	"316": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "It's okay FLIGHT. Okay."
-		}
-	],
-	"325": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay CONTROL, let me know when he starts his yaw here."
-		}
-	],
-	"327": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Roger."
-		}
-	],
-	"332": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "How's your MSFN looking now FIDO?"
-		}
-	],
-	"334": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO, we do have the altitude, we're go."
-		}
-	],
-	"337": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay, how about you GUIDANCE."
-		}
-	],
-	"338": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Holding at about 18 foot, we're going to make it I think."
-		}
-	],
-	"340": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"346": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "He thinks you're a little bit long down range."
-		}
-	],
-	"348": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "That's right, I think we can confirm that."
-		}
-	],
-	"349": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "We confirm that."
-		}
-	],
-	"350": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"354": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, 30 seconds to next GO/NO-GO."
-		}
-	],
-	"360": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "LM downlink FLIGHT."
-		}
-	],
-	"381": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, I'm going around the horn. Make your GO/NO-GO's based on the data you had prior to LOS. I see we got it back. Give you another few seconds."
-		}
-	],
-	"388": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We're going FLIGHT."
-		}
-	],
-	"390": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay, RETRO"
-		}
-	],
-	"391": [
-		{
-			"position": "RETRO",
-			"name": "Charles F. Deiterich",
-			"text": "Go"
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "FIDO"
-		},
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Go."
-		}
-	],
-	"392": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GUIDANCE"
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Go."
-		}
-	],
-	"393": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CONTROL"
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Go."
-		}
-	],
-	"394": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "TELCOM"
-		},
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GNC"
-		}
-	],
-	"395": [
-		{
-			"position": "GNC",
-			"name": "Briggs W. Willoughby",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "EECOM"
-		}
-	],
-	"396": [
-		{
-			"position": "EECOM",
-			"name": "John W. Aaron",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "SURGEON."
-		}
-	],
-	"397": [
-		{
-			"position": "SURGEON",
-			"name": "John F. Zieglschmid",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CAPCOM, we're go to continue PDI."
-		}
-	],
-	"404": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Did you get that TELCOM, ED Batts are good to go."
-		}
-	],
-	"406": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Roger FLIGHT."
-		}
-	],
-	"412": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay everybody, let's hang tight and look for landing radar."
-		}
-	],
-	"415": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "FLIGHT GUIDANCE."
-		}
-	],
-	"416": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go GUIDANCE."
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "We'll need that landing radar by 18,000 with this down track"
-		}
-	],
-	"419": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"420": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "On the PGNS"
-		}
-	],
-	"421": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, I copy GUIDANCE."
-		}
-	],
-	"422": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Okay."
-		}
-	],
-	"442": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay we got data back."
-		}
-	],
-	"443": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Radar, FLIGHT looks good."
-		}
-	],
-	"444": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"445": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "2,000 feet."
-		}
-	],
-	"446": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, 2,000 ft. DELTA-H. Let me know when he accepts it GUIDANCE."
-		}
-	],
-	"452": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Roger."
-		}
-	],
-	"467": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"468": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Looks good FLIGHT. Looks good."
-		}
-	],
-	"470": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Is he accepting it GUIDANCE?"
-		}
-	],
-	"474": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Standby."
-		}
-	],
-	"477": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Looks like its converging."
-		}
-	],
-	"481": [
-		{
-			"position": "GUIDANCE2",
-			"name": "Granville E. Paules",
-			"text": "1202 alarm."
-		}
-	],
-	"486": [
-		{
-			"position": "CAPCOM",
-			"name": "Charlie Duke",
-			"text": "Yeah, it's the same thing we had."
-		}
-	],
-	"488": [
-		{
-			"position": "RETRO",
-			"name": "Charles F. Deiterich",
-			"text": "FLIGHT RETRO."
-		}
-	],
-	"489": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go RETRO."
-		},
-		{
-			"position": "RETRO",
-			"name": "Charles F. Deiterich",
-			"text": "Throttle down 6 plus 25."
-		}
-	],
-	"491": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "6 plus 25."
-		}
-	],
-	"493": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "We're go on that flight."
-		}
-	],
-	"494": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "We're go on that alarm?"
-		}
-	],
-	"496": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "If it doesn't reoccur we'll be go."
-		}
-	],
-	"498": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"499": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "He's taking in a DELTA-H now."
-		}
-	],
-	"500": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Did you get the throttle down CAPCOM? Rog."
-		}
-	],
-	"508": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO, converging on DELTA-H."
-		}
-	],
-	"510": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"511": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "FLIGHT CONTROL we have velocity."
-		}
-	],
-	"512": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"521": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Okay we'll monitor is his DELTA-H FLIGHT."
-		}
-	],
-	"523": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"524": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "I think that's what he's getting at."
-		}
-	],
-	"525": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay."
-		}
-	],
-	"528": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "And his alarms."
-		}
-	],
-	"529": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"529": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "DELTA-H is beautiful."
-		}
-	],
-	"534": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, hang tight. Should be throttling down pretty shortly."
-		}
-	],
-	"540": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We confirm throttle down."
-		}
-	],
-	"541": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "You confirm throttle down."
-		}
-	],
-	"549": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "How's it looking GUIDANCE?"
-		}
-	],
-	"553": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "You want him to stay out of 68."
-		}
-	],
-	"555": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Negative FLIGHT. I just said we'll monitor the alarms."
-		}
-	],
-	"558": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay."
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Okay."
-		}
-	],
-	"559": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "FLIGHT CONTROL."
-		}
-	],
-	"560": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go."
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Everything looks good."
-		}
-	],
-	"561": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "FLIGHT GUIDANCE."
-		}
-	],
-	"562": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go GUIDANCE."
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "The noun 68 now well may be the problem here, and we can monitor DELTA-H."
-		}
-	],
-	"566": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"568": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go FIDO."
-		},
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Looking real good."
-		}
-	],
-	"570": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, FIDO good."
-		}
-	],
-	"575": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "TELCOM how you looking?"
-		}
-	],
-	"576": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Looking good FLIGHT."
-		}
-	],
-	"577": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"583": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Going to try the steerable again Don."
-		}
-	],
-	"585": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Copy FLIGHT."
-		}
-	],
-	"589": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "We're on steerable Don?"
-		}
-	],
-	"590": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "That's affirmative FLIGHT and it's holding in there pretty good."
-		}
-	],
-	"592": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Okay everybody hang tight, it's 7 and a half minutes."
-		}
-	],
-	"596": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "FLIGHT GUIDANCE his landing radar is fixed, the velocity is beautiful."
-		}
-	],
-	"599": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"600": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "FLIGHT CONTROL."
-		}
-	],
-	"601": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go CONTROL."
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Descent 2 fuel."
-		}
-	],
-	"602": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Descent 2 fuel crit."
-		}
-	],
-	"604": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Descent 2 fuel only."
-		}
-	],
-	"607": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Fuel-"
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Fuel critical. He didn't want to say critical."
-		}
-	],
-	"610": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Descent 2 fuel."
-		}
-	],
-	"621": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO, looking real good."
-		}
-	],
-	"622": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"630": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Got an estimated, what's our TGO GUIDANCE?"
-		}
-	],
-	"632": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "30 seconds to P64."
-		}
-	],
-	"634": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. About 30 seconds. Okay we still got landing radar GUIDANCE?"
-		}
-	],
-	"639": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Affirm."
-		}
-	],
-	"640": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay, has it converged?"
-		}
-	],
-	"641": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Yes it looks beautiful."
-		}
-	],
-	"642": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Has it converged?"
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Yes."
-		}
-	],
-	"643": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay."
-		}
-	],
-	"645": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO we're go. Look real good."
-		}
-	],
-	"647": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog FIDO."
-		}
-	],
-	"659": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay they got 64."
-		}
-	],
-	"663": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "TGO's go."
-		}
-	],
-	"664": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, TGO's go."
-		}
-	],
-	"667": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We have position 2 on their alarm"
-		}
-	],
-	"669": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Position 2. All flight controllers, 20 seconds to GO/NO-GO for landing."
-		}
-	],
-	"683": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, GO/NO-GO for landing. RETRO"
-		}
-	],
-	"686": [
-		{
-			"position": "RETRO",
-			"name": "Charles F. Deiterich",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "FIDO."
-		},
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Go."
-		}
-	],
-	"687": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GUIDANCE."
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CONTROL."
-		}
-	],
-	"688": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "TELCOM."
-		}
-	],
-	"689": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GNC."
-		},
-		{
-			"position": "GNC",
-			"name": "Briggs W. Willoughby",
-			"text": "Go."
-		}
-	],
-	"690": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "EECOM."
-		},
-		{
-			"position": "EECOM",
-			"name": "John W. Aaron",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "SURGEON."
-		}
-	],
-	"691": [
-		{
-			"position": "SURGEON",
-			"name": "John F. Zieglschmid",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CAPCOM, we're go for landing."
-		}
-	],
-	"708": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "1201 alarm."
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Same type, we're go flight."
-		}
-	],
-	"710": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay we're go."
-		}
-	],
-	"712": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "FLIGHT FIDO right on real good."
-		}
-	],
-	"714": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"719": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "How's our margin looking Bob?"
-		}
-	],
-	"721": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "He looks okay."
-		}
-	],
-	"722": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay"
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We got four and a half."
-		}
-	],
-	"723": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"729": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Altitute up in the AGS, looks good."
-		}
-	],
-	"730": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"742": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "How you doing CONTROL?"
-		}
-	],
-	"744": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We look good here FLIGHT."
-		}
-	],
-	"745": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Alright, how about you TELCOM?"
-		}
-	],
-	"746": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Go."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GUIDANCE you happy?"
-		}
-	],
-	"747": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Go"
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "FIDO?"
-		}
-	],
-	"748": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Go."
-		}
-	],
-	"763": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Attitude hold."
-		}
-	],
-	"764": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay ATT hold."
-		}
-	],
-	"767": [
-		{
-			"position": "CAPCOM",
-			"name": "Charlie Duke",
-			"text": "I think we better be quiet, FLIGHT."
-		}
-	],
-	"768": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Okay the only call outs from now on will be fuel."
-		}
-	],
-	"777": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "P66."
-		}
-	],
-	"815": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay Bob I'll be standing by for your call outs shortly."
-		}
-	],
-	"839": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Low level."
-		}
-	],
-	"840": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Low level."
-		}
-	],
-	"858": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Standby for 60."
-		}
-	],
-	"860": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"861": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "60."
-		}
-	],
-	"862": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "60 seconds."
-		}
-	],
-	"886": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Standby for 30."
-		}
-	],
-	"891": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "30."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "30 seconds."
-		}
-	],
-	"917": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We've had shut down."
-		}
-	],
-	"921": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay everybody T1."
-		}
-	],
-	"952": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, about 45 seconds to T1 STAY/NO-STAY."
-		}
-	],
-	"956": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "FLIGHT, 14 plus 2 looks beautiful"
-		}
-	],
-	"958": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"967": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay keep the chatter down in this room."
-		}
-	],
-	"971": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Pyros are armed FLIGHT."
-		}
-	],
-	"972": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"974": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay T1 to STAY/NO-STAY. RETRO."
-		}
-	],
-	"977": [
-		{
-			"position": "RETRO",
-			"name": "Charles F. Deiterich",
-			"text": "Stay."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "FIDO."
-		}
-	],
-	"978": [
-		{
-			"position": "FIDO",
-			"name": "Jay H. Greene",
-			"text": "Stay."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GUIDANCE."
-		},
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "Stay."
-		}
-	],
-	"979": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CONTROL."
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "Stay."
-		}
-	],
-	"980": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "TELCOM."
-		},
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Stay."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "GNC."
-		}
-	],
-	"981": [
-		{
-			"position": "GNC",
-			"name": "Briggs W. Willoughby",
-			"text": "Stay."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "EECOM."
-		}
-	],
-	"982": [
-		{
-			"position": "EECOM",
-			"name": "John W. Aaron",
-			"text": "Stay."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "SURGEON."
-		}
-	],
-	"983": [
-		{
-			"position": "SURGEON",
-			"name": "John F. Zieglschmid",
-			"text": "Stay."
-		},
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "CAPCOM, we're stay for T1."
-		}
-	],
-	"990": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "FLIGHT CONTROL."
-		}
-	],
-	"991": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Go CONTROL."
-		},
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "We're venting OX."
-		}
-	],
-	"992": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog. Venting OX."
-		}
-	],
-	"1001": [
-		{
-			"position": "TELCOM",
-			"name": "Don Puddy",
-			"text": "Pyros safe."
-		}
-	],
-	"1002": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog."
-		}
-	],
-	"1047": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Okay all flight controllers, 4 more minutes to T2 STAY/NO-STAY."
-		}
-	],
-	"1051": [
-		{
-			"position": "GUIDANCE",
-			"name": "Steve Bales",
-			"text": "P68 we have a noun 43."
-		}
-	],
-	"1052": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, you have landing verification."
-		}
-	],
-	"1059": [
-		{
-			"position": "CONTROL",
-			"name": "Bob Carlton",
-			"text": "FLIGHT CONTROL we are venting fuel"
-		}
-	],
-	"1061": [
-		{
-			"position": "FLIGHT",
-			"name": "Gene Kranz",
-			"text": "Rog, venting fuel."
-		}
-	]
-}
+module.exports=[
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "MSFN shows we may be a little low."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "No problem."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "He's with us on the TIG FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "FLIGHT TELCOM."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go TELCOM."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "May be able to pick up the steerable if you desire to try. Pitch 212 yaw 37."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Pitch 212, yaw 37."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirm FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, why don't you try it."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger, we on the OMNIs now?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirm."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Got us locked up there TELCOM?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Okay, it's just real weak FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, how you looking? All your systems go?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirm FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How about you CONTROL?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We look good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE, you happy?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go, both systems."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO, how about you?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "We're go"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "We, we're a little low FLIGHT, no problem."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, all flight controllers, thirty seconds to ignition."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Negative, not yet. Stand by."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Bob, you're on the loop."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "DPS arm."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. DPS arm"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Ullage."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "10 percent TCP."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. 10 percent."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Lost data FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Copy."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Going to aft OMNI?"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "No. Let's wait until they get through throttling up here."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Aft OMNI."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Let's wait until they get through throttle up, they should be through about now. Go ahead, try aft OMNI."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, we've lost MSFN"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, we've lost MSFN."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "They turn on with 20 foot per second residual that is probably due to downtrack error."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. About 20 foot residual due to downtrack error."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "I think, and it was in radial."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "We have data FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO. GTC go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. GTC go."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL, we're go. ... looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO. We have negative MSFN."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Negative MSFN. You got doppler? FIDO what data do you have?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "AGS and doppler FLIGHT. We're go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Restarting MSFN now."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. How's the doppler looking?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Looks good FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "DPS thrust 9820."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Thrust 9820."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Copy FLIGHT."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Data's solid."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How you looking GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Hanging out 20 foot per second. Looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. No change is what you're saying."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "No change. That's downtrack, I know it."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "We've reinitialized the filter, we do have an altitude difference."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO. GTC is right on nominal."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Roger. GTC nominal."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "It's okay FLIGHT. Okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay CONTROL, let me know when he starts his yaw here."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Roger."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How's your MSFN looking now FIDO?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, we do have the altitude, we're go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, how about you GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Holding at about 18 foot, we're going to make it I think."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "He thinks you're a little bit long down range."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "That's right, I think we can confirm that."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "We confirm that."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, 30 seconds to next GO/NO-GO."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "LM downlink FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, I'm going around the horn. Make your GO/NO-GO's based on the data you had prior to LOS. I see we got it back. Give you another few seconds."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We're going FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, RETRO"
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Go"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CONTROL"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GNC"
+	},
+	{
+		"position": "GNC",
+		"name": "Briggs Willoughby",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "EECOM"
+	},
+	{
+		"position": "EECOM",
+		"name": "John Aaron",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "SURGEON."
+	},
+	{
+		"position": "SURGEON",
+		"name": "John Zieglschmid",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, we're go to continue PDI."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Did you get that TELCOM, ED Batts are good to go."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Roger FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay everybody, let's hang tight and look for landing radar."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "We'll need that landing radar by 18,000 with this down track"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "On the PGNS"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, I copy GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay we got data back."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Radar, FLIGHT looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "2,000 feet."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, 2,000 ft. DELTA-H. Let me know when he accepts it GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Roger."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Looks good FLIGHT. Looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Is he accepting it GUIDANCE?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Standby."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Looks like its converging."
+	},
+	{
+		"position": "GUIDANCE2",
+		"name": "Granville Paules",
+		"text": "1202 alarm."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Yeah, it's the same thing we had."
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "FLIGHT RETRO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go RETRO."
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Throttle down 6 plus 25."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "6 plus 25."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "We're go on that flight."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "We're go on that alarm?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "If it doesn't reoccur we'll be go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "He's taking in a DELTA-H now."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Did you get the throttle down CAPCOM? Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, converging on DELTA-H."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL we have velocity."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Okay we'll monitor is his DELTA-H FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "I think that's what he's getting at."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "And his alarms."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "DELTA-H is beautiful."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, hang tight. Should be throttling down pretty shortly."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We confirm throttle down."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "You confirm throttle down."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How's it looking GUIDANCE?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "You want him to stay out of 68."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Negative FLIGHT. I just said we'll monitor the alarms."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Okay."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Everything looks good."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "The noun 68 now well may be the problem here, and we can monitor DELTA-H."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Looking real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, FIDO good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM how you looking?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Looking good FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Going to try the steerable again Don."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Copy FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "We're on steerable Don?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirmative FLIGHT and it's holding in there pretty good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Okay everybody hang tight, it's 7 and a half minutes."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE his landing radar is fixed, the velocity is beautiful."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Descent 2 fuel."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Descent 2 fuel crit."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Descent 2 fuel only."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Fuel-"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Fuel critical. He didn't want to say critical."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Descent 2 fuel."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, looking real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Got an estimated, what's our TGO GUIDANCE?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "30 seconds to P64."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. About 30 seconds. Okay we still got landing radar GUIDANCE?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Affirm."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, has it converged?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Yes it looks beautiful."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Has it converged?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Yes."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO we're go. Look real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay they got 64."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "TGO's go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, TGO's go."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We have position 2 on their alarm"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Position 2. All flight controllers, 20 seconds to GO/NO-GO for landing."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, GO/NO-GO for landing. RETRO"
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GNC."
+	},
+	{
+		"position": "GNC",
+		"name": "Briggs Willoughby",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "EECOM."
+	},
+	{
+		"position": "EECOM",
+		"name": "John Aaron",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "SURGEON."
+	},
+	{
+		"position": "SURGEON",
+		"name": "John Zieglschmid",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, we're go for landing."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "1201 alarm."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Same type, we're go flight."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay we're go."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO right on real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How's our margin looking Bob?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "He looks okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We got four and a half."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Altitute up in the AGS, looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How you doing CONTROL?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We look good here FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Alright, how about you TELCOM?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE you happy?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Go."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Attitude hold."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay ATT hold."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "I think we better be quiet, FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Okay the only call outs from now on will be fuel."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "P66."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay Bob I'll be standing by for your call outs shortly."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Low level."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Low level."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Standby for 60."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "60."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "60 seconds."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Standby for 30."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "30."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "30 seconds."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We've had shut down."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay everybody T1."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, about 45 seconds to T1 STAY/NO-STAY."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT, 14 plus 2 looks beautiful"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay keep the chatter down in this room."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Pyros are armed FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay T1 to STAY/NO-STAY. RETRO."
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GNC."
+	},
+	{
+		"position": "GNC",
+		"name": "Briggs Willoughby",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "EECOM."
+	},
+	{
+		"position": "EECOM",
+		"name": "John Aaron",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "SURGEON."
+	},
+	{
+		"position": "SURGEON",
+		"name": "John Zieglschmid",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, we're stay for T1."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We're venting OX."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Venting OX."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Pyros safe."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, 4 more minutes to T2 STAY/NO-STAY."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "P68 we have a noun 43."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, you have landing verification."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL we are venting fuel"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, venting fuel."
+	}
+]
 },{}],13:[function(require,module,exports){
 'use strict';
 
