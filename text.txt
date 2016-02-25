@@ -1,0 +1,119 @@
+**It's August 2nd, 1955**. Four days ago, the United States has stated its intent to put satellites in to space. Now, the USSR responds with a simple message: if you can do it, we'll do it too, and faster and better. These two announcements come amidst the rising tensions of the escalating Cold War. Both sides have demonstrated their nuclear fusion bomb capacity; weapons with previously unimaginably destructive yields. The twin bombings of Hiroshima and Nagasaki were less than a decade prior, and now the prospect of weapons with literally a thousand times the power in the hands of belligerent nations ushers in the era of \"duck and cover\". And yet, the young science of rocketry which will deliver such devices, formed in the worst parts of World War II, promises more than just the prospect of global annihilation. It will culminate in a mere 14 years with men walking on the surface of the moon, and spawn a legacy that continues onwards to today's exploration of the solar system and beyond. 
+
+Our story begins however, in 1944, with a small group of German engineers and scientists.
+
+### The Bloody Phoenix
+
+Towards the end of WW2 in 1944, Hitler's Nazi Germany faced catastrophic defeat. With his options limited, he ordered the use of a new, secret weapon. Designed as a tool to retaliate against the bombing of German cities by the allies, this weapon can travel 200 miles in less than four minutes, crossing the boundary of space in the process, and deliver almost a tonne of explosives.
+
+It's name: Vergeltungswaffe 2, or V-2 for short.
+
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
+![The V-2 rocket assembled](/fly-me-to-the-moon/piece_images/v-2_assembled.jpg)
+<figcaption>The V-2 rocket assembled in the Peenemünde Museum</figcaption>
+</figure>
+
+The Chief of the Jet Propulsion Section of the Research and Intelligence Branch of the U.S. Army Ordnance Corps Major Robert Staver was ordered to a meeting convened by the British military intelligence. The single subject for discussion was the V-2. His commanding officer Colonel Holger Toftoy had orders to capture a V-2 at any cost, for the Americans had realised that if they can could their own rockets, they could use them as a delivery mechanism for the atom bomb. Such a weapon would give military superiority over the rest of the world for years to come.
+
+To complete his own orders, Toftoy has gave Staver an order simple enough in nature, though difficult in practice: capture Wernher von Braun, the leader of the V-2 project technical team. However, Staver had two problems:
+
+1. Von Braun is currently stationed in Peenemünde in northern Germany
+2. The Soviet forces have pushed their way into Poland, forcing the Nazi forces back
+
+While in Poland, they have come across the intact shell of an abandoned V-2. They already had the vessel, and in days, they'd reach von Braun.
+
+The Soviet forces advance to less than 100 miles from where von Braun and his team were stationed. They knew it was just a matter of days until they too would be attacked. The work they were doing was too valuable to be lost, and so von Braun assembled his planning staff and presented them with a choice. Surrender to the Soviets, or to the allied forces of the West. Tales of the reprisals dealt out by Soviet forces against German nationals, even including prisoners of war, they decide to try to surrender to the Western nations, with the American forces as their ideal candidates.
+
+Fortuitously, they have been given two conflicting sets of orders. On the one hand, they're told to relocate to central Germany to keep them safe, but they've also been ordered to join the army and fight. Retreating will both keep them safer from the Soviets, and present a greater chance of allowing defection to the advancing American forces. Von Braun therefore moved his people to close to Nordhausen, to the Mittelwerk facility. Far from any German cities, it's about as safe as they can hope to be. Determined to continue his work, von Braun knew that the rockets they're working on could do far more than deliver bombs. In secret, he dreams of men using them to reach the stars.
+
+The Soviets continued their advance, reaching the outskirts of Berlin by March. However, for all the the Nazi regieme is about to fall, von Braun and his people are now hundreds of miles away. Preparing for the possibility they may not be able to reach them before the Americans do, they decide to put together a team to work on rocketry in the absence of the Nazi scientists. There's just one minor issue with this though. They've done their research on who would be best to lead such an endeavour, and the man recommended was tortured and sent to the Gulag, before being moved to a Sharashka, a Soviet prison for intellectual prisoners. The man's name: Sergei Korolev.
+
+A month later von Braun and his top 500 scientists were ordered to head south to the Bavarian Alps, to keep them from the Allied forces now advancing into Germany. Ahead of their travels, von Braun was ordered to destroy all his research. He had other ideas however, and instead had his men hide their papers in a disused mine, destroying as much as they needed to to appear to be following orders, whilst saving what they could. Now under guard by the SS, who have orders to execute everyone if it either it appears they will over-run and to fall into enemy hands or Germany loses the war, they set off on a train south.
+
+<figure class=\"media_widget col col-xs-6 col-left\">
+![A cutaway drawing of the V-2 rocket](/fly-me-to-the-moon/piece_images/v-2_cutaway.jpg)
+<figcaption>V-2 cutaway drawing (U.S. Air Force photo)</figcaption>
+</figure>
+
+Only days after they left, the Americans arrived and found the remains of the V-2 mass production plant which had produced over 5,000 V-2 rockets, along with 100 intact V-2 rockets. They also discovered the nearby Mittelbau-Dora, a vast concentration camp. It had provided the slave labour required to build the rockets. 20,000 people are found dead there, with double that starved and in hellish conditions. More people were killed in creating the V-2 than by them. The American forces who discovered the factory realised its value and called in Staver and his people. The order was given for the rockets to be broken down and shipped back to the US. It had to be completed in less than a month to keep everything from the Soviets, and so it would be the largest single movement of material for the entire war.
+
+At the same time, Korolev had been recalled from the Gulag and transported to Germany to serve as chief designer of long-range missiles at the Special Design Bureau 1 (OKB-1). OKB-1 had been given the brief of research and design with regards to the V-2 rocket, aiming at advancing the technology for Soviet purposes.
+
+Back in the Alps, von Braun pointed out to the SS Major in charge if his people were grouped together, they'd be an easy target for the US. They were therefore ordered to spread out into a collection of villages. This gave ample opportunity for all the team to escape, with the SS officers now spread out with far too many people to keep an eye on. Von Braun and his people siezed the opportunity offered and immediately fled south-east, crossing the border in to Austria. On May 2, 1945, upon finding an American private from the U.S. 44th Infantry Division, Magnus von Braun, Wernher's brother and also a rocket engineer, approached the soldier and called out:
+
+> My name is Magnus von Braun. My brother invented the V-2. We want to surrender.
+
+### The Post-War Scientists
+
+In 1943, head of the German Military Research Association Werner Osenberg had created a list of the top scientists and engineers of the age. Now in 1945, Staver had managed to get hold of it and used it to mark targets of opportunity the Americans would want to capture. At the top was von Braun. His capture of von Braun was therefore a huge coup of the Americans, and the loss felt by the Soviets, despite their creation of their own team, was equally huge. Stalin's reaction perhaps best sums up the feeling of the Soviet leadership.
+
+> This is absolutely intolerable. We defeated the Nazi armies; we occupied Berlin and Peenemunde, but the Americans got the rocket engineers. What could be more revolting and inexcusable?
+
+Staver was then tasked with Operation Overcast, the American plan to interrogate the German scientists. What emerged from von Braun and the others though forced him to write to his superiors, urging their immediate evacuation. As the expatriation gained steam, the beginnings of what would become known as Operation Paperclip were taking shape. The aim was to deny the Soviet Union and United Kingdom of the advanced German scientific expertise these people held, whilst also preventing Germany from redeveloping its military research. In total, over 1,500 German intellectuals would be brought to America from previously occupied European countries.
+
+Von Braun was taken to America shortly after, and along with over 100 of his men he was escorted to Fort Bliss, whilst the Soviets were left with the now derelict V-2 plant. However, the Soviets didn't realise just how outmatched they currently were, until the 6th August, 1945. With the bombing of Hiroshima, and then Nagasaki shortly after, they realised that the Americans now had both the intelligence with which to make long range rockets, and a payload that could flatten cities. This was a terrifying, and immediate threat.
+
+<figure class=\"media_widget\">
+![A rusty V-2 rocket engine](/fly-me-to-the-moon/piece_images/V-2_Mittelbau_engine.jpg)
+<figcaption>A rusty V-2 rocket engine in the underground production facilities at Dora-Mittelbau, Nordhausen</figcaption>
+</figure>
+
+Back in Nordhausen, the Soviets put out a call for anyone who'd worked on the V-2 rockets to come and help them restart the rocket facility and to continue their research. A few did, including Helmut Gröttrup, who had previously been von Braun's assistant and had developed the radio guidance system for the V-2. As a gesture of thanks for having helped the Soviets get a V-2 engine to fire, he was promised that he'd be allowed to remain in Germany. In short order however the Soviets reneged on the deal. On 22nd October 1946, he and the other newly captured engineers were deported to Moscow with their families as part of Operation Osoaviakhim. Over 2,000 other German intellectuals were deported to Russia with him to aid the Soviet research programs. Once there, Gröttrup and the other rocket engineers were tasked with reproducing the technical drawings for the V-2 to enable research to begin again. Doing so would take two years, and ultimately prove fruitless, as the rockets had a dismal record. As a result, research began on the R-1, the first Soviet rocket system, with a maiden launch scheduled for the 17th September 1948. Research and development on the R-1 moved apace, leading to it being accepted into service on 25th November 1950. For Gröttrup and his team however, the success was the beginning of the end of their usefulness. Knowing too much, and proving too useful, the leadership hid them away, consigned to quiet work back in Germany.
+
+In America, von Braun and his people were receiving similar treatment. The program to develop rockets in the US had become nicknamed Operation Icebox, due to the lack of activity. The captured Germans were kept isolated, but given no work, left to their own devices. The American military had decided to focus on air and submarine delivery systems for their weapons, rather than rocketry, leaving their captured geniuses in a state of limbo.
+
+### The Cold War Heightens
+
+In 1952, tensions between the USSR and America grew further, as America tested the first hydrogen bomb. The 74 tonne building/bomb named Ivy Mike wasn't exactly a portable weapon, but the 10.4 megaton blast it created on detonation was almost 700 times more powerful than the bomb dropped on Hiroshima. It left a crater 1.2 miles wide and 164 feet (50 metres) deep, blasting radioactive coral into the stratosphere from where it fell to land on ships as far as 35 miles away. The Soviets responded by detonating their own a year later, which didn't exactly cool things down.
+
+Whilst Gröttrup may have been sidelined, Sergei Korolev was still active and had been tasked with a new challenge. The goal was to create a rocket with enough range to reach America, whilst carrying a five tonne payload, the expected weight of a thermonuclear device. Meanwhile back in America, von Braun was working on the Hermes series of rockets, which were around 25% of the size of a V-2 and had a maximum range of just 38 miles. His dreams of creating a machine to send humans to space in tatters. If he thought things were bad now though, they were about to get even worse. In 1953, whilst working on the Hermes A-3B, funding was cut. A year later, the project was canned entirely. Von Braun himself had become the focus of attacks by the US media, who reminded the public of his history as an officer in the SS. The media attention though, however negative it might have been, had given him an idea. He realised that if the military wouldn't take notice of his ideas, maybe he could win the support he needed appealing to the American public. 
+
+<figure class=\"media_widget col-inverse col-xs-4 col-right\">
+![The Soviet R-7 rocket](/fly-me-to-the-moon/piece_images/r-7_rocket.png)
+<figcaption>A 2-view drawing of the R-7 Semyorka</figcaption>
+</figure>
+
+Shortly after he and his team were transferred to Huntsville, Alabama and the outbreak of the Korean War, The Huntsville Times on May 14 1950 published the article \"Dr. von Braun Says Rocket Flights Possible to Moon\". His team had started work on the Redstone rocket, which led to the development of the first high-precision inertial guidance system, and gave the Americans a launch system capable of carrying a nuclear payload. However, it was his work with Walt Disney's Disney studios as technical director that initially let him bring his vision for space travel to the public. \"Man in Space\", aired on March 9, 1955, drawing 42 million viewers and becoming unofficially the second-highest rated television show in American history. Von Braun had found a way to tap into the American public's consciousness, in a way he'd never been able to truly manage with the military. Overnight, he became a household name, and behind the scenes, things start to go his way.
+
+Back in Russia, Korolev was busy working on his ideas for putting a satellite into space. Korolev had therefore teamed up with Valentin Glushko, a genius rocket engine designer working at OKB 456. The two men had worked together previously building RD-1 KhZ, a rocket motor designed to be attached to a fighter plane to help protect Russia from high-altitude Luftwaffe attacks. Now Korolev proposed a unique idea. The R-7 was to be a rocket with four detachable boosters around a central core. The boosters would ignite, deliver vast thrust, and then fall away to leave the central rocket to continue on. Glushko would design the engines, Korolev the rocket. Such a system could both act as the delivery system the military wanted, and allow Korolev to pursue his own dream of putting satellites into space. There were only three problems. Firstly, no-one had ever built anything close to such a rocket, secondly, the military had no interest in satellites, and three, it would be so huge, there was nowhere where it could be built.
+
+The first was solvable through time and research, the second didn't matter to his military backers, who still wanted it anyway to use to deliver warheads, and the third? The third would result in the creation of the Baikonur Cosmodrome in Kazakhstan, the world's first and largest operational space launch facility.
+
+Baikonur_Cosmodrome_Soyuz_launch_pad
+
+Ironically, Korolev would probably have had more success at the time in America. Whilst he couldn't sell the idea of satellites to the Russians, America liked the idea. Under the cover of launching a scientific instrument, but actually wanting to develop orbital spying technology, America announced its intention to put a satellite in space. Von Braun meanwhile applied for and received citizenship, ten years after leaving Germany. Now officially a US citizen, he found himself bidding against the US Navy for a satellite contract. His team put together a proposal and presented it. It wasn't enough though. The contract was instead awarded to the Navy. Von Braun's dreams would have to wait for another day. For Korolev though, they were about to come true.
+
+### Sputnik
+
+While visiting the Baikonur facility, then Soviet leader Nikita Khrushchev was shown Korolev's latest invention, the giant R-7 Semyorka. Weighing 280 tonnes, with 32 engines and a range of 8,000 km (5,000 mi), it was vastly larger than the R-1. Research and development had begun in 1953, and while it continued, Korolev pushed again and again for funds for a satellite project. Finally, after pointing out the Americans would get there first if the Soviets didn't, Khrushchev had given the go-ahead. Dozens of institutes were involved in what became known as Project D. This was a double-edged sword though, and the project became logistical nightmare, with competing interests slowing progress enormously. Far worse though, on the first two tests of the R-7 rocket, the massively complex system failed disastrously. The Soviet leadership in attendance were less than impressed.
+
+As the Cold War escalated and the weapons became ever larger, finally the American military deigned to give von Braun his funding and to build medium range rockets. However, with the Soviet's working on the R-7 and the tense atmosphere, the focus was still very much on a delivery system for weapons payloads. The result was the Jupiter-C. Far smaller and simpler than the Russian R-7 rocket, it would nonetheless be more than capable of putting a small satellite into orbit. In fact, the administration was so suspicious of von Braun and his team that inspectors from the Pentagon were sent to monitor the maiden launch, to ensure they didn't try and send a satellite up anyway. Despite the interference, von Braun's launch was a success. America now had a rocket capable of putting systems into orbit. The balance had shifted back in America's favour.
+
+In Baikonur, Korolev was in a difficult situation. His rocket, massively ambitious but also massively complex, had eaten vast amounts of both time and money. This wouldn't have been an issue if his tests had worked, but so far had nothing to show for it after four years other than two very expensive failures. Now though, on on 21st August 1957 at 12:25, the R-7 was tested for the third time. It launched successfully, giving the world its first multi-stage intercontinental ballistic missile. In the meantime though Project D wasn't going so well. Massively frustrated at the increasing complexity, as well as mounting design and construction issues, his team had decided to work to re-develop it into simpler. In less than a month, they designed and built a new satellite. The new design, consisting of little more than a polished metal sphere containing a transmitter, thermal measuring instruments, and batteries, weighed about the same as a man. It's hard to believe that was a co-incidence
+
+<figure class=\"media_widget\">
+![The Soviet R-7 rocket](/fly-me-to-the-moon/piece_images/sputnik_1.jpg)
+<figcaption>A replica of Sputnik 1 at National Air and Space Museum</figcaption>
+</figure>
+
+Finally on 4 October 1957, at 19:28, on an R-7, the R-7 launched, and at 00:03, Sputnik became the first object to be placed in orbit by mankind. The USSR had won the race to space.
+
+YouTube KMFvr1VwSSo
+
+### A Call to Space
+
+The effects on the two world superpowers couldn't have been more different. In the USSR, Khrushchev was pleased with this success, and decreed that it should be followed up by an encore for the 40th anniversary of the October Revolution, on November 3rd, just 30 days away. The result of that would be Sputnik 2. In the US though, the launch was met with incredulity and disbelief. Indeed, Vice President Richard Nixon proclaimed it a hoax. When they realised however that both the launch and Sputnik were in fact real, the collective Western governments concluded that the Soviet ICBM program must more advanced than it actually was. This was a belief Khrushchev was more than happy to encourage, as he stated in an interview that the USSR had all the rockets, of whatever capacity, that it needed.
+
+The result of Khrushchev's pronouncement was Sputnik 2, which put the first living creature in to space; a small stray dog, named Laika. Before the launch, Dr. Vladimir Yazdovsky, one of the scientists on the project, took Laika home to play with his children. In a book chronicling the story of Soviet space medicine, he remembered:
+
+> I wanted to do something nice for her: She had so little time left to live.
+
+Sadly, after only a few hours in space, Laika died of overheating, a fact that wasn't revealed until as recently as 2002.
+
+Finally, after years of being held back, and being told that the US Navy must be given a shot before he can have his turn, von Braun is given the go-ahead to attempt to put an American satellite into orbit. He named it Explorer. The Navy prepared it's own Vanguard rocket, which was as then untested. The world's media turned up, watched the rocket lift three feet from the pad, and then explode in a huge fireball. The only surviving piece was the satellite, which fell to the ground and began to transmit. The press response was scathing, labelling it \"Kaputnik\" and other less than flattering names. As Time Magazine noted:
+
+> But in the midst of the cold war, Vanguard's cool scientific goal proved to be disastrously modest: the Russians got there first. The post-Sputnik White House explanation that the U.S. was not in a satellite \"race\" with Russia was not just an after-the-fact alibi. Said Dr. Hagen ten months ago: \"We are not attempting in any way to race with the Russians.\" But in the eyes of the world, the U.S. was in a satellite race whether it wanted to be or not, and because of the Administration's costly failure of imagination, Project Vanguard shuffled along when it should have been running. It was still shuffling when Sputnik's beeps told the world that Russia's satellite program, not the U.S.'s, was the vanguard.
+
+Whether the US wanted to be in a race was irrelevant - the media had deemed it so, and now it was up to them to respond. With no other option, the administration gave von Braun and his team their shot.
+
+On the 31st January 1958, at 22:48, von Braun's Juno I, a Jupiter-C derived rocket, launched with Explorer on-board. Less than two hours later, America had its own satellite. The race to put a man in space was on.

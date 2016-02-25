@@ -6,3 +6,5 @@ $RECYCLE.BIN/
 .DS_Store
 
 node_modules/
+public/piece_images
+public/audio

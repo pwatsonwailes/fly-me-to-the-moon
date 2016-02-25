@@ -1,0 +1,164 @@
+Mankind returned to the moon five months later, in November 1969 with the Apollo 12 mission. During the launch, the vehicle's height and ionised exhaust twice triggered lightning strikes, knocking the service module's fuel cells offline, as well as taking out the attitude indicator and confusing the data sent back to mission control, not to mention lighting up the warning lights inside the ship like a Christmas tree. The command module limps on emergency batteries. If the problem can't be fixed, there'll be no option but for first time flight director Gerry Griffin to call for an abort of the mission. Fortunately, a quick thinking man by the name of John Aaron is sat at his position as EECOM (Electrical, Environmental and Consumables Manager). He saw what was happening, and knew that he'd seen the data coming back before.
+
+A year earlier, Aaron had been at Kennedy Space Center as an observer of an Apollo test, when he'd noticed unusual telemetry. It was the same data he was presented with now. Years later, Aaron would comment that what made a good EECOM was someone who was \"a natural curiosity about how things things work, even if you ... are not responsible for them\". These instincts now caused him to be bugged by the data, he tracked it down to the obscure Signal Conditioning Electronics (SCE) system, which had been affected by a faulty power supply. SCE was designed to convert the signals sent by the instrumentation to data for the spacecraft instruments, as well as for the telemetry for mission control. He realised, as he investigated further, that the readings would have been restored by putting the SCE on its auxiliary setting, which was designed for low-voltage operation.
+
+Now presented with what appeared to be the same issue, Aaron decided it was worth a shot. He radioed to the crew:
+
+> Apollo, Houston, try SCE to Auxiliary, over.
+
+So low down the list of systems was SCE, that most of his colleagues in mission control had no idea what he was asking for, including Griffin and Gerald Carr (CAPCOM). Griffin, believing he'd misheard, asked Aaron to repeat the recommendation, whilst on the Saturn V, Commander Pete Conrad's response was more to the point, radioing back \"What the hell is that?\"
+
+Fortunately, Lunar Module Pilot Alan Bean knew what was being called for, and where the SCE switch was located. He reached out and flipped it, setting it to the auxiliary mode. Telemetry was immediately restored, and the abort was never called for. Conrad was so affected by the sudden release of tension that he spent the entire remained of the journey in to space belly laughing, which could be heard over the radio back in mission control.
+
+The episode earned Aaron a huge amount of respect, who declared him a \"steely-eyed missile man\", which has since become considered the highest compliment given to someone at NASA.
+
+Fortunately the rest of the Apollo 12 flight went smoothly. Worthy of note though is the humour that these men had, and the minor pranks and practical jokes the they often played on each other. The crew who launched were all originally from the Navy, whilst the backup crew had come from the Air Force. For a joke, the backup team managed to get minature copies of the Playboy Playmates inserted into the astronauts' lunar checklists, which were on the cuffs of the space suits. This somewhat surprised the pair when they looked through the checklist flip-book during their first EVA. Command Module Pilot Richard \"Dick\" Gordon wasn't left out of the joke though, as a copy of another calendar had been stowed in a locker, which he discovered while the others were conducting EVA on the lunar surface.
+
+The jokes weren't just levelled at the crews though; at the back of Conrad's checklist, the backup crew had prepared two pages of geological terms and definitions, to allow him to talk to Mission Control as if he had trained as a geologist.
+
+The Air Force backup crew would go on to fly to the moon themselves on Apollo 15.
+
+### The Space Station Era Begins and Disaster Strikes
+
+With the United States having landed on the moon not once, but twice in 1969, any hope the Soviet team had of beating the Americans to a lunar project was dead. All was not lost though, and Vladimir Chelomey, the lead of OKB-52 and now under the Vasily Mishin run OKB-1, was looking at other options. One potential alternative was Zvezda, a manned lunar base which had been proposed by Sergei Korolev prior to his death, which would be launched with the N1-L3. Chelomey however went to Minister of Defence Dmitriy Ustinov, who had final say on the space program, pushing for his ideas for a military space station, named Almaz. His argument was that this offered the best chance as a means of beating the US's announced Skylab project. In 1970, Ustinov approved Chelomey's plan. Control of the project though was left with Mishin.
+
+In America, the politics may have been simpler, but things were about to go very wrong.
+
+The crew of Apollo 13 was originally to have consisted of Commander James \"Jim\" Lovell, Ken Mattingly as Command Module Pilot, and completed with and Fred Haise as Lunar Module Pilot. However, Mattingly was found to have been exposed to German measles, and grounded by the flight surgeon. As a result, backup pilot John \"Jack\" Swigert was swapped in as CMP to replace him.
+
+Apollo 13 blasted off on April 11th 1970 at 14:13 local time. On its ascent, the center engine shut down two minutes before the planned cut-off time. However, the other four engines were able to be burned for slightly longer to compensate, allowing for a normal insertion in to orbit and then exit towards the moon. Two days later though, while around 205,000 miles (330,000 km) from Earth, the flight controllers in Houston asked Swigert to turn on the hydrogen and oxygen tank fans in the Service Module. These stirred their cryogenic contents, giving a more even distribution increasing the accuracy of their quantity readings.
+
+<figure class=\"media_widget col col-xs-8 col-left\">
+![The Moon, from Apollo 13](/fly-me-to-the-moon/piece_images/apollo_13_moon.jpg)
+<figcaption>A picture of the Moon, as seen by the crew of Apollo 13</figcaption>
+</figure>
+
+Two minutes later, the craft suffered an explosion.
+
+Lead flight director Gene Kranz and his team were on duty at the time, and it fell to them to help the astronauts survive. On board the command module, the three astronauts were working fast. The second oxygen tank read empty, and three minutes later, the fuel cells began to fail, with numbers 1 and 3 falling offline. At the same time, the first oxygen tank was leaking more slowly, and would empty itself over the next two and a bit hours. Worse still, the fuel cells powered the CSM by combining hydrogen and oxygen into water. When O2 tank 1 ran dry, fuel cell 2, the only one still functioning, finally shut down. The Command Module was now deeply broken, with limited battery power and water. To ensure that, should they survive the next few days, they could conduct a reentry, the crew was forced to shut down the CSM completely, powering up the LM instead for use as a lifeboat. Debate raged as to how much needed to be switched off, with John Aaron saying everything had to go. Aaron got his way, having been the only man to tour every station and see the data coming in across everything. The ship was bleeding power, and if they didn't turn everything off, they wouldn't have power for reentry. This was something which had been suggested in training simulation, but had not been considered likely, given the vast number of systems required to fail enough to suggest it as an option. Now though, theory turned in to practical fact. 
+
+With the CSM damaged, a lunar mission was now off. Kranz now called for an abort of the mission. The question though was how to abort. The existing plans, created four years earlier, consisted of three options:
+
+* Direct Abort trajectory, using the SPS (Service Module Propulsion System) engine to turn the crew around
+* Burn the SPS fuel until it ran out, before decoupling and using the DPS (LM Descent Propulsion System) engine
+* A circumlunar free-return trajectory, using the moon's gravity to assist the ship's speed and fire it back at the Earth
+
+A Direct Abort was impractical, as the maximum speed attainable was possible only by decoupling the LM. With the crew needing it to stay alive, that was out. The second option was also problematic, as the CSM was currently serving the useful purpose of acting as an insulator for the heat shield, protecting it from damage. Also, in either of these two cases, the SPS engine would have to fire, and there were concerns about the damage the CSM may have suffered. The use of that engine was therefore relegated to being an absolute last resort.
+
+With no other reasonable option, Kranz chose the free-return trajectory. Apollo 13 had previously been on the correct course for this, but had moved from it in preparation for the lunar landing. Firstly then, that course had to be re-established, by a 30.7-second burn of the DPS, followed by a second burn of four minutes and 27 seconds to pick up speed and allow for a landing in the Pacific, rather than Indian ocean.
+
+Meanwhile the LM began to run low on things. It had been equipped to sustain two people for a day and a half. Now it was going to have to provide for three people, for four days. Unlike the CSM, which was powered by fuel cells that produced water as a by-product, the LM was powered by silver-zinc batteries. As a result, both water, which acted as both coolant and fluid for the crew to drink, and electrical power were issues. To conserve as much power as possible, the LM was powered down as far as possible. This included everything up to the primary guidance system, with the Abort Guidance System acting for navigation instead, as it drew less power and required less cooling.
+
+The second serious issue was the lack of lithium hydroxide (LiOH) for removing carbon dioxide from the sealed atmosphere. The LM hadn't been designed to take so many people for so long, and its own internal stock of LiOH canisters would run out before the crew got back, suffocating them as they were poisoned by the rising CO2 levels. Worse, the spare canisters were stored in the descent stage of the LM, designed for the moon landing, which was now unreachable. The CSM meanwhile had more than enough, but these were manufactured in a cuboid shape, whilst the LM took a cylindrical canister. Engineers rapidly invented what the astronauts would nickname \"the mailbox\", a device which drew air through the CSM canisters using a hose taken from a spacesuit.
+
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
+![The Mailbox](/fly-me-to-the-moon/piece_images/apollo_13_mailbox_onboard.jpg)
+<figcaption>The crew of Apollo 13 assemble the Mailbox</figcaption>
+</figure>
+
+With the consumables situation under control for the moment, work turned to how to switch everything back on for the reentry. The CSM had been completely shut down, and would now have to be re-powered for reentry. However, there was virtually no power to do this with, as only the backup batteries were available. John Aaron and Jim Kelly, a CSM controller who specialised in the power systems sat down to work out how to do it. The two men sketched out a rough timeline of what to turn on and when, then invited the rest of the controllers to pitch for what else would be required. The final procedure clocked in at 5 pages. However, it'd have to be executed perfect, with limited time, in temperatures as low as 4 °C (39 °F), with water condensation on almost every surface, and no power to separate the CSM and LM, by a group of people who'd had no sleep for three days.
+
+<figure class=\"media_widget\">
+![Mission Control](/fly-me-to-the-moon/piece_images/apollo_13_mission_control.jpg)
+<figcaption>Mission Control during the Apollo 13 flight, the day before reentry</figcaption>
+</figure>
+
+Beyond that, they also needed to work out how to split the CSM in two. The Command Module was used for reentry, whilst the Service Module was to be left behind. However, there was no power to break the two apart. That problem was given to a team of six engineers at the University of Toronto, who had just one day to solve the problem. They concluded that pressurising connecting tunnel between the CSM and LM just before separation would provide enough force when explosively decompressed to push the modules apart. However, they still had to work how much pressure was required at minimum. Too much could damage the seals, causing the astronauts to burn up during reentry. Too low on the other hand, and they wouldn't be far enough away, which could cause the LM to crash into the CSM. Using nothing more advanced than slide rules, they calculated the required pressure and sent the calculations back. NASA relayed the numbers up to the waiting astronauts, who began the process of locking themselves into the CSM, and raising the pressure between it and the LM. While they went through the procedures to prepare for descent, Lovell and Joe Kerwin, CAPCOM joked on the radio...
+
+* **Lovell**: Well, I can't say that this week hasn't been filled with excitement.
+* **Kerwin**: Well, James, if you can't take any better care of a spacecraft than that, we might not give you another one.
+
+When the time was right, they triggered the break, and the two machines pushed apart. It had worked.
+
+<figure class=\"media_widget\">
+![Apollo 13 Service Module](/fly-me-to-the-moon/piece_images/apollo_13_service_module.jpg)
+<figcaption>The Apollo 13 Service Module photographed just after separation. Panel four is missing</figcaption>
+</figure>
+
+Now they got their first look at the CSM, and the damage that had been done to it.
+
+* **Lovell**: And there's one whole side of that spacecraft missing.
+* **Kerwin**: Is that right?
+* **Lovell**: Right by the - Look out there, will you? Right by the high gain antenna, the whole panel is blown out, almost from the base to the engine.
+* **Kerwin**: Copy that.
+* **Haise**: Yes, it looks like it got to the SPS bell, too, Houston.
+* **Kerwin**: Think it zinged the SPS engine bell, huh?
+* **Haise**: That's the way it looks; unless that's just a dark brown streak. It's really a mess.
+
+...
+
+* **Lovell**: All right. She's drifting right down in front of our windows now, Houston.
+* **Kerwin**: Okay.
+* **Haise**: Okay, Joe, I'm now looking down the SPS bell, and it looks - looks okay on the inside; maybe it is just a streak.
+* **Kerwin**: Okay. Copy that, Fred. Was the bell deformed on the outside or just nicked or what?
+* **Lovell**: I think the explosion, from what I could see, Joe, had - had stained it. I don't know whether it did any actual deformation or not.
+* **Kerwin**: Okay.
+* **Haise**: Man, that's unbelievable!
+
+One entire side panel had been blown clear. Panel four, a hinged panel normally used for access to the ship's components had been blasted free. In the second half of the compartment revealed, there should have been the second oxygen tank. Instead, there was just a gaping void. The entire tank was gone. The crew took photos to record the damage, and then returned to powering up the ship. Whilst things went smoothly onboard, back on the ground, there was more than a little tension at Aaron's desk. The order he'd prepared was now being put to the test. The ship could afford to pull 43 amps and no more, to get through the two hours required for reentry. The numbers had looked good in testing; now they'd find out if they were right in practice.
+
+After a long wait, Lovell radioed down - everything was back on. The four EECOMs looked at the amp readout.
+
+45 amps.
+
+The team scrambled around, trying to work out what was on that shouldn't have been. Working fast, they realised the backup gyros were on, which was draining two amps which they badly needed. Aaron called Kerwin and got him to radio the crew, telling them to turn them off. Swigert flicked the appropriate switch off, and they watched for the readout to change.
+
+43.
+
+They'd done it. Miles above, the crew prepared for reentry, strapping in for the descent. The craft thundered into the atmosphere, the heat shield soaking up punishment as it ploughed through the thickening air. Even as it fell though, the crew still weren't safe. After a few minutes of radio silence, caused by reentry, the crew were waiting for the parachutes to deploy. If they didn't, the CM would smash into the ocean surface. Fortunately, thanks to the power-up procedures, the warming of the pyros and the hard work of thousands, they fired into the sky and began to slow the craft down to a survivable speed. A few minutes later, on April 17th at 18:07:41 UTC, the crew splashed down, having returned safely.
+
+Pandemonium reigned in mission control upon seeing the parachutes deploy and the crew land safely.
+
+Kranz recalled:
+
+> I cried. I think many of the controllers did. The emotional release at that instant was so intense many of us were unable to control our emotions. There were an awful lot of wet eyes that day.
+
+### The First Space Station and Continued Soviet Efforts
+
+Whilst 1969 had ensured the Soviet teams wouldn't be first to put a man on the moon, 1970 saw further successes for them in various other areas. The Lunokhod programme put the Lunokhod 1 on the moon, the first unmanned lunar rover. It was also the first remotely operated roving robot to land on another celestial body.
+
+As 1971 rolled around, Chelomey's first space station was about to go in to orbit. The Salyut 1, a modification of the military-conceived Almaz program had been constructed in 1970, before being shipped to the Baikonour Cosmodrome. Assembly was completed, and on April 19th, just after the 10 year anniversary of Yuri Gagarin's death, the world gained its first space station.
+
+It had been intended that the Soyuz 10 crew, who put the vessel in to orbit, would enter it. Technical issues delayed this though, and so it would fall to the crew of Soyuz 11 to come aboard first.
+
+Meanwhile, on May 28th, the Mars 3 craft was launched with a Proton-K rocket, which had also put the Salyut in to orbit. It was a refinement of Chelomey's original Proton design, now with a first stage powered by six RD-253 engines, designed by Valentin Glushko, and a second stage and third stage with four and one RD-0210 engines respectively.
+
+The crew, consisting of Commander Georgy Dobrovolsky, Flight Engineer Vladislav Volkov and Test Engineer Viktor Patsayev were launched on the 6th June, with docking proceeding the next day. The team entered Salyut 1, and began their stay, remaining there for 23 days. This was a record which would stand for more than two years. Having conducted various tests and checks, their mission was cut short due to issues on-board the station, not least of which was an electrical fire. Sadly, whilst returning to Earth, a pressure valve failed. The crew weren't wearing pressure suits, as Soviet manned craft hadn't done since the earlier Vostok program. All three men were killed by exposure to vacuum. They remain to this day the only people to die in space.
+
+The three cosmonauts were given a state funeral, and buried in the Kremlin Wall Necropolis near the remains of Yuri Gagarin. The US astronaut Tom Stafford, a veteran of the Gemini program and Commander of Apollo 10 was one of the pallbearers. They were each also posthumously awarded the Hero of the Soviet Union.
+
+The deaths of the crew saw Mishin removed from a number of projects, with Chelomey being given back control of Salyut.
+
+December though would see better news, with Mars 3 landing its probe, and in doing so becoming the first probe to land on Mars and transmit back data.
+
+### Saturn V Retires
+
+In 1971, the world had witnessed America send into space the first man-made object which would exit the solar system. Pioneer 10 left the Earth on March 3rd, and thundered towards Jupiter. Even at its incredible speed, it didn't reach the largest planet in our solar system for over a year and a half, until it finally arrived within it's magnetosphere on November 16th. Having taken images of the giant planet and its moons and conducted scientific measurements, the spacecraft accelerated using the Jovian gravity up to around 82,000 mph (132,000 km/h) at its fastest, and shot off towards the edge of the solar system. The Jovian gravity well slowed it, but even now it continues at around 27,000 mph (43,400 km/h), at around 10 billion miles from Earth. Many years later, in 1983, it would cross the orbit of Neptune and pass beyond the orbit of our system's final planet.
+
+In America, political and public support for the space program was waning. So much had been put into the idea that the point of the program was to deny the Soviet's the title of first nation to the moon, that having completed it, there was a vacuum left. The last Apollo mission would land on December 19th 1972, marking the last time man would set out to walk on the moon. At the end of his time there, whilst becoming the last man who'd stand on the lunar surface, Before re-entering the LM for the final time, Commander Gene Cernan expressed his thoughts:
+
+> ...I'm on the surface; and, as I take man's last step from the surface, back home for some time to come - but we believe not too long into the future - I'd like to just [say] what I believe history will record. That America's challenge of today has forged man's destiny of tomorrow. And, as we leave the Moon at Taurus-Littrow, we leave as we came and, God willing, as we shall return, with peace and hope for all mankind. \"Godspeed the crew of Apollo 17.\"
+
+However, putting objects into space with Saturn and other similar rockets was expensive, and lacking the propaganda benefits of the lunar landing, using such an expensive system for launches started to become politically untenable. Therefore attention in NASA now turned to the building of a re-usable craft, which would be capable of reaching orbit and returning to be used again. On January 5th, 1972, American President Richard Nixon announced that NASA would proceed with the development of a reusable space shuttle system.
+
+The man who'd been brought to America to create rockets chose this time to bow out. Facing tight budgets and a differing vision from the American leadership on the future of space, Wernher von Braun retired from NASA on May 26th 1972. The next year would see him diagnosed with cancer of the kidneys. Despite this, he'd continue to work, speaking at various colleges and universities, and acting as a consultant.
+
+For the Soviets though, things continued to go badly. Two more N1 rockets were tested launched, and both failed. As a direct result, Mishin was fired, and the entire N1 program was cancelled. A single design bureau was created to work on space activities taking over from OKB-1, named NPO Energia, with Glushko as chief designer.
+
+<figure class=\"media_widget col-inverse col-xs-6 col-right\">
+![The Skylab space station](/fly-me-to-the-moon/piece_images/skylab.jpg)
+<figcaption>The Skylab space station</figcaption>
+</figure>
+
+The next year brought the US its own space station, named Skylab, also launched on a Saturn V, which would orbit for six years, although it would only see occupation for around six months of that time. Nevertheless, it provided a useful platform for performing scientific tests and experiments.
+
+The Saturn V continued to perform useful work, but its time was running out. Finally, on July 15th 1975, it was launched for the final time. \"Experimental flight Soyuz-Apollo\" was the first joint U.S.–Soviet space flight. The crew consisted of Commander Thomas Stafford, CMP Vance Brand, and Docking Module Pilot Donald \"Deke\" Slayton. Slayton, despite having been selected as far back as 1959 as one of the original Mercury Seven, had never flown to space, having been grounded due to medical reasons for the following 13 years. In the interim, he'd worked as the Coordinator of Astronaut Activities, which would later become and official position, the Chief of the Astronaut Office. Having chosen the crews for both the Gemini and Apollo programs, deciding that Armstrong would represent humanity as the first person on the Moon, he now took his place as an astronaut himself. While grounded, Slayton had taken up a program of daily exercise, quit smoking and caffeine, and drastically cut back on alcohol.
+
+<figure class=\"media_widget col col-xs-6 col-left\">
+![Deke Slayton](/fly-me-to-the-moon/piece_images/slayton.jpg)
+<figcaption>Deke Slayton</figcaption>
+</figure>
+
+Having been returned to flight status in 1970, he selected himself for the 1975 flight. Training began in 1973, which included learning Russian training for weeks at the Star City cosmonaut training center, near Moscow. After years of service in ground control, Slayton resigned as Director of Flight Crew Operations in February 1974. The 1975 mission was the first and last time he'd fly to space.
+
+It seems fitting that the Apollo program, who's roots began in the Second World War, and for which so much money had been spent to serve as propaganda for American superiority over the Soviets, had as its last act as a public demonstration of the policy of détente that the two superpowers were pursuing at the time. It marked the end of the space race, and ushered in a new era.

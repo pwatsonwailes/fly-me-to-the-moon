@@ -1,0 +1,1497 @@
+[
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "MSFN shows we may be a little low."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "No problem."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "He's with us on the TIG FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "FLIGHT TELCOM."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go TELCOM."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "May be able to pick up the steerable if you desire to try. Pitch 212 yaw 37."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Pitch 212, yaw 37."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirm FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, why don't you try it."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger, we on the OMNIs now?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirm."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Got us locked up there TELCOM?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Okay, it's just real weak FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, how you looking? All your systems go?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirm FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How about you CONTROL?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We look good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE, you happy?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go, both systems."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO, how about you?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "We're go"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "We, we're a little low FLIGHT, no problem."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, all flight controllers, thirty seconds to ignition."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Negative, not yet. Stand by."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Bob, you're on the loop."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "DPS arm."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. DPS arm"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Ullage."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "10 percent TCP."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. 10 percent."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Lost data FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Copy."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Going to aft OMNI?"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "No. Let's wait until they get through throttling up here."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Aft OMNI."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Let's wait until they get through throttle up, they should be through about now. Go ahead, try aft OMNI."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, we've lost MSFN"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, we've lost MSFN."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "They turn on with 20 foot per second residual that is probably due to downtrack error."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. About 20 foot residual due to downtrack error."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "I think, and it was in radial."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "We have data FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO. GTC go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. GTC go."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL, we're go. ... looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO. We have negative MSFN."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Negative MSFN. You got doppler? FIDO what data do you have?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "AGS and doppler FLIGHT. We're go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Restarting MSFN now."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. How's the doppler looking?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Looks good FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "DPS thrust 9820."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Thrust 9820."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Copy FLIGHT."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Data's solid."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How you looking GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Hanging out 20 foot per second. Looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. No change is what you're saying."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "No change. That's downtrack, I know it."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "We've reinitialized the filter, we do have an altitude difference."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO. GTC is right on nominal."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Roger. GTC nominal."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "It's okay FLIGHT. Okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay CONTROL, let me know when he starts his yaw here."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Roger."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How's your MSFN looking now FIDO?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, we do have the altitude, we're go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, how about you GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Holding at about 18 foot, we're going to make it I think."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "He thinks you're a little bit long down range."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "That's right, I think we can confirm that."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "We confirm that."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, 30 seconds to next GO/NO-GO."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "LM downlink FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, I'm going around the horn. Make your GO/NO-GO's based on the data you had prior to LOS. I see we got it back. Give you another few seconds."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We're going FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, RETRO"
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Go"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CONTROL"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GNC"
+	},
+	{
+		"position": "GNC",
+		"name": "Briggs Willoughby",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "EECOM"
+	},
+	{
+		"position": "EECOM",
+		"name": "John Aaron",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "SURGEON."
+	},
+	{
+		"position": "SURGEON",
+		"name": "John Zieglschmid",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, we're go to continue PDI."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Did you get that TELCOM, ED Batts are good to go."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Roger FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay everybody, let's hang tight and look for landing radar."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "We'll need that landing radar by 18,000 with this down track"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "On the PGNS"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, I copy GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay we got data back."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Radar, FLIGHT looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "2,000 feet."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, 2,000 ft. DELTA-H. Let me know when he accepts it GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Roger."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Looks good FLIGHT. Looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Is he accepting it GUIDANCE?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Standby."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Looks like its converging."
+	},
+	{
+		"position": "GUIDANCE2",
+		"name": "Granville Paules",
+		"text": "1202 alarm."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Yeah, it's the same thing we had."
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "FLIGHT RETRO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go RETRO."
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Throttle down 6 plus 25."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "6 plus 25."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "We're go on that flight."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "We're go on that alarm?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "If it doesn't reoccur we'll be go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "He's taking in a DELTA-H now."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Did you get the throttle down CAPCOM? Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, converging on DELTA-H."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL we have velocity."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Okay we'll monitor is his DELTA-H FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "I think that's what he's getting at."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "And his alarms."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "DELTA-H is beautiful."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, hang tight. Should be throttling down pretty shortly."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We confirm throttle down."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "You confirm throttle down."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How's it looking GUIDANCE?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "You want him to stay out of 68."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Negative FLIGHT. I just said we'll monitor the alarms."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Okay."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Everything looks good."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "The noun 68 now well may be the problem here, and we can monitor DELTA-H."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Looking real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, FIDO good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM how you looking?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Looking good FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Going to try the steerable again Don."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Copy FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "We're on steerable Don?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "That's affirmative FLIGHT and it's holding in there pretty good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Okay everybody hang tight, it's 7 and a half minutes."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT GUIDANCE his landing radar is fixed, the velocity is beautiful."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Descent 2 fuel."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Descent 2 fuel crit."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Descent 2 fuel only."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Fuel-"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Fuel critical. He didn't want to say critical."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Descent 2 fuel."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO, looking real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Got an estimated, what's our TGO GUIDANCE?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "30 seconds to P64."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. About 30 seconds. Okay we still got landing radar GUIDANCE?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Affirm."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay, has it converged?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Yes it looks beautiful."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Has it converged?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Yes."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO we're go. Look real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog FIDO."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay they got 64."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "TGO's go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, TGO's go."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We have position 2 on their alarm"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Position 2. All flight controllers, 20 seconds to GO/NO-GO for landing."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, GO/NO-GO for landing. RETRO"
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GNC."
+	},
+	{
+		"position": "GNC",
+		"name": "Briggs Willoughby",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "EECOM."
+	},
+	{
+		"position": "EECOM",
+		"name": "John Aaron",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "SURGEON."
+	},
+	{
+		"position": "SURGEON",
+		"name": "John Zieglschmid",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, we're go for landing."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "1201 alarm."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Same type, we're go flight."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay we're go."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "FLIGHT FIDO right on real good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How's our margin looking Bob?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "He looks okay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We got four and a half."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Altitute up in the AGS, looks good."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "How you doing CONTROL?"
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We look good here FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Alright, how about you TELCOM?"
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Go."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE you happy?"
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Go"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO?"
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Go."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Attitude hold."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay ATT hold."
+	},
+	{
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "I think we better be quiet, FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Okay the only call outs from now on will be fuel."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "P66."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay Bob I'll be standing by for your call outs shortly."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Low level."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Low level."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Standby for 60."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "60."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "60 seconds."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Standby for 30."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "30."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "30 seconds."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We've had shut down."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay everybody T1."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, about 45 seconds to T1 STAY/NO-STAY."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "FLIGHT, 14 plus 2 looks beautiful"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay keep the chatter down in this room."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Pyros are armed FLIGHT."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay T1 to STAY/NO-STAY. RETRO."
+	},
+	{
+		"position": "RETRO",
+		"name": "Charles Deiterich",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "FIDO."
+	},
+	{
+		"position": "FIDO",
+		"name": "Jay Greene",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GUIDANCE."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "TELCOM."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "GNC."
+	},
+	{
+		"position": "GNC",
+		"name": "Briggs Willoughby",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "EECOM."
+	},
+	{
+		"position": "EECOM",
+		"name": "John Aaron",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "SURGEON."
+	},
+	{
+		"position": "SURGEON",
+		"name": "John Zieglschmid",
+		"text": "Stay."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "CAPCOM, we're stay for T1."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Go CONTROL."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "We're venting OX."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog. Venting OX."
+	},
+	{
+		"position": "TELCOM",
+		"name": "Don Puddy",
+		"text": "Pyros safe."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Okay all flight controllers, 4 more minutes to T2 STAY/NO-STAY."
+	},
+	{
+		"position": "GUIDANCE",
+		"name": "Steve Bales",
+		"text": "P68 we have a noun 43."
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, you have landing verification."
+	},
+	{
+		"position": "CONTROL",
+		"name": "Bob Carlton",
+		"text": "FLIGHT CONTROL we are venting fuel"
+	},
+	{
+		"position": "FLIGHT",
+		"name": "Gene Kranz",
+		"text": "Rog, venting fuel."
+	}
+]
