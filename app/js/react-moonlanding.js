@@ -26,8 +26,6 @@ export default class MoonLanding extends React.Component {
 		this.state = {
 			fd: [],
 			ga: [],
-			fdPointer: 0,
-			gaPointer: 0,
 			currentTime: 0,
 			altitude: {},
 			speed: {}
@@ -123,28 +121,26 @@ export default class MoonLanding extends React.Component {
 
 			if (reset) {
 				// first sort comms
-				for (var i = 0; i < Descent.fdComms.length; i++) {
-					if (cFT > Descent.fdComms[i])
-						var fdTime = Descent.fdComms[i];
+				var fdTime = false,
+						gaTime = false;
+
+				for (var i = cFT; i > 0; i--) {
+					if (typeof Descent.fdIndex[i] !== 'undefined' && fdTime === false)
+						fdTime = i;
+
+					if (typeof Descent.gaIndex[i] !== 'undefined' && gaTime === false)
+						gaTime = i;
 				}
 
-				for (var i = 0; i < Descent.gaComms.length; i++) {
-					if (cFT > Descent.gaComms[i])
-						var gaTime = Descent.gaComms[i];
-				}
+				// we can force this as we know for sure that it will return results
+				var fd = this.getLoopText('fd', fdTime, true);
+				var ga = this.getLoopText('ga', gaTime, true);
 
-				var fd = this.getLoopText('fd', fdTime);
-				var ga = this.getLoopText('ga', gaTime);
+				if (fd !== false)
+					newState.fd = fd;
 
-				if (fd !== false) {
-					newState.fd = fd.data;
-					newState.fdPointer = fd.pointer;
-				}
-
-				if (fd !== false) {
-					newState.ga = ga.data;
-					newState.gaPointer = ga.pointer;
-				}
+				if (ga !== false)
+					newState.ga = ga;
 
 				// work out altitude and speed
 				var aKeys = Object.keys(Descent.altitude);
@@ -189,53 +185,58 @@ export default class MoonLanding extends React.Component {
 					newState.speed = newSpeed;
 				}
 
-				var fd = this.getLoopText('fd', cFT);
-				var ga = this.getLoopText('ga', cFT);
+				var fd = this.getLoopText('fd', cFT, false);
+				var ga = this.getLoopText('ga', cFT, false);
 
-				if (fd !== false) {
-					newState.fd = fd.data;
-					newState.fdPointer = fd.pointer;
-				}
+				if (fd !== false)
+					newState.fd = fd;
 
-				if (ga !== false) {
-					newState.ga = ga.data;
-					newState.gaPointer = ga.pointer;
-				}
+				if (ga !== false)
+					newState.ga = ga;
 			}
 
 			if (cFT > this.state.currentTime) { // so we only do this once per second
-				var fd = this.getLoopText('fd', cFT);
-				var ga = this.getLoopText('ga', cFT);
+				var fd = this.getLoopText('fd', cFT, false);
+				var ga = this.getLoopText('ga', cFT, false);
 
-				if (fd !== false) {
-					newState.fd = fd.data;
-					newState.fdPointer = fd.pointer;
-				}
+				if (fd !== false)
+					newState.fd = fd;
 
-				if (ga !== false) {
-					newState.ga = ga.data;
-					newState.gaPointer = ga.pointer;
-				}
+				if (ga !== false)
+					newState.ga = ga;
 			}
 
 			this.setState(newState);
 		}
 	}
 
-	getLoopText(mode, cFT) {
-		var pointer = (mode === 'fd') ? 'fdPointer' : 'gaPointer';
-		var comms = (mode === 'fd') ? 'fdComms' : 'gaComms';
-		var index = Descent[comms].indexOf(cFT);
+	getLoopText(mode, cFT, force) {
+		var comms = (mode === 'fd') ? 'fdIndex' : 'gaIndex';
 
 		// make sure we only do this once per second, and that there's data
-		if ((cFT === this.state[pointer] && cFT > 0) || index === -1)
+		if ((cFT > this.state.currentTime || typeof Descent[comms][cFT] === 'undefined') && !force)
 			return false;
 
-		var output = { data: [], pointer: cFT };
+		var relComms = (mode === 'fd') ? FlightDirector : GroundAir;
 
-		for (var i = index; i < index + 8; i++) {
-			output.data.push((mode === 'fd') ? FlightDirector[i] : GroundAir[i]);
-		}
+		var incFromKey = Descent[comms][cFT];
+
+		// get 3 either side
+		if (incFromKey >= 5 && incFromKey < relComms.length - 10)
+			var start = incFromKey - 5;
+		else if (incFromKey >= 5)
+			var start = relComms.length - 10;
+		else
+			var start = 0;
+
+		console.log({
+			cFT: cFT,
+			start: start,
+			incFromKey: incFromKey
+		});
+
+		var output = relComms.slice(start, start + 10);
+		console.log("output: ", output);
 
 		return output;
 	}
