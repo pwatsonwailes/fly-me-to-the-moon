@@ -2416,9 +2416,6 @@ blockquote {
 .gallery_widget h4 {
   text-align: center;
 }
-.gallery_widget img {
-  margin: 0 1rem;
-}
 .gallery_widget #galleryBack,
 .gallery_widget #galleryForward {
   top: 50%;
@@ -2614,6 +2611,9 @@ blockquote {
   .media_widget.image,
   .media_widget.youtube {
     max-width: 660px;
+  }
+  .gallery_widget img {
+    margin: 0 1rem;
   }
   #moonlanding {
     width: 660px;

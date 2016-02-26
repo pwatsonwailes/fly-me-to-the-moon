@@ -46,17 +46,8 @@ export default class Gallery extends React.Component {
 		}
 		// height and width too big
 		else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.height > this.state.maxHeight && imgData.width > this.state.maxWidth) {
-			// if img wider than tall, shrink to maxwidth and alter height to respect altered width
-			if (imgData.width / imgData.height > 1) {
-				var height = imgData.height * (this.state.maxWidth / imgData.width);
-				var width = this.state.maxWidth;
-			}
-			// if taller than wide, or if img is square, shrink to maxheight and alter width to respect altered height
-			else
-			{
-				var height = this.state.maxHeight;
-				var width = imgData.width * (this.state.maxHeight / imgData.height);
-			}
+			var height = imgData.height * (this.state.maxWidth / imgData.width);
+			var width = this.state.maxWidth;
 		}
 		// height too big, reduce height, width needs altering to respect aspect ratio
 		else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.height > this.state.maxHeight) {
