@@ -182,16 +182,8 @@ var Gallery = (function (_React$Component) {
 			}
 			// height and width too big
 			else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.height > this.state.maxHeight && imgData.width > this.state.maxWidth) {
-					// if img wider than tall, shrink to maxwidth and alter height to respect altered width
-					if (imgData.width / imgData.height > 1) {
-						var height = imgData.height * (this.state.maxWidth / imgData.width);
-						var width = this.state.maxWidth;
-					}
-					// if taller than wide, or if img is square, shrink to maxheight and alter width to respect altered height
-					else {
-							var height = this.state.maxHeight;
-							var width = imgData.width * (this.state.maxHeight / imgData.height);
-						}
+					var height = imgData.height * (this.state.maxWidth / imgData.width);
+					var width = this.state.maxWidth;
 				}
 				// height too big, reduce height, width needs altering to respect aspect ratio
 				else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.height > this.state.maxHeight) {
@@ -411,8 +403,6 @@ var MoonLanding = (function (_React$Component) {
 		_this.state = {
 			fd: [],
 			ga: [],
-			fdPointer: 0,
-			gaPointer: 0,
 			currentTime: 0,
 			altitude: {},
 			speed: {}
@@ -512,26 +502,22 @@ var MoonLanding = (function (_React$Component) {
 
 				if (reset) {
 					// first sort comms
-					for (var i = 0; i < _descent2.default.fdComms.length; i++) {
-						if (cFT > _descent2.default.fdComms[i]) var fdTime = _descent2.default.fdComms[i];
+					var fdTime = false,
+					    gaTime = false;
+
+					for (var i = cFT; i > 0; i--) {
+						if (typeof _descent2.default.fdIndex[i] !== 'undefined' && fdTime === false) fdTime = i;
+
+						if (typeof _descent2.default.gaIndex[i] !== 'undefined' && gaTime === false) gaTime = i;
 					}
 
-					for (var i = 0; i < _descent2.default.gaComms.length; i++) {
-						if (cFT > _descent2.default.gaComms[i]) var gaTime = _descent2.default.gaComms[i];
-					}
+					// we can force this as we know for sure that it will return results
+					var fd = this.getLoopText('fd', fdTime, true);
+					var ga = this.getLoopText('ga', gaTime, true);
 
-					var fd = this.getLoopText('fd', fdTime);
-					var ga = this.getLoopText('ga', gaTime);
+					if (fd !== false) newState.fd = fd;
 
-					if (fd !== false) {
-						newState.fd = fd.data;
-						newState.fdPointer = fd.pointer;
-					}
-
-					if (fd !== false) {
-						newState.ga = ga.data;
-						newState.gaPointer = ga.pointer;
-					}
+					if (ga !== false) newState.ga = ga;
 
 					// work out altitude and speed
 					var aKeys = Object.keys(_descent2.default.altitude);
@@ -571,34 +557,22 @@ var MoonLanding = (function (_React$Component) {
 						newState.speed = newSpeed;
 					}
 
-					var fd = this.getLoopText('fd', cFT);
-					var ga = this.getLoopText('ga', cFT);
+					var fd = this.getLoopText('fd', cFT, false);
+					var ga = this.getLoopText('ga', cFT, false);
 
-					if (fd !== false) {
-						newState.fd = fd.data;
-						newState.fdPointer = fd.pointer;
-					}
+					if (fd !== false) newState.fd = fd;
 
-					if (ga !== false) {
-						newState.ga = ga.data;
-						newState.gaPointer = ga.pointer;
-					}
+					if (ga !== false) newState.ga = ga;
 				}
 
 				if (cFT > this.state.currentTime) {
 					// so we only do this once per second
-					var fd = this.getLoopText('fd', cFT);
-					var ga = this.getLoopText('ga', cFT);
+					var fd = this.getLoopText('fd', cFT, false);
+					var ga = this.getLoopText('ga', cFT, false);
 
-					if (fd !== false) {
-						newState.fd = fd.data;
-						newState.fdPointer = fd.pointer;
-					}
+					if (fd !== false) newState.fd = fd;
 
-					if (ga !== false) {
-						newState.ga = ga.data;
-						newState.gaPointer = ga.pointer;
-					}
+					if (ga !== false) newState.ga = ga;
 				}
 
 				this.setState(newState);
@@ -606,19 +580,27 @@ var MoonLanding = (function (_React$Component) {
 		}
 	}, {
 		key: 'getLoopText',
-		value: function getLoopText(mode, cFT) {
-			var pointer = mode === 'fd' ? 'fdPointer' : 'gaPointer';
-			var comms = mode === 'fd' ? 'fdComms' : 'gaComms';
-			var index = _descent2.default[comms].indexOf(cFT);
+		value: function getLoopText(mode, cFT, force) {
+			var comms = mode === 'fd' ? 'fdIndex' : 'gaIndex';
 
 			// make sure we only do this once per second, and that there's data
-			if (cFT === this.state[pointer] && cFT > 0 || index === -1) return false;
+			if ((cFT > this.state.currentTime || typeof _descent2.default[comms][cFT] === 'undefined') && !force) return false;
 
-			var output = { data: [], pointer: cFT };
+			var relComms = mode === 'fd' ? _flight_director2.default : _air_ground2.default;
 
-			for (var i = index; i < index + 8; i++) {
-				output.data.push(mode === 'fd' ? _flight_director2.default[i] : _air_ground2.default[i]);
-			}
+			var incFromKey = _descent2.default[comms][cFT];
+
+			// get 3 either side
+			if (incFromKey >= 5 && incFromKey < relComms.length - 10) var start = incFromKey - 5;else if (incFromKey >= 5) var start = relComms.length - 10;else var start = 0;
+
+			console.log({
+				cFT: cFT,
+				start: start,
+				incFromKey: incFromKey
+			});
+
+			var output = relComms.slice(start, start + 10);
+			console.log("output: ", output);
 
 			return output;
 		}
@@ -1083,989 +1065,970 @@ exports.default = YouTube;
 },{"react":194}],9:[function(require,module,exports){
 module.exports=[
 	{
-		"name": "Buzz Aldrin",
+		"t": 7,
 		"position": "LMP",
-		"text": "Verb 77"
+		"name": "Buzz Aldrin",
+		"text": "Hit VERB 77?"
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 26,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "Okay. Sequence camera coming on."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 54,
 		"position": "CAPCOM",
+		"name": "Charlie Duke",
 		"text": "Eagle, Houston. If you'd like to try high gain, pitch 212, yaw 37. Over."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 67,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "Roger. I think I've got you on high gain now."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 71,
 		"position": "CAPCOM",
+		"name": "Charlie Duke",
 		"text": "Roger."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(To Buzz) Okay, you got anything..."
-	},
-	{
-		"name": "Buzz Aldrin",
+		"t": 85,
 		"position": "LMP",
-		"text": "(To Houston) Say again the angles, though."
+		"name": "Buzz Aldrin",
+		"text": "Say again the angles, though."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 87,
 		"position": "CAPCOM",
+		"name": "Charlie Duke",
 		"text": "Roger."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 88,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "I'll set them in to use them before we yaw around."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 90,
 		"position": "CAPCOM",
-		"text": "Rog. Pitch 212, yaw plus 37. "
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Copy."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(To Buzz) Okay! What else is left to do here?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Engine Arm, Descent. 40 seconds."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Is the (16mm) camera running?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Camera's running. 1970 Armstrong: Okay, the override at 5 seconds. Descent armed."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Altitude light's on."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "proceed."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Proceed. One, Zero."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Ignition."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Ignition. (Thrust) 10 percent static)"
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Just about on time."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "light is on. 24, 25, 26, Throttle up. Looks good!"
-	},
-	{
 		"name": "Charlie Duke",
+		"text": "Roger. Pitch 212, yaw plus 37."
+	},
+	{
+		"t": 106,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "OMNI's in."
+	},
+	{
+		"t": 151,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... 10 ... 10 percent ..."
+	},
+	{
+		"t": 183,
 		"position": "CAPCOM",
+		"name": "Charlie Duke",
 		"text": "Columbia, Houston. We've lost them. Tell them to go aft OMNI. Over."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "s holding. "
-	},
-	{
-		"name": "Michael Collins",
+		"t": 193,
 		"position": "CMP",
-		"text": "(To Eagle) They'd like to use the OMNI "
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(To Mike) Okay, we're reading you relayed to us, Mike. (Static fades)"
-	},
-	{
 		"name": "Michael Collins",
+		"text": "They've lost you. Use the OMNI's again."
+	},
+	{
+		"t": 203,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "..."
+	},
+	{
+		"t": 207,
 		"position": "CMP",
-		"text": "(Making a mis-identification) Say again, Neil?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(To Mike) I'll leave it in SLEW."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(To Mike) Relay to us."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(To Mike) See if they have got me now. I've got good signal strength in SLEW."
-	},
-	{
 		"name": "Michael Collins",
+		"text": "Say again, Neil?"
+	},
+	{
+		"t": 209,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "I'll leave it in SLEW. Relay to us. See if they have got me now. I've got good signal strength in SLEW."
+	},
+	{
+		"t": 215,
 		"position": "CMP",
+		"name": "Michael Collins",
 		"text": "Okay. You should have him now, Houston."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 218,
 		"position": "CAPCOM",
-		"text": "Eagle, we('ve) got you now. It's looking good. Over. Eagle..."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(To Neil) Okay, rate of descent looks good."
-	},
-	{
 		"name": "Charlie Duke",
+		"text": "Eagle, we've got you now. It's looking good. Over."
+	},
+	{
+		"t": 225,
 		"position": "CAPCOM",
-		"text": "Eagle, Houston. Everything's looking good here. Over."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Roger. Copy. "
-	},
-	{
 		"name": "Charlie Duke",
+		"text": "Eagle - -"
+	},
+	{
+		"t": 226,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "- - descent looks good."
+	},
+	{
+		"t": 227,
 		"position": "CAPCOM",
-		"text": "Eagle, Houston. (Our recommendation is that), after yaw-around, (use pointing) angles: S-band pitch, minus 9, yaw plus 18."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Copy. "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay. Two minutes (into the burn); going good."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "AGS and PGNS agree very closely."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "RCS is good. No flags. DPS pressure is good. 2110 Duke: Roger."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Data, On. Altitude's a little high. "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay, what do you want? Let's get...Want to get rid of this radar?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Yeah."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "You're SLEW? Okay. "
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Houston. I'm getting a little fluctuation in the AC voltage now."
-	},
-	{
 		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger."
+		"text": "Eagle, Houston. Everything is looking good here. Over."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 231,
 		"position": "LMP",
-		"text": "Could be our meter, maybe, huh?"
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Standby. Looking good to us. You're still looking good at 3...Coming up 3 minutes."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay, we went by the three-minute point early. We're (going to land) long."
-	},
-	{
 		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Rate of descent looking real good. Altitude's right about on."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(To Houston) Our position checks down range show us to be a little long."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. Copy. (Heavy Static)"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "AGS is showing about 2 feet per second greater (altitude) rate (than is the PGNS). "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Mark. I show us to be...Stand by. 2203 Aldrin: Altitude rate looks right down the groove."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Roger, about 3 seconds long. Rolling over. Okay, now watch that signal strength."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Well, I think it's going to drop."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "You know, I tell you. This is much harder to do than it was..."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(To Neil) Keep it going. "
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Eagle, Houston..."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(Under Charlie) Okay, Houston; the ED Batts are Go..."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "...You are Go to continue..."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "...at 4 minutes."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. You are Go. You are Go to continue powered descent. You are Go to continue powered descent."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Roger. (Static)"
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "And, Eagle, Houston. We've got data dropout. You're still looking good. (Long static fades)"
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "How do you look, over there?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Okay"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Okay. We got good (landing radar) lock-on."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "We got a lock-on?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Yeah. Altitude light's out. DELTA-H is minus 2,900."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. We copy."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Got the Earth straight out our front window."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Sure do. Houston, (I hope) you're looking at our DELTA-H."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "That's affirmative."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(With the slightest touch of urgency) Program Alarm."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "It's looking good to us. Over."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(To Houston) It's a 1202."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "1202. "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(To Buzz) What is it? Let's incorporate (the landing radar data). (To Houston) Give us a reading on the 1202 Program Alarm."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. We got you...(With some urgency in his voice) We're Go on that alarm."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Roger. (To Buzz) 330."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "6 plus 25. Throttle down..."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Okay. Looks like about 820...(Listens)"
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "...6 plus 25, throttle down."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
 		"text": "Roger. Copy."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "6 plus 25."
+		"t": 236,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. After yaw around, angles: S band pitch, minus 9, yaw plus 18."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 248,
 		"position": "LMP",
-		"text": "Same alarm, and it appears to come up when we have a 16/68 up."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. Copy. "
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Eagle, Houston. We'll monitor your DELTA-H."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "ere we...Was it (meaning the large DELTA-H reading) coming down?"
-	},
-	{
 		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Yes, it's coming down beautifully."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "DELTA-H..."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Roger, it looks good now."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. DELTA-H is looking good to us."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Wow! Throttle down..."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Throttle down on time."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. We copy throttle down..."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "You can feel it in here when it throttles down. Better than the (stationary) simulator."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Rog. "
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "AGS and PGNS look real close."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay. No flags. RCS is good. DPS (Descent Propulsion System, pronounced 'dips') is good. Pressure...Okay."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "At 7 minutes, you're looking great to us, Eagle."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Okay. I'm still on SLEW so we may tend to lose (the high-gain) as we gradually pitch over. Let me try Auto again now and see what happens."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Okay. Looks like it's holding."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. We got good data. "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay, 7:30 coming up. Should be... tad long."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "And I have the window. view out the window."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Eagle, Houston. It's Descent 2 fuel to Monitor. Over."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Going to 2. Coming up on 8 minutes."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Give us an estimated switchover time please, Houston."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. Standby. You're looking great at 8 minutes."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "You're at 7000, Looking good."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Eagle, you've got 30 seconds to P64."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Roger. "
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Eagle, Houston. Coming up 8:30; you're looking great. "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "P64."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "We copy."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "2511 Armstrong: Okay. 5000 (feet altitude). 100 feet per second (descent rate) is good. Going to check my attitude control. Attitude control is good"
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Eagle, you're looking great. Coming up 9 minutes. "
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Manual attitude control is good."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. Copy. Eagle, Houston. You're Go for landing. Over."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay. 3000 at 70."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Roger. Understand. Go for landing. 3000 feet."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
 		"text": "Copy."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 261,
 		"position": "LMP",
-		"text": "Program Alarm. 1201"
+		"name": "Buzz Aldrin",
+		"text": "AGS and PNGS agree very closely."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "1201. Okay, 2000 at 50."
-	},
-	{
-		"name": "Charlie Duke",
+		"t": 263,
 		"position": "CAPCOM",
-		"text": "Roger. 1201 alarm. We're Go. Same type. We're Go."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "2000 feet. 2000 feet."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(With some urgency in his voice, possibly as he sees West Crater) Give me an LPD (angle)."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Into the AGS, 47 degrees."
-	},
-	{
 		"name": "Charlie Duke",
-		"position": "CAPCOM",
 		"text": "Roger."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "(Confirming Buzz's LPD readout) 47. That's not a bad looking area. Okay. 1000 at 30 is good. What's LPD?"
+		"t": 276,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Beta ARM. Altitudes are a little high."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 307,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Houston. I'm getting a little fluctuation in the AC voltage now."
+	},
+	{
+		"t": 313,
 		"position": "CAPCOM",
-		"text": "Eagle, looking great. You're Go. Roger. 1202. We copy it."
+		"name": "Charlie Duke",
+		"text": "Roger."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 314,
 		"position": "LMP",
-		"text": "35 degrees. 35 degrees. 750. Coming down at 23 (feet per second)."
+		"name": "Buzz Aldrin",
+		"text": "Could be our meter, maybe, huh?"
 	},
 	{
-		"name": "Neil Armstrong",
+		"t": 316,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Stand by, Looking good to us. You're still looking good at 3, coming up 3 minutes."
+	},
+	{
+		"t": 335,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... real good .... about on."
+	},
+	{
+		"t": 340,
 		"position": "CDR",
-		"text": "Okay."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "700 feet, 21 (feet per second) down, 33 degrees."
-	},
-	{
 		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Pretty rocky area."
+		"text": "Our. position checks downrange show us to be a little long."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 343,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 346,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "AGS has gone about 2 feet per second greater ..."
+	},
+	{
+		"t": 358,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "... ought to be ... Stand by.,"
+	},
+	{
+		"t": 365,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Altitude ..."
+	},
+	{
+		"t": 382,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... it's going to stop."
+	},
+	{
+		"t": 400,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. You are GO to continue - -"
+	},
+	{
+		"t": 401,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... closed ... GO ... at 4 minutes."
+	},
+	{
+		"t": 404,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. You are GO - You are GO to continue powered descent. You are GO to continue powered des cent."
+	},
+	{
+		"t": 412,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger."
+	},
+	{
+		"t": 417,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "And, Eagle, Houston. We've got data dropout. You're still looking good."
+	},
+	{
+		"t": 446,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... PGNS. We got good lock-on. Altitude lights OUT. DELTA-H is minus 2 900."
+	},
+	{
+		"t": 460,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. We copy."
+	},
+	{
+		"t": 462,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Got the Earth right out our front window."
+	},
+	{
+		"t": 465,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Houston, you're looking at our DELTA-H?"
+	},
+	{
+		"t": 467,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "That's affirmative."
+	},
+	{
+		"t": 468,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "PROGRAM ALARM."
+	},
+	{
+		"t": 470,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "It's looking good to us. Over."
+	},
+	{
+		"t": 472,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "It's a 1202."
+	},
+	{
+		"t": 474,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "1202."
+	},
+	{
+		"t": 490,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Give us a reading on the 1202 PROGRAM ALARM."
+	},
+	{
+		"t": 495,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. We got - We're GO on that alarm"
+	},
+	{
+		"t": 501,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Roger. P30."
+	},
+	{
+		"t": 503,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "6 plus 25, throttle down - -"
+	},
+	{
+		"t": 504,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Looks like about 820 -"
+	},
+	{
+		"t": 505,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "- - 6 plus 25, throttle down."
+	},
+	{
+		"t": 508,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Roger. Copy. 6 plus 25."
+	},
+	{
+		"t": 516,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Same alarm, and it appears to come up when we have a 1668 up."
+	},
+	{
+		"t": 519,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 525,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. We'll monitor your DELTA-H."
+	},
+	{
+		"t": 526,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... worked out beautifully."
+	},
+	{
+		"t": 530,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "DELTA H - -"
+	},
+	{
+		"t": 531,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... looks good now."
+	},
+	{
+		"t": 532,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. DELTA H is looking good to us."
+	},
+	{
+		"t": 536,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Ah! Throttle down - -"
+	},
+	{
+		"t": 537,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Throttle down on time!"
+	},
+	{
+		"t": 538,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger, We copy throttle down - -"
+	},
+	{
+		"t": 539,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "- - ... throttles down. Better than the simulator."
+	},
+	{
+		"t": 544,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 550,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "AGS and PGNS look real close."
+	},
+	{
+		"t": 570,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "At 7 minutes, you're looking great to us, Eagle."
+	},
+	{
+		"t": 575,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. I'm still on SLEW so we may tend to lose as we gradually pitch over. Let me try AUTO again now and see what happens."
+	},
+	{
+		"t": 583,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 585,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. Looks like it's holding."
+	},
+	{
+		"t": 586,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. We got good data."
+	},
+	{
+		"t": 611,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. It's descent 2 fuel to MONITOR. Over."
+	},
+	{
+		"t": 617,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Going to 2."
+	},
+	{
+		"t": 623,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Give us an estimated switchover time please, Houston."
+	},
+	{
+		"t": 627,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Stand by. You're looking great at 8 minutes."
+	},
+	{
+		"t": 632,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "At 7000 -"
+	},
+	{
+		"t": 634,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, you've got 30 seconds to P64."
+	},
+	{
+		"t": 637,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... Roger."
+	},
+	{
+		"t": 649,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. Coming up 8 30; you're looking great."
+	},
+	{
+		"t": 657,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "P64."
+	},
+	{
+		"t": 659,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "We copy."
+	},
+	{
+		"t": 673,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, you're looking great. Coming up 9 minutes."
+	},
+	{
+		"t": 687,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Manual attitude control is good."
+	},
+	{
+		"t": 690,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 692,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. You're GO for landing. Over."
+	},
+	{
+		"t": 699,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger. Understand. GO for landing. 3000 feet. PROGRAM ALARM."
+	},
+	{
+		"t": 701,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Copy."
+	},
+	{
+		"t": 704,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "1201"
+	},
+	{
+		"t": 706,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "1201."
+	},
+	{
+		"t": 707,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. 1201 alarm. We're GO. Same type. We're GO."
+	},
+	{
+		"t": 713,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "2000 feet. 2000 feet. Into the AGS, 47 degrees."
+	},
+	{
+		"t": 717,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 718,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "47 degrees."
+	},
+	{
+		"t": 723,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, looking great. You're GO."
+	},
+	{
+		"t": 740,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. 1202. We copy it."
+	},
+	{
+		"t": 743,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "35 degrees. 35 degrees. 750. Coming down to 23."
+	},
+	{
+		"t": 749,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "700 feet, 21 down, 33 degrees."
+	},
+	{
+		"t": 753,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "600 feet, down at 19."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "I'm going to..."
-	},
-	{
-		"name": "Buzz Aldrin",
+		"t": 757,
 		"position": "LMP",
-		"text": "540 feet, down at...(LPD angle is) 30. Down at 15. "
-	},
-	{
 		"name": "Buzz Aldrin",
+		"text": "540 feet, down at - 30. Down at 15."
+	},
+	{
+		"t": 768,
 		"position": "LMP",
-		"text": "Okay, 400 feet, down at 9 (feet per second). 58 (feet per second) forward."
-	},
-	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "No problem."
-	},
-	{
 		"name": "Buzz Aldrin",
+		"text": "At 400 feet, down at 9."
+	},
+	{
+		"t": 771,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... forward."
+	},
+	{
+		"t": 774,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "350 feet, down at 4."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 777,
 		"position": "LMP",
-		"text": "330, three and a half down. "
+		"name": "Buzz Aldrin",
+		"text": "30, ... one-half down."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 784,
 		"position": "LMP",
-		"text": "Okay, you're pegged on horizontal velocity."
+		"name": "Buzz Aldrin",
+		"text": "We're pegged on horizontal velocity."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 788,
 		"position": "LMP",
-		"text": "300 feet (altitude), down 3 1/2 (feet per second), 47 (feet per second) forward. Slow it up."
+		"name": "Buzz Aldrin",
+		"text": "300 feet, down 3 1/2, 47 forward."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 793,
 		"position": "LMP",
-		"text": "1 1/2 down. Ease her down. 270."
+		"name": "Buzz Aldrin",
+		"text": "... up."
 	},
 	{
-		"name": "Neil Armstrong",
+		"t": 794,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "On 1 a minute, 1 1/2 down."
+	},
+	{
+		"t": 799,
 		"position": "CDR",
-		"text": "Okay, how's the fuel?"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Eight percent."
-	},
-	{
 		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Okay. Here's a...Looks like a good area here."
+		"text": "70."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 806,
 		"position": "LMP",
-		"text": "I got the shadow out there."
+		"name": "Buzz Aldrin",
+		"text": "Watch your shadow out there."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 809,
 		"position": "LMP",
-		"text": "250 (feet altitude), down at 2 1/2, 19 forward. "
+		"name": "Buzz Aldrin",
+		"text": "50, down at 2 1/2, 19 forward."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 815,
 		"position": "LMP",
-		"text": "Altitude (and) velocity lights (on)."
+		"name": "Buzz Aldrin",
+		"text": "Altitude-velocity light."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 818,
 		"position": "LMP",
-		"text": "3 1/2 down, 220 feet, 13 forward. "
+		"name": "Buzz Aldrin",
+		"text": "3 1/2 down, 220 feet, 13 forward."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 825,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "11 forward. Coming down nicely."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Gonna be right over that crater."
-	},
-	{
-		"name": "Buzz Aldrin",
+		"t": 826,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "200 feet, 4 1/2 down."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 828,
 		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "5 1/2 down."
 	},
 	{
-		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "I got a good spot "
+		"t": 833,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "160, 6 - 6 1/2 down."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 835,
 		"position": "LMP",
-		"text": "160 feet, 6 1/2 down."
+		"name": "Buzz Aldrin",
+		"text": "5 1/2 down, 9 forward. That's good."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 842,
 		"position": "LMP",
-		"text": "5 1/2 down, 9 forward. You're looking good."
-	},
-	{
 		"name": "Buzz Aldrin",
-		"position": "LMP",
 		"text": "120 feet."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 847,
 		"position": "LMP",
-		"text": "100 feet, 3 1/2 down, 9 forward. Five percent (fuel remaining). Quantity light."
+		"name": "Buzz Aldrin",
+		"text": "100 feet, 3 1/2 down, 9 forward. Five percent."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 853,
 		"position": "LMP",
-		"text": "Okay. 75 feet. And it's looking good. Down a half, 6 forward."
+		"name": "Buzz Aldrin",
+		"text": "..."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 856,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. 75 feet. There's looking good. Down a half, 6 forward."
+	},
+	{
+		"t": 864,
 		"position": "CAPCOM",
-		"text": "60 seconds (of fuel left before the 'Bingo' call)."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "(Velocity) light's on."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "60 feet, down 2 1/2. 2 forward. 2 forward. That's good."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "40 feet, down 2 1/2. Picking up some dust."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "30 feet, 2 1/2 down. shadow."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "4 forward. 4 forward. Drifting to the right a little. 20 feet, down a half."
-	},
-	{
 		"name": "Charlie Duke",
+		"text": "60 seconds."
+	},
+	{
+		"t": 866,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Lights on. ..."
+	},
+	{
+		"t": 870,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Down 2 1/2. Forward. Forward. Good."
+	},
+	{
+		"t": 879,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "40 feet, down 2 1/2. Kicking up some dust."
+	},
+	{
+		"t": 883,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "30 feet, 2 1/2 down. Faint shadow."
+	},
+	{
+		"t": 887,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "4 forward. 4 forward. Drifting to the right a little. Okay. Down a half."
+	},
+	{
+		"t": 893,
 		"position": "CAPCOM",
-		"text": "30 seconds (until the 'Bingo' call)."
+		"name": "Charlie Duke",
+		"text": "30 seconds."
 	},
 	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Drifting forward just a little bit; that's good. "
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Contact Light."
-	},
-	{
-		"name": "Neil Armstrong",
+		"t": 894,
 		"position": "CDR",
-		"text": "Shutdown"
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "Okay. Engine Stop."
-	},
-	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
-		"text": "ACA out of Detent."
-	},
-	{
 		"name": "Neil Armstrong",
-		"position": "CDR",
-		"text": "Out of Detent. Auto."
+		"text": "Forward drift?"
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 895,
 		"position": "LMP",
-		"text": "Mode Control, both Auto. Descent Engine Command Override, Off. Engine Arm, Off. 413 is in."
+		"name": "Buzz Aldrin",
+		"text": "Yes."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 896,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay."
+	},
+	{
+		"t": 902,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "CONTACT LIGHT."
+	},
+	{
+		"t": 905,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. ENGINE STOP."
+	},
+	{
+		"t": 907,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "ACA - out of DETENT."
+	},
+	{
+		"t": 908,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Out of DETENT."
+	},
+	{
+		"t": 909,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "MODE CONTROL - both AUTO. DESCENT ENGINE COMMAND OVERRIDE - OFF. ENGINE ARM - OFF."
+	},
+	{
+		"t": 914,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "413 is in."
+	},
+	{
+		"t": 919,
 		"position": "CAPCOM",
+		"name": "Charlie Duke",
 		"text": "We copy you down, Eagle."
 	},
 	{
-		"name": "Neil Armstrong",
+		"t": 921,
 		"position": "CDR",
-		"text": "Engine arm is off. (Now on voice-activated comm) Houston, Tranquility Base here. The Eagle has landed."
+		"name": "Neil Armstrong",
+		"text": "Houston, Tranquility Base here."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 926,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "THE EAGLE HAS LANDED."
+	},
+	{
+		"t": 928,
 		"position": "CAPCOM",
-		"text": "(Momentarily tongue-tied) Roger, Twan...(correcting himself) Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
+		"name": "Charlie Duke",
+		"text": "Roger, Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
 	},
 	{
-		"name": "Buzz Aldrin",
-		"position": "LMP",
+		"t": 938,
+		"position": "CDR",
+		"name": "Neil Armstrong",
 		"text": "Thank you."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 940,
 		"position": "CAPCOM",
+		"name": "Charlie Duke",
 		"text": "You're looking good here."
 	},
 	{
-		"name": "Neil Armstrong",
+		"t": 945,
 		"position": "CDR",
-		"text": "Okay. (To Buzz) Let's get on with it. (To Houston) Okay. We're going to be busy for a minute."
+		"name": "Neil Armstrong",
+		"text": "Okay. We're going to be busy for a minute."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 947,
 		"position": "LMP",
-		"text": "Master Arm, On. Take care of the descent vent."
+		"name": "Buzz Aldrin",
+		"text": "MASTER ARM, ON. Take care of the ... I'll get this ..."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 960,
 		"position": "LMP",
-		"text": "I'll get the pressure check."
+		"name": "Buzz Aldrin",
+		"text": "Very smooth touchdown."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 974,
 		"position": "LMP",
-		"text": "Very smooth touchdown. "
+		"name": "Buzz Aldrin",
+		"text": "..."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 985,
 		"position": "LMP",
-		"text": "That looks..."
-	},
-	{
 		"name": "Buzz Aldrin",
-		"position": "LMP",
 		"text": "Okay. It looks like we're venting the oxidizer now."
 	},
 	{
-		"name": "Charlie Duke",
+		"t": 988,
 		"position": "CAPCOM",
-		"text": "Roger, Eagle. And you are Stay for..."
+		"name": "Charlie Duke",
+		"text": "Roger, Eagle. And you are STAY for - -"
 	},
 	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "...T1. Over. Eagle, you are Stay for T1."
+		"t": 990,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "..."
 	},
 	{
-		"name": "Neil Armstrong",
+		"t": 991,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "- - T1. Over. Eagle, you are STAY for T1."
+	},
+	{
+		"t": 994,
 		"position": "CDR",
-		"text": "Roger. Understand, Stay for T1."
-	},
-	{
-		"name": "Charlie Duke",
-		"position": "CAPCOM",
-		"text": "Roger. And we see you venting the Ox(idizer)."
-	},
-	{
 		"name": "Neil Armstrong",
-		"position": "CDR",
+		"text": "Roger. Understand, STAY for T1."
+	},
+	{
+		"t": 997,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. And we see you venting the 0X."
+	},
+	{
+		"t": 1002,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
 		"text": "Roger."
 	},
 	{
-		"name": "Buzz Aldrin",
+		"t": 1019,
 		"position": "LMP",
-		"text": "Radar circuit breaker."
+		"name": "Buzz Aldrin",
+		"text": "... circuit breaker."
 	}
 ]
 },{}],10:[function(require,module,exports){
@@ -2913,1502 +2876,1801 @@ module.exports={
 		{ "t": 920, "text": "Touchdown", "key": "Touchdown" },
 		{ "t": 973, "text": "T1 STAY/NO-STAY", "key": "T1StayNoStay" }
 	],
-	"fdComms": [0,19,20,30,33,35,35,37,41,45,48,49,50,51,72,76,79,81,82,83,84,85,86,87,87,88,89,113,123,124,143,144,148,155,156,167,168,172,173,174,177,200,202,203,204,205,209,212,214,216,217,219,221,224,244,245,254,255,256,258,259,260,264,267,269,274,275,276,278,280,282,288,289,289,292,306,308,316,325,327,332,334,337,338,340,346,348,349,350,354,360,381,388,390,391,391,392,392,393,393,394,394,395,395,396,396,397,397,404,406,412,415,416,416,419,420,421,422,442,443,444,445,446,452,467,468,470,474,477,481,486,488,489,489,491,493,494,496,498,499,500,508,510,511,512,521,523,524,525,528,529,529,534,540,541,549,553,555,558,558,559,560,560,561,562,562,566,568,568,570,575,576,577,583,585,589,590,592,596,599,600,601,601,602,604,607,607,610,621,622,630,632,634,639,640,641,642,642,643,645,647,659,663,664,667,669,683,686,686,687,687,688,688,689,689,690,690,691,691,708,708,710,712,714,719,721,722,722,723,729,730,742,744,745,746,746,747,747,748,763,764,767,768,777,815,839,840,858,860,861,862,886,891,891,917,921,952,956,958,967,971,972,974,977,977,978,978,979,979,980,980,981,981,982,982,983,983,990,991,991,992,1001,1002,1047],
-	"gaComms": [0,67,71,85,87,88,90,101,104,107,116,117,145,147,150,153,161,167,183,186,188,193,203,207,209,211,212,215,218,224,227,231,236,253,257,263,269,276,290,299,300,308,314,316,318,333,335,340,343,346,357,368,382,385,393,400,401,404,412,417,429,431,446,451,453,460,462,463,467,468,470,472,474,484,495,501,503,504,505,508,510,516,519,522,523,526,530,531,532,536,537,538,540,544,550,552,570,575,583,585,586,589,609,611,617,623,627,632,634,641,649,657,659,666,673,687,690,695,699,701,706,707,713,715,716,717,719,723,743,749,752,753,757,758,768,774,775,777,784,788,794,800,802,804,806,809,815,818,825,827,826,828,831,833,835,842,847,856,864,866,870,879,883,887,893,894,902,905,906,907,908,909,919,920,928,938,940,945,947,952,960,974,985,988,990]
+	"fdIndex": { "0":0,"18":1,"19":3,"20":4,"30":5,"33":6,"35":7,"37":9,"41":10,"45":11,"48":12,"49":13,"50":14,"51":15,"72":16,"76":17,"79":18,"81":19,"82":20,"83":21,"84":22,"85":23,"86":24,"87":25,"88":27,"89":28,"113":29,"123":30,"124":31,"143":32,"144":33,"148":34,"155":35,"156":36,"167":37,"168":38,"172":39,"173":40,"174":41,"177":42,"200":43,"202":44,"203":45,"204":46,"205":47,"209":48,"212":49,"214":50,"216":51,"217":52,"219":53,"221":54,"224":55,"244":56,"245":57,"254":58,"255":59,"256":60,"258":61,"259":62,"260":63,"264":64,"267":65,"269":66,"274":67,"275":68,"276":69,"278":70,"280":71,"282":72,"288":73,"289":74,"292":76,"306":77,"308":78,"316":79,"325":80,"327":81,"332":82,"334":83,"337":84,"338":85,"340":86,"346":87,"348":88,"349":89,"350":90,"354":91,"360":92,"381":93,"388":94,"390":95,"391":96,"392":99,"393":101,"394":103,"395":106,"396":108,"397":110,"404":112,"406":113,"412":114,"415":115,"416":116,"419":118,"420":119,"421":120,"422":121,"442":122,"443":123,"444":124,"445":125,"446":126,"452":127,"467":128,"468":129,"470":130,"474":131,"477":132,"481":133,"486":134,"488":135,"489":136,"491":138,"493":139,"494":140,"496":141,"498":142,"499":143,"500":144,"508":145,"510":146,"511":147,"512":148,"521":149,"523":150,"524":151,"525":152,"528":153,"529":154,"534":156,"540":157,"541":158,"549":159,"553":160,"555":161,"558":162,"559":164,"560":165,"561":167,"562":168,"566":170,"568":171,"570":174,"575":175,"576":176,"577":177,"583":178,"585":179,"589":180,"590":181,"592":182,"596":183,"599":184,"600":185,"601":186,"602":188,"604":189,"607":190,"610":192,"621":193,"622":194,"630":195,"632":196,"634":197,"639":198,"640":199,"641":200,"642":201,"643":203,"645":204,"647":205,"659":206,"663":207,"664":208,"667":209,"669":210,"683":211,"686":212,"687":215,"688":218,"689":220,"690":223,"691":226,"708":228,"710":230,"712":231,"714":232,"719":233,"721":234,"722":235,"723":237,"729":238,"730":239,"742":240,"744":241,"745":242,"746":243,"747":245,"748":247,"763":248,"764":249,"767":250,"768":251,"777":252,"815":253,"839":254,"840":255,"858":256,"860":257,"861":258,"862":259,"886":260,"891":261,"917":263,"921":264,"952":265,"956":266,"958":267,"967":268,"971":269,"972":270,"974":271,"977":272,"978":274,"979":277,"980":279,"981":282,"982":284,"983":286,"990":288,"991":289,"992":291,"1001":292,"1002":293,"1047":294,"1051":295,"1052":296,"1059":297,"1061":298 },
+	"gaIndex": { "0":0,"26":1,"54":2,"67":3,"71":4,"85":5,"87":6,"88":7,"90":8,"106":9,"151":10,"183":11,"193":12,"203":13,"207":14,"209":15,"215":16,"218":17,"225":18,"226":19,"227":20,"231":21,"236":22,"248":23,"261":24,"263":25,"276":26,"307":27,"313":28,"314":29,"316":30,"335":31,"340":32,"343":33,"346":34,"358":35,"365":36,"382":37,"400":38,"401":39,"404":40,"412":41,"417":42,"446":43,"460":44,"462":45,"465":46,"467":47,"468":48,"470":49,"472":50,"474":51,"490":52,"495":53,"501":54,"503":55,"504":56,"505":57,"508":58,"516":59,"519":60,"525":61,"526":62,"530":63,"531":64,"532":65,"536":66,"537":67,"538":68,"539":69,"544":70,"550":71,"570":72,"575":73,"583":74,"585":75,"586":76,"611":77,"617":78,"623":79,"627":80,"632":81,"634":82,"637":83,"649":84,"657":85,"659":86,"673":87,"687":88,"690":89,"692":90,"699":91,"701":92,"704":93,"706":94,"707":95,"713":96,"717":97,"718":98,"723":99,"740":100,"743":101,"749":102,"753":103,"757":104,"768":105,"771":106,"774":107,"777":108,"784":109,"788":110,"793":111,"794":112,"799":113,"806":114,"809":115,"815":116,"818":117,"825":118,"826":119,"828":120,"833":121,"835":122,"842":123,"847":124,"853":125,"856":126,"864":127,"866":128,"870":129,"879":130,"883":131,"887":132,"893":133,"894":134,"895":135,"896":136,"902":137,"905":138,"907":139,"908":140,"909":141,"914":142,"919":143,"921":144,"926":145,"928":146,"938":147,"940":148,"945":149,"947":150,"960":151,"974":152,"985":153,"988":154,"990":155,"991":156,"994":157,"997":158,"1002":159,"1019":160 }
 }
 },{}],12:[function(require,module,exports){
 module.exports=[
 	{
+		"t": 17,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO."
 	},
 	{
+		"t": 18,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go FIDO."
 	},
 	{
+		"t": 18,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "MSFN shows we may be a little low."
 	},
 	{
+		"t": 19,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 20,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "No problem."
 	},
 	{
+		"t": 30,
 		"position": "CAPCOM",
 		"name": "Charlie Duke",
 		"text": "He's with us on the TIG FLIGHT."
 	},
 	{
+		"t": 33,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 35,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "FLIGHT TELCOM."
 	},
 	{
+		"t": 35,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go TELCOM."
 	},
 	{
+		"t": 37,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "May be able to pick up the steerable if you desire to try. Pitch 212 yaw 37."
 	},
 	{
+		"t": 41,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Pitch 212, yaw 37."
 	},
 	{
+		"t": 45,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "That's affirm FLIGHT."
 	},
 	{
+		"t": 48,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CAPCOM, why don't you try it."
 	},
 	{
+		"t": 49,
 		"position": "CAPCOM",
 		"name": "Charlie Duke",
 		"text": "Roger, we on the OMNIs now?"
 	},
 	{
+		"t": 50,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "That's affirm."
 	},
 	{
+		"t": 51,
 		"position": "CAPCOM",
 		"name": "Charlie Duke",
 		"text": "Okay."
 	},
 	{
+		"t": 72,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Got us locked up there TELCOM?"
 	},
 	{
+		"t": 76,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Okay, it's just real weak FLIGHT."
 	},
 	{
+		"t": 79,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay, how you looking? All your systems go?"
 	},
 	{
+		"t": 81,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "That's affirm FLIGHT."
 	},
 	{
+		"t": 82,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "How about you CONTROL?"
 	},
 	{
+		"t": 83,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We look good."
 	},
 	{
+		"t": 84,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GUIDANCE, you happy?"
 	},
 	{
+		"t": 85,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Go, both systems."
 	},
 	{
+		"t": 86,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "FIDO, how about you?"
 	},
 	{
+		"t": 87,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "We're go"
 	},
 	{
+		"t": 87,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 88,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "We, we're a little low FLIGHT, no problem."
 	},
 	{
+		"t": 89,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 113,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay, all flight controllers, thirty seconds to ignition."
 	},
 	{
+		"t": 123,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Negative, not yet. Stand by."
 	},
 	{
+		"t": 124,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Bob, you're on the loop."
 	},
 	{
+		"t": 143,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "DPS arm."
 	},
 	{
+		"t": 144,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. DPS arm"
 	},
 	{
+		"t": 148,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Ullage."
 	},
 	{
+		"t": 155,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "10 percent TCP."
 	},
 	{
+		"t": 156,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. 10 percent."
 	},
 	{
+		"t": 167,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Lost data FLIGHT."
 	},
 	{
+		"t": 168,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Copy."
 	},
 	{
+		"t": 172,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Going to aft OMNI?"
 	},
 	{
+		"t": 173,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "No. Let's wait until they get through throttling up here."
+		"text": "No. Let's wait until they rough throttling up here."
 	},
 	{
+		"t": 174,
 		"position": "TELCOM",
 		"name": "Don Puddy",
-		"text": "Aft OMNI."
+		"text": "Aft OMNI here. Aft OMNI."
 	},
 	{
+		"t": 177,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Let's wait until they get through throttle up, they should be through about now. Go ahead, try aft OMNI."
+		"text": "Let's wait until they rough throttle up, they should be through about now. Go ahead, try aft OMNI."
 	},
 	{
+		"t": 200,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO, we've lost MSFN"
 	},
 	{
+		"t": 202,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog, we've lost MSFN."
 	},
 	{
+		"t": 203,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "FLIGHT GUIDANCE."
 	},
 	{
+		"t": 204,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go GUIDANCE."
 	},
 	{
+		"t": 205,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "They turn on with 20 foot per second residual that is probably due to downtrack error."
 	},
 	{
+		"t": 209,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. About 20 foot residual due to downtrack error."
 	},
 	{
+		"t": 212,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "I think, and it was in radial."
 	},
 	{
+		"t": 214,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "We have data FLIGHT."
 	},
 	{
+		"t": 216,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 217,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO. GTC go."
 	},
 	{
+		"t": 219,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. GTC go."
 	},
 	{
+		"t": 221,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "FLIGHT CONTROL, we're go. ... looks good."
 	},
 	{
+		"t": 224,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 244,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO. We have negative MSFN."
 	},
 	{
+		"t": 245,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Negative MSFN. You got doppler? FIDO what data do you have?"
 	},
 	{
+		"t": 254,
 		"position": "FIDO",
 		"name": "Jay Greene",
-		"text": "AGS and doppler FLIGHT. We're go."
+		"text": "PGNS and AGS and doppler FLIGHT. We're go."
 	},
 	{
+		"t": 255,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 256,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Restarting MSFN now."
 	},
 	{
+		"t": 258,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. How's the doppler looking?"
 	},
 	{
+		"t": 259,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Looks good FLIGHT."
 	},
 	{
+		"t": 260,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 264,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "DPS thrust 9820."
 	},
 	{
+		"t": 267,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Thrust 9820."
 	},
 	{
+		"t": 269,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Copy FLIGHT."
 	},
 	{
+		"t": 274,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Data's solid."
 	},
 	{
+		"t": 275,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "How you looking GUIDANCE."
 	},
 	{
+		"t": 276,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Hanging out 20 foot per second. Looks good."
 	},
 	{
+		"t": 278,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. No change is what you're saying."
 	},
 	{
+		"t": 280,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "No change. That's downtrack, I know it."
 	},
 	{
+		"t": 282,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 288,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO."
 	},
 	{
+		"t": 289,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go FIDO."
 	},
 	{
+		"t": 289,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "We've reinitialized the filter, we do have an altitude difference."
 	},
 	{
+		"t": 292,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 306,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO. GTC is right on nominal."
 	},
 	{
+		"t": 308,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Roger. GTC nominal."
 	},
 	{
+		"t": 316,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "It's okay FLIGHT. Okay."
 	},
 	{
+		"t": 325,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay CONTROL, let me know when he starts his yaw here."
 	},
 	{
+		"t": 327,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Roger."
 	},
 	{
+		"t": 332,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "How's your MSFN looking now FIDO?"
 	},
 	{
+		"t": 334,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO, we do have the altitude, we're go."
 	},
 	{
+		"t": 337,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay, how about you GUIDANCE."
 	},
 	{
+		"t": 338,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Holding at about 18 foot, we're going to make it I think."
 	},
 	{
+		"t": 340,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 346,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "He thinks you're a little bit long down range."
 	},
 	{
+		"t": 348,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "That's right, I think we can confirm that."
 	},
 	{
+		"t": 349,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "We confirm that."
 	},
 	{
+		"t": 350,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 354,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay all flight controllers, 30 seconds to next GO/NO-GO."
+		"text": "Okay all flight controllers, 30 seconds to next Go NoGo."
 	},
 	{
+		"t": 360,
 		"position": "TELCOM",
 		"name": "Don Puddy",
-		"text": "LM downlink FLIGHT."
+		"text": "LOS LM downlink FLIGHT."
 	},
 	{
+		"t": 381,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay all flight controllers, I'm going around the horn. Make your GO/NO-GO's based on the data you had prior to LOS. I see we got it back. Give you another few seconds."
+		"text": "Okay all flight controllers, I'm going around the horn. Make your Go NoGos based on the data you had prior to LOS. I see we got it back. Give you another few seconds."
 	},
 	{
+		"t": 388,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We're going FLIGHT."
 	},
 	{
+		"t": 390,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay, RETRO"
 	},
 	{
+		"t": 391,
 		"position": "RETRO",
 		"name": "Charles Deiterich",
 		"text": "Go"
 	},
 	{
+		"t": 391,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "FIDO"
 	},
 	{
+		"t": 391,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Go."
 	},
 	{
+		"t": 392,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GUIDANCE"
 	},
 	{
+		"t": 392,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Go."
 	},
 	{
+		"t": 393,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CONTROL"
 	},
 	{
+		"t": 393,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Go."
 	},
 	{
+		"t": 394,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "TELCOM"
 	},
 	{
+		"t": 394,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Go."
 	},
 	{
+		"t": 394,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GNC"
 	},
 	{
+		"t": 395,
 		"position": "GNC",
 		"name": "Briggs Willoughby",
 		"text": "Go."
 	},
 	{
+		"t": 395,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "EECOM"
 	},
 	{
+		"t": 396,
 		"position": "EECOM",
-		"name": "John Aaron",
+		"name": "John W. Aaron",
 		"text": "Go."
 	},
 	{
+		"t": 396,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "SURGEON."
 	},
 	{
+		"t": 397,
 		"position": "SURGEON",
 		"name": "John Zieglschmid",
 		"text": "Go."
 	},
 	{
+		"t": 397,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CAPCOM, we're go to continue PDI."
 	},
 	{
+		"t": 404,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Did you get that TELCOM, ED Batts are good to go."
+		"text": "Did you at TELCOM, ED Batts are good to go."
 	},
 	{
+		"t": 406,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Roger FLIGHT."
 	},
 	{
+		"t": 412,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay everybody, let's hang tight and look for landing radar."
 	},
 	{
+		"t": 415,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "FLIGHT GUIDANCE."
 	},
 	{
+		"t": 416,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go GUIDANCE."
 	},
 	{
+		"t": 416,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
-		"text": "We'll need that landing radar by 18,000 with this down track"
+		"text": "We'll need that landing radar by 18 thousand with this down track"
 	},
 	{
+		"t": 419,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 420,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "On the PGNS"
 	},
 	{
+		"t": 421,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog, I copy GUIDANCE."
 	},
 	{
+		"t": 422,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Okay."
 	},
 	{
+		"t": 442,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay we got data back."
 	},
 	{
+		"t": 443,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Radar, FLIGHT looks good."
 	},
 	{
+		"t": 444,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 445,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
-		"text": "2,000 feet."
+		"text": "2000 feet."
 	},
 	{
+		"t": 446,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Rog, 2,000 ft. DELTA-H. Let me know when he accepts it GUIDANCE."
+		"text": "Rog, 2000 ft. DELTA-H. Let me know when he accepts it GUIDANCE."
 	},
 	{
+		"t": 452,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Roger."
 	},
 	{
+		"t": 467,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 468,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Looks good FLIGHT. Looks good."
 	},
 	{
+		"t": 470,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Is he accepting it GUIDANCE?"
 	},
 	{
+		"t": 474,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Standby."
 	},
 	{
+		"t": 477,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Looks like its converging."
 	},
 	{
+		"t": 481,
 		"position": "GUIDANCE2",
 		"name": "Granville Paules",
-		"text": "1202 alarm."
+		"text": "1202 Alarm."
 	},
 	{
+		"t": 486,
 		"position": "CAPCOM",
 		"name": "Charlie Duke",
 		"text": "Yeah, it's the same thing we had."
 	},
 	{
+		"t": 488,
 		"position": "RETRO",
 		"name": "Charles Deiterich",
 		"text": "FLIGHT RETRO."
 	},
 	{
+		"t": 489,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go RETRO."
 	},
 	{
+		"t": 489,
 		"position": "RETRO",
 		"name": "Charles Deiterich",
 		"text": "Throttle down 6 plus 25."
 	},
 	{
+		"t": 491,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "6 plus 25."
 	},
 	{
+		"t": 493,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "We're go on that flight."
 	},
 	{
+		"t": 494,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "We're go on that alarm?"
 	},
 	{
+		"t": 496,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "If it doesn't reoccur we'll be go."
 	},
 	{
+		"t": 498,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 499,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "He's taking in a DELTA-H now."
 	},
 	{
+		"t": 500,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Rog. Did you get the throttle down CAPCOM? Rog."
+		"text": "Rog. Did you e throttle down CAPCOM? Rog."
 	},
 	{
+		"t": 508,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO, converging on DELTA-H."
 	},
 	{
+		"t": 510,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 511,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "FLIGHT CONTROL we have velocity."
 	},
 	{
+		"t": 512,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 521,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Okay we'll monitor is his DELTA-H FLIGHT."
 	},
 	{
+		"t": 523,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 524,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
-		"text": "I think that's what he's getting at."
+		"text": "I think that's what he's g at."
 	},
 	{
+		"t": 525,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay."
 	},
 	{
+		"t": 528,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "And his alarms."
 	},
 	{
+		"t": 529,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 529,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "DELTA-H is beautiful."
 	},
 	{
+		"t": 534,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay all flight controllers, hang tight. Should be throttling down pretty shortly."
 	},
 	{
+		"t": 540,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We confirm throttle down."
 	},
 	{
+		"t": 541,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "You confirm throttle down."
 	},
 	{
+		"t": 549,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "How's it looking GUIDANCE?"
 	},
 	{
+		"t": 553,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "You want him to stay out of 68."
 	},
 	{
+		"t": 555,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Negative FLIGHT. I just said we'll monitor the alarms."
 	},
 	{
+		"t": 558,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay."
 	},
 	{
+		"t": 558,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Okay."
 	},
 	{
+		"t": 559,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "FLIGHT CONTROL."
 	},
 	{
+		"t": 560,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go."
 	},
 	{
+		"t": 560,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Everything looks good."
 	},
 	{
+		"t": 561,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "FLIGHT GUIDANCE."
 	},
 	{
+		"t": 562,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go GUIDANCE."
 	},
 	{
+		"t": 562,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "The noun 68 now well may be the problem here, and we can monitor DELTA-H."
 	},
 	{
+		"t": 566,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 568,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO."
 	},
 	{
+		"t": 568,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go FIDO."
 	},
 	{
+		"t": 568,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Looking real good."
 	},
 	{
+		"t": 570,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog, FIDO good."
 	},
 	{
+		"t": 575,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "TELCOM how you looking?"
 	},
 	{
+		"t": 576,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Looking good FLIGHT."
 	},
 	{
+		"t": 577,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 583,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Going to try the steerable again Don."
 	},
 	{
+		"t": 585,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Copy FLIGHT."
 	},
 	{
+		"t": 589,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "We're on steerable Don?"
 	},
 	{
+		"t": 590,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "That's affirmative FLIGHT and it's holding in there pretty good."
 	},
 	{
+		"t": 592,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Okay everybody hang tight, it's 7 and a half minutes."
 	},
 	{
+		"t": 596,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "FLIGHT GUIDANCE his landing radar is fixed, the velocity is beautiful."
 	},
 	{
+		"t": 599,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 600,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "FLIGHT CONTROL."
 	},
 	{
+		"t": 601,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go CONTROL."
 	},
 	{
+		"t": 601,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Descent 2 fuel."
 	},
 	{
+		"t": 602,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Descent 2 fuel crit."
 	},
 	{
+		"t": 604,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Descent 2 fuel only."
 	},
 	{
+		"t": 607,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Fuel-"
 	},
 	{
+		"t": 607,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Fuel critical. He didn't want to say critical."
 	},
 	{
+		"t": 610,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Descent 2 fuel."
 	},
 	{
+		"t": 621,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO, looking real good."
 	},
 	{
+		"t": 622,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 630,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Got an estimated, what's our TGO GUIDANCE?"
 	},
 	{
+		"t": 632,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "30 seconds to P64."
 	},
 	{
+		"t": 634,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. About 30 seconds. Okay we still got landing radar GUIDANCE?"
 	},
 	{
+		"t": 639,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Affirm."
 	},
 	{
+		"t": 640,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay, has it converged?"
 	},
 	{
+		"t": 641,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Yes it looks beautiful."
 	},
 	{
+		"t": 642,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Has it converged?"
 	},
 	{
+		"t": 642,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Yes."
 	},
 	{
+		"t": 643,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay."
 	},
 	{
+		"t": 645,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO we're go. Look real good."
 	},
 	{
+		"t": 647,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog FIDO."
 	},
 	{
+		"t": 659,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay they got 64."
 	},
 	{
+		"t": 663,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "TGO's go."
 	},
 	{
+		"t": 664,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog, TGO's go."
 	},
 	{
+		"t": 667,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We have position 2 on their alarm"
 	},
 	{
+		"t": 669,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Rog. Position 2. All flight controllers, 20 seconds to GO/NO-GO for landing."
+		"text": "Rog. Position 2. All flight controllers, 20 seconds to Go NoGo for landing."
 	},
 	{
+		"t": 683,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay all flight controllers, GO/NO-GO for landing. RETRO"
+		"text": "Okay all flight controllers, Go NoGo for landing. RETRO"
 	},
 	{
+		"t": 686,
 		"position": "RETRO",
 		"name": "Charles Deiterich",
 		"text": "Go."
 	},
 	{
+		"t": 686,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "FIDO."
 	},
 	{
+		"t": 686,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Go."
 	},
 	{
+		"t": 687,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GUIDANCE."
 	},
 	{
+		"t": 687,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Go."
 	},
 	{
+		"t": 687,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CONTROL."
 	},
 	{
+		"t": 688,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Go."
 	},
 	{
+		"t": 688,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "TELCOM."
 	},
 	{
+		"t": 689,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Go."
 	},
 	{
+		"t": 689,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GNC."
 	},
 	{
+		"t": 689,
 		"position": "GNC",
 		"name": "Briggs Willoughby",
 		"text": "Go."
 	},
 	{
+		"t": 690,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "EECOM."
 	},
 	{
+		"t": 690,
 		"position": "EECOM",
-		"name": "John Aaron",
+		"name": "John W. Aaron",
 		"text": "Go."
 	},
 	{
+		"t": 690,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "SURGEON."
 	},
 	{
+		"t": 691,
 		"position": "SURGEON",
 		"name": "John Zieglschmid",
 		"text": "Go."
 	},
 	{
+		"t": 691,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CAPCOM, we're go for landing."
 	},
 	{
+		"t": 708,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "1201 alarm."
+		"text": "1201 Alarm."
 	},
 	{
+		"t": 708,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
-		"text": "Same type, we're go flight."
+		"text": "Same type we're go for flight."
 	},
 	{
+		"t": 710,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay we're go."
 	},
 	{
+		"t": 712,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "FLIGHT FIDO right on real good."
 	},
 	{
+		"t": 714,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 719,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "How's our margin looking Bob?"
 	},
 	{
+		"t": 721,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "He looks okay."
 	},
 	{
+		"t": 722,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay"
 	},
 	{
+		"t": 722,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We got four and a half."
 	},
 	{
+		"t": 723,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 729,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Altitute up in the AGS, looks good."
 	},
 	{
+		"t": 730,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 742,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "How you doing CONTROL?"
 	},
 	{
+		"t": 744,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We look good here FLIGHT."
 	},
 	{
+		"t": 745,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Alright, how about you TELCOM?"
 	},
 	{
+		"t": 746,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Go."
 	},
 	{
+		"t": 746,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GUIDANCE you happy?"
 	},
 	{
+		"t": 747,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Go"
 	},
 	{
+		"t": 747,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "FIDO?"
 	},
 	{
+		"t": 748,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Go."
 	},
 	{
+		"t": 763,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Attitude hold."
 	},
 	{
+		"t": 764,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay ATT hold."
 	},
 	{
+		"t": 767,
 		"position": "CAPCOM",
 		"name": "Charlie Duke",
 		"text": "I think we better be quiet, FLIGHT."
 	},
 	{
+		"t": 768,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Okay the only call outs from now on will be fuel."
 	},
 	{
+		"t": 777,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "P66."
 	},
 	{
+		"t": 815,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay Bob I'll be standing by for your call outs shortly."
 	},
 	{
+		"t": 839,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Low level."
 	},
 	{
+		"t": 840,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Low level."
 	},
 	{
+		"t": 858,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Standby for 60."
 	},
 	{
+		"t": 860,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 861,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "60."
 	},
 	{
+		"t": 862,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "60 seconds."
 	},
 	{
+		"t": 886,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Standby for 30."
 	},
 	{
+		"t": 891,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "30."
 	},
 	{
+		"t": 891,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "30 seconds."
 	},
 	{
+		"t": 917,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We've had shut down."
 	},
 	{
+		"t": 921,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay everybody T1."
+		"text": "Okay everybody T1, standby for T1."
 	},
 	{
+		"t": 952,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay all flight controllers, about 45 seconds to T1 STAY/NO-STAY."
+		"text": "Okay all flight controllers, about 45 seconds to T1 Stay NoStay."
 	},
 	{
+		"t": 956,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "FLIGHT, 14 plus 2 looks beautiful"
 	},
 	{
+		"t": 958,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 967,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Okay keep the chatter down in this room."
 	},
 	{
+		"t": 971,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Pyros are armed FLIGHT."
 	},
 	{
+		"t": 972,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 974,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay T1 to STAY/NO-STAY. RETRO."
+		"text": "Okay T1 to Stay NoStay. RETRO."
 	},
 	{
+		"t": 977,
 		"position": "RETRO",
 		"name": "Charles Deiterich",
 		"text": "Stay."
 	},
 	{
+		"t": 977,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "FIDO."
 	},
 	{
+		"t": 978,
 		"position": "FIDO",
 		"name": "Jay Greene",
 		"text": "Stay."
 	},
 	{
+		"t": 978,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GUIDANCE."
 	},
 	{
+		"t": 978,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "Stay."
 	},
 	{
+		"t": 979,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CONTROL."
 	},
 	{
+		"t": 979,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "Stay."
 	},
 	{
+		"t": 980,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "TELCOM."
 	},
 	{
+		"t": 980,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Stay."
 	},
 	{
+		"t": 980,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "GNC."
 	},
 	{
+		"t": 981,
 		"position": "GNC",
 		"name": "Briggs Willoughby",
 		"text": "Stay."
 	},
 	{
+		"t": 981,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "EECOM."
 	},
 	{
+		"t": 982,
 		"position": "EECOM",
-		"name": "John Aaron",
+		"name": "John W. Aaron",
 		"text": "Stay."
 	},
 	{
+		"t": 982,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "SURGEON."
 	},
 	{
+		"t": 983,
 		"position": "SURGEON",
 		"name": "John Zieglschmid",
 		"text": "Stay."
 	},
 	{
+		"t": 983,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "CAPCOM, we're stay for T1."
 	},
 	{
+		"t": 990,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "FLIGHT CONTROL."
 	},
 	{
+		"t": 991,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Go CONTROL."
 	},
 	{
+		"t": 991,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "We're venting OX."
 	},
 	{
+		"t": 992,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog. Venting OX."
 	},
 	{
+		"t": 1001,
 		"position": "TELCOM",
 		"name": "Don Puddy",
 		"text": "Pyros safe."
 	},
 	{
+		"t": 1002,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog."
 	},
 	{
+		"t": 1047,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
-		"text": "Okay all flight controllers, 4 more minutes to T2 STAY/NO-STAY."
+		"text": "Okay all flight controllers, 4 more minutes to T2 Stay NoStay."
 	},
 	{
+		"t": 1051,
 		"position": "GUIDANCE",
 		"name": "Steve Bales",
 		"text": "P68 we have a noun 43."
 	},
 	{
+		"t": 1052,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog, you have landing verification."
 	},
 	{
+		"t": 1059,
 		"position": "CONTROL",
 		"name": "Bob Carlton",
 		"text": "FLIGHT CONTROL we are venting fuel"
 	},
 	{
+		"t": 1061,
 		"position": "FLIGHT",
 		"name": "Gene Kranz",
 		"text": "Rog, venting fuel."
