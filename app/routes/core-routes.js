@@ -5,7 +5,7 @@ import FMttM from '../js/conductor.js';
 
 // React.renderToString takes your component and generates rendered markup. SEO friendliness all the way
 module.exports = function(app) {
-	app.get('/fly-me-to-the-moon/', function(req, res) {
+	app.get('/', function(req, res) {
 		res.render('index.ejs', {
 			reactTitle: JsonData.home.title,
 			reactDescription: JsonData.home.description,
@@ -13,7 +13,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/fly-me-to-the-moon/:section', function(req, res) {
+	app.get('/:section', function(req, res) {
 		res.render('index.ejs', {
 			reactTitle: JsonData[req.params.section].title,
 			reactDescription: JsonData[req.params.section].description,
