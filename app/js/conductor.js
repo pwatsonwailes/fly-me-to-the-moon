@@ -48,7 +48,7 @@ export default class FMttM extends React.Component {
 		this.setState(JsonData[section]);
 
 		if (typeof updateHistory === 'undefined' || updateHistory !== false)
-			History.pushState(null, JsonData[section].title + ' | History of Modern Humanity | Builtvisible', '/fly-me-to-the-moon/' + section);
+			History.pushState(null, JsonData[section].title + ' | Fly Me to the Moon', '/fly-me-to-the-moon/' + section);
 	}
 
 	render() {
