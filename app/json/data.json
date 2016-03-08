@@ -9,7 +9,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
+				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
 			},
 			{
 				"type": "Markdown",
@@ -22,14 +22,14 @@
 	},
 	"race-to-space": {
 		"title": "The Race to Space",
-		"description": "asdf",
+		"description": "The journey from the V-2 to Sputnik",
 		"content": [
 			{
 				"type": "Markdown",
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -45,7 +45,7 @@
 				"id": "rocket_engine",
 				"caption": "A rusty V-2 rocket engine in the underground production facilities at Dora-Mittelbau, Nordhausen",
 				"alt": "A rusty V-2 rocket engine",
-				"src": "/fly-me-to-the-moon/piece_images/v-2_Mittelbau_engine.jpg"
+				"src": "/fly-me-to-the-moon/piece_images/V-2_Mittelbau_engine.jpg"
 			},
 			{
 				"type": "Markdown",
@@ -104,14 +104,14 @@
 	},
 	"man-in-heavens": {
 		"title": "Man in the Heavens",
-		"description": "asdf",
+		"description": "Putting a man in space and the start of the space race",
 		"content": [
 			{
 				"type": "Markdown",
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -177,14 +177,14 @@
 	},
 	"challenge-set": {
 		"title": "The Challenge Set",
-		"description": "asdf",
+		"description": "Learing how to put a man on the moon",
 		"content": [
 			{
 				"type": "Markdown",
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -239,14 +239,14 @@
 	},
 	"man-on-the-moon": {
 		"title": "Man on the Moon",
-		"description": "asdf",
+		"description": "Man travels to the moon and returns again",
 		"content": [
 			{
 				"type": "Markdown",
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -491,7 +491,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -552,14 +552,14 @@
 	},
 	"space-stations": {
 		"title": "Space Stations & Robots",
-		"description": "asdf",
+		"description": "The space race's focus changes from the moon to manned space stations, the Space Shuttle, Hubble and the modern space era",
 		"content": [
 			{
 				"type": "Markdown",
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -703,14 +703,14 @@
 	},
 	"beyond-earth": {
 		"title": "Beyond the Earth",
-		"description": "asdf",
+		"description": "Private industry compliments goverment as the 21st century's means of space exploration",
 		"content": [
 			{
 				"type": "Markdown",
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/fly-me-to-the-moon/\"><img src=\"/fly-me-to-the-moon/imgs/logo.png\" alt=\"Home\"></a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li><li id=\"wikipedia\"><a href=\"https://www.wikipedia.org/\">W<small>ikipedi</small>a</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li id=\"reactjs\"><a href=\"http://facebook.github.io/react/\"><img src=\"/fly-me-to-the-moon/imgs/react-logo.svg\" alt=\"React.js logo\"> React</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
