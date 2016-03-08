@@ -783,5 +783,18 @@
 				"content": "The era of the the commercial, private space race had arrived.\n\n### The Future\n\nWhere we go from here, no-one really knows. SpaceX have a stated goal of putting humans on Mars, and starting limited colonisation. Blue Origin have been more abstract and vague with their goals, but they appear to be aiming in a similar direction, with talk of space tourism and exploration, and aiming to put the price down far enough that it would be broadly attainable. Exactly how this will be achieved remains to be seen.\n\nMeanwhile, far above us, the rovers on Mars will continue to do good work for years to come, bringing ever more knowledge about the most likely target for the first human settlement beyond Earth. Elsewhere, other probes will reach to the planets and comets beyond us. The Chinese space program now reaches for the Moon, and if they get there, they would become only the second nation to do so, after more than four or possibly even five decades of our absence.\n\nThe ISS meanwhile is due to continue until at least 2024, and in all likelihood on further than that. What may replace it though is still a matter of some debate, although it seems unlikely that the answer will be \"nothing\". At NASA, work is well underway on the next generation of heavy lift vehicle, called the Space Launch System, or SLS for short. Designed to be upgraded over time, it will likely eventually have the power to conduct interplanetary scale missions. NASA, like SpaceX, have a stated goal of wanting to put people on Mars, with the first planned mission being a lunar orbit in 2018, and sending people to an asteroid to be captured and placed in lunar orbit ten years later.\n\nIt's impossible to say what other companies will join this modern era of space exploration, or where it will lead. It seems certain now that at some point we will venture at least as far as Mars. Beyond that, missions to the asteroid belt are certainly far off, although not impossible. One thing's for certain though; whilst today's space missions may not have the fevered rush of excitement that those of the late 60's did, the future for the exploration of our universe is no less vital, and moving faster than ever."
 			}
 		]
+	},
+	"credits": {
+		"title": "Credits",
+		"description": "With thanks to...",
+		"content": [
+			{
+				"type": "Markdown",
+				"className": "content",
+				"key": "1",
+				"id": "1",
+				"content": "This has been built with public assets provided by:\n\n* Wikimedia Commons\n* [Project Apollo Archive](https://www.flickr.com/photos/projectapolloarchive/)\n* NASA's public domain resources\n* Various YouTube accounts (see individial videos for details)\n\nThanks also to all who looked up and wondered, and then made it possible.\n\nPer aspera ad astra."
+			}
+		]
 	}
 }
