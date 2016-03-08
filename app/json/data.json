@@ -9,7 +9,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
+				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
 			},
 			{
 				"type": "Markdown",
@@ -29,7 +29,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -111,7 +111,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -191,7 +191,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -253,7 +253,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -498,7 +498,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -566,7 +566,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
@@ -717,7 +717,7 @@
 				"className": "",
 				"key": "header",
 				"id": "header",
-				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon Home</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
+				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
 				"type": "Markdown",
