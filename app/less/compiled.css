@@ -2127,6 +2127,12 @@ blockquote {
 }
 #main_header #powered_by ul li {
   margin-bottom: 0;
+  margin-left: 1em;
+}
+#main_header #powered_by ul li a {
+  border-bottom: none;
+  background-image: none;
+  color: #fff;
 }
 #socialButtons {
   -webkit-transition: all 0.5s;
