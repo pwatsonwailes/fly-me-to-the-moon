@@ -17,7 +17,7 @@ Common Mixins
 /*
 Grid rules & column-widths in variables, in ems
 */
-@import url(//fonts.googleapis.com/css?family=Amiri:400italic|Open+Sans:300|Crimson+Text|Inconsolata:400,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300|Inconsolata:400,700|Vollkorn:400,400italic,700);
 @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css);
 .grid {
   padding-right: 2rem;
@@ -1944,6 +1944,7 @@ form label,
 form input,
 tspan {
   font-family: georgia, 'times new roman', times, serif;
+  font-size: 21px;
 }
 table {
   font-size: 14px;
@@ -2019,19 +2020,6 @@ form input[type=number]:focus {
 form input[type=submit] {
   text-transform: capitalize;
 }
-p,
-ul,
-ol,
-dl,
-dialog,
-blockquote,
-address,
-td,
-th,
-label {
-  font-family: Roboto, sans;
-  font-size: 21px;
-}
 a {
   color: #333;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMjAlIiBzdG9wLWNvbG9yPSJyZ2IoMCwgMCwgMCkiIHN0b3Atb3BhY2l0eT0iMC4zIi8+PHN0b3Agb2Zmc2V0PSI5NSUiIHN0b3AtY29sb3I9InJnYigwLCAwLCAwKSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
@@ -2068,7 +2056,7 @@ blockquote {
 }
 #heading > h1 #lower_title {
   font-size: 28px;
-  font-family: 'Amiri';
+  font-family: 'Vollkorn';
   font-style: italic;
   position: relative;
   top: -1em;
@@ -2131,6 +2119,7 @@ blockquote {
 #main_header #logo_container p a {
   border-bottom: none;
   background-image: none;
+  color: #fff;
 }
 #main_header #powered_by ul {
   margin-bottom: 0;
@@ -2145,23 +2134,13 @@ blockquote {
 #main_header #powered_by ul #reactjs a {
   background-image: none;
   color: #00d8ff;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #main_header #powered_by ul #reactjs a img {
   height: 25px;
   position: relative;
   top: 7px;
   width: 25px;
-}
-#main_header #powered_by ul #wikipedia a {
-  background-image: none;
-  color: #fff;
-  font-family: 'Crimson+Text';
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-#main_header #powered_by ul #wikipedia a small {
-  font-size: 0.8em;
 }
 #socialButtons {
   -webkit-transition: all 0.5s;
@@ -2473,7 +2452,7 @@ blockquote {
   text-transform: uppercase;
 }
 .content h2 {
-  font-family: 'Amiri';
+  font-family: 'Vollkorn';
   font-size: 23px;
   font-style: italic;
   line-height: 1.22;

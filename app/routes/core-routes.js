@@ -8,6 +8,7 @@ module.exports = function(app) {
 	app.get('/', function(req, res) {
 		res.render('index.ejs', {
 			reactTitle: JsonData.home.title,
+			reactSection: '',
 			reactDescription: JsonData.home.description,
 			reactOutput: ReactDOM.renderToString(React.createElement(FMttM, JsonData.home ))
 		});
@@ -16,6 +17,7 @@ module.exports = function(app) {
 	app.get('/:section', function(req, res) {
 		res.render('index.ejs', {
 			reactTitle: JsonData[req.params.section].title,
+			reactSection: req.params.section,
 			reactDescription: JsonData[req.params.section].description,
 			reactOutput: ReactDOM.renderToString(React.createElement(FMttM, JsonData[req.params.section] ))
 		});
