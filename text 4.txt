@@ -2,11 +2,11 @@
 
 And now, on March 27, while on a routine training flight from Chkalovsky Air Base, Yuri Gagarin and flight instructor Vladimir Seryogin are killed in a MiG-15 crash near the town of Kirzhach. 
 
-It's the latest in a series of blows which the Soviet team doesn't need. The N1-L3 project is beset with issues, and it's become clear they aren't even going to be able to execute on a plan to perform a lunar orbit before America does. Sergei Korolev's dream of a Russian on the moon lays in tatters.
+It was the latest in a series of blows which the Soviet team didn't need. The N1-L3 project was beset with issues, and it had become clear they wouldn't be capable of performing a lunar orbit before America. Sergei Korolev's dream of a Russian on the moon lay in tatters.
 
-Meanwhile, in America, the Apollo 4 mission has seen the first test of the full Saturn v. Launched on Novermber 9, it's proved that the rocket works as it was intended. Further, on January 22 of 1968, the new Apollo lunar module is sent up and tested in the Apollo 5 mission. In April, another test mission is run, named Apollo 6. The missions have suffered huge delays, but even so, it looks likely that Kennedy's dream of man on the moon before the decade is out will be met, if only just.
+Meanwhile in America, the Apollo 4 mission marked the first full test of the completed Saturn v. Launched on Novermber 9, it proved the potential of the huge system. Then on January 22 1968, the new Apollo lunar module was sent up and tested as part of the Apollo 5 mission, followed by Apollo 6 in April. The Apollo program had suffered huge delays, but even so, it looked increasingly likely that Kennedy's dream of man on the moon before the end of the decade would be met, if only just.
 
-In the aftermath of Apollo 1, changes are being made, and the team works on trying to build as much safety and solidarity into the system as possible. For example, throughout the Mercury and Gemini programs, Guenter Wendt, who'd been an engineer for McDonnell Aircraft, had been leader of the spacecraft launch pad teams, starting with the flight of Ham the chimpanzee, seven years earlier. His position as the person whom the astronauts would see last meant that he'd come to be known as something of a good luck totem to the crews. He therefore had with ultimate responsibility for condition of the spacecraft at launch. Upon discovering that one engineer intended to personally make a spacecraft change, with or without Wendt's permission, Wendt called security and had him removed.
+In the aftermath of Apollo 1, changes were made to the systems on the Command/Service Module and the team worked on trying to build as much safety and solidarity into the system as possible. This went beyond simple engineering and into changes in personnel. On that, throughout the Mercury and Gemini programs, Guenter Wendt, who'd been an engineer for McDonnell Aircraft, had been leader of the spacecraft launch pad teams, starting with the flight of Ham the chimpanzee seven years earlier. His role meant he was the person whom the astronauts would see, and as such he'd become something of a good luck totem to the crews. He also had ultimate responsibility for condition of the spacecraft at launch. Upon discovering that one engineer intended to personally make a spacecraft change, with or without his permission, Wendt called security and had him removed.
 
 > The guy comes up on the elevator and he says, 'You like me to put handcuffs on you, or are you going to go by yourself?' The engineer dropped his jaw, but he left. Maybe this system is wrong, but I have had pretty good success with it. If I don't do a good job, I get out. I can't compromise.
 
@@ -15,9 +15,9 @@ In the aftermath of Apollo 1, changes are being made, and the team works on tryi
 <figcaption>Guenter Wendt with Commander Walter Schirra</figcaption>
 </figure>
 
-His diligence, care and knowledge had earned the astronauts' respect and admiration. On Apollo 1 though, the contractor for building spacecraft for NASA had changed from McDonnell to North American Rockwell, so Wendt was not the pad leader. After the accident, several people expressed that they wished Wendt that he had been the pad leader that day, as they felt he might have caught the fatal problem. Wendt himself didn't believe it. On the missions since then though, other people had taken the role. And whilst the other astronauts might have been OK with someone else, Walter Schirra, Commander of the Apollo 7 mission, wanted his man back.
+His diligence, care and knowledge had earned the astronauts' respect and admiration. On Apollo 1 though, the contractor for building spacecraft for NASA had changed from McDonnell to North American Rockwell, so Wendt was not the pad leader at that time. After the accident, several people expressed that they wished Wendt that he had been the pad leader that day, as they felt he might have caught the fatal problem. Wendt himself didn't believe it. On the missions since then though, other people had taken the role. And whilst the other astronauts might have been OK with someone else, Walter Schirra, Commander of the Apollo 7 mission, wanted his man back.
 
-Schirra got Deke Slayton, one of the original Mercury Seven astronauts and now Schirra's boss to persuade North American to hire Wendt away from McDonnell. Then Schirra personally lobbied North American's launch operations manager to change Wendt's shift from midnight to day, so he could be pad the leader for Apollo 7. Not only did he get his way, but Wendt went on to remain as Pad Leader for the rest of the Apollo program, and on through the Skylab and ASTP missions. He'd continue to work at the Kennedy Space Center until 1989.
+Schirra got Deke Slayton, one of the original Mercury Seven astronauts and now Schirra's boss to persuade North American to hire Wendt away from McDonnell. Then Schirra personally lobbied North American's launch operations manager to change Wendt's shift from midnight to day, so he could be pad the leader for Apollo 7. Not only did he get his way, but Wendt went on to remain as Pad Leader for the rest of the Apollo program, through the Skylab and then on to later missions. He'd continue to work at the Kennedy Space Center until 1989.
 
 Apollo 7 launched October 11, having been given it's blessing by Wendt.
 
@@ -31,11 +31,9 @@ apollo_7_hasselblad_5.jpg
 
 ### The First Lunar Missions
 
-Change was happening at all levels of NASA in 1968. Administrator of NASA, James Webb was a Democrat who had been closely associated with the President Johnson. However, with the Apollo 1 disaster, and Johnson choosing not to run for re-election, he decided to step down as administrator. The next President, which would in January of the next year be Republican Richard Nixon, would therefore be free to choose his own administrator.
+Change was the order of the day throughout NASA in 1968. Administrator of NASA James Webb was a Democrat who had been closely associated with the President Johnson. However, with the Apollo 1 disaster, and Johnson choosing not to run for re-election, he decided to step down. The next President (which would in January of the next year be Republican Richard Nixon) would therefore be free to choose his own administrator.
 
-Whilst still in his position though, Webb had been informed by the CIA that it appeared the Soviet Union was developing its own rocket for a manned lunar mission. They'd obtained photographs of the N1-L3, and knew what it would be capable of if it worked. As a result, he directed NASA to prepare Apollo 8 for a possible lunar orbital mission that year. Webb himself though didn't believe the Soviet rocket would fly, and felt that their political issues would ensure that the US was able to get to the moon first. These views were doubted in some quarters, however, later revelations about the N1 would end up proving Webb's conclusions. Nevertheless, in October 1968, just before the first manned flight in the Apollo program, Webb left NASA.
-
-Finally, in December, America drove the final nail into the coffin of the dreams of the Soviet team, with the launch of Apollo 8. For Wernher von Braun, the man who imagined up the mighty Saturn V, the dream of putting a man of the moon was about to come a whole lot closer.
+Whilst still in his position though, Webb had been informed by the CIA that it appeared the Soviet Union was developing its own rocket for a manned lunar mission. They'd obtained photographs of the N1-L3, and knew what it would be capable of if it worked. As a result, he directed NASA to prepare Apollo 8 for a possible lunar orbital mission that year. Webb himself though didn't believe the Soviet rocket would fly, and felt that their political issues would ensure that the US was able to get to the moon first. These views were doubted in some quarters, however, later revelations about the N1 would end up proving Webb's conclusions. Nevertheless, in October 1968, just before the first manned flight in the Apollo program, Webb left NASA. Two months later, NASA drove the final nail into the coffin of the dreams of the Soviet team, with the launch of Apollo 8. For Wernher von Braun, the man who imagined up the mighty Saturn V, the dream of putting a man of the moon was had come a whole lot closer.
 
 <figure class=\"media_widget\">
 <img src=\"/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg\" alt=\"Apollo 8 launch\">
@@ -48,14 +46,14 @@ It's December 21 1968, and Apollo 8 sits on the pad at the Kennedy Space Center.
 
 The upshot is that the new mission, if successful, will allow the team to test the lunar landing procedures that would otherwise have to wait until Apollo 10, the last mission before the planned lunar landing. It'll also mean almost certainly beating the Soviets to a circumlunar flight, providing a huge boost in morale. There was a lot of pressure to get a human mission to the moon first, as in September the Soviet team had launched the Zond 5 with a Proton-K rocket, which had taken amongst other things two Russian tortoises around the moon and back again. The fear was that with that success, surely a manned mission couldn't be far off.
 
-The night before the launch, the Apollo 8 crew received a visit from Charles Lindbergh and his wife Anne at Kennedy Space Center. They talked about how, before his legendary 1927 flight aboard the Spirit of St. Louis from America to France, Lindbergh had used a piece of string to measure the distance from New York City to Paris on a globe to calculate the fuel needed for the flight. Saturn V would burn tens times the amount Lindbergh had used every second. The next day, from a dune near the launch site, the Lindberghs settled in to watch the launch of Apollo 8.
+The night before the launch, the Apollo 8 crew received a visit from Charles Lindbergh and his wife Anne at Kennedy Space Center. They talked about how, before his legendary 1927 flight aboard the Spirit of St. Louis from America to France, Lindbergh had used a piece of string to measure the distance from New York City to Paris on a globe to calculate the fuel needed for the flight. Incredibly, it had been accurate. Saturn V would burn tens times the amount Lindbergh had used for that entire flight every second. The next day, from a dune near the launch site, the Lindberghs settled in to watch the launch of Apollo 8.
 
 <figure class=\"media_widget\">
 <img src=\"/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg\" alt=\"Apollo 8 being taken to the pad\">
 <figcaption>The Apollo 8 Saturn V rocket on the Mobile Launcher Platform, being moved to launch</figcaption>
 </figure>
 
-Apollo 8 launched at 07:51am local time on December 21, and blasted off into space, reaching it mere minutes later. The previous series of rockets used by NASA to put people in to space, the Titan II, had been notoriously uncomfortable at launch, with harsh vibration and huge noise. The design of Saturn V promised a less jarring ascent, having designed the system specifically for the Apollo program rather than adapting an existing missile for the task. Lovell and Borman, both who had both flown on the Titan II, were not disappointed. During liftoff, they reported feeling nothing but a dull, muted rumble in the distance.
+The mighty rocket launched at 07:51am local time on December 21 and blasted off into space, reaching it mere minutes later. The previous series of rockets used by NASA to put people in to space, the Titan II, had been notoriously uncomfortable at launch, with harsh vibration and huge noise. The design of Saturn V promised a less jarring ascent, having designed the system specifically for the Apollo program rather than adapting an existing missile for the task. Lovell and Borman, both who had both flown on the Titan II, were not disappointed. During liftoff, they reported feeling nothing but a dull, muted rumble in the distance.
 
 YouTube FzCsDVfPQqk
 
@@ -91,7 +89,7 @@ Then, on December 24, they began a second television transmission. Borman introd
 
 YouTube njpWalYduU4
 
-With that done, all that was left to do was to leave the lunar orbit, return to Earth, and land. Two and a half days later, following a surprise Christmas dinner: a real turkey with stuffing, in the same kind of pack that the troops in Vietnam received, arranged by Deke Slayton, the crew prepared for reentry. On December 27, 15:51 and 42 seconds, their mission ended, the team landing in the North Pacific, just south of Hawaii. It ended a turbulent year, which had seen violent unrest in Europe and America, the invasion of Czechoslovakia, assassinations, the deaths of Helen Keller, Martin Luther King Jr, Kennedy, Gagarin and more.
+With that done, all that was left to do was to leave the lunar orbit, return to Earth, and land. Two and a half days later shortly before reentry, the crew were let in on a secret: Deke Slayton has arranged a surprise Christmas dinner. A real turkey with stuffing, in the same kind of pack that the troops in Vietnam received had been placed aboard for them so they could celebrate. Having eaten and prepared, the crew prepared for reentry. On December 27, 15:51 and 42 seconds, their mission ended, the team landing in the North Pacific, just south of Hawaii. It ended a turbulent year, which had seen violent unrest in Europe and America, the invasion of Czechoslovakia, assassinations, the deaths of Helen Keller, Martin Luther King Jr, Kennedy, Gagarin and more.
 
 The effect on the world of Apollo 8 was perhaps best summed up by a telegram from a stranger, received by Borman after the mission. It read:
 
@@ -99,39 +97,39 @@ The effect on the world of Apollo 8 was perhaps best summed up by a telegram fro
 
 ### Turning Up to 11
 
-Apollo missions 9 and 10, whilst still very important, didn't have the same electrifying effect as 8. Instead, they were seen as preparatory missions for the flight of 11. Apollo 9 though still saw the first flight of both the Command/Service and Lunar Modules (CSM and LM respectively), whilst 10 was a full dry run of the 11 mission, testing every procedure except for the actual landing itself. Both provided valuable data, and kept America firmly as being seen in the driving seat.
+Apollo missions 9 and 10, whilst still important, didn't have the same electrifying effect as 8. Instead, they were seen as preparatory missions for the flight of 11. Apollo 9 though still saw the first flight of both the Command/Service and Lunar Modules (CSM and LM respectively), whilst 10 was a full dry run of the 11 mission, testing every procedure except for the actual landing itself. Both provided valuable data, and kept America firmly as being seen in the driving seat.
 
-Back in the USSR, things weren't going so well. In January, Soyuz 4 and 5 had conducted the first successful transfer of crew between two craft, the crew members conducting spacewalks between the two vessels. Back on the ground though, the first test of the N1 was about to happen.
+Back in the USSR, things weren't going so well. On the positive side, January saw Soyuz 4 and 5 operate the first successful transfer of crew between two craft, the crew members conducting spacewalks between the two vessels. Back on the ground though, the first test of the N1 was about to happen, and it wasn't going to go well.
 
-It's February 21 1969, and the N1 stands on the pad at the Baikonur Cosmodrome. The countdown ticks away, and finally Korolev's rocket takes to the air. A few seconds into launch though, things go wrong. Engine 12 of the first stage shuts down. Engine 24 shuts down to maintain symmetrical thrust and compensate. It doesn't matter though, as the intense vibrations the vehicle suffers from rupture an oxidizer line. Next, a fuel line ruptures too, leaking fuel into the aft section of the booster. The resulting fire burns through wiring, causing electrical arcing, which moments later results in the rocket's control software shutting down the entire first stage, almost a minute into the launch. That signal is also sent to the second and third stages, which effectively stops the ground controllers from controlling anything whatsoever. The N1 falls from the sky, plummeting for over two minutes, before smashing into the ground 32 miles (52 km) away.
+February 21 1969. The N1 stood on the pad at the Baikonur Cosmodrome. The countdown ticked away, and finally Korolev's rocket started. Almost three dozen engines fired, and the rocket began to lift into the air. A few seconds into launch though, things went disastrously wrong. Engine 12 of the first stage shut down, leading to engine 24 shutting down to maintain symmetrical thrust. Intense vibrations rippled through the vehicle, which caused the rupture of a line providing explosive oxidizer. Next, a fuel line ruptured, leaking fuel into the aft section of the booster. The resulting fire incinerated its way through wiring, causing electrical arcing which moments later results in the rocket's control software shutting down the entire first stage. That signal was also sent to the second and third stages, which very effectively stopped the ground controllers from controlling anything whatsoever. The mighty N1 fell from the sky, plummeting for over two minutes, before smashing into the ground 32 miles (52 km) away.
 
-Five months later, on July 3rd, the team try again. This time, the rocket blasts off, but things go wrong after a few seconds. Upon clearing the tower, all the engines bar one shut down, causing the rocket to tip over and fall back on to the pad, where almost fully fuelled, 15% of the onboard fuel detonated with the force half that of the nuclear weapon dropped on Hiroshima, producing an explosion visible from 22 miles (25 km) away. The rest is blasted into the air, where it rains down for over an hour. Debris was found six miles (10 km) away. The detonation, which remains possibly the most powerful non-nuclear man-made blast, destroyed the launch pad, which would take 18 months to rebuild, with the cost and delays effectively ending the Soviet's chances at beating the Apollo project to the moon.
+Five months later on July 3rd, the team tried again. This time, the rocket blasted off but things went wrong even more spectacularly. Upon clearing the tower, all the engines bar one shut down, causing the rocket to tip over and fall back on to the pad. Around 15% of the onboard fuel detonated with the force half that of the nuclear weapon dropped on Hiroshima, producing an explosion visible from 22 miles (25 km) away. The rest was blasted into the air, where it rained down for over an hour. The vast explosion scattered debris over an area six miles (10 km) wide. The detonation, which remains possibly the most powerful non-nuclear man-made blast, destroyed the launch pad causing damage which would would take 18 months to repair, and ended the Soviet dream of placing a man on the moon before the USA.
 
-The N1 would attempt two more launches in 1971 and 1972. Both would also result in the loss of the rocket involved. Korolev's grandest design, with it's vast engine count, was cancelled in May 1974, having never flown. The unmitigated disaster of the program was made a state secret, and not revealed until 1989.
+Having failed to win the space race, the doomed N1 would attempt two more launches in 1971 and 1972. Both would also result in the loss of the rocket involved. Korolev's grandest design, with it's vast engine count, was cancelled in May 1974. It never once managed to fly successfully. The unmitigated disaster of the program was made a state secret and not revealed until 1989.
 
 ### Apollo 11
 
-Back in 1969 however, excitement grows. The Saturn V has performed flawlessly, and preparations are being made for its most important mission: the landing of man on the moon. The crew was to be Commander Niel Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin. Originally, Jim Lovell had been slated for CMP, whilst Collins was slated to be the CMP on Apollo 8. However, Collins was bumped after needing surgery on his back. As a result, after Collins was medically cleared, the two men had swapped positions. Lovell was transferred to Apollo 11's backup crew, but promoted to be backup commander.
+Back in 1969 however, excitement grew. The Saturn V had performed flawlessly so far and preparations were being made for its most important mission: the landing of man on the moon. The crew was to be Commander Niel Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin \"Buzz\" Aldrin. Originally, Jim Lovell had been slated for CMP, whilst Collins was slated to be the CMP on Apollo 8. However, Collins was bumped after needing surgery on his back. As a result, after Collins was medically cleared, the two men had swapped positions. Lovell was transferred to Apollo 11's backup crew, but promoted to be backup commander.
 
 The rest of the backup crew consisted of CMP William Anders, and LMP Fred Haise. Lovell and Haise would be joined by Ken Mattingly, who had recently been moved from support crew into parallel training with Anders as backup CMP in case Apollo 11 was delayed, as the primary crew for the Apollo 13 mission. The support crew Capsule Communicators, known as CAPCOM, themselves also all astronauts were:
 
-* Charlie Duke
-* Ronald Evans
-* Owen K. Garriott
-* Don L. Lind
-* Ken Mattingly
-* Bruce McCandless II
-* Harrison Schmitt
-* Bill Pogue
-* Jack Swigert
+* Charlie Duke (Apollo 16)
+* Ronald Evans (Apollo 17)
+* Owen K. Garriott (Skylab 3, STS-9)
+* Don L. Lind (STS-51-B)
+* Ken Mattingly (Apollo 16, STS-4, STS-51-C)
+* Bruce McCandless II (STS-41-B, STS-31)
+* Harrison Schmitt (Apollo 17)
+* Bill Pogue (Skylab 4)
+* Jack Swigert (Apollo 13)
 
-With the following three flight directors:
+The mission itself was run by three flight directors:
 
 * Cliff Charlesworth (Green Team), launch and EVA
 * Gene Kranz (White Team), lunar landing
 * Glynn Lunney (Black Team), lunar ascent
 
-The rocket was fuelled, and the countdown progressed at Launch Complex 39, Kennedy Space Center. On July 16, 1969, the hours counted down. Finally, at 9:32 exactly, Apollo 11 took flight.
+The rocket was fuelled, and the countdown started at Launch Complex 39, Kennedy Space Center. The hours counted down. Finally, at 9:32 exactly on July 16 1969, Apollo 11 took flight.
 
 YouTube ygBxN5UiOaM
 
@@ -140,15 +138,6 @@ YouTube ygBxN5UiOaM
 On the afternoon of July 19, Apollo 11 passed behind the Moon and manoeuvred to enter lunar orbit. The next day, astronauts Alrdin and Armstrong entered the LM, separated from the CSM, and began their descent to the lunar surface. 
 
 Apart from a minor computer glitch, the descent went smoothly at first. However, when Armstrong looked outside, he saw that the computer's landing target was covered in boulders, and next to a crater. Believing the landing was too dangerous to let the computer continue, Armstrong took control of the LM. As he began to pilot the descent, Aldrin started calling out navigation data. The fuel ran down, as Armstrong searched for a new place to land, sending the LM flying along sideways. Finally, at 20:17 and 40 seconds UTC, on July 20, Aldrin and Armstrong went through the final processes, before talking to Charles Duke, CAPCOM back on Earth.
-
-* *Alrin:* Contact light! 
-* *Armstrong:* Shutdown.
-* *Aldrin:* Okay, engine stop. ACA – out of detent.
-* *Armstrong:* Out of detent. Auto
-* *Aldrin:* Mode control - both auto. Descent engine command override off. Engine arm – off. 413 is in.
-* *Duke*: We copy you down, Eagle.
-* *Armstrong:* Engine arm is off. Houston, Tranquillity Base here. The Eagle has landed. 
-* *Duke:* Roger,... Tranquility, we copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot.
 
 Once Armstrong and Aldrin were ready to go outside, Eagle was depressurised, the hatch opened, and Armstrong made his way down the ladder. When he got to the base of the ladder, he radioed back:
 
@@ -162,7 +151,7 @@ About 20 minutes later, Aldrin joined Armstrong on the surface, and the two men 
 
 > Here men from the planet Earth first set foot upon the Moon, July 1969 A.D. We came in peace for all mankind.
 
-Shortly after, President Nixon spoke to them via a telephone call from his office. Having taken a number of photos and set up an experiment package, their final task was to leave small package of memorial items to cosmonauts Yuri Gagarin and Vladimir Komarov, astronauts Gus Grissom, Ed White and Roger Chaffee. Despite never having reached the moon in their lifetimes, the five men, in memory at least, finally arrived.
+Shortly after, President Nixon spoke to them via a telephone call from his office. Having taken a number of photos and set up an experiment package, their final task was to leave small package of memorial items to cosmonauts Yuri Gagarin and Vladimir Komarov, astronauts Gus Grissom, Ed White and Roger Chaffee. Despite never having reached the moon in their lifetimes, in spirit at least, the five men finally arrived.
 
 Gallery
 
@@ -185,3 +174,6 @@ apollo_11_hasselblad_13.jpg
 Having re-entered the LM, the hatch was closed and sealed. They repressurised the LM and settled down to sleep. Unfortunately, Armstrong and Aldrin discovered that, thanks to having to move around in a bulky spacesuit, Aldrin had accidentally broken the ignition switch for the ascent engine. They solved the issue through the extremely technical procedure of pushing the circuit breaker with a felt-tip pen, which activated the launch sequence. The LM ascended, the exhaust knocking over the flag which had been planted too close, and docked with Columbia shortly after. All that remained was to leave lunar orbit and return. A few days later, on July 24, just five days after they took off, the three astronauts returned to Earth, the Columbia command module bringing them down in the Pacific Ocean.
 
 Von Braun had lived to see his dream, and the dream of so many others, come true.
+
+Back to part 3: [The Challenge Set](/fly-me-to-the-moon/challenge-set)
+Continue to part 5: [The Race Ends](/fly-me-to-the-moon/end-race)
