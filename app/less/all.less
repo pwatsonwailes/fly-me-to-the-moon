@@ -1,3 +1,5 @@
+body { font-size: 0.9em; }
+
 #heading {
 	.col-xs-12();
 	.panel-depth-3();
@@ -169,37 +171,18 @@
 	}
 
 	.facebook,
-	.twitter,
-	.pinterest,
-	.stumbleupon,
-	.bufferapp {
+	.stumbleupon {
 		height:100%;
 		text-align:center;
 		width:100%;
 		.border-radius(4px);
 	}
 
-	#twitter .share {
-		text-shadow: 1px 0 0 #0077be;
-		.background-image(linear-gradient(top, #26c3eb 0%, #0080d6 100%));
-	}
 
 	#facebook .share {
 		background:#3b5998;
 		text-shadow:1px 0 0 #26427e;
 		.background-image(linear-gradient(top, #3B5998 0%, #133783 100%));
-	}
-
-	#googleplus .share {
-		background:#6d6d6d;
-		text-shadow:1px 0 0 #222;
-		.background-image(linear-gradient(top, #6d6d6d 0%, #434343 100%));
-	}
-
-	#linkedin .share {
-		background:#6d6d6d;
-		text-shadow:1px 0 0 #26427e;
-		.background-image(linear-gradient(top, #74bbdb 0%, #007fb2 100%));
 	}
 
 	#stumbleupon .share {
@@ -296,6 +279,11 @@
 	.gallery {
 		position: relative;
 		text-align: center;
+	}
+
+	&.show_2 img {
+		height: auto;
+		max-width: 47%;
 	}
 }
 
@@ -431,6 +419,7 @@
 					display: block;
 					float: left;
 					font-weight: bold;
+					width: 60px;
 				}
 
 				&.text {} 

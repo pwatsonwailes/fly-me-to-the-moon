@@ -1944,7 +1944,6 @@ form label,
 form input,
 tspan {
   font-family: georgia, 'times new roman', times, serif;
-  font-size: 21px;
 }
 table {
   font-size: 14px;
@@ -2034,6 +2033,9 @@ blockquote {
 /*
  * Size-agnostic layout rules
 */
+body {
+  font-size: 0.9em;
+}
 #heading {
   flex-basis: 100%;
   max-width: 100%;
@@ -2236,10 +2238,7 @@ blockquote {
   width: 16px;
 }
 #socialButtons .facebook,
-#socialButtons .twitter,
-#socialButtons .pinterest,
-#socialButtons .stumbleupon,
-#socialButtons .bufferapp {
+#socialButtons .stumbleupon {
   height: 100%;
   text-align: center;
   width: 100%;
@@ -2250,14 +2249,6 @@ blockquote {
   border-radius: 4px;
   background-clip: padding-box;
 }
-#socialButtons #twitter .share {
-  text-shadow: 1px 0 0 #0077be;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyNmMzZWIiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwODBkNiIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
-  background-image: -webkit-linear-gradient(top, #26c3eb 0%, #0080d6 100%);
-  background-image: -moz-linear-gradient(top, #26c3eb 0%, #0080d6 100%);
-  background-image: -o-linear-gradient(top, #26c3eb 0%, #0080d6 100%);
-  background-image: linear-gradient(to bottom, #26c3eb 0%, #0080d6 100%);
-}
 #socialButtons #facebook .share {
   background: #3b5998;
   text-shadow: 1px 0 0 #26427e;
@@ -2266,24 +2257,6 @@ blockquote {
   background-image: -moz-linear-gradient(top, #3b5998 0%, #133783 100%);
   background-image: -o-linear-gradient(top, #3b5998 0%, #133783 100%);
   background-image: linear-gradient(to bottom, #3b5998 0%, #133783 100%);
-}
-#socialButtons #googleplus .share {
-  background: #6d6d6d;
-  text-shadow: 1px 0 0 #222;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM2ZDZkNmQiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQzNDM0MyIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
-  background-image: -webkit-linear-gradient(top, #6d6d6d 0%, #434343 100%);
-  background-image: -moz-linear-gradient(top, #6d6d6d 0%, #434343 100%);
-  background-image: -o-linear-gradient(top, #6d6d6d 0%, #434343 100%);
-  background-image: linear-gradient(to bottom, #6d6d6d 0%, #434343 100%);
-}
-#socialButtons #linkedin .share {
-  background: #6d6d6d;
-  text-shadow: 1px 0 0 #26427e;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3NGJiZGIiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwN2ZiMiIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
-  background-image: -webkit-linear-gradient(top, #74bbdb 0%, #007fb2 100%);
-  background-image: -moz-linear-gradient(top, #74bbdb 0%, #007fb2 100%);
-  background-image: -o-linear-gradient(top, #74bbdb 0%, #007fb2 100%);
-  background-image: linear-gradient(to bottom, #74bbdb 0%, #007fb2 100%);
 }
 #socialButtons #stumbleupon .share {
   background: #eb4924;
@@ -2400,6 +2373,10 @@ blockquote {
 .gallery_widget .gallery {
   position: relative;
   text-align: center;
+}
+.gallery_widget.show_2 img {
+  height: auto;
+  max-width: 47%;
 }
 .media_widget .video_container {
   height: 0;
@@ -2542,6 +2519,7 @@ blockquote {
   display: block;
   float: left;
   font-weight: bold;
+  width: 60px;
 }
 #footer {
   -webkit-box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);
@@ -2560,6 +2538,9 @@ blockquote {
   border-bottom: 1px dotted #ccc;
 }
 @media screen and (min-width: 650px) {
+  body {
+    font-size: 1em;
+  }
   .media_widget.image,
   .media_widget.youtube {
     max-width: 660px;
@@ -2579,6 +2560,9 @@ blockquote {
   }
 }
 @media screen and (min-width: 985px) {
+  body {
+    font-size: 1.1em;
+  }
   .media_widget.image,
   .media_widget.youtube {
     max-width: 660px;
@@ -2604,6 +2588,9 @@ blockquote {
   }
 }
 @media screen and (min-width: 1300px) {
+  body {
+    font-size: 1.25em;
+  }
   .media_widget.image,
   .media_widget.youtube {
     max-width: 1120px;
