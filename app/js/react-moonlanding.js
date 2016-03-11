@@ -229,16 +229,7 @@ export default class MoonLanding extends React.Component {
 		else
 			var start = 0;
 
-		console.log({
-			cFT: cFT,
-			start: start,
-			incFromKey: incFromKey
-		});
-
-		var output = relComms.slice(start, start + 10);
-		console.log("output: ", output);
-
-		return output;
+		return relComms.slice(start, start + 10);
 	}
 
 	getRelativeLocation(click) {
@@ -379,19 +370,19 @@ export default class MoonLanding extends React.Component {
 
 		return (
 			React.createElement("div", { className: "row", id: "stats" },
-				React.createElement("div", { className: "col col-xs-3" },
+				React.createElement("div", { className: "col col-xs-6 col-xs-6 col-lg-3" },
 					React.createElement("h3", null, "Altitude"),
 					React.createElement("p", null, formattedA + ' feet')
 				),
-				React.createElement("div", { className: "col col-xs-3" },
+				React.createElement("div", { className: "col col-xs-6 col-xs-6 col-lg-3" },
 					React.createElement("h3", null, "Speed"),
 					React.createElement("p", null, formattedS + ' feet per second')
 				),
-				React.createElement("div", { className: "col col-xs-3" },
+				React.createElement("div", { className: "col col-xs-6 col-xs-6 col-lg-3" },
 					React.createElement("h3", null, "Time"),
 					React.createElement("p", null, audioTime)
 				),
-				React.createElement("div", { className: "col col-xs-3" },
+				React.createElement("div", { className: "col col-xs-6 col-xs-6 col-lg-3" },
 					React.createElement("h3", null, "Landing"),
 					React.createElement("p", null, timeToLanding)
 				)
