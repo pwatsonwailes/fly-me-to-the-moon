@@ -404,11 +404,11 @@ export default class MoonLanding extends React.Component {
 				controls,
 				stats,
 				React.createElement("div", { className: "row" },
-					React.createElement("div", { className: "col col-xs-6 dialogue" },
+					React.createElement("div", { className: "col col-xs-12 col-sm-6 dialogue" },
 						React.createElement("h3", null, 'CAPCOM/Eagle'),
 						groundAir
 					),
-					React.createElement("div", { className: "col col-xs-6 dialogue" },
+					React.createElement("div", { className: "col col-xs-12 col-sm-6 dialogue" },
 						React.createElement("h3", null, 'Mission Control'),
 						flightDirector
 					)

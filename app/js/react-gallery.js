@@ -109,8 +109,10 @@ export default class Gallery extends React.Component {
 		var leftPointer = (this.state.galleryPointer > 0) ? this.leftPointer() : [];
 		var rightPointer = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.rightPointer() : [];
 
+		var countClass = 'show_' + this.state.showImgs;
+
 		return (
-			React.createElement("div", { className: 'gallery_widget', id: this.props.id, key: this.props.key },
+			React.createElement("div", { className: 'gallery_widget ' + countClass, id: this.props.id, key: this.props.key },
 				React.createElement("h4", null, this.props.title),
 				React.createElement("div", { className: 'gallery' },
 					leftPointer,

@@ -235,7 +235,9 @@ var Gallery = function (_React$Component) {
 			var leftPointer = this.state.galleryPointer > 0 ? this.leftPointer() : [];
 			var rightPointer = this.state.galleryPointer + this.state.showImgs < this.props.images.length ? this.rightPointer() : [];
 
-			return _react2.default.createElement("div", { className: 'gallery_widget', id: this.props.id, key: this.props.key }, _react2.default.createElement("h4", null, this.props.title), _react2.default.createElement("div", { className: 'gallery' }, leftPointer, rightPointer, gallery));
+			var countClass = 'show_' + this.state.showImgs;
+
+			return _react2.default.createElement("div", { className: 'gallery_widget ' + countClass, id: this.props.id, key: this.props.key }, _react2.default.createElement("h4", null, this.props.title), _react2.default.createElement("div", { className: 'gallery' }, leftPointer, rightPointer, gallery));
 		}
 	}]);
 
@@ -726,7 +728,7 @@ var MoonLanding = function (_React$Component) {
 			var flightDirector = typeof this.state.fd !== 'undefined' && this.state.fd.length > 0 ? this.renderComms('fd') : [];
 			var groundAir = typeof this.state.ga !== 'undefined' && this.state.ga.length > 0 ? this.renderComms('ga') : [];
 
-			return _react2.default.createElement("div", { id: "moonlanding" }, audio, controls, stats, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col col-xs-6 dialogue" }, _react2.default.createElement("h3", null, 'CAPCOM/Eagle'), groundAir), _react2.default.createElement("div", { className: "col col-xs-6 dialogue" }, _react2.default.createElement("h3", null, 'Mission Control'), flightDirector)));
+			return _react2.default.createElement("div", { id: "moonlanding" }, audio, controls, stats, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("div", { className: "col col-xs-12 col-sm-6 dialogue" }, _react2.default.createElement("h3", null, 'CAPCOM/Eagle'), groundAir), _react2.default.createElement("div", { className: "col col-xs-12 col-sm-6 dialogue" }, _react2.default.createElement("h3", null, 'Mission Control'), flightDirector)));
 		}
 	}]);
 
