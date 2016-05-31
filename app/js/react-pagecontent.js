@@ -22,6 +22,15 @@ export default class PageContent extends React.Component {
 			'YouTube': YouTube
 		};
 
+		if (typeof window !== 'undefined' && typeof item.id !== 'undefined') {
+			console.log('send', 'event', item.type, window.location.pathname);
+			ga('send', 'event', item.type, window.location.pathname, item.id, 1, { 'nonInteraction': 1 });
+		}
+		else if (typeof window !== 'undefined') {
+			console.log('send', 'event', item.type, window.location.pathname);
+			ga('send', 'event', item.type, window.location.pathname, 'No id', 1, { 'nonInteraction': 1 });
+		}
+
 		return React.createElement(components[item.type], item);
 	}
 

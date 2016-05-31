@@ -75,6 +75,11 @@ export default class Gallery extends React.Component {
 		else
 			var newPointerPosition = (this.state.galleryPointer - 1 < 0) ? false : this.state.galleryPointer - 1;
 
+		if (typeof window !== false) {
+			console.log('send', 'event', 'Gallery', window.location.pathname, this.props.id + ': ' + e.target.dataset.direction, 1);
+			ga('send', 'event', 'Gallery', window.location.pathname, this.props.id + ': ' + e.target.dataset.direction, 1);
+		}
+
 		// need to explicitly check for false, as if () checks ==, not ===
 		if (newPointerPosition !== false)
 			this.setState({ galleryPointer: newPointerPosition });

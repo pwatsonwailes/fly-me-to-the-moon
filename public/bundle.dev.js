@@ -209,6 +209,11 @@ var Gallery = function (_React$Component) {
 			// detect activation on the icon, or on the parent
 			if (e.target.dataset.direction === 'forward') var newPointerPosition = this.state.galleryPointer + this.state.showImgs < this.props.images.length ? this.state.galleryPointer + 1 : false;else var newPointerPosition = this.state.galleryPointer - 1 < 0 ? false : this.state.galleryPointer - 1;
 
+			if (typeof window !== false) {
+				console.log('send', 'event', 'Gallery', window.location.pathname, this.props.id + ': ' + e.target.dataset.direction, 1);
+				ga('send', 'event', 'Gallery', window.location.pathname, this.props.id + ': ' + e.target.dataset.direction, 1);
+			}
+
 			// need to explicitly check for false, as if () checks ==, not ===
 			if (newPointerPosition !== false) this.setState({ galleryPointer: newPointerPosition });
 		}
@@ -801,6 +806,14 @@ var PageContent = function (_React$Component) {
 				'Gallery': _reactGallery2.default,
 				'YouTube': _reactYoutube2.default
 			};
+
+			if (typeof window !== 'undefined' && typeof item.id !== 'undefined') {
+				console.log('send', 'event', item.type, window.location.pathname, item.id, 1, { 'nonInteraction': 1 });
+				ga('send', 'event', 'ComponentLoads', item.type, window.location.pathname, item.id);
+			} else if (typeof window !== 'undefined') {
+				console.log('send', 'event', item.type, window.location.pathname, 'No id', 1, { 'nonInteraction': 1 });
+				ga('send', 'event', 'ComponentLoads', item.type, window.location.pathname);
+			}
 
 			return _react2.default.createElement(components[item.type], item);
 		}
