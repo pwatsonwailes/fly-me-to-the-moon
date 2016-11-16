@@ -1,33 +1,28 @@
 import React from 'react';
 
 export default class Gallery extends React.Component {
-	constructor(props) {
+	constructor() {
 		super();
-
-		this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
-		this.renderGalleryImg = this.renderGalleryImg.bind(this);
-		this.setGallerySettings = this.setGallerySettings.bind(this);
-		this.buttonHandler = this.buttonHandler.bind(this);
 
 		this.state = {
 			galleryPointer: 0,
 			maxHeight: 600,
 			maxWidth: 600,
 			showImgs: 0
-		};
+		}
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		if (typeof window !== 'undefined') {
 			this.setGallerySettings();
 			window.addEventListener('resize', this.setGallerySettings);
 		}
 	}
 
-	componentWillUnmount(){ window.removeEventListener('resize', this.setGallerySettings) }
-	componentWillReceiveProps() { this.setState({ galleryPointer: 0 }) }
+	componentWillUnmount = () => { window.removeEventListener('resize', this.setGallerySettings) }
+	componentWillReceiveProps = () => { this.setState({ galleryPointer: 0 }) }
 		
-	setGallerySettings() {
+	setGallerySettings = () => {
 		var dims = (typeof getViewportSize === 'function') ? getViewportSize() : false;
 		var showImgs = (typeof this.props.showImgs !== 'undefined' && dims !== false && dims.width > 1120) ? this.props.showImgs : 1;
 
@@ -35,10 +30,10 @@ export default class Gallery extends React.Component {
 			maxHeight: (dims !== false) ? dims.height : 0,
 			maxWidth: (dims !== false) ? dims.width : 0,
 			showImgs: showImgs
-		});
+		})
 	}
 
-	renderGalleryImg(imgData) {
+	renderGalleryImg = (imgData) => {
 		// width and height are less than max settings
 		if (typeof imgData.height !== 'undefined' && imgData.height < this.state.maxHeight && typeof imgData.width !== 'undefined' && imgData.width < this.state.maxWidth) {
 			var height = imgData.height;
@@ -68,7 +63,7 @@ export default class Gallery extends React.Component {
 		return React.createElement("img", { key: 'img' + imgData.path, className: 'galleryImg', src: imgData.path, height: height, width: width })
 	}
 
-	buttonHandler(e) {
+	buttonHandler = (e) => {
 		// detect activation on the icon, or on the parent
 		if (e.target.dataset.direction === 'forward')
 			var newPointerPosition = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.state.galleryPointer + 1 : false;
@@ -85,7 +80,7 @@ export default class Gallery extends React.Component {
 			this.setState({ galleryPointer: newPointerPosition });
 	}
 
-	leftPointer() {
+	leftPointer = () => {
 		return (
 			React.createElement("span", { className: 'fa_button', id: 'galleryBack', 'data-direction': 'backward', onClick: this.buttonHandler },
 				React.createElement("i", { className: 'fa fa-angle-double-left', 'data-direction': 'backward' })
@@ -93,7 +88,7 @@ export default class Gallery extends React.Component {
 		)
 	}
 
-	rightPointer() {
+	rightPointer = () => {
 		return (
 			React.createElement("span", { className: 'fa_button', id: 'galleryForward', 'data-direction': 'forward',  onClick: this.buttonHandler },
 				React.createElement("i", { className: 'fa fa-angle-double-right', 'data-direction': 'forward' })

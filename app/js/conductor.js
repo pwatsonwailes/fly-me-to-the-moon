@@ -13,14 +13,10 @@ export default class FMttM extends React.Component {
 			title: props.title,
 			description: props.description,
 			content: props.content
-		};
-
-		this.componentDidMount = this.componentDidMount.bind(this);
-		this.historyUpdate = this.historyUpdate.bind(this);
-		this.setSection = this.setSection.bind(this);
+		}
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		var self = this;
 
 		if (typeof this.props.section !== 'undefined')
@@ -30,7 +26,7 @@ export default class FMttM extends React.Component {
 			History.Adapter.bind(window, 'statechange', function() { self.historyUpdate() })
 	}
 
-	historyUpdate() {
+	historyUpdate = () => {
 		var section = (String(window.location.pathname).match(/\/fly-me-to-the-moon\/.+/i) !== null)
 			? window.location.pathname.replace('/fly-me-to-the-moon/', '').split('/')[0]
 			: 'home';
@@ -38,7 +34,7 @@ export default class FMttM extends React.Component {
 		this.setSection({"target": {"dataset": { "section": section }}}, false);
 	}
 
-	setSection(e, updateHistory) {
+	setSection = (e, updateHistory) => {
 		if (typeof e.preventDefault === 'function')
 			e.preventDefault();
 

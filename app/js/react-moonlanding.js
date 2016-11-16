@@ -7,32 +7,16 @@ export default class MoonLanding extends React.Component {
 	constructor(){
 		super();
 
-		this.togglePlayback = this.togglePlayback.bind(this);
-		this.toggleVolume = this.toggleVolume.bind(this);
-
-		this.getLoopText = this.getLoopText.bind(this);
-
-		this.onProgress = this.onProgress.bind(this);
-		this.handleTimeChange = this.handleTimeChange.bind(this);
-		this.handleBookmarkTimeChange = this.handleBookmarkTimeChange.bind(this);
-		this.handleResize = this.handleResize.bind(this);
-
-		this.renderControls = this.renderControls.bind(this);
-		this.renderStats = this.renderStats.bind(this);
-		this.renderComms = this.renderComms.bind(this);
-		this.renderCommsList = this.renderCommsList.bind(this);
-		this.renderBookmark = this.renderBookmark.bind(this);
-
 		this.state = {
 			fd: [],
 			ga: [],
 			currentTime: 0,
 			altitude: {},
 			speed: {}
-		};
+		}
 	}
 
-	componentDidMount(){
+	componentDidMount = () => {
 		this.refs.audio.addEventListener('timeupdate', this.onProgress);
 		this.refs.audio.addEventListener('progress', this.onProgress);
 
@@ -40,9 +24,9 @@ export default class MoonLanding extends React.Component {
 		this.handleResize();
 	}
 
-	componentWillUnmount(){ window.removeEventListener('resize', this.handleResize) }
+	componentWillUnmount = () => { window.removeEventListener('resize', this.handleResize) }
 
-	onProgress(reset){
+	onProgress = (reset) => {
 		var unbufferedPast = '#90d26a',
 				unbufferedFuture = '#565860',
 				bufferedPast = '#90d26a',
@@ -85,7 +69,6 @@ export default class MoonLanding extends React.Component {
 						tbc.fillStyle = unbufferedFuture;
 						tbc.fillRect(Math.max(posX + 1, nextStartX), 0, startX, tbHeight);
 					}
-
 				}
 
 				if (posX > startX) {
@@ -117,7 +100,7 @@ export default class MoonLanding extends React.Component {
 			tbc.fillRect(Math.max(0, posX - 1), 0, 3, tbHeight);
 
 			// now let's sort out the conversation stuff
-			var newState = { currentTime: cFT };
+			var newState = { currentTime: cFT }
 
 			if (reset) {
 				// first sort comms
@@ -210,7 +193,7 @@ export default class MoonLanding extends React.Component {
 		}
 	}
 
-	getLoopText(mode, cFT, force) {
+	getLoopText = (mode, cFT, force) => {
 		var comms = (mode === 'fd') ? 'fdIndex' : 'gaIndex';
 
 		// make sure we only do this once per second, and that there's data
@@ -232,7 +215,7 @@ export default class MoonLanding extends React.Component {
 		return relComms.slice(start, start + 10);
 	}
 
-	getRelativeLocation(click) {
+	getRelativeLocation = (click) => {
 		var x = click.pageX,
 			y = click.pageY;
 
@@ -247,7 +230,7 @@ export default class MoonLanding extends React.Component {
 		return { x: x, y: y };
 	}
 
-	handleTimeChange(properties){
+	handleTimeChange = (properties) => {
 		var offset = this.getRelativeLocation(properties);
 
 		this.refs.audio.currentTime = this.refs.audio.duration * offset.x / (this.refs.trackbar.clientWidth + 1);
@@ -255,18 +238,18 @@ export default class MoonLanding extends React.Component {
 		this.onProgress(true);
 	}
 
-	handleBookmarkTimeChange(e){
+	handleBookmarkTimeChange = (e) => {
 		this.refs.audio.currentTime = e.target.dataset.timestamp;
 		this.onProgress(true);
 	}
 
-	handleResize(){
+	handleResize = () => {
 		this.refs.trackbar.setAttribute('height', this.refs.trackbar.clientHeight + 'px');
 		this.refs.trackbar.setAttribute('width', this.refs.trackbar.clientWidth + 'px');
 		this.onProgress();
 	}
 
-	togglePlayback(e){
+	togglePlayback = (e) => {
 		if (this.state.playing === true) {
 			this.refs.audio.pause();
 			this.setState({ playing: false });
@@ -277,14 +260,14 @@ export default class MoonLanding extends React.Component {
 		}
 	}
 
-	toggleVolume(e){
+	toggleVolume = (e) => {
 		if (e.target.dataset.volup === '1' && this.refs.audio.volume < 1)
 			this.refs.audio.volume += 0.1;
 		else if (e.target.dataset.volup === '0' && this.refs.audio.volume > 0)
 			this.refs.audio.volume -= 0.1;
 	}
 
-	renderAudio(){
+	renderAudio = () => {
 		return (
 			React.createElement("audio", { ref: "audio" },
 			  React.createElement("source", { src: "/fly-me-to-the-moon/audio/apollo_11_landing.mp3", type: "audio/mpeg"}),
@@ -293,7 +276,7 @@ export default class MoonLanding extends React.Component {
 		)
 	}
 
-	renderComms(mode) {
+	renderComms = (mode) => {
 		var list = [];
 
 		for (var i = 0; i < this.state[mode].length; i++) {
@@ -303,7 +286,7 @@ export default class MoonLanding extends React.Component {
 		return React.createElement("ul", { key: 'comms' + mode }, list);
 	}
 
-	renderCommsList(item, mode, i) {
+	renderCommsList = (item, mode, i) => {
 		return (
 			React.createElement("li", { key: mode + i },
 				React.createElement("span", { title: item.name, className: "position" }, item.position),
@@ -312,7 +295,7 @@ export default class MoonLanding extends React.Component {
 		)
 	}
 
-	renderBookmark(item) {
+	renderBookmark = (item) => {
 		var percent = (item.t / this.refs.audio.duration) * 100;
 
 		return (
@@ -322,7 +305,7 @@ export default class MoonLanding extends React.Component {
 		)
 	}
 
-	renderControls(){
+	renderControls = () => {
 		var playbackClass = (this.state.playing === true) ? "fa fa-pause-circle" : "fa fa-play-circle";
 		var list = (!this.refs || !this.refs.audio || !this.refs.audio.duration) ? [] : Descent.bookmarks.map(this.renderBookmark);
 
@@ -337,7 +320,7 @@ export default class MoonLanding extends React.Component {
 		)
 	}
 
-	renderStats(){
+	renderStats = () => {
 		var cFT = (!this.refs || !this.refs.audio || !this.refs.audio.currentTime) ? 0 : Math.floor(this.refs.audio.currentTime);
 
 		if (typeof moment !== 'undefined') {
@@ -390,7 +373,7 @@ export default class MoonLanding extends React.Component {
 		)
 	}
 
-	render(){
+	render() {
 		var audio = this.renderAudio();
 		var controls = this.renderControls();
 		var stats = this.renderStats();
@@ -414,6 +397,6 @@ export default class MoonLanding extends React.Component {
 					)
 				)
 			)
-		);
+		)
 	}
 }

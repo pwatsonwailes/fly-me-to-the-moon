@@ -9,33 +9,31 @@ class Social extends React.Component {
 		this.state = {
 			active: false,
 			topPosition: 0
-		};
+		}
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		var self = this;
 		var reqUrl = 'https://zorg.builtvisible.com/tools/scrs/json';
 		var api_key = '65b608cf38b638ea71cf4c9baad182ae';
 
 		axios.get(reqUrl + '?api_key=' + api_key + '&url=' + window.location.href)
-		.then(function(res) {
-			self.updateCounts(res.data);
-		});
+		.then(function(res) { self.updateCounts(res.data) });
 
 		this.updateDimensions();
 
 		window.addEventListener("resize", this.updateDimensions);
 	}
 
-	componentWillUnmount() {
+	componentWillUnmount = () => {
 		window.removeEventListener("resize", this.updateDimensions);
 	}
 
-	shouldComponentUpdate(newProps, newState) {
+	shouldComponentUpdate = (newProps, newState) => {
 		return newState.topPosition !== this.state.topPosition || newState.active !== this.state.active;
 	}
 
-	updateDimensions() {
+	updateDimensions = () => {
 		if (typeof window !== 'undefined') {
 			var dims = getViewportSize();
 
@@ -50,11 +48,11 @@ class Social extends React.Component {
 		}
 	}
 
-	updateCounts(data) {
+	updateCounts = (data) => {
 		this.setState({ counts: data });
 	}
 
-	formatShareValue(value) {
+	formatShareValue = (value) => {
 		value = parseInt(value);
 
 		if (value > 1000000)
@@ -67,11 +65,11 @@ class Social extends React.Component {
 		return formatted;
 	}
 
-	toggleButtons() {
+	toggleButtons = () => {
 		this.setState({ active: !this.state.active })
 	}
 
-	openWin(e) {
+	openWin = (e) => {
 		var socialSites = {
 			"facebook": {
 				"url": 'http://www.facebook.com/sharer/sharer.php?u={encUrl}&t={encTitle}',
@@ -115,7 +113,7 @@ class Social extends React.Component {
 		window.open(newWinUrl, "", socialSites[site]['spec']);
 	}
 
-	renderSocialIcons() {
+	renderSocialIcons = () => {
 		return (
 			React.createElement(ReactCSSTransitionGroup, { key: 'socialIcons', id: 'socialIcons', transitionName: "socialTransition", transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
 				React.createElement("div", { id: 'facebook', className: 'socialBox' },
@@ -181,6 +179,6 @@ Social.defaultProps = {
 	},
 	counts: {}, // the data
 	atName: false
-};
+}
 
 export default Social;

@@ -8,19 +8,16 @@ import MoonLanding from './react-moonlanding.js';
 export default class PageContent extends React.Component {
 	constructor() {
 		super();
-
-		this.renderElement = this.renderElement.bind(this);
-		this.recurseElements = this.recurseElements.bind(this);
 	}
 
-	renderElement(item) {
+	renderElement = (item) => {
 		var components = {
 			'MoonLanding': MoonLanding,
 			'Markdown': Markdown,
 			'Image': Image,
 			'Gallery': Gallery,
 			'YouTube': YouTube
-		};
+		}
 
 		if (typeof window !== 'undefined' && typeof item.id !== 'undefined') {
 			console.log('send', 'event', item.type, window.location.pathname);
@@ -34,7 +31,7 @@ export default class PageContent extends React.Component {
 		return React.createElement(components[item.type], item);
 	}
 
-	recurseElements(item) {
+	recurseElements = (item) => {
 		return (Object.prototype.toString.call(item) === '[object Array]')
 			? item.map(this.recurseElements)
 			: this.renderElement(item);
