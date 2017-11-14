@@ -8,4 +8,4 @@ Any small microsite requiring a variety of components, where the user wants to a
 
 ## Demo
 
-A demo is available here: [Fly me to the Moon](http://wail.es/fly-me-to-the-moon/)
+A demo is available here: [Fly me to the Moon](https://toughcompetent.com/fly-me-to-the-moon/)
