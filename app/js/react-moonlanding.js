@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import FlightDirector from '../json/flight_director.json';
+import GroundAir from '../json/air_ground.json';
+import Descent from '../json/descent.json';
 
 const MoonLanding = () => {
   const [playing, setPlaying] = useState(false)
