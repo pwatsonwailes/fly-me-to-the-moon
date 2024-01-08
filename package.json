@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A look at mankind's journey to the stars, from 1955 to today and beyond",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "build-prod": "esbuild ./app/main.js --bundle --loader:.js=jsx --define:global=window --outfile=./public/bundle.min.js"
   },
