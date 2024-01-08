@@ -131,20 +131,24 @@ const MoonLanding = () => {
         if (ga !== false)
           newState.ga = ga
 
-        // work out altitude and speed
+        let aKey = 0, sKey = 0
+
         const aKeys = Object.keys(Descent.altitude),
               sKeys = Object.keys(Descent.speed)
 
-        let aKey, sKey
-
+        // work out altitude and speed
         for (let i = 0; i < aKeys.length; i++) {
-          if (newState.currentTime > aKeys[i])
-            aKey = aKeys[i];
+          if (newState.currentTime > aKeys[i]) {
+            aKey = aKeys[i]
+            break
+          }
         }
 
         for (let i = 0; i < sKeys.length; i++) {
-          if (newState.currentTime > sKeys[i])
-            sKey = sKeys[i];
+          if (newState.currentTime > sKeys[i]) {
+            sKey = sKeys[i]
+            break
+          }
         }
 
         const aOjb = JSON.parse(JSON.stringify(Descent.altitude[aKey])),
