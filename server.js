@@ -1,4 +1,7 @@
-import '@babel/register'({
+import register from '@babel/register';
+
+// Call the register function with the presets
+register({
   presets: ['@babel/preset-react']
 });
 
