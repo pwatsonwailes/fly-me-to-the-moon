@@ -1,3 +1,8 @@
+import '@babel/register'({
+  presets: ['@babel/preset-react']
+});
+
+
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
