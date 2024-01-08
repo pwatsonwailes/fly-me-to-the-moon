@@ -109,56 +109,11 @@ const MoonLanding = () => {
       newState.currentTime = time
 
       if (time === 0) {
-        // first sort comms
-        let fdTime = false,
-            gaTime = false;
-
-        for (let i = time; i > 0; i--) {
-          if (typeof Descent.fdIndex[i] !== 'undefined' && fdTime === false)
-            fdTime = i;
-
-          if (typeof Descent.gaIndex[i] !== 'undefined' && gaTime === false)
-            gaTime = i;
-        }
-
-        // we can force this as we know for sure that it will return results
-        const fd = getLoopText('fd', fdTime, true),
-              ga = getLoopText('ga', gaTime, true)
-
-        if (fd !== false)
-          newState.fd = fd
-
-        if (ga !== false)
-          newState.ga = ga
-
-        let aKey = 0, sKey = 0
-
-        const aKeys = Object.keys(Descent.altitude),
-              sKeys = Object.keys(Descent.speed)
-
-        // work out altitude and speed
-        for (let i = 0; i < aKeys.length; i++) {
-          if (time > aKeys[i]) {
-            aKey = aKeys[i]
-            break
-          }
-        }
-
-        for (let i = 0; i < sKeys.length; i++) {
-          if (time > sKeys[i]) {
-            sKey = sKeys[i]
-            break
-          }
-        }
-
-        const aOjb = JSON.parse(JSON.stringify(Descent.altitude[aKey])),
-              sOjb = JSON.parse(JSON.stringify(Descent.speed[sKey]))
-
-        aOjb.v = aOjb.v + (aOjb.r * (time - aKey));
-        sOjb.v = sOjb.v + (sOjb.r * (time - aKey));
-
-        newState.altitude = aOjb;
-        newState.speed = sOjb;
+        newState.fd = []
+        newState.ga = []
+        newState.currentTime = 0
+        newState.altitude = {}
+        newState.speed = {}
       }
       else {
         // sort out the descent stats for a non-reset command
@@ -236,10 +191,6 @@ const MoonLanding = () => {
     onProgress(newTime)
   }
 
-  const handleBookmarkTimeChange = (e) => {
-    onProgress(e.target.dataset.timestamp)
-  }
-
   const handleResize = () => {
     trackbarRef.current.setAttribute('height', trackbarRef.current.clientHeight + 'px')
     trackbarRef.current.setAttribute('width', trackbarRef.current.clientWidth + 'px')
@@ -297,9 +248,8 @@ const MoonLanding = () => {
     return (
       <li
         key={key}
-        data-timestamp={t}
         title={text}
-        onClick={handleBookmarkTimeChange}
+        onClick={() => onProgress(t)}
         style={{ left: `${percent}%` }}
       >
         <i className="fa fa-bookmark" data-timestamp={t}></i>
