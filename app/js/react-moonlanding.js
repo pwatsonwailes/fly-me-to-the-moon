@@ -34,7 +34,7 @@ const MoonLanding = () => {
     }
   }, [])
 
- const onProgress = (reset = false) => {
+ const onProgress = (time = null) => {
     var unbufferedPast = '#90d26a',
         unbufferedFuture = '#565860',
         bufferedPast = '#90d26a',
@@ -106,14 +106,14 @@ const MoonLanding = () => {
       // now let's sort out the conversation stuff
       let newState = JSON.parse(JSON.stringify(state))
 
-      newState.currentTime = Math.floor(currentTime)
+      newState.currentTime = time
 
-      if (reset) {
+      if (time === 0) {
         // first sort comms
         let fdTime = false,
             gaTime = false;
 
-        for (let i = newState.currentTime; i > 0; i--) {
+        for (let i = time; i > 0; i--) {
           if (typeof Descent.fdIndex[i] !== 'undefined' && fdTime === false)
             fdTime = i;
 
@@ -138,14 +138,14 @@ const MoonLanding = () => {
 
         // work out altitude and speed
         for (let i = 0; i < aKeys.length; i++) {
-          if (newState.currentTime > aKeys[i]) {
+          if (time > aKeys[i]) {
             aKey = aKeys[i]
             break
           }
         }
 
         for (let i = 0; i < sKeys.length; i++) {
-          if (newState.currentTime > sKeys[i]) {
+          if (time > sKeys[i]) {
             sKey = sKeys[i]
             break
           }
@@ -154,8 +154,8 @@ const MoonLanding = () => {
         const aOjb = JSON.parse(JSON.stringify(Descent.altitude[aKey])),
               sOjb = JSON.parse(JSON.stringify(Descent.speed[sKey]))
 
-        aOjb.v = aOjb.v + (aOjb.r * (newState.currentTime - aKey));
-        sOjb.v = sOjb.v + (sOjb.r * (newState.currentTime - aKey));
+        aOjb.v = aOjb.v + (aOjb.r * (time - aKey));
+        sOjb.v = sOjb.v + (sOjb.r * (time - aKey));
 
         newState.altitude = aOjb;
         newState.speed = sOjb;
@@ -163,18 +163,18 @@ const MoonLanding = () => {
       else {
         // sort out the descent stats for a non-reset command
         // only do this once per second
-        if (Descent.altitude[newState.currentTime])
-          newState.altitude = JSON.parse(JSON.stringify(Descent.altitude[newState.currentTime]))
-        else if (newState.currentTime > state.currentTime)
+        if (Descent.altitude[time])
+          newState.altitude = JSON.parse(JSON.stringify(Descent.altitude[time]))
+        else if (time > state.currentTime)
           newState.altitude.v = newAltitude.v + newAltitude.r
 
-        if (Descent.speed[newState.currentTime])
-          newState.speed = JSON.parse(JSON.stringify(Descent.speed[newState.currentTime]));
-        else if (newState.currentTime > state.currentTime)
+        if (Descent.speed[time])
+          newState.speed = JSON.parse(JSON.stringify(Descent.speed[time]));
+        else if (time > state.currentTime)
           newState.speed.v = newState.speed.v + newState.speed.r;
 
-        const fd = getLoopText('fd', newState.currentTime, false),
-              ga = getLoopText('ga', newState.currentTime, false)
+        const fd = getLoopText('fd', time, false),
+              ga = getLoopText('ga', time, false)
 
         if (fd)
           newState.fd = fd
@@ -183,9 +183,9 @@ const MoonLanding = () => {
           newState.ga = ga
       }
 
-      if (newState.currentTime > state.currentTime) { // so we only do this once per second
-        const fd = getLoopText('fd', newState.currentTime, false),
-              ga = getLoopText('ga', newState.currentTime, false)
+      if (time > state.currentTime) { // so we only do this once per second
+        const fd = getLoopText('fd', time, false),
+              ga = getLoopText('ga', time, false)
 
         if (fd)
           newState.fd = fd
@@ -231,20 +231,19 @@ const MoonLanding = () => {
       currentElement = currentElement.offsetParent
     }
 
-    audioRef.current.currentTime = audioRef.current.duration * x / (trackbarRef.current.clientWidth + 1)
+    newTime = audioRef.current.duration * x / (trackbarRef.current.clientWidth + 1)
 
-    onProgress()
+    onProgress(newTime)
   }
 
   const handleBookmarkTimeChange = (e) => {
-    audioRef.current.currentTime = e.target.dataset.timestamp
-    onProgress()
+    onProgress(e.target.dataset.timestamp)
   }
 
   const handleResize = () => {
     trackbarRef.current.setAttribute('height', trackbarRef.current.clientHeight + 'px')
     trackbarRef.current.setAttribute('width', trackbarRef.current.clientWidth + 'px')
-    onProgress(true)
+    onProgress(0)
   }
 
   const togglePlayback = (e) => {
