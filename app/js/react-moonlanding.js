@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import marked from 'marked'
 
 const MoonLanding = () => {
   const [playing, setPlaying] = useState(false)
