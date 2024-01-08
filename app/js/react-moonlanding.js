@@ -356,11 +356,11 @@ const MoonLanding = () => {
         </div>
         <div className="col col-xs-6 col-xs-6 col-lg-3">
           <h3>Time</h3>
-          <p>{getAudioTime(currentTime)}</p>
+          <p>{currentTime}</p>
         </div>
         <div className="col col-xs-6 col-xs-6 col-lg-3">
           <h3>Landing</h3>
-          <p>{getTimeToLanding(currentTime)}</p>
+          <p>{currentTime}</p>
         </div>
       </div>
     )
@@ -385,4 +385,4 @@ const MoonLanding = () => {
   );
 };
 
-export default MoonLanding;
+export default MoonLanding
