@@ -15,7 +15,7 @@ const PageContent = (props) => {
       const eventType = item.type;
     }
 
-    Component = Components[item.type]
+    const Component = Components[item.type]
 
     return <Component {...item} />;
   };
