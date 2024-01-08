@@ -356,11 +356,11 @@ const MoonLanding = () => {
         </div>
         <div className="col col-xs-6 col-xs-6 col-lg-3">
           <h3>Time</h3>
-          <p>{currentTime}</p>
+          <p>{audioTime}</p>
         </div>
         <div className="col col-xs-6 col-xs-6 col-lg-3">
           <h3>Landing</h3>
-          <p>{currentTime}</p>
+          <p>{timeToLanding}</p>
         </div>
       </div>
     )
