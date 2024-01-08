@@ -309,7 +309,7 @@ const MoonLanding = () => {
     return (
       <div className="audioplayer_controls col col-xs-12">
         <ul id="events_panel">{list}</ul>
-        <canvas ref={ref => audioRef.current = ref} onClick={handleTimeChange} />
+        <canvas ref={trackbarRef} onClick={handleTimeChange} />
         <i className={playbackClass} onClick={togglePlayback} />
         <i className="fa fa-volume-up" data-volup={1} onClick={toggleVolume} />
         <i className="fa fa-volume-down" data-volup={0} onClick={toggleVolume} />
