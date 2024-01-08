@@ -233,18 +233,18 @@ const MoonLanding = () => {
 
     audioRef.current.currentTime = audioRef.current.duration * x / (trackbarRef.current.clientWidth + 1)
 
-    onProgress(true)
+    onProgress()
   }
 
   const handleBookmarkTimeChange = (e) => {
     audioRef.current.currentTime = e.target.dataset.timestamp
-    onProgress(true)
+    onProgress()
   }
 
   const handleResize = () => {
     trackbarRef.current.setAttribute('height', trackbarRef.current.clientHeight + 'px')
     trackbarRef.current.setAttribute('width', trackbarRef.current.clientWidth + 'px')
-    onProgress()
+    onProgress(true)
   }
 
   const togglePlayback = (e) => {
