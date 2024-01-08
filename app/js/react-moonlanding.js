@@ -113,7 +113,7 @@ const MoonLanding = () => {
         let fdTime = false,
             gaTime = false;
 
-        for (let i = cFT; i > 0; i--) {
+        for (let i = newState.currentTime; i > 0; i--) {
           if (typeof Descent.fdIndex[i] !== 'undefined' && fdTime === false)
             fdTime = i;
 
