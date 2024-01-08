@@ -5,14 +5,14 @@
 		"content":
 		[
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<div id=\"heading\"><header id=\"main_header\" class=\"row light\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header><h1><span id=\"top_title\">Fly Me to the Moon</span><br><span id=\"lower_title\">Mankind's Journey to the Stars</span></h1><p>A look at mankind's journey to the stars, from 1944 to today and beyond</p></div>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "intro",
 				"id": "intro",
@@ -25,14 +25,14 @@
 		"description": "The journey from the V-2 to Sputnik",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -48,7 +48,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/V-2_Mittelbau_engine.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -64,7 +64,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/Baikonur_Cosmodrome_Soyuz_launch_pad.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -80,7 +80,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/sputnik_1.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -94,7 +94,7 @@
 				"sourceId": "KMFvr1VwSSo"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p5",
 				"id": "p5",
@@ -107,14 +107,14 @@
 		"description": "Putting a man in space and the start of the space race",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -130,7 +130,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/mercury_seven.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -144,7 +144,7 @@
 				"sourceId": "7O4V7JfeTSU"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -160,7 +160,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/map.svg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -174,7 +174,7 @@
 				"sourceId": "ouRbkBAOGEw"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p5",
 				"id": "p5",
@@ -187,14 +187,14 @@
 		"description": "1962 - 1967: The relentless march of progress and the human price paid",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -208,7 +208,7 @@
 				"sourceId": "6YTaG91KD5s"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -222,7 +222,7 @@
 				"sourceId": "uAPBRvd8OTY"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -236,7 +236,7 @@
 				"sourceId": "PWZ1RCdNJsA"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -249,14 +249,14 @@
 		"description": "1968 - 1969: One giant leap for mankind",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -298,7 +298,7 @@
 				]
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -314,7 +314,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/apollo_8_launch.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -330,7 +330,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/apollo_8_saturn_v_pad.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -344,7 +344,7 @@
 				"sourceId": "FzCsDVfPQqk"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p5",
 				"id": "p5",
@@ -358,7 +358,7 @@
 				"sourceId": "njpWalYduU4"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p6",
 				"id": "p6",
@@ -372,7 +372,7 @@
 				"sourceId": "ygBxN5UiOaM"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p7",
 				"id": "p7",
@@ -385,7 +385,7 @@
 				"id": "moonlanding"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p8",
 				"id": "p8",
@@ -399,7 +399,7 @@
 				"sourceId": "RMINSD7MmT4"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p9",
 				"id": "p9",
@@ -481,7 +481,7 @@
 				]
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p10",
 				"id": "p10",
@@ -494,14 +494,14 @@
 		"description": "1970 - 1975: The start of the space station era, and the end of Apollo",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -517,7 +517,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/apollo_13_mission_control.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -533,7 +533,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/apollo_13_service_module.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -549,7 +549,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/lunokhod_1.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -562,14 +562,14 @@
 		"description": "1975 - 1998: Mankind turns his invention from politics to science, creating the Space Shuttle, space stations and probes",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -605,7 +605,7 @@
 				]
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -619,7 +619,7 @@
 				"sourceId": "iVdH1U3s0DA"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -633,7 +633,7 @@
 				"sourceId": "fSTrmJtHLFU"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -649,7 +649,7 @@
 				"src": "/fly-me-to-the-moon/piece_images/hubble_space.jpg"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p5",
 				"id": "p5",
@@ -700,7 +700,7 @@
 				]
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p6",
 				"id": "p6",
@@ -713,14 +713,14 @@
 		"description": "2001 - 2016: Private industry enters space, and mankind's gaze looks beyond the moon",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "",
 				"key": "header",
 				"id": "header",
 				"content": "<header id=\"main_header\" class=\"row dark\"><div id=\"logo_container\"><p><a href=\"/\">wail.es</a></p></div><div id=\"powered_by\"><ul class=\"unstyled inline\"><li><a href=\"/fly-me-to-the-moon/\">Fly Me to the Moon</a></li><li><a href=\"/fly-me-to-the-moon/credits\">Credits</a></li></ul></div></header>"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p1",
 				"id": "p1",
@@ -734,7 +734,7 @@
 				"sourceId": "XRCIzZHpFtY"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p2",
 				"id": "p2",
@@ -748,7 +748,7 @@
 				"sourceId": "8FQhtMrUQlE"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p3",
 				"id": "p3",
@@ -762,7 +762,7 @@
 				"sourceId": "P4boyXQuUIw"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p4",
 				"id": "p4",
@@ -776,7 +776,7 @@
 				"sourceId": "74tyedGkoUc"
 			},
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "p5",
 				"id": "p5",
@@ -789,7 +789,7 @@
 		"description": "With thanks to...",
 		"content": [
 			{
-				"type": "Markdown",
+				"type": "Markeddown",
 				"className": "content",
 				"key": "1",
 				"id": "1",
