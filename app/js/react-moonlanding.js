@@ -289,7 +289,7 @@ const MoonLanding = () => {
   };
 
   const renderBookmark = ({ key, t, text }) => {
-    const percent = (item.t / audioRef.current.duration) * 100;
+    const percent = (t / audioRef.current.duration) * 100;
 
     return (
       <li
