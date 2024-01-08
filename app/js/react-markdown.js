@@ -1,14 +1,10 @@
 import React from 'react';
 import marked from 'marked';
 
-export default class Markdown extends React.Component {
-	constructor() {
-		super();
-	}
+const Markdown = (props) => {
+  const classes = props.className !== undefined ? props.className : '';
 
-	render() {
-		var classes = (typeof this.props.className !== 'undefined') ? this.props.className : '';
+  return <div key={props.key} id={props.id} className={classes} dangerouslySetInnerHTML={{ __html: marked(props.content) }} />
+};
 
-		return React.createElement("div", { key: this.props.key, id: this.props.id, className: classes, dangerouslySetInnerHTML: { __html: marked(this.props.content) } });
-	}
-}
+export default Markdown;

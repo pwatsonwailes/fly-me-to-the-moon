@@ -1,125 +1,119 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default class Gallery extends React.Component {
-	constructor() {
-		super();
+const Gallery = (props) => {
+  const [galleryPointer, setGalleryPointer] = useState(0);
+  const [maxHeight, setMaxHeight] = useState(600);
+  const [maxWidth, setMaxWidth] = useState(600);
+  const [showImgs, setShowImgs] = useState(0);
 
-		this.state = {
-			galleryPointer: 0,
-			maxHeight: 600,
-			maxWidth: 600,
-			showImgs: 0
-		}
-	}
+  const setGallerySettings = () => {
+    const dims = typeof getViewportSize === 'function' ? getViewportSize() : false;
+    const newShowImgs =
+      typeof props.showImgs !== 'undefined' && dims !== false && dims.width > 1120
+        ? props.showImgs
+        : 1;
 
-	componentDidMount = () => {
-		if (typeof window !== 'undefined') {
-			this.setGallerySettings();
-			window.addEventListener('resize', this.setGallerySettings);
-		}
-	}
+    setMaxHeight(dims !== false ? dims.height : 0);
+    setMaxWidth(dims !== false ? dims.width : 0);
+    setShowImgs(newShowImgs);
+  };
 
-	componentWillUnmount = () => { window.removeEventListener('resize', this.setGallerySettings) }
-	componentWillReceiveProps = () => { this.setState({ galleryPointer: 0 }) }
-		
-	setGallerySettings = () => {
-		var dims = (typeof getViewportSize === 'function') ? getViewportSize() : false;
-		var showImgs = (typeof this.props.showImgs !== 'undefined' && dims !== false && dims.width > 1120) ? this.props.showImgs : 1;
+  const buttonHandler = (e) => {
+    let newPointerPosition;
 
-		this.setState({
-			maxHeight: (dims !== false) ? dims.height : 0,
-			maxWidth: (dims !== false) ? dims.width : 0,
-			showImgs: showImgs
-		})
-	}
+    if (e.target.dataset.direction === 'forward')
+      newPointerPosition = galleryPointer + showImgs < props.images.length ? galleryPointer + 1 : false;
+    else
+      newPointerPosition = galleryPointer - 1 < 0 ? false : galleryPointer - 1;
 
-	renderGalleryImg = (imgData) => {
-		// width and height are less than max settings
-		if (typeof imgData.height !== 'undefined' && imgData.height < this.state.maxHeight && typeof imgData.width !== 'undefined' && imgData.width < this.state.maxWidth) {
-			var height = imgData.height;
-			var width = imgData.width;
-		}
-		// height and width too big
-		else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.height > this.state.maxHeight && imgData.width > this.state.maxWidth) {
-			var height = imgData.height * (this.state.maxWidth / imgData.width);
-			var width = this.state.maxWidth;
-		}
-		// height too big, reduce height, width needs altering to respect aspect ratio
-		else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.height > this.state.maxHeight) {
-			var height = this.state.maxHeight;
-			var width = imgData.width * (this.state.maxHeight / imgData.height);
-		}
-		// width too big, reduce width, height needs altering to respect aspect ratio
-		else if (typeof imgData.height !== 'undefined' && typeof imgData.width !== 'undefined' && imgData.width > this.state.maxWidth) {
-			var height = imgData.height * (this.state.maxWidth / imgData.width);
-			var width = this.state.maxWidth;
-		}
-		// height or width aren't set, let the browser work it out
-		else {
-			var height = '';
-			var width = '';
-		}
+    if (newPointerPosition !== false) {
+      setGalleryPointer(newPointerPosition);
+    }
+  };
 
-		return React.createElement("img", { key: 'img' + imgData.path, className: 'galleryImg', src: imgData.path, height: height, width: width })
-	}
+  const leftPointer = () => (
+    <span className="fa_button" id="galleryBack" data-direction="backward" onClick={buttonHandler}>
+      <i className="fa fa-angle-double-left" data-direction="backward"></i>
+    </span>
+  );
 
-	buttonHandler = (e) => {
-		// detect activation on the icon, or on the parent
-		if (e.target.dataset.direction === 'forward')
-			var newPointerPosition = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.state.galleryPointer + 1 : false;
-		else
-			var newPointerPosition = (this.state.galleryPointer - 1 < 0) ? false : this.state.galleryPointer - 1;
+  const rightPointer = () => (
+    <span className="fa_button" id="galleryForward" data-direction="forward" onClick={buttonHandler}>
+      <i className="fa fa-angle-double-right" data-direction="forward"></i>
+    </span>
+  );
 
-		if (typeof window !== false) {
-			console.log('send', 'event', 'Gallery', window.location.pathname, this.props.id + ': ' + e.target.dataset.direction, 1);
-			ga('send', 'event', 'Gallery', window.location.pathname, this.props.id + ': ' + e.target.dataset.direction, 1);
-		}
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setGallerySettings();
+      window.addEventListener('resize', setGallerySettings);
+    }
 
-		// need to explicitly check for false, as if () checks ==, not ===
-		if (newPointerPosition !== false)
-			this.setState({ galleryPointer: newPointerPosition });
-	}
+    return () => {
+      window.removeEventListener('resize', setGallerySettings);
+    };
+  }, []);
 
-	leftPointer = () => {
-		return (
-			React.createElement("span", { className: 'fa_button', id: 'galleryBack', 'data-direction': 'backward', onClick: this.buttonHandler },
-				React.createElement("i", { className: 'fa fa-angle-double-left', 'data-direction': 'backward' })
-			)
-		)
-	}
+  useEffect(() => {
+    setGalleryPointer(0);
+  }, [props]);
 
-	rightPointer = () => {
-		return (
-			React.createElement("span", { className: 'fa_button', id: 'galleryForward', 'data-direction': 'forward',  onClick: this.buttonHandler },
-				React.createElement("i", { className: 'fa fa-angle-double-right', 'data-direction': 'forward' })
-			)
-		)
-	}
+  const renderGalleryImg = (imgData) => {
+    let height = '';
+    let width = '';
 
-	render() {
-		var n = (this.state.galleryPointer + this.state.showImgs <= this.props.images.length)
-			? this.state.galleryPointer + this.state.showImgs
-			: this.props.images.length;
+    if (
+      typeof imgData.height !== 'undefined' &&
+      imgData.height < maxHeight &&
+      typeof imgData.width !== 'undefined' &&
+      imgData.width < maxWidth
+    ) {
+      height = imgData.height;
+      width = imgData.width;
+    } else if (
+      typeof imgData.height !== 'undefined' &&
+      typeof imgData.width !== 'undefined' &&
+      imgData.height > maxHeight &&
+      imgData.width > maxWidth
+    ) {
+      height = imgData.height * (maxWidth / imgData.width);
+      width = maxWidth;
+    } else if (
+      typeof imgData.height !== 'undefined' &&
+      typeof imgData.width !== 'undefined' &&
+      imgData.height > maxHeight
+    ) {
+      height = maxHeight;
+      width = imgData.width * (maxHeight / imgData.height);
+    } else if (
+      typeof imgData.height !== 'undefined' &&
+      typeof imgData.width !== 'undefined' &&
+      imgData.width > maxWidth
+    ) {
+      height = imgData.height * (maxWidth / imgData.width);
+      width = maxWidth;
+    }
 
-		var gallery = [];
-		for (var i = this.state.galleryPointer; i < n; i++) {
-			gallery.push(this.renderGalleryImg(this.props.images[i]));
-		}
+    return <img key={'img' + imgData.path} className="galleryImg" src={imgData.path} height={height} width={width} />;
+  };
 
-		var leftPointer = (this.state.galleryPointer > 0) ? this.leftPointer() : [];
-		var rightPointer = (this.state.galleryPointer + this.state.showImgs < this.props.images.length) ? this.rightPointer() : [];
+  const n = galleryPointer + showImgs <= props.images.length ? galleryPointer + showImgs : props.images.length;
 
-		var countClass = 'show_' + this.state.showImgs;
+  const gallery = [];
+  for (let i = galleryPointer; i < n; i++) {
+    gallery.push(renderGalleryImg(props.images[i]));
+  }
 
-		return (
-			React.createElement("div", { className: 'gallery_widget ' + countClass, id: this.props.id, key: this.props.key },
-				React.createElement("h4", null, this.props.title),
-				React.createElement("div", { className: 'gallery' },
-					leftPointer,
-					rightPointer,
-					gallery
-				)
-			)
-		)
-	}
-}
+  return (
+    <div className={'gallery_widget show_' + showImgs} id={props.id} key={props.key}>
+      <h4>{props.title}</h4>
+      <div className="gallery">
+        {galleryPointer > 0 && leftPointer()}
+        {galleryPointer + showImgs < props.images.length && rightPointer()}
+        {gallery}
+      </div>
+    </div>
+  );
+};
+
+export default Gallery;

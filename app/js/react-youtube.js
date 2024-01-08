@@ -1,19 +1,19 @@
 import React from 'react';
 
-export default class YouTube extends React.Component {
-	constructor() {
-		super();
-	}
+const YouTube = (props) => {
+  const classes = props.className || '';
 
-	render() {
-		var classes = (typeof this.props.className !== 'undefined') ? this.props.className : '';
+  return (
+    <div className={`media_widget youtube ${classes}`} id={props.id} key={props.key}>
+      <figure className="video_container">
+        <iframe
+          src={`https://www.youtube.com/embed/${props.sourceId}?iv_load_policy=3`}
+          className="youtube"
+          title="YouTube Video"
+        ></iframe>
+      </figure>
+    </div>
+  );
+};
 
-		return (
-			React.createElement("div", { className: 'media_widget youtube ' + classes, id: this.props.id, key: this.props.key },
-				React.createElement("figure", { className: 'video_container' },
-					React.createElement("iframe", { src: 'https://www.youtube.com/embed/' + this.props.sourceId + '?iv_load_policy=3', className: 'youtube' })
-				)
-			)
-		)
-	}
-}
+export default YouTube

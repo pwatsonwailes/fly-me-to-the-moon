@@ -1,58 +1,52 @@
-import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React, { useEffect, useState } from 'react';
 import JsonData from '../json/data.json';
 
 import PageContent from './react-pagecontent.js';
-import Social from './react-social.js';
 
-export default class FMttM extends React.Component {
-	constructor(props) {
-		super(props);
+const FMttM = (props) => {
+  const [state, setState] = useState({
+    title: props.title,
+    description: props.description,
+    content: props.content
+  });
 
-		this.state = {
-			title: props.title,
-			description: props.description,
-			content: props.content
-		}
-	}
+  const historyUpdate = () => {
+    const section = String(window.location.pathname).match(/\/fly-me-to-the-moon\/.+/i) !== null
+      ? window.location.pathname.replace('/fly-me-to-the-moon/', '').split('/')[0]
+      : 'home';
 
-	componentDidMount = () => {
-		var self = this;
+    setSection({ target: { dataset: { section: section } } }, false);
+  };
 
-		if (typeof this.props.section !== 'undefined')
-			this.setSection({"target": {"dataset": { "section": this.props.section }}});
+  const setSection = (e, updateHistory = true) => {
+    if (e.preventDefault)
+      e.preventDefault();
 
-		if (typeof window !== 'undefined')
-			History.Adapter.bind(window, 'statechange', function() { self.historyUpdate() })
-	}
+    const section = e.target.dataset.section;
+    setState(JsonData[section]);
 
-	historyUpdate = () => {
-		var section = (String(window.location.pathname).match(/\/fly-me-to-the-moon\/.+/i) !== null)
-			? window.location.pathname.replace('/fly-me-to-the-moon/', '').split('/')[0]
-			: 'home';
+    if (updateHistory)
+      history.pushState(null, `${JsonData[section].title} | Fly Me to the Moon`, `/fly-me-to-the-moon/${section}`);
+  };
 
-		this.setSection({"target": {"dataset": { "section": section }}}, false);
-	}
+  useEffect(() => {
+    if (typeof props.section !== 'undefined')
+      setSection({ target: { dataset: { section: props.section } } });
 
-	setSection = (e, updateHistory) => {
-		if (typeof e.preventDefault === 'function')
-			e.preventDefault();
+    if (typeof window !== 'undefined')
+      History.Adapter.bind(window, 'statechange', historyUpdate);
 
-		// do stuff
-		var section = e.target.dataset.section;
+    return () => {
+      if (typeof window !== 'undefined')
+        History.Adapter.unbind(window, 'statechange', historyUpdate);
+    };
+  }, []);
 
-		this.setState(JsonData[section]);
+  return (
+    <div id="fmttmContainer">
+      <PageContent {...state.content} />
+    </div>
+  );
+};
 
-		if (typeof updateHistory === 'undefined' || updateHistory !== false)
-			History.pushState(null, JsonData[section].title + ' | Fly Me to the Moon', '/fly-me-to-the-moon/' + section);
-	}
-
-	render() {
-		return (
-			React.createElement("div", { id: "fmttmContainer" },
-				//React.createElement(Social, null),
-				React.createElement(PageContent, this.state.content)
-			)
-		);
-	}
-}
+export default FMttM;

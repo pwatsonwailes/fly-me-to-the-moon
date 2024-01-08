@@ -4,7 +4,7 @@ var express = require('express'),
 	path = require('path'),
 	app = express(),
 	ip = '0.0.0.0',
-	port = 3001,
+	port = 4170,
 	bodyParser = require('body-parser')
 
 // Include static assets
