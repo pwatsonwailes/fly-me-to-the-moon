@@ -7,7 +7,7 @@ import MoonLanding from './react-moonlanding.js';
 
 const components = { MoonLanding, Markdown, Image, Gallery, YouTube }
 
-const PageContent = ({ props }) => {
+const PageContent = (props) => {
   const renderElement = (item) => {
     if (typeof window !== 'undefined') {
       const id = item.id || 'No id';
