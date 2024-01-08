@@ -5,7 +5,7 @@ import Gallery from './react-gallery.js';
 import YouTube from './react-youtube.js';
 import MoonLanding from './react-moonlanding.js';
 
-const components = { MoonLanding, Markdown, Image, Gallery, YouTube }
+const Components = { MoonLanding, Markdown, Image, Gallery, YouTube }
 
 const PageContent = (props) => {
   const renderElement = (item) => {
