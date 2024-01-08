@@ -1,0 +1,968 @@
+[
+	{
+		"t": 7,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Hit VERB 77?"
+	},
+	{
+		"t": 26,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. Sequence camera coming on."
+	},
+	{
+		"t": 54,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. If you'd like to try high gain, pitch 212, yaw 37. Over."
+	},
+	{
+		"t": 67,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger. I think I've got you on high gain now."
+	},
+	{
+		"t": 71,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 85,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Say again the angles, though."
+	},
+	{
+		"t": 87,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 88,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "I'll set them in to use them before we yaw around."
+	},
+	{
+		"t": 90,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Pitch 212, yaw plus 37."
+	},
+	{
+		"t": 106,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "OMNI's in."
+	},
+	{
+		"t": 151,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... 10 ... 10 percent ..."
+	},
+	{
+		"t": 183,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Columbia, Houston. We've lost them. Tell them to go aft OMNI. Over."
+	},
+	{
+		"t": 193,
+		"position": "CMP",
+		"name": "Michael Collins",
+		"text": "They've lost you. Use the OMNI's again."
+	},
+	{
+		"t": 203,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "..."
+	},
+	{
+		"t": 207,
+		"position": "CMP",
+		"name": "Michael Collins",
+		"text": "Say again, Neil?"
+	},
+	{
+		"t": 209,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "I'll leave it in SLEW. Relay to us. See if they have got me now. I've got good signal strength in SLEW."
+	},
+	{
+		"t": 215,
+		"position": "CMP",
+		"name": "Michael Collins",
+		"text": "Okay. You should have him now, Houston."
+	},
+	{
+		"t": 218,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, we've got you now. It's looking good. Over."
+	},
+	{
+		"t": 225,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle - -"
+	},
+	{
+		"t": 226,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "- - descent looks good."
+	},
+	{
+		"t": 227,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. Everything is looking good here. Over."
+	},
+	{
+		"t": 231,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 236,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. After yaw around, angles: S band pitch, minus 9, yaw plus 18."
+	},
+	{
+		"t": 248,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Copy."
+	},
+	{
+		"t": 261,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "AGS and PNGS agree very closely."
+	},
+	{
+		"t": 263,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 276,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Beta ARM. Altitudes are a little high."
+	},
+	{
+		"t": 307,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Houston. I'm getting a little fluctuation in the AC voltage now."
+	},
+	{
+		"t": 313,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 314,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Could be our meter, maybe, huh?"
+	},
+	{
+		"t": 316,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Stand by, Looking good to us. You're still looking good at 3, coming up 3 minutes."
+	},
+	{
+		"t": 335,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... real good .... about on."
+	},
+	{
+		"t": 340,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Our. position checks downrange show us to be a little long."
+	},
+	{
+		"t": 343,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 346,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "AGS has gone about 2 feet per second greater ..."
+	},
+	{
+		"t": 358,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "... ought to be ... Stand by.,"
+	},
+	{
+		"t": 365,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Altitude ..."
+	},
+	{
+		"t": 382,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... it's going to stop."
+	},
+	{
+		"t": 400,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. You are GO to continue - -"
+	},
+	{
+		"t": 401,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... closed ... GO ... at 4 minutes."
+	},
+	{
+		"t": 404,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. You are GO - You are GO to continue powered descent. You are GO to continue powered des cent."
+	},
+	{
+		"t": 412,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger."
+	},
+	{
+		"t": 417,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "And, Eagle, Houston. We've got data dropout. You're still looking good."
+	},
+	{
+		"t": 446,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... PGNS. We got good lock-on. Altitude lights OUT. DELTA-H is minus 2 900."
+	},
+	{
+		"t": 460,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. We copy."
+	},
+	{
+		"t": 462,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Got the Earth right out our front window."
+	},
+	{
+		"t": 465,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Houston, you're looking at our DELTA-H?"
+	},
+	{
+		"t": 467,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "That's affirmative."
+	},
+	{
+		"t": 468,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "PROGRAM ALARM."
+	},
+	{
+		"t": 470,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "It's looking good to us. Over."
+	},
+	{
+		"t": 472,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "It's a 1202."
+	},
+	{
+		"t": 474,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "1202."
+	},
+	{
+		"t": 490,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Give us a reading on the 1202 PROGRAM ALARM."
+	},
+	{
+		"t": 495,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. We got - We're GO on that alarm"
+	},
+	{
+		"t": 501,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Roger. P30."
+	},
+	{
+		"t": 503,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "6 plus 25, throttle down - -"
+	},
+	{
+		"t": 504,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Looks like about 820 -"
+	},
+	{
+		"t": 505,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "- - 6 plus 25, throttle down."
+	},
+	{
+		"t": 508,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Roger. Copy. 6 plus 25."
+	},
+	{
+		"t": 516,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Same alarm, and it appears to come up when we have a 1668 up."
+	},
+	{
+		"t": 519,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 525,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. We'll monitor your DELTA-H."
+	},
+	{
+		"t": 526,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... worked out beautifully."
+	},
+	{
+		"t": 530,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "DELTA H - -"
+	},
+	{
+		"t": 531,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... looks good now."
+	},
+	{
+		"t": 532,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. DELTA H is looking good to us."
+	},
+	{
+		"t": 536,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Ah! Throttle down - -"
+	},
+	{
+		"t": 537,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Throttle down on time!"
+	},
+	{
+		"t": 538,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger, We copy throttle down - -"
+	},
+	{
+		"t": 539,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "- - ... throttles down. Better than the simulator."
+	},
+	{
+		"t": 544,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 550,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "AGS and PGNS look real close."
+	},
+	{
+		"t": 570,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "At 7 minutes, you're looking great to us, Eagle."
+	},
+	{
+		"t": 575,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. I'm still on SLEW so we may tend to lose as we gradually pitch over. Let me try AUTO again now and see what happens."
+	},
+	{
+		"t": 583,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 585,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. Looks like it's holding."
+	},
+	{
+		"t": 586,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. We got good data."
+	},
+	{
+		"t": 611,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. It's descent 2 fuel to MONITOR. Over."
+	},
+	{
+		"t": 617,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Going to 2."
+	},
+	{
+		"t": 623,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Give us an estimated switchover time please, Houston."
+	},
+	{
+		"t": 627,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Stand by. You're looking great at 8 minutes."
+	},
+	{
+		"t": 632,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "At 7000 -"
+	},
+	{
+		"t": 634,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, you've got 30 seconds to P64."
+	},
+	{
+		"t": 637,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... Roger."
+	},
+	{
+		"t": 649,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. Coming up 8 30; you're looking great."
+	},
+	{
+		"t": 657,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "P64."
+	},
+	{
+		"t": 659,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "We copy."
+	},
+	{
+		"t": 673,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, you're looking great. Coming up 9 minutes."
+	},
+	{
+		"t": 687,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Manual attitude control is good."
+	},
+	{
+		"t": 690,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. Copy."
+	},
+	{
+		"t": 692,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, Houston. You're GO for landing. Over."
+	},
+	{
+		"t": 699,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger. Understand. GO for landing. 3000 feet. PROGRAM ALARM."
+	},
+	{
+		"t": 701,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Copy."
+	},
+	{
+		"t": 704,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "1201"
+	},
+	{
+		"t": 706,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "1201."
+	},
+	{
+		"t": 707,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. 1201 alarm. We're GO. Same type. We're GO."
+	},
+	{
+		"t": 713,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "2000 feet. 2000 feet. Into the AGS, 47 degrees."
+	},
+	{
+		"t": 717,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger."
+	},
+	{
+		"t": 718,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "47 degrees."
+	},
+	{
+		"t": 723,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Eagle, looking great. You're GO."
+	},
+	{
+		"t": 740,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. 1202. We copy it."
+	},
+	{
+		"t": 743,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "35 degrees. 35 degrees. 750. Coming down to 23."
+	},
+	{
+		"t": 749,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "700 feet, 21 down, 33 degrees."
+	},
+	{
+		"t": 753,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "600 feet, down at 19."
+	},
+	{
+		"t": 757,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "540 feet, down at - 30. Down at 15."
+	},
+	{
+		"t": 768,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "At 400 feet, down at 9."
+	},
+	{
+		"t": 771,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... forward."
+	},
+	{
+		"t": 774,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "350 feet, down at 4."
+	},
+	{
+		"t": 777,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "30, ... one-half down."
+	},
+	{
+		"t": 784,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "We're pegged on horizontal velocity."
+	},
+	{
+		"t": 788,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "300 feet, down 3 1/2, 47 forward."
+	},
+	{
+		"t": 793,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... up."
+	},
+	{
+		"t": 794,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "On 1 a minute, 1 1/2 down."
+	},
+	{
+		"t": 799,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "70."
+	},
+	{
+		"t": 806,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Watch your shadow out there."
+	},
+	{
+		"t": 809,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "50, down at 2 1/2, 19 forward."
+	},
+	{
+		"t": 815,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Altitude-velocity light."
+	},
+	{
+		"t": 818,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "3 1/2 down, 220 feet, 13 forward."
+	},
+	{
+		"t": 825,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "11 forward. Coming down nicely."
+	},
+	{
+		"t": 826,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "200 feet, 4 1/2 down."
+	},
+	{
+		"t": 828,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "5 1/2 down."
+	},
+	{
+		"t": 833,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "160, 6 - 6 1/2 down."
+	},
+	{
+		"t": 835,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "5 1/2 down, 9 forward. That's good."
+	},
+	{
+		"t": 842,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "120 feet."
+	},
+	{
+		"t": 847,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "100 feet, 3 1/2 down, 9 forward. Five percent."
+	},
+	{
+		"t": 853,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "..."
+	},
+	{
+		"t": 856,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. 75 feet. There's looking good. Down a half, 6 forward."
+	},
+	{
+		"t": 864,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "60 seconds."
+	},
+	{
+		"t": 866,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Lights on. ..."
+	},
+	{
+		"t": 870,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Down 2 1/2. Forward. Forward. Good."
+	},
+	{
+		"t": 879,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "40 feet, down 2 1/2. Kicking up some dust."
+	},
+	{
+		"t": 883,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "30 feet, 2 1/2 down. Faint shadow."
+	},
+	{
+		"t": 887,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "4 forward. 4 forward. Drifting to the right a little. Okay. Down a half."
+	},
+	{
+		"t": 893,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "30 seconds."
+	},
+	{
+		"t": 894,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Forward drift?"
+	},
+	{
+		"t": 895,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Yes."
+	},
+	{
+		"t": 896,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay."
+	},
+	{
+		"t": 902,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "CONTACT LIGHT."
+	},
+	{
+		"t": 905,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. ENGINE STOP."
+	},
+	{
+		"t": 907,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "ACA - out of DETENT."
+	},
+	{
+		"t": 908,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Out of DETENT."
+	},
+	{
+		"t": 909,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "MODE CONTROL - both AUTO. DESCENT ENGINE COMMAND OVERRIDE - OFF. ENGINE ARM - OFF."
+	},
+	{
+		"t": 914,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "413 is in."
+	},
+	{
+		"t": 919,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "We copy you down, Eagle."
+	},
+	{
+		"t": 921,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Houston, Tranquility Base here."
+	},
+	{
+		"t": 926,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "THE EAGLE HAS LANDED."
+	},
+	{
+		"t": 928,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger, Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
+	},
+	{
+		"t": 938,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Thank you."
+	},
+	{
+		"t": 940,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "You're looking good here."
+	},
+	{
+		"t": 945,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Okay. We're going to be busy for a minute."
+	},
+	{
+		"t": 947,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "MASTER ARM, ON. Take care of the ... I'll get this ..."
+	},
+	{
+		"t": 960,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Very smooth touchdown."
+	},
+	{
+		"t": 974,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "..."
+	},
+	{
+		"t": 985,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Okay. It looks like we're venting the oxidizer now."
+	},
+	{
+		"t": 988,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger, Eagle. And you are STAY for - -"
+	},
+	{
+		"t": 990,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "..."
+	},
+	{
+		"t": 991,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "- - T1. Over. Eagle, you are STAY for T1."
+	},
+	{
+		"t": 994,
+		"position": "CDR",
+		"name": "Neil Armstrong",
+		"text": "Roger. Understand, STAY for T1."
+	},
+	{
+		"t": 997,
+		"position": "CAPCOM",
+		"name": "Charlie Duke",
+		"text": "Roger. And we see you venting the 0X."
+	},
+	{
+		"t": 1002,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "Roger."
+	},
+	{
+		"t": 1019,
+		"position": "LMP",
+		"name": "Buzz Aldrin",
+		"text": "... circuit breaker."
+	}
+]
