@@ -261,7 +261,7 @@ const MoonLanding = () => {
   const renderAudio = () => {
     return (
       <audio ref={audioRef}>
-        <source src="/fly-me-to-the-moon/audio/apollo_11_landing.mp3" type="audio/mpeg" />
+        <source src="/media/audio/apollo_11_landing.mp3" type="audio/mpeg" />
         <p>Your browser does not support the audio element.</p>
       </audio>
     )
